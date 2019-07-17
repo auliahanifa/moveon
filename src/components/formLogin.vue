@@ -80,6 +80,13 @@ export default {
   background-size: cover;
     /* text-align:center; */
   padding: 40px;
+  background-attachment: fixed;
+  background-position: right center; 
+}
+
+.formlogin backgroung-image{
+       filter: blur(20px);
+  -webkit-filter: blur(20px);
 
 }
 
@@ -88,13 +95,19 @@ export default {
     height: 60px;
     background: linear-gradient(270deg, #F64A00 0%, rgba(247, 147, 23, 0) 100%), #F79317;
     margin: auto;
+    -webkit-mask-attachment: fixed;
+    position: right center;
 }
 
 .header-section h3{
     padding: 15px;
     color: white;
     size: 10px;
-    text-align: left
+    text-align: left;
+    margin-top: 150px;
+    margin-left: auto;
+    margin-right: auto;
+
 }
 
 button {
@@ -113,6 +126,7 @@ button {
  }
 
 .form-section {
+   
     background-repeat:  no-repeat center center fixed;
     width: 630px;
     height: 490px;
