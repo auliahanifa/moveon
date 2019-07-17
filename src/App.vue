@@ -43,8 +43,27 @@ export default {
 
 
 a {
-  color:black;
+  /* float:right; */
+  color:white;
+  margin: 0px 5px 0px 10px;
+
 }
 
+img{
+  margin: 0px 10px 0px 10px;
+}
+
+ a:hover p{
+  /* background-color: whitesmoke; */
+  border: 2px solid whitesmoke;
+  color:whitesmoke;
+  font-weight: bolder;
+  text-decoration: none;
+}
+
+a.active{
+ background-color: #4CAF50;
+  color: white;
+}
 </style>
 
