@@ -1,0 +1,25 @@
+#app {
+    font-family: 'Avenir', Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    color: #2c3e50;
+  }
+
+.nav-background {
+  background: #ffffff;  
+  /* background: -webkit-linear-gradient(to right, #f83600, #fe8c00);  */
+  /* background: linear-gradient(to right, #f83600, #fe8c00);  */
+  overflow: hidden;
+  }
+  
+.nav-background b-nav-item {
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+  }
+  
