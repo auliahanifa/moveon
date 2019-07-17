@@ -1,5 +1,5 @@
 <template>
-    
+    <GalangDana></GalangDana>
 </template>
 <script>
 export default {
