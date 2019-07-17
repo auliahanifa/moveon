@@ -8,9 +8,9 @@
     </div>       -->
     <div id="navbar-set">
       <b-navbar toggleable="lg" type="dark" class="nav-background">
-      <b-navbar-brand href="/"><img src="@/assets/img/logomuvon.png" alt=""></b-navbar-brand>
+      <b-navbar-brand href="/"><img src="@/assets/img/logoputih.png" alt=""></b-navbar-brand>
 
-      <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
+      <b-navbar-toggle target="nav-collapse"> </b-navbar-toggle>
 
       <b-collapse id="nav-collapse" is-nav class="ml-auto">
         <b-nav-form left>
@@ -19,10 +19,13 @@
           </b-nav-form>
 
         <b-navbar-nav right>
-          <b-nav-item><router-link to="/">Home</router-link></b-nav-item>
-          <b-nav-item><router-link to="/Donasi">Donasi</router-link></b-nav-item>
-          <b-nav-item><router-link to="/Lelang">Lelang</router-link></b-nav-item>
-          <b-nav-item><router-link to="/Beasiswa">Beasiswa</router-link></b-nav-item>
+          <b-nav-item><router-link to="/">HOME</router-link></b-nav-item>
+          <b-nav-item><router-link to="/Donasi">DONASI</router-link></b-nav-item>
+          <b-nav-item><router-link to="/Lelang">LELANG</router-link></b-nav-item>
+          <b-nav-item><router-link to="/Beasiswa">BEASISWA</router-link></b-nav-item>
+          <b-nav-item><router-link to="/Login">MASUK</router-link></b-nav-item>
+          <b-nav-item><router-link to="/Daftarlah">DAFTAR</router-link></b-nav-item>
+          
         </b-navbar-nav>
       </b-collapse>
     </b-navbar>
@@ -36,4 +39,12 @@ export default {
 
 }
 </script>
+<style scoped>
+
+
+a {
+  color:black;
+}
+
+</style>
 

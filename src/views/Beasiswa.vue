@@ -2,7 +2,7 @@
 </template>
 <script>
 export default {
-    name: 'beasiswaa',
+    name: 'beasiswa',
     components: {
         Beasiswaa
     }

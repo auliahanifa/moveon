@@ -7,11 +7,13 @@
 <script>
 // @ is an alias to /src
 import BarangLelang from '@/components/BarangLelang.vue'
+import FormDonasibarang from '@/components/FormDonasibarang.vue'
 
 export default {
-  name: 'lelang',
+  name: 'lelang', 
   components: {
-    BarangLelang
+    BarangLelang,
+    FormDonasibarang
   }
 }
 </script>

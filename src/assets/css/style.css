@@ -7,19 +7,20 @@
   }
 
 .nav-background {
-  background: #ffffff;  
-  /* background: -webkit-linear-gradient(to right, #f83600, #fe8c00);  */
-  /* background: linear-gradient(to right, #f83600, #fe8c00);  */
+  /* background: white;   */
+  background: -webkit-linear-gradient(to right, #f83600, #fe8c00); 
+  background: linear-gradient(to right, #f83600, #fe8c00); 
   overflow: hidden;
+  box-shadow: 0 2px 4px -2px rgba(0,0,0,.2);
   }
-  
-.nav-background b-nav-item {
-    float: left;
-    display: block;
-    color: #f2f2f2;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-    font-size: 17px;
-  }
-  
+
+.navbar-dark .navbar-toggler-icon {
+  background-color:  black;
+  width: 48px;
+  height: 42px;
+  border: 2px solid black;
+}  
+
+#navbar-set{
+ position: sticky;
+}

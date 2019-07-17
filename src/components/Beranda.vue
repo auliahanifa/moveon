@@ -4,7 +4,7 @@
         <h3>{{ header_text1 }}<br>{{ header_text1_a }}</h3>
         <br>
         <h4>{{ header_text2 }}</h4>
-        <b-button variant="outline-primary" class="btn_app">{{ btn_donasibarang }}</b-button>
+        <b-button variant="outline" class="btn_app"><router-link to="/donasi_barang">{{ btn_donasibarang }}</router-link></b-button>
         <div class="batasan"></div>
     </div>
     <div class="body-cerita">
@@ -13,60 +13,50 @@
                 <b-col>
                     <h3>{{ judul_section }}</h3>
                     <p>{{ deskripsi_section }}</p>
-                    <b-button variant="primary" class="btn_app2">{{ btn_mulaigd }}</b-button>
+                    <b-button variant="primary" class="btn_app2"><router-link to="/formgalangdanaa"> {{ btn_mulaigd }}</router-link></b-button>
                 </b-col>
                 <b-col>
                     <div class="slider-cerita">
                         <p>Slider cerita galang dana</p>
                     </div>
                     <br>
-                    <b-button class="btn_app2">{{ btn_lihatsemuagd }}</b-button>
+                    <b-button class="btn_app2"><router-link to="/Donasi">{{ btn_lihatsemuagd }}</router-link></b-button>
                 </b-col>
             </b-row>
         </b-container>
-        <div class="batasan"></div>   
     </div>
+    
+    <hr>
+
     <div class="body-baranglelang">
      <b-row>
         <h4>Ikuti lelang di moveon lalu salurkan uang anda untuk galang dana yang menjadi destinasi bantuan anda</h4>
      </b-row><br>
      <b-row>
-             <b-col>
-                <b-container class="div-barang">
-                    <img src="@/assets/img/cash.jpg" alt="gmbr">
-                    <h4 style="bold"> Nama barang</h4>
-                    <p>Nama Penjual <br><br>
-                    Harga Rp. 298,000,00 </p>
+         <b-col>
+            <b-container class="div-barang">
+                <img src="@/assets/img/cash.jpg" alt="gmbr">
+                <h4 style="bold"> Nama barang</h4>
+                <p>Nama Penjual <br><br>Harga Rp. 298,000,00 </p>
+            </b-container>
+         </b-col>
+         <b-col>
+            <b-container class="div-barang">
+            </b-container>
+         </b-col>
+         <b-col>
+           <b-container class="div-barang">
+           </b-container>
+         </b-col>
+     </b-row><br>
 
-                </b-container>
-             </b-col>
-             <b-col>
-                <b-container class="div-barang">
-                </b-container>
-             </b-col>
-             <b-col>
-                <b-container class="div-barang">
-                </b-container>
-             </b-col>
-
-         </b-container>
-        <!-- <b-card title="Celengan Botol"
-            img-src="@/assets/img/cash.jpg"
-            img-alt="Image"
-            img-top tag="article"
-            style="max-width: 22rem;"
-            class="mb-2">
-
-            <b-card-text>
-            Nama barang<br>Rp. 298,000,00
-            </b-card-text>
-            <b-button href="#" variant="primary">selengkapnya</b-button>
-        </b-card> -->
-    </b-row><br>
-    <b-row>
-     <b-button variant="primary">Lihat semua</b-button>
-    </b-row>           
+     <b-row>
+      <b-button variant="primary">Lihat semua</b-button>
+     </b-row>           
     </div>
+    
+    <hr>
+    
     <div class="body-team">
     <b-row>
       <b-col>
@@ -93,13 +83,14 @@
          <p>Esti Rosmana <br>MFEP Method Implementation <br>estirosmanasmkn1@gmail.com</p>
          <br>
         </div>
+        
         <div class="team-logo">
-            <b-row>
-             <b-col>
-                 <img src="@/assets/img/linkedin.png" alt="linkdin">
-                 <img src="@/assets/img/igteam.png" alt="ig">
-             </b-col>
-             </b-row>
+         <b-row>
+          <b-col>
+            <img src="@/assets/img/linkedin.png" alt="linkdin">
+            <img src="@/assets/img/igteam.png" alt="ig">
+          </b-col>
+         </b-row>
          <br><br>
         </div>                    
       </b-col>
@@ -110,11 +101,24 @@
         <!-- </div> -->
            
     </div>
-    <div class="footer">
-     <div class="sosmed">
+    <hr>
+    <b-container class="sosmed">
 
-        
-     </div> 
+                <b-col class="logo-1"><img src="@/assets/img/logomuvon.png" alt="logo"></b-col>
+                <b-col class="teks-1"><p>Temukan kami di: </p></b-col> 
+                
+                <b-col class="sosmed-1">
+                <img src="@/assets/img/twiter.png" alt="twitter">
+                <img src="@/assets/img/fb.png" alt="">
+                <img src="@/assets/img/iglogo.png" alt="">
+                <img src="@/assets/img/yutub.png" alt="">
+                </b-col>
+    </b-container>
+    <div class="footer">
+        <b-row>     
+           
+        </b-row>
+
     </div>
   </div>
     
@@ -145,39 +149,43 @@ export default {
   position: relative;
   }
 
+  hr {
+      border: 3px solid orange;
+      width: 78%;
+  }
+
 .div-barang{
     background-color: #ffffff;
     width: 230px;
     height: 320px;
-    text-align: center;
-    
+    text-align: center;    
+    border: 3px solid #F64A00;
 }
 
 .div-barang h4{
-    text-color: black;
+    color: black;
+    margin: auto;
+    size: 32px;
+    float: center;
 }
 
 .div-barang img{
-    width: 120px;
-    height: 84px;
+    width: 200px;
+    height: 130px;
 }
-.header-section {
-    /* background-color: black; */
-    background-image: url("../assets/img/kids.jpg");
-    /* height: auto;
-    margin: auto;
-    padding-bottom: 30px; */
 
-    /* position: static; */
+.header-section {
+    background-image: url("../assets/img/kids.jpg");
+    background-size: auto;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center; 
 }
 
 .body-cerita {
     background-color: #ffff;
-    /* width: 100%;
-    height: auto; */
-    /* position: absolute; */
-    /* margin: auto; */
     padding-bottom: 30px;
+    position: relative;
 
 }
 
@@ -185,8 +193,13 @@ export default {
     width:100%;
     margin: auto;
     height: auto;
-    padding: 30px;
-    
+    padding: 30px;    
+}
+
+
+button a{
+    color: #ffffff;
+
 }
 
 .body-baranglelang b-card{
@@ -199,6 +212,23 @@ export default {
     padding: 20px;
 
 } */
+
+.sosmed b-col {
+    margin: auto;
+    width: 50%;
+    height: auto;
+    text-align: center;
+}
+
+.sosmed-1 img{
+    margin: auto;
+    float: right;
+    padding: 20px;
+    /* position: absolute; */
+    width: 80px;
+    height: 76px;
+
+}
 
 .team-logo img{
     background-color: transparent;
@@ -243,12 +273,7 @@ export default {
 }
 
 .body-baranglelang {
-    background-color: lightblue;
-    /* width: 100%;
-    height: auto; */
-    /* position: absolute; */
-    /* margin: auto;
-    padding: 20px; */
+    background-color:#ffffff;
 }
 
 .footer {
@@ -256,6 +281,7 @@ export default {
     height: auto;
     position: static;
 }
+
 .body-cerita h3{
     padding: 30px ;
   	width: 280px;
@@ -264,9 +290,7 @@ export default {
 }
 
 .header-section h3 {
-/* width: 540px; */
-/* height: 187px; */
-width:80%;
+width:100%;
 margin: auto;
 font-family: Quattrocento Sans;
 font-style: italic;
