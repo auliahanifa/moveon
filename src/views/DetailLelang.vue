@@ -5,6 +5,10 @@
 </template>
 <script>
 export default {
+    name:'DetailBarang',
+    components:{
+        DetailBaranglelang
+    }
     
 }
 </script>
