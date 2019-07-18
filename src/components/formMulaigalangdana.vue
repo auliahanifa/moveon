@@ -19,24 +19,17 @@
             ></b-form-input>
           </b-form-group>
 
-          <b-form-group id="input-group-8" label="Deskripsi Barang" label-for="textarea">
+          <b-form-group id="input-group-8" label="Deskripsi Galang Dana" label-for="textarea">
+            <small>Tuliskan cerita galang dana Anda</small>
             <b-form-textarea
               id="textarea"
               v-model="form.deskripsi"
-              placeholder="Deskripsi barang (contoh: warna, ukuran, kondisi barang)"
+              placeholder="Tuliskan deskripsi galang dana anda"
               rows="3"
               max-rows="6"
             ></b-form-textarea>
           </b-form-group>
-          <b-form-group id="input-group-5" label="Deskripsi Galang Dana" label-for="input-5">
-            <small>Tuliskan cerita galang dana Anda</small>
-            <b-form-input
-              id="input-5"
-              v-model="form.harga_awal"
-              required
-              placeholder="Tuliskan deskripsi galang dana anda"
-            ></b-form-input>
-          </b-form-group>
+
           <b-form-group
             id="input-group-14"
             label="Upload Foto untuk Galang Dana"
@@ -54,7 +47,13 @@
           </b-form-group>
           <b-form-group id="input-group-1" label="Target Donasi" label-for="input-1">
             <small>Target donasi minimal Rp. 1.000.000</small>
-            <b-form-input id="input-1" v-model="form.judul" required placeholder="Contoh: 1000000"></b-form-input>
+            <b-form-input
+              id="input-1"
+              type="number"
+              v-model="form.judul"
+              required
+              placeholder="Contoh: 1000000"
+            ></b-form-input>
           </b-form-group>
           <b-form-group
             id="input-group-1"
