@@ -65,7 +65,6 @@
                     </b-button>
                   </b-col>
                 </b-row>
-                <br />
                 <b-progress
                   :value="value"
                   :max="max"
@@ -107,7 +106,7 @@
                     <td>1 - 30 September</td>
                   </tr>
                   <tr>
-                    <td style="font-weight:bold">Pendaftaran</td>
+                    <td style="font-weight:bold">Pengumuman</td>
                     <td></td>
                     <td>Desember</td>
                   </tr>
@@ -132,7 +131,7 @@
                     <td>1 - 28 Februari</td>
                   </tr>
                   <tr>
-                    <td style="font-weight:bold">Pendaftaran</td>
+                    <td style="font-weight:bold">Pengumuman</td>
                     <td></td>
                     <td>Mei</td>
                   </tr>

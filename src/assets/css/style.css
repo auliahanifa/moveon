@@ -213,6 +213,15 @@
     margin-top: 50px;
 }
 
+.kategori-data {
+    color: #f79317;
+    font-weight: bold
+}
+
+.label {
+    font-size: 16px;
+}
+
 .btn-orange {
     background: #f79317;
     border: none;

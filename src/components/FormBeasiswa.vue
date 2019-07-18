@@ -7,14 +7,22 @@
       </center>
       <div class="form">
         <b-form @submit="onSubmit" @reset="onReset" v-if="show">
+          <h4 class="kategori-data">Data Diri</h4>
+          <div class="garis-orange"></div>
+          <br />
           <b-row>
             <b-col sm="6" md="8" lg="8">
-              <b-form-group id="input-group-1" label="Nama" label-for="input-1">
+              <b-form-group id="input-group-1" label="Nama" label-for="input-1" class="label">
                 <b-form-input id="input-1" v-model="form.nama" required placeholder="Nama"></b-form-input>
               </b-form-group>
             </b-col>
             <b-col sm="6" md="4" lg="4">
-              <b-form-group id="input-group-2" label="Jenis Kelamin" label-for="input-2">
+              <b-form-group
+                id="input-group-2"
+                label="Jenis Kelamin"
+                label-for="input-2"
+                class="label"
+              >
                 <b-form-select
                   id="input-2"
                   v-model="form.jenis_kelamin"
@@ -24,36 +32,27 @@
               </b-form-group>
             </b-col>
           </b-row>
-          <b-row>
-            <b-col sm="12" md="12" lg="12">
-              <b-form-group id="input-group-18" label="Upload Foto">
-                <b-button @click="$refs.fileInput.click()" class="btn-blue">Pilih Foto</b-button>
 
-                <input
-                  style="display: none"
-                  ref="fileInput"
-                  type="file"
-                  @change="fileSelected"
-                  enctype="multipart/form-data"
-                />
-              </b-form-group>
-            </b-col>
-          </b-row>
           <b-row>
             <b-col sm="6" md="6" lg="6">
-              <b-form-group id="input-group-3" label="NIM" label-for="input-3">
+              <b-form-group id="input-group-3" label="NIM" label-for="input-3" class="label">
                 <b-form-input id="input-3" v-model="form.nim" required placeholder="NIM"></b-form-input>
               </b-form-group>
             </b-col>
             <b-col sm="6" md="6" lg="6">
-              <b-form-group id="input-group-4" label="Jurusan" label-for="input-4">
+              <b-form-group id="input-group-4" label="Jurusan" label-for="input-4" class="label">
                 <b-form-select id="input-4" v-model="form.jurusan" :options="jurusans" required></b-form-select>
               </b-form-group>
             </b-col>
           </b-row>
           <b-row>
             <b-col sm="6" md="6" lg="6">
-              <b-form-group id="input-group-5" label="Nomor Telepon" label-for="input-5">
+              <b-form-group
+                id="input-group-5"
+                label="Nomor Telepon"
+                label-for="input-5"
+                class="label"
+              >
                 <b-form-input
                   id="input-5"
                   v-model="form.no_hp"
@@ -81,7 +80,7 @@
           </b-row>
           <b-row>
             <b-col cols="12">
-              <b-form-group id="input-group-8" label="Alamat" label-for="textarea">
+              <b-form-group id="input-group-8" label="Alamat" label-for="textarea" class="label">
                 <b-form-textarea
                   id="textarea"
                   v-model="form.alamat"
@@ -93,8 +92,97 @@
             </b-col>
           </b-row>
           <b-row>
+            <b-col sm="12" md="12" lg="12">
+              <b-form-group id="input-group-18" label="Upload Foto Diri" class="label">
+                <small>Foto formal</small>
+                <b-button @click="$refs.fileInput.click()" class="btn-blue">Pilih Foto</b-button>
+                <input
+                  style="display: none"
+                  ref="fileInput"
+                  type="file"
+                  @change="fileSelected"
+                  enctype="multipart/form-data"
+                />
+              </b-form-group>
+            </b-col>
+          </b-row>
+          <b-row>
+            <b-col sm="6" md="6" lg="6">
+              <b-form-group
+                id="input-group-13"
+                label="Penghasilan Orang Tua (per bulan)"
+                label-for="input-13"
+                class="label"
+              >
+                <b-form-select
+                  id="input-13"
+                  v-model="form.penghasilan_ortu"
+                  :options="penghasilan_ortu"
+                  required
+                ></b-form-select>
+              </b-form-group>
+            </b-col>
+            <b-col sm="6" md="6" lg="6">
+              <b-form-group
+                id="input-group-14"
+                label="Jumlah Tanggungan Orang Tua"
+                label-for="input-14"
+                class="label"
+              >
+                <b-form-select
+                  id="input-14"
+                  v-model="form.jmlh_tanggungan"
+                  :options="jmlh_tanggungan"
+                  required
+                ></b-form-select>
+              </b-form-group>
+            </b-col>
+          </b-row>
+          <b-row>
+            <b-col sm="6" md="6" lg="6">
+              <b-form-group
+                id="input-group-15"
+                label="Status Kepemilikan Tempat Tinggal"
+                label-for="input-15"
+                class="label"
+              >
+                <b-form-select
+                  id="input-15"
+                  v-model="form.status_rumah"
+                  :options="status_rumah"
+                  required
+                ></b-form-select>
+              </b-form-group>
+            </b-col>
+            <b-col sm="6" md="6" lg="6">
+              <b-form-group
+                id="input-group-16"
+                label="Transportasi yang Dimiliki"
+                label-for="input-16"
+                class="label"
+              >
+                <b-form-select
+                  id="input-16"
+                  v-model="form.transportasi"
+                  :options="transportasi"
+                  required
+                ></b-form-select>
+              </b-form-group>
+            </b-col>
+          </b-row>
+          <br />
+          <br />
+          <h4 class="kategori-data">Prestasi Pendidikan</h4>
+          <div class="garis-orange"></div>
+          <br />
+          <b-row>
             <b-col sm="12" md="4" lg="4">
-              <b-form-group id="input-group-9" label="Riwayat Beasiswa" label-for="input-9">
+              <b-form-group
+                id="input-group-9"
+                label="Riwayat Beasiswa"
+                label-for="input-9"
+                class="label"
+              >
                 <b-form-select
                   id="input-9"
                   v-model="form.riwayat_beasiswa"
@@ -104,12 +192,17 @@
               </b-form-group>
             </b-col>
             <b-col sm="12" md="4" lg="4">
-              <b-form-group id="input-group-10" label="IPK" label-for="input-10">
+              <b-form-group id="input-group-10" label="IPK" label-for="input-10" class="label">
                 <b-form-select id="input-10" v-model="form.ipk" :options="ipk" required></b-form-select>
               </b-form-group>
             </b-col>
             <b-col sm="12" md="4" lg="4">
-              <b-form-group id="input-group-11" label="Jumlah Organisasi" label-for="input-11">
+              <b-form-group
+                id="input-group-11"
+                label="Jumlah Organisasi"
+                label-for="input-11"
+                class="label"
+              >
                 <b-form-select
                   id="input-11"
                   v-model="form.jmlh_organisasi"
@@ -126,6 +219,7 @@
                 id="input-group-12"
                 label="Prestasi Ekstra (Jumlah Sertifikat)"
                 label-for="input-12"
+                class="label"
               >
                 <b-form-select
                   id="input-12"
@@ -136,66 +230,7 @@
               </b-form-group>
             </b-col>
             <b-col sm="12" md="4" lg="4">
-              <b-form-group
-                id="input-group-13"
-                label="Penghasilan Orang Tua (per bulan)"
-                label-for="input-13"
-              >
-                <b-form-select
-                  id="input-13"
-                  v-model="form.penghasilan_ortu"
-                  :options="penghasilan_ortu"
-                  required
-                ></b-form-select>
-              </b-form-group>
-            </b-col>
-            <b-col sm="12" md="4" lg="4">
-              <b-form-group
-                id="input-group-14"
-                label="Jumlah Tanggungan Orang Tua"
-                label-for="input-14"
-              >
-                <b-form-select
-                  id="input-14"
-                  v-model="form.jmlh_tanggungan"
-                  :options="jmlh_tanggungan"
-                  required
-                ></b-form-select>
-              </b-form-group>
-            </b-col>
-          </b-row>
-          <br />
-          <b-row>
-            <b-col sm="12" md="4" lg="4">
-              <b-form-group
-                id="input-group-15"
-                label="Status Kepemilikan Tempat Tinggal"
-                label-for="input-15"
-              >
-                <b-form-select
-                  id="input-15"
-                  v-model="form.status_rumah"
-                  :options="status_rumah"
-                  required
-                ></b-form-select>
-              </b-form-group>
-            </b-col>
-            <b-col sm="12" md="4" lg="4">
-              <b-form-group
-                id="input-group-16"
-                label="Transportasi yang Dimiliki"
-                label-for="input-16"
-              >
-                <b-form-select
-                  id="input-16"
-                  v-model="form.transportasi"
-                  :options="transportasi"
-                  required
-                ></b-form-select>
-              </b-form-group>
-            </b-col>
-            <b-col sm="12" md="4" lg="4">
-              <b-form-group id="input-group-17" label="Upload Berkas">
+              <b-form-group id="input-group-17" class="label" label="Upload Berkas">
                 <b-form-file
                   v-model="file_path"
                   :state="Boolean(file_path)"
@@ -284,25 +319,25 @@ export default {
         "< 1"
       ],
       penghasilan_ortu: [
-        { text: "Range Penghasilan Ortu", value: null },
+        { text: "Pilih..", value: null },
         "<= 1.5 juta",
         "1.6 - 3 juta",
         "> 3 juta"
       ],
       jmlh_tanggungan: [
-        { text: "Jumlah Tanggungan Ortu", value: null },
+        { text: "Pilih..", value: null },
         ">= 5",
         "2 atau 4",
         "1 atau 2"
       ],
       status_rumah: [
-        { text: "Status Kepemilikan Rumah", value: null },
+        { text: "Pilih..", value: null },
         "Ngontrak",
         "Menumpang",
         "Rumah Sendiri"
       ],
       transportasi: [
-        { text: "Transportasi yang Dimiliki", value: null },
+        { text: "Pilih..", value: null },
         "Tidak Punya",
         "Motor",
         "Mobil"
