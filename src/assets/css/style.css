@@ -103,7 +103,7 @@
 }
 .garis-orange {
   background-color: #f99300;
-  height: 3px;
+  height: 4px;
   width: 20%;
 }
 
@@ -144,6 +144,34 @@
   background-color: transparent;
 }
 
+/* Form Beasiswa */
+.form-beasiswa {
+  margin-top: 50px;
+}
+.form-beasiswa h3 {
+  letter-spacing: 2px;
+  font-weight: bold;
+  padding-top: 50px;
+}
+.form {
+  margin-top: 50px;
+}
+
+.btn-orange {
+  background: #f79317;
+  border: none;
+  width: 100%;
+  margin-bottom: 50px;
+}
+
+.btn-orange:hover,
+.btn-orange:focus {
+  background: #fb6340;
+  border: none;
+  width: 100%;
+  margin-bottom: 50px;
+}
+/* footer */
 .footer {
   background: #414040;
   padding: 10px 0;

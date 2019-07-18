@@ -16,11 +16,14 @@
             <h3>Apa itu Beasiswa?</h3>
             <br />
             <p class="paragraf">
-              Bimbingan Alumni UI adalah sebuah lembaga pendidikan yang pengajarnya 100% adalah Alumni UI
-              (Alumni S1,S2,S3). Ada 3 pokok utama yang berperan penting dalam meningkatkan kualitas pendidikan
-              di Bimbingan Alumni UI. Pertama adalah PENGAJAR, Pengajar di Bimbingan Alumni UI merupakan pengajar-pengajar
-              pilihan yang terseleksi dari Alumni UI. Kedua adalah SISTEM BELAJAR, sistem belajar yang digunakan adalah sistem FGD dan Belajar dengan Konsep
-              Dasar Materi. Ketiga adalah MODUL BELAJAR (Soal dan Materi), MOdul belajar berperan sangat penting dalam peningkatan kualitas lulusan di PTN.
+              Beasiswa adalah tunjangan yang diberikan kepada pelajar atau mahasiswa sebagai bantuan biaya belajar.
+              Undang-undang Nomor 12 Tahun 2012 tentang Pendidikan Tinggi di dalam Pasal 76
+              Ayat (2) menjelaskan tentang pemenuhan hak Mahasiswa yaitu mahasiswa pemerintah
+              harus memberikan (a) beasiswa kepada Mahasiswa berprestasi; (b) bantuan atau
+              membebaskan biaya Pendidikan; dan/atau (c) pinjaman dana tanpa bunga yang wajib
+              dilunasi setelah lulus dan/atau memperoleh pekerjaan. Beasiswa merupakan bantuan yang diberikan oleh lembaga
+              pemerintah, perusahaan atau yayasan kepada pelajar atau mahasiswa sebagai bantuan
+              biaya belajar, beasiswa ini juga merupakan hak mahasiswa.
             </p>
 
             <br />
@@ -31,11 +34,10 @@
             </h3>
             <br />
             <p class="paragraf">
-              Bimbingan Alumni UI adalah sebuah lembaga pendidikan yang pengajarnya 100% adalah Alumni UI
-              (Alumni S1,S2,S3). Ada 3 pokok utama yang berperan penting dalam meningkatkan kualitas pendidikan
-              di Bimbingan Alumni UI. Pertama adalah PENGAJAR, Pengajar di Bimbingan Alumni UI merupakan pengajar-pengajar
-              pilihan yang terseleksi dari Alumni UI. Kedua adalah SISTEM BELAJAR, sistem belajar yang digunakan adalah sistem FGD dan Belajar dengan Konsep
-              Dasar Materi. Ketiga adalah MODUL BELAJAR (Soal dan Materi), MOdul belajar berperan sangat penting dalam peningkatan kualitas lulusan di PTN.
+              Beasiswa Donasi MoveOn adalah beasiswa dari aplikasi Donasi MoveOn untuk mahasiswa aktif Politeknik Negeri Jakarta. Mahasiswa yang berhak menerima beasiswa ini minimal sudah semester 2
+              dan memiliki IPK minimal 3.00. Aplikasi Donasi MoveOn apasih? Aplikasi Donasi MoveOn adalah aplikasi web donasi dengan mekanisme lelang barang
+              bekas secara online, dimana pada aplikasi tersebut terdapat fitur beasiswa. Dimana, hasil lelang yang didapat disalurkan untuk dana beasiswa ini. Beasiswa ini dibuat untuk membantu mahasiswa
+              yang membutuhkan bantuan biaya pendidikan.
             </p>
           </b-col>
           <b-col cols="4">
@@ -58,10 +60,7 @@
                     >Admin Donasi MoveOn</span>
                   </b-col>
                   <b-col lg="5" md="3" sm="12">
-                    <b-button
-                      href="#"
-                      style="background-color:#F99300; border:none; margin-left:5px;"
-                    >
+                    <b-button href="#" class="btn-orange">
                       <font-awesome-icon icon="gift" class="bar"></font-awesome-icon>Donasi
                     </b-button>
                   </b-col>
@@ -76,7 +75,7 @@
                   show-progress
                 ></b-progress>
                 <p style="font-size:15px; font-weight:bold">Bantu untuk Dana Beasiswa</p>
-                <b-card-text>Some quick example text to build on the card title and make up the bulk of the card's content.</b-card-text>
+                <b-card-text>Dana beasiswa ini akan diberikan kepada teman-teman mahasiswa Politeknik Negeri Jakarta, yang sedang membutuhkan bantuan biaya untuk kebutuhan kuliah. Yuk bantu teman-teman kita yang membutuhkan.</b-card-text>
               </b-card>
             </center>
           </b-col>
@@ -162,8 +161,7 @@
               <div class="box-penerima">
                 <h6>Esti Rosmana</h6>
                 <p style="font-size:14px;">
-                  TIK 20
-                  <span>15</span>
+                  TIK 20<span>15</span>
                 </p>
                 <h6>4615010017</h6>
               </div>
@@ -175,8 +173,7 @@
               <div class="box-penerima">
                 <h6>Hanifa Aulia</h6>
                 <p style="font-size:14px;">
-                  TIK 20
-                  <span>15</span>
+                  TIK 20<span>15</span>
                 </p>
                 <h6>4615010003</h6>
               </div>
@@ -188,8 +185,7 @@
               <div class="box-penerima">
                 <h6>Leonardo Ahmad</h6>
                 <p style="font-size:14px;">
-                  TGP 20
-                  <span>15</span>
+                  TGP 20<span>15</span>
                 </p>
                 <h6>4615020015</h6>
               </div>
@@ -210,7 +206,7 @@
           </b-col>
           <b-col cols="2" style="margin-left:-50px">
             <b-button class="btn-white">
-              <router-link to="/Beasiswa">DAFTAR</router-link>
+              <router-link to="/daftar_beasiswa">DAFTAR</router-link>
             </b-button>
           </b-col>
         </b-row>

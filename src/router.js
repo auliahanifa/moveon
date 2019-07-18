@@ -11,6 +11,11 @@ export default new Router({
       component: () => import("@/components/Beranda.vue")
     },
     {
+      path: "/daftar_beasiswa",
+      name: "form_beasiswa",
+      component: () => import("@/components/FormBeasiswa.vue")
+    },
+    {
       path: "/beasiswa",
       name: "beasiswa",
       component: () => import("@/components/Beasiswaa.vue")
