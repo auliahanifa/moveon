@@ -1,0 +1,280 @@
+<template>
+  <div class="form-beasiswa">
+    <b-container>
+      <center>
+        <h3 style>Selamat Kepada Penerima Beasiswa Donasi MoveOn</h3>
+        <div class="garis-orange"></div>
+      </center>
+      <div class="form">
+        <b-form @submit="onSubmit" @reset="onReset" v-if="show">
+          <b-row>
+            <b-col sm="6" md="8" lg="8">
+              <b-form-group id="input-group-1" label="Nama" label-for="input-1">
+                <b-form-input id="input-1" v-model="form.nama" required placeholder="Nama"></b-form-input>
+              </b-form-group>
+            </b-col>
+            <b-col sm="6" md="4" lg="4">
+              <b-form-group id="input-group-2" label="Jenis Kelamin" label-for="input-2">
+                <b-form-select id="input-2" v-model="form.jenkel" :options="jenkels" required></b-form-select>
+              </b-form-group>
+            </b-col>
+          </b-row>
+          <b-row>
+            <b-col sm="6" md="6" lg="6">
+              <b-form-group id="input-group-3" label="NIM" label-for="input-3">
+                <b-form-input id="input-3" v-model="form.nim" required placeholder="NIM"></b-form-input>
+              </b-form-group>
+            </b-col>
+            <b-col sm="6" md="6" lg="6">
+              <b-form-group id="input-group-4" label="Jurusan" label-for="input-4">
+                <b-form-select id="input-4" v-model="form.jurusan" :options="jurusans" required></b-form-select>
+              </b-form-group>
+            </b-col>
+          </b-row>
+          <b-row>
+            <b-col sm="6" md="6" lg="6">
+              <b-form-group id="input-group-5" label="Nomor Telepon" label-for="input-5">
+                <b-form-input id="input-5" v-model="form.nohp" required placeholder="Nomor Telepon"></b-form-input>
+              </b-form-group>
+            </b-col>
+            <b-col sm="6" md="6" lg="6">
+              <b-form-group
+                id="input-group-7"
+                label="Email"
+                label-for="input-7"
+                description="We'll never share your email with anyone else."
+              >
+                <b-form-input
+                  id="input-7"
+                  v-model="form.email"
+                  type="email"
+                  required
+                  placeholder="Email"
+                ></b-form-input>
+              </b-form-group>
+            </b-col>
+          </b-row>
+          <b-row>
+            <b-col cols="12">
+              <b-form-group id="input-group-8" label="Alamat" label-for="textarea">
+                <b-form-textarea
+                  id="textarea"
+                  v-model="form.alamat"
+                  placeholder="Alamat"
+                  rows="3"
+                  max-rows="6"
+                ></b-form-textarea>
+              </b-form-group>
+            </b-col>
+          </b-row>
+          <b-row>
+            <b-col sm="12" md="4" lg="4">
+              <b-form-group id="input-group-9" label="Riwayat Beasiswa" label-for="input-9">
+                <b-form-select id="input-9" v-model="form.riwayat" :options="riwayat" required></b-form-select>
+              </b-form-group>
+            </b-col>
+            <b-col sm="12" md="4" lg="4">
+              <b-form-group id="input-group-10" label="IPK" label-for="input-10">
+                <b-form-select id="input-10" v-model="form.ipk" :options="ipk" required></b-form-select>
+              </b-form-group>
+            </b-col>
+            <b-col sm="12" md="4" lg="4">
+              <b-form-group id="input-group-11" label="Jumlah Organisasi" label-for="input-11">
+                <b-form-select
+                  id="input-11"
+                  v-model="form.organisasi"
+                  :options="organisasi"
+                  required
+                ></b-form-select>
+              </b-form-group>
+            </b-col>
+          </b-row>
+          <br />
+          <b-row>
+            <b-col sm="12" md="4" lg="4">
+              <b-form-group
+                id="input-group-12"
+                label="Prestasi Ekstra (Jumlah Sertifikat)"
+                label-for="input-12"
+              >
+                <b-form-select
+                  id="input-12"
+                  v-model="form.sertifikat"
+                  :options="sertifikat"
+                  required
+                ></b-form-select>
+              </b-form-group>
+            </b-col>
+            <b-col sm="12" md="4" lg="4">
+              <b-form-group
+                id="input-group-13"
+                label="Penghasilan Orang Tua (per bulan)"
+                label-for="input-13"
+              >
+                <b-form-select
+                  id="input-13"
+                  v-model="form.penghasilan"
+                  :options="penghasilan"
+                  required
+                ></b-form-select>
+              </b-form-group>
+            </b-col>
+            <b-col sm="12" md="4" lg="4">
+              <b-form-group
+                id="input-group-14"
+                label="Jumlah Tanggungan Orang Tua"
+                label-for="input-14"
+              >
+                <b-form-select
+                  id="input-14"
+                  v-model="form.tanggungan"
+                  :options="tanggungan"
+                  required
+                ></b-form-select>
+              </b-form-group>
+            </b-col>
+          </b-row>
+          <br />
+          <b-row>
+            <b-col sm="12" md="4" lg="4">
+              <b-form-group
+                id="input-group-15"
+                label="Status Kepemilikan Tempat Tinggal"
+                label-for="input-15"
+              >
+                <b-form-select id="input-15" v-model="form.rumah" :options="rumah" required></b-form-select>
+              </b-form-group>
+            </b-col>
+            <b-col sm="12" md="4" lg="4">
+              <b-form-group
+                id="input-group-16"
+                label="Transportasi yang Dimiliki"
+                label-for="input-16"
+              >
+                <b-form-select
+                  id="input-16"
+                  v-model="form.transportasi"
+                  :options="transportasi"
+                  required
+                ></b-form-select>
+              </b-form-group>
+            </b-col>
+            <b-col sm="12" md="4" lg="4">
+              <b-form-group id="input-group-14" label="Upload Berkas" label-for="input-14">
+                <b-form-file
+                  v-model="file"
+                  :state="Boolean(file)"
+                  placeholder="Pilih file..."
+                  drop-placeholder="Drop file here..."
+                ></b-form-file>
+                <div class="mt-3">
+                  <small>*file pdf, max 2 MB</small>
+                </div>
+              </b-form-group>
+            </b-col>
+          </b-row>
+          <br />
+          <b-button type="submit" class="btn-orange">Kirim</b-button>
+          <!-- <b-button type="reset" variant="danger">Reset</b-button> -->
+        </b-form>
+      </div>
+    </b-container>
+    <div class="footer">
+      <center>
+        <router-link to="/">Copyright © Donasi MoveOn 2019</router-link>
+      </center>
+    </div>
+  </div>
+</template>
+<script>
+export default {
+  name: "form_beasiswa",
+  data() {
+    return {
+      form: {
+        email: "",
+        nama: "",
+        jenkel: null,
+        nim: "",
+        jurusan: null,
+        nohp: "",
+        alamat: "",
+        riwayat: null,
+        ipk: null,
+        organisasi: null,
+        sertifikat: null,
+        penghasilan: null,
+        tanggungan: null,
+        rumah: null,
+        transportasi: null,
+        file: null,
+        checked: []
+      },
+      jenkels: [
+        { text: "Jenis Kelamin", value: null },
+        "Laki-Laki",
+        "Perempuan"
+      ],
+      jurusans: [
+        { text: "Jurusan", value: null },
+        "Administrasi Niaga",
+        "Akuntansi",
+        "Teknik Mesin",
+        "Teknik Grafika dan Penerbitan",
+        "Teknik Sipil",
+        "Teknik Elektro",
+        "Teknik Informatika dan Komputer"
+      ],
+      riwayat: [
+        { text: "Riwayat Beasiswa", value: null },
+        "Belum Pernah",
+        "Pernah atau Sedang Menerima Beasiswa"
+      ],
+      ipk: [
+        { text: "Range IPK", value: null },
+        "3.50 - 4.00",
+        "3.25 - 3.49",
+        "3.00 - 3.24"
+      ],
+      organisasi: [
+        { text: "Jumlah Organisasi", value: null },
+        ">= 3",
+        "1 atau 2",
+        "< 1"
+      ],
+      sertifikat: [
+        { text: "Jumlah Sertifikat", value: null },
+        ">= 3",
+        "1 atau 2",
+        "< 1"
+      ],
+      penghasilan: [
+        { text: "Range Penghasilan Ortu", value: null },
+        "<= 1.5 juta",
+        "1.6 - 3 juta",
+        "> 3 juta"
+      ],
+      tanggungan: [
+        { text: "Jumlah Tanggungan Ortu", value: null },
+        ">= 5",
+        "2 atau 4",
+        "1 atau 2"
+      ],
+      rumah: [
+        { text: "Status Kepemilikan Rumah", value: null },
+        "Ngontrak",
+        "Menumpang",
+        "Rumah Sendiri"
+      ],
+      transportasi: [
+        { text: "Transportasi yang Dimiliki", value: null },
+        "Tidak Punya",
+        "Motor",
+        "Mobil"
+      ],
+
+      show: true
+    };
+  }
+};
+</script>
