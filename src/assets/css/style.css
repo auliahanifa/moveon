@@ -83,7 +83,7 @@
     background-color: transparent;
 }
 
-/* user barang donasi */
+/* form barang donasi */
 .formDonasi {
     margin-top: 50px;
     padding-top: 50px
@@ -101,6 +101,18 @@
 }
 
 .formDonasi h3 {
+    letter-spacing: 2px;
+    font-weight: bold;
+    padding-top: 50px;
+}
+
+/* form galang dana */
+.form-galangdana {
+    margin-top: 50px;
+    padding-top: 50px
+}
+
+.form-galangdana h3 {
     letter-spacing: 2px;
     font-weight: bold;
     padding-top: 50px;
@@ -217,19 +229,20 @@
 }
 
 .btn-blue {
-  background: #11cdef;
-  border: none;
-  width: 100%;
-  margin-bottom: 50px;
+    background: #11cdef;
+    border: none;
+    width: 100%;
+    margin-bottom: 50px;
 }
 
 .btn-blue:hover,
 .btn-blue:focus {
-  background: rgb(41, 174, 197);
-  border: none;
-  width: 100%;
-  margin-bottom: 50px;
+    background: rgb(41, 174, 197);
+    border: none;
+    width: 100%;
+    margin-bottom: 50px;
 }
+
 /* footer */
 .footer {
     background: #414040;
