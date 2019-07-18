@@ -8,14 +8,15 @@
         <div class="batasan"></div>
     </b-container>
 
+    <center>
     <b-container class="body-cerita">
             <b-row>
-             <b-col cols="8">
+             <b-col class="col-sm-12 col-md-6 col-lg-6">
                  <h3>{{ judul_section }}</h3>
                  <h5>{{ deskripsi_section }}</h5>
                  <b-button variant="primary" class="btn_app2"><router-link to="/formgalangdanaa"> {{ btn_mulaigd }}</router-link></b-button>
              </b-col>
-             <b-col cols="4">
+             <b-col class="col-sm-12 col-md-6 col-lg-6">
              <b-card overlay 
                  img-src="@/assets/img/charity.jpg"
                  img-alt="Card Image"
@@ -30,7 +31,9 @@
             </b-col>
         </b-row>
     </b-container>
+    </center>
     <hr>
+
 
     <b-container class="body-baranglelang">
      <b-row>
@@ -39,28 +42,26 @@
       <b-row>
        <div>
        <b-card-group deck>
-        <b-card title="Title" img-src="@/assets/img/donate.jpg" img-alt="Image" img-top>
+        <b-card title="Title" img-src="@/assets/img/sepatu.jpg" img-alt="Image" img-top>
         <p style="font-size:18px; font-weight:bold; font-family:Quicksand">Sepatu Nike 260 Running shoes</p>
         <b-card-text>
-            This is a wider card with supporting text below as a natural lead-in to additional content.
-            This content is a little bit longer.
+            {{deskripsi_brg}} <br> {{ harga_brg }} <br> {{nama_pemilik}} 
         </b-card-text>
         <div slot="footer"><small class="text-muted">Last updated 3 mins ago</small></div>
         </b-card>
 
-        <b-card title="Title" img-src="https://picsum.photos/300/300/?image=41" img-alt="Image" img-top>
-        <p style="font-size:15px; font-weight:bold">Bantu untuk Dana Beasiswa</p>
+        <b-card title="Title" img-src="@/assets/img/heels.jpg" img-alt="Image" img-top>
+        <p style="font-size:15px; font-weight:bold">Sepatu Nike 260 Running shoes</p>
         <b-card-text>
-            This card has supporting text below as a natural lead-in to additional content.
+            {{deskripsi_brg}} <br> {{ harga_brg }} <br> {{nama_pemilik}} 
         </b-card-text>
         <div slot="footer"><small class="text-muted">Last updated 3 mins ago</small></div>
         </b-card>
 
-        <b-card title="Title" img-src="https://picsum.photos/300/300/?image=41" img-alt="Image" img-top>
-        <p style="font-size:15px; font-weight:bold">Bantu untuk Dana Beasiswa</p>
+        <b-card title="Title" img-src="@/assets/img/jaket.jpg" img-alt="Image" img-top>
+        <p style="font-size:15px; font-weight:bold">Jaket Kulit Vhemian Rhapsody L</p>
         <b-card-text>
-            This is a wider card with supporting text below as a natural lead-in to additional content.
-            This card has even longer content than the first to show that equal height action.
+            {{deskripsi_brg}} <br> {{ harga_brg }} <br> {{nama_pemilik}} 
         </b-card-text>
         <div slot="footer"><small class="text-muted">Last updated 3 mins ago</small></div>
         </b-card>
@@ -68,56 +69,44 @@
       </div>
      </b-row>
      <br>
-
-     <b-row class="btn-lihatbarang">
-      <b-button variant="primary">Lihat semua</b-button>
-     </b-row>           
+    
+    
+      <center>
+      <b-button class="btn-lihatbarang">Lihat semua</b-button>
+      </center>
+              
     </b-container>
     
     <hr>
     
     <b-container class="body-team">
-    <b-row>
-      <b-col cols="5">
-        <div class="frame">
-         <img src="@/assets/img/hanifa.png" alt="team-hanifa" ><br>
-         <p>Hanifa Aulia<br>PWA Implementation<br>hanifalia91@gmail.com</p><br>
-        </div>
- 
-        <div>
-         <b-row>
-          <b-col>
-              <img src="@/assets/img/linkedin.png" alt="linkdin">
-              <img src="@/assets/img/igteam.png" alt="ig">
+    <center>
+          <h3 style="border-bottom: 5px solid red; width:230px; padding:10px;">Meet Our Team</h3>
+      <br><br>
+      <b-row>
+          <b-col class="col-sm-12 col-md-6 col-lg-6">
+              <img src="@/assets/img/hanifa.png" alt="ava">
+              <h6>Hanifa Aulia <br> Progressive Web App Implementation</h6>
+              <p>hanifalia91@gmail.com</p>
+              <h6><a href="#" class="card-link"><img src="@/assets/img/linkedin.png" alt="linkdin"></a>
+            <a href="#" class="card-link"><img src="@/assets/img/igteam.png" alt="ig"></a></h6>
           </b-col>
-         </b-row>
-         <br><br>
-        </div>
-      </b-col>
- 
-      <b-col cols="5">
-        <div class="frame">    
-         <img src="@/assets/img/esti.png" alt="team-esti" ><br>
-         <p>Esti Rosmana <br>MFEP Method Implementation <br>estirosmanasmkn1@gmail.com</p><br>
-        </div>
-        
-        <div class="team-logo">
-         <b-row>
-          <b-col>
-            <img src="@/assets/img/linkedin.png" alt="linkdin">
-            <img src="@/assets/img/igteam.png" alt="ig">
-          </b-col>
-         </b-row>
-         <br><br>
-        </div>                    
-      </b-col>
- 
-    </b-row>                  
+          <b-col class="col-sm-12 col-md-6 col-lg-6">
+              <img src="@/assets/img/esti.png" alt="ava">
+              <h6>Esti Rosmana <br> Multi Factors Evaluation Process Implementation</h6>
+              <p>estirosmanasmkn1@gmail.com</p>
+              <h6><a href="#" class="card-link"><img src="@/assets/img/linkedin.png" alt="linkdin"></a>
+            <a href="#" class="card-link"><img src="@/assets/img/igteam.png" alt="ig"></a></h6>
+          </b-col>            
+      </b-row>
+    </center>                  
     </b-container>
     <hr>
 
+    <center>
     <b-container class="sosmed">
-      <b-row>
+    
+      <b-row >
         <b-col cols="3">
             <img src="@/assets/img/logomuvon.png" alt="logo">
         </b-col>
@@ -126,25 +115,27 @@
         </b-col> 
         
         <b-col cols="6">
+            <div class="sosmed-logo">
             <img src="@/assets/img/twiter.png" alt="twitter">
             <img src="@/assets/img/fb.png" alt="fb">
             <img src="@/assets/img/iglogo.png" alt="ig">
             <img src="@/assets/img/yutub.png" alt="youtube">
+            </div>
         </b-col>
       </b-row>
+     
     </b-container>
+    </center>
 
     <b-container class="footer">
-        <b-row>     
-            <b-col>
+        <b-row >     
+        <b-col class="col-sm-12 col-md-12 col-lg-12">
 
-            </b-col>
-            <b-col>
+        </b-col>
+        <b-col class="col-sm-12 col-md-12 col-lg-12">
 
-            </b-col>
-           
+        </b-col>
         </b-row>
-
     </b-container>
   </div>
     
@@ -162,6 +153,9 @@ export default {
         btn_lihatsemuagd: 'Lihat selengkapnya',
         judul_section:'moveon punya cerita',
         deskripsi_section:'kumpulan kisah inspiratif yang membuat kami percaya, bahwa hal baik dapat dimulai kapan dan dimana saja. setiap manusia diberikan kesempatan untuk ikut berkontribusi dan menginspirasi',
+        deskripsi_brg:'ahkahsashk kshdksdskdhsd',
+        harga_brg:'Rp. 298,000',
+        nama_pemilik:'Anastasya Widyarini'
         }
     }
 }
@@ -244,15 +238,13 @@ width: 287px;
 
 }
 
-.btn {
-    
-}
+
 
 button a{
     color: #FFFFFF;
 }
 .body-cerita {
-    margin: 50px 0px 0px 60px ;
+    margin: 50px 0px 0px 0px ;
     background-color: #ffff;
     min-height:400px;
     position: relative;
@@ -261,7 +253,7 @@ button a{
 .body-cerita h3 {
     background-color: yellow ;
     background-size: 200px;
-    margin: 6px 30px 28px 10px ;
+    /* margin: 6px 30px 28px 10px ; */
     font-style: bold;
     font-family: Quattrocento Sans;
     font-size: 48px;
@@ -271,7 +263,7 @@ button a{
 }
 
 .body-cerita h5{
-    margin: 6px 30px 28px 10px ;
+    /* margin: 6px 30px 28px 10px ; */
     font-family: Quicksand;
     font-style: normal;
     font-weight: normal;
@@ -283,6 +275,7 @@ button a{
 }
 
 /* -- Setting card title --  */
+
 
 .card-title{
     margin-top: 20px;
@@ -319,12 +312,18 @@ button a{
 
 .card-img-top {
     width: 100%;
+    max-height: 230px;
     border-top-left-radius: calc(0.25rem - 1px);
     border-top-right-radius: calc(0.25rem - 1px);
 }
 .card-img-overlay {
     width: 600px;
     align-content: center;
+}
+
+.card p{
+font-size:18px; font-weight:bold; font-family:Quicksand;
+text-align:center;
 }
 
 /* -- Setting card subtitle (teks yg ditengah) --  */
@@ -362,6 +361,7 @@ h6, .h6 {
 /* -- Setting button --  */
 
 .body-cerita .btn-primary {
+    margin: 50px;
     border-color: #F46158;
     color: #fff;
     width: 310px;
@@ -417,34 +417,59 @@ color: #2F7196;
 
 }
 
+.body-team h6{
+    padding: 8px;
+    width: 280px;
+    font-family: Quattrocento Sans;
+}
 .body-team br{
     margin-top: 10px;
 }
-.frame img{
-    border: 3px solid #F64A00;
-    border-radius: 39rem;
-    padding: 20px;
-    margin-bottom:20px;
-}
-
 
 .body-team p{
-    width: 300px;
+    width: 240px;
     border: 2px solid #F64A00;
-    padding: 10px;
-    /* width:280px; */
-    margin: auto;
-    padding: 10px;
+    padding: 1px;
 }
 
+.body-team img{
+    padding: 6px;
+}
+
+.body-team a img{
+    width: 48px;
+    height: auto;
+}
 .body-baranglelang {
     background-color:#ffffff;
 }
 
-.footer {
-    background-color: #FDFBEB;
-    min-height: 300px;
+.body-baranglelang .btn-secondary {
+    color: #fff;
+    background-color: #F64A00;
+    border-color: #F46158;
+    margin: auto;
 }
 
+.sosmed{
+    margin: 8px;
+    padding: 2px;
+}
+
+.sosmed p{
+    font-family: Quicksand;
+    font-size: 22px;
+    padding: 3px;    
+}
+.sosmed-logo img{ 
+    width: 44px;
+    margin: 1px;
+    padding: 2px;
+}
+
+.footer{
+    background-color: #FDFBEB;
+
+}
 
 </style>
