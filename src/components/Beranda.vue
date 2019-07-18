@@ -34,63 +34,40 @@
 
     <b-container class="body-baranglelang">
      <b-row>
-        <h4>Ikuti lelang di moveon lalu salurkan uang anda untuk galang dana yang menjadi destinasi bantuan anda</h4>
+        <h3>Ikuti lelang di moveon lalu salurkan uang anda untuk galang dana yang menjadi destinasi bantuan anda</h3>
      </b-row><br>
-     <b-row class="card-barang">
-         <b-col cols="4">
-           <b-card no-body class="overflow-hidden" style="max-width: 600px;">
-            <b-row no-gutters>
-             <b-col md="4">
-               <b-card img-src="@/assets/img/charity.jpg" class="rounded-0" style="max-width: 600px; height: 300px" ></b-card>
-             </b-col>
-             <b-col md="8">
-                <b-card-body title="Horizontal Card">
-                <b-card-text>
-                 This is a wider card with supporting text as a natural lead-in to additional content.
-                 This content is a little bit longer.
-                </b-card-text>
-                </b-card-body>
-             </b-col>
-            </b-row>
-           </b-card>
-         </b-col>
-        
-         <b-col cols="4">
-           <b-card no-body class="overflow-hidden" style="max-width: 600px;">
-            <b-row no-gutters>
-             <b-col md="4">
-               <b-card img-src="@/assets/img/charity.jpg" class="rounded-0" style="max-width: 600px; height: 300px" ></b-card>
-             </b-col>
-             <b-col md="8">
-                <b-card-body title="Horizontal Card">
-                <b-card-text>
-                 This is a wider card with supporting text as a natural lead-in to additional content.
-                 This content is a little bit longer.
-                </b-card-text>
-                </b-card-body>
-             </b-col>
-            </b-row>
-           </b-card>  
-         </b-col>
+      <b-row>
+       <div>
+       <b-card-group deck>
+        <b-card title="Title" img-src="@/assets/img/donate.jpg" img-alt="Image" img-top>
+        <p style="font-size:18px; font-weight:bold; font-family:Quicksand">Sepatu Nike 260 Running shoes</p>
+        <b-card-text>
+            This is a wider card with supporting text below as a natural lead-in to additional content.
+            This content is a little bit longer.
+        </b-card-text>
+        <div slot="footer"><small class="text-muted">Last updated 3 mins ago</small></div>
+        </b-card>
 
-         <b-col cols="4">
-           <b-card no-body class="overflow-hidden" style="max-width: 600px;">
-            <b-row no-gutters>
-             <b-col md="4">
-               <b-card img-src="@/assets/img/charity.jpg" class="rounded-0" style="max-width: 600px; height: 300px" ></b-card>
-             </b-col>
-             <b-col md="8">
-                <b-card-body title="Horizontal Card">
-                <b-card-text>
-                 This is a wider card with supporting text as a natural lead-in to additional content.
-                 This content is a little bit longer.
-                </b-card-text>
-                </b-card-body>
-             </b-col>
-            </b-row>
-           </b-card>  
-         </b-col>
-     </b-row><br>
+        <b-card title="Title" img-src="https://picsum.photos/300/300/?image=41" img-alt="Image" img-top>
+        <p style="font-size:15px; font-weight:bold">Bantu untuk Dana Beasiswa</p>
+        <b-card-text>
+            This card has supporting text below as a natural lead-in to additional content.
+        </b-card-text>
+        <div slot="footer"><small class="text-muted">Last updated 3 mins ago</small></div>
+        </b-card>
+
+        <b-card title="Title" img-src="https://picsum.photos/300/300/?image=41" img-alt="Image" img-top>
+        <p style="font-size:15px; font-weight:bold">Bantu untuk Dana Beasiswa</p>
+        <b-card-text>
+            This is a wider card with supporting text below as a natural lead-in to additional content.
+            This card has even longer content than the first to show that equal height action.
+        </b-card-text>
+        <div slot="footer"><small class="text-muted">Last updated 3 mins ago</small></div>
+        </b-card>
+       </b-card-group>
+      </div>
+     </b-row>
+     <br>
 
      <b-row class="btn-lihatbarang">
       <b-button variant="primary">Lihat semua</b-button>
@@ -308,13 +285,20 @@ button a{
 /* -- Setting card title --  */
 
 .card-title{
+    margin-top: 20px;
     font-family: Quicksand;
     font-weight: 500;
     font-size: 26px;
     line-height: 32px;
     text-align: center;
     font-style: normal;
+    color: white;
 }
+
+/* .card-text:last-child {
+    margin-bottom: 0;
+    color: #FDFBEB;
+} */
 
 /* -- Setting card img --  */
 
@@ -333,6 +317,11 @@ button a{
     filter: brightness(72%);
 }
 
+.card-img-top {
+    width: 100%;
+    border-top-left-radius: calc(0.25rem - 1px);
+    border-top-right-radius: calc(0.25rem - 1px);
+}
 .card-img-overlay {
     width: 600px;
     align-content: center;
@@ -341,6 +330,7 @@ button a{
 /* -- Setting card subtitle (teks yg ditengah) --  */
 .text-muted {
     color: #FDFBEB !important;
+    background-color: #2F7196;
 }
 
 .mb-2, .my-2 {
@@ -387,7 +377,8 @@ h6, .h6 {
     border: 2px solid  #F64A00;;
 }
 
-.body-baranglelang h4{
+
+.body-baranglelang h3{
 padding: 20px;
 width: 521px;
 height: 58px;
@@ -402,9 +393,21 @@ align-items: center;
 
 color: #2F7196;
 }
+.card-body {
+    /* -ms-flex: 1 1 auto;
+    -webkit-box-flex: 1;
+    flex: 1 1 auto; */
+    padding: 1.25rem;
+}
 
+.card-text{
+    font-family: Quicksand;
+    font-size: 18px;
+}
 
-
+.card-footer{
+    color: #2F7196;
+}
 
 .team-logo img{
     background-color: transparent;
