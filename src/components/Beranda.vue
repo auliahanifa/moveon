@@ -10,12 +10,12 @@
 
     <b-container class="body-cerita">
             <b-row>
-             <b-col cols="6">
+             <b-col cols="8">
                  <h3>{{ judul_section }}</h3>
-                 <p>{{ deskripsi_section }}</p>
+                 <h5>{{ deskripsi_section }}</h5>
                  <b-button variant="primary" class="btn_app2"><router-link to="/formgalangdanaa"> {{ btn_mulaigd }}</router-link></b-button>
              </b-col>
-             <b-col cols="6">
+             <b-col cols="4">
              <b-card overlay 
                  img-src="@/assets/img/charity.jpg"
                  img-alt="Card Image"
@@ -38,14 +38,57 @@
      </b-row><br>
      <b-row class="card-barang">
          <b-col cols="4">
-             
+           <b-card no-body class="overflow-hidden" style="max-width: 600px;">
+            <b-row no-gutters>
+             <b-col md="4">
+               <b-card img-src="@/assets/img/charity.jpg" class="rounded-0" style="max-width: 600px; height: 300px" ></b-card>
+             </b-col>
+             <b-col md="8">
+                <b-card-body title="Horizontal Card">
+                <b-card-text>
+                 This is a wider card with supporting text as a natural lead-in to additional content.
+                 This content is a little bit longer.
+                </b-card-text>
+                </b-card-body>
+             </b-col>
+            </b-row>
+           </b-card>
          </b-col>
+        
          <b-col cols="4">
-          
-          
+           <b-card no-body class="overflow-hidden" style="max-width: 600px;">
+            <b-row no-gutters>
+             <b-col md="4">
+               <b-card img-src="@/assets/img/charity.jpg" class="rounded-0" style="max-width: 600px; height: 300px" ></b-card>
+             </b-col>
+             <b-col md="8">
+                <b-card-body title="Horizontal Card">
+                <b-card-text>
+                 This is a wider card with supporting text as a natural lead-in to additional content.
+                 This content is a little bit longer.
+                </b-card-text>
+                </b-card-body>
+             </b-col>
+            </b-row>
+           </b-card>  
          </b-col>
+
          <b-col cols="4">
-          
+           <b-card no-body class="overflow-hidden" style="max-width: 600px;">
+            <b-row no-gutters>
+             <b-col md="4">
+               <b-card img-src="@/assets/img/charity.jpg" class="rounded-0" style="max-width: 600px; height: 300px" ></b-card>
+             </b-col>
+             <b-col md="8">
+                <b-card-body title="Horizontal Card">
+                <b-card-text>
+                 This is a wider card with supporting text as a natural lead-in to additional content.
+                 This content is a little bit longer.
+                </b-card-text>
+                </b-card-body>
+             </b-col>
+            </b-row>
+           </b-card>  
          </b-col>
      </b-row><br>
 
@@ -161,17 +204,14 @@ export default {
   }
 
 .header-section {
+    margin: auto;
     background-image: url("../assets/img/kids.jpg");
     /* background-size: auto; */
     position: center;
     min-width: 100%;
     min-height: 500px;
     background-repeat: no-repeat;
-    position: center;
-    min-width: 100%;
-    height: 100%;
-    background-repeat: no-repeat;
-}
+    }
 
 .header-section h3{
 font-family: Quattrocento Sans;
@@ -182,6 +222,7 @@ line-height: 37px;
 text-align: center;
 padding-top:170px; 
 color: white;
+margin: auto;
 }
 
 .header-section h4{
@@ -205,24 +246,54 @@ text-align: center;
 color: #D3C4C4;
 }
 
+.btn_app {
+width: 287px;
+    height: 49px;
+    background: rgba(251, 87, 76, 0.48);
+    border: 3px solid #F64A00;
+    box-sizing: border-box;
+    border-radius: 32px;
+    font-family: Quicksand;
+    font-style: normal;
+    font-weight: 640;
+    font-size: 20px;
+    line-height: 22px;
+    text-align: center;
+    color: #FFFFFF;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top:30px;
+
+}
+
+.btn {
+    
+}
+
+button a{
+    color: #FFFFFF;
+}
 .body-cerita {
-    margin: 50px 0px 0px 30px ;
+    margin: 50px 0px 0px 60px ;
     background-color: #ffff;
     min-height:400px;
     position: relative;
 }
 
 .body-cerita h3 {
+    background-color: yellow ;
+    background-size: 200px;
     margin: 6px 30px 28px 10px ;
     font-style: bold;
     font-family: Quattrocento Sans;
-    font-size: 44px;
+    font-size: 48px;
     line-height: 33px;
     text-align: left;
     color: #2F7196;
 }
 
-.body-cerita p{
+.body-cerita h5{
     margin: 6px 30px 28px 10px ;
     font-family: Quicksand;
     font-style: normal;
@@ -234,18 +305,104 @@ color: #D3C4C4;
 
 }
 
+/* -- Setting card title --  */
+
+.card-title{
+    font-family: Quicksand;
+    font-weight: 500;
+    font-size: 26px;
+    line-height: 32px;
+    text-align: center;
+    font-style: normal;
+}
+
+/* -- Setting card img --  */
 
 
-h4 {
-    color: #ffffff;
+.card{
+    position: right;
+}
+.card-img{
+    width: 600px;
+    height: 320px;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0px;
+    padding: 0.15rem;
+    filter: brightness(72%);
+}
+
+.card-img-overlay {
+    width: 600px;
+    align-content: center;
+}
+
+/* -- Setting card subtitle (teks yg ditengah) --  */
+.text-muted {
+    color: #FDFBEB !important;
+}
+
+.mb-2, .my-2 {
+    margin-bottom: 5px !important;
+}
+
+.card-subtitle {
+    margin: 28px;
+}
+
+h6, .h6 {
     font-size: 20px;
-    padding:0px 120px 20px 120px;
+    text-align: center;
 }
 
-button a{
-    color: #ffffff;
+/* -- Setting card img --  */
 
+.body-cerita p{
+    margin: 26px;
+    font-family: Quicksand;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 26px;
+    line-height: 35px;
+    color: #FFFFFF;
+    text-align: left;
 }
+
+/* -- Setting button --  */
+
+.body-cerita .btn-primary {
+    border-color: #F46158;
+    color: #fff;
+    width: 310px;
+    height: 56px;
+    font-size: 20px;
+    background: #F46158;
+    border-radius: 32px;}
+
+
+.btn-primary:hover {
+    color: #fff;
+    background: #F46158;
+    border: 2px solid  #F64A00;;
+}
+
+.body-baranglelang h4{
+padding: 20px;
+width: 521px;
+height: 58px;
+
+font-family: Quattrocento Sans;
+font-style: normal;
+font-weight: bold;
+font-size: 26px;
+line-height: 25px;
+display: flex;
+align-items: center;
+
+color: #2F7196;
+}
+
 
 
 
@@ -286,26 +443,5 @@ button a{
     min-height: 300px;
 }
 
-
-
-
-.btn_app {
-    width: 287px;
-    height: 49px;
-    /* position: absolute; */
-    background: rgba(251, 87, 76, 0.48);
-    border: 3px solid #F64A00;
-    box-sizing: border-box;
-    border-radius: 32px;
-    font-family: Quicksand;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 20px;
-    line-height: 22px;
-    /* or 191% */
-    text-align: center;
-    color: #FFFFFF;
-    margin: 20px 0px 70px 0px;
-}
 
 </style>
