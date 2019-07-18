@@ -15,7 +15,27 @@
             </b-col>
             <b-col sm="6" md="4" lg="4">
               <b-form-group id="input-group-2" label="Jenis Kelamin" label-for="input-2">
-                <b-form-select id="input-2" v-model="form.jenkel" :options="jenkels" required></b-form-select>
+                <b-form-select
+                  id="input-2"
+                  v-model="form.jenis_kelamin"
+                  :options="jenis_kelamin"
+                  required
+                ></b-form-select>
+              </b-form-group>
+            </b-col>
+          </b-row>
+          <b-row>
+            <b-col sm="12" md="12" lg="12">
+              <b-form-group id="input-group-18" label="Upload Foto">
+                <b-button @click="$refs.fileInput.click()" class="btn-blue">Pilih Foto</b-button>
+
+                <input
+                  style="display: none"
+                  ref="fileInput"
+                  type="file"
+                  @change="fileSelected"
+                  enctype="multipart/form-data"
+                />
               </b-form-group>
             </b-col>
           </b-row>
@@ -34,7 +54,12 @@
           <b-row>
             <b-col sm="6" md="6" lg="6">
               <b-form-group id="input-group-5" label="Nomor Telepon" label-for="input-5">
-                <b-form-input id="input-5" v-model="form.nohp" required placeholder="Nomor Telepon"></b-form-input>
+                <b-form-input
+                  id="input-5"
+                  v-model="form.no_hp"
+                  required
+                  placeholder="Nomor Telepon"
+                ></b-form-input>
               </b-form-group>
             </b-col>
             <b-col sm="6" md="6" lg="6">
@@ -70,7 +95,12 @@
           <b-row>
             <b-col sm="12" md="4" lg="4">
               <b-form-group id="input-group-9" label="Riwayat Beasiswa" label-for="input-9">
-                <b-form-select id="input-9" v-model="form.riwayat" :options="riwayat" required></b-form-select>
+                <b-form-select
+                  id="input-9"
+                  v-model="form.riwayat_beasiswa"
+                  :options="riwayat_beasiswa"
+                  required
+                ></b-form-select>
               </b-form-group>
             </b-col>
             <b-col sm="12" md="4" lg="4">
@@ -82,8 +112,8 @@
               <b-form-group id="input-group-11" label="Jumlah Organisasi" label-for="input-11">
                 <b-form-select
                   id="input-11"
-                  v-model="form.organisasi"
-                  :options="organisasi"
+                  v-model="form.jmlh_organisasi"
+                  :options="jmlh_organisasi"
                   required
                 ></b-form-select>
               </b-form-group>
@@ -99,8 +129,8 @@
               >
                 <b-form-select
                   id="input-12"
-                  v-model="form.sertifikat"
-                  :options="sertifikat"
+                  v-model="form.jmlh_sertifikat"
+                  :options="jmlh_sertifikat"
                   required
                 ></b-form-select>
               </b-form-group>
@@ -113,8 +143,8 @@
               >
                 <b-form-select
                   id="input-13"
-                  v-model="form.penghasilan"
-                  :options="penghasilan"
+                  v-model="form.penghasilan_ortu"
+                  :options="penghasilan_ortu"
                   required
                 ></b-form-select>
               </b-form-group>
@@ -127,8 +157,8 @@
               >
                 <b-form-select
                   id="input-14"
-                  v-model="form.tanggungan"
-                  :options="tanggungan"
+                  v-model="form.jmlh_tanggungan"
+                  :options="jmlh_tanggungan"
                   required
                 ></b-form-select>
               </b-form-group>
@@ -142,7 +172,12 @@
                 label="Status Kepemilikan Tempat Tinggal"
                 label-for="input-15"
               >
-                <b-form-select id="input-15" v-model="form.rumah" :options="rumah" required></b-form-select>
+                <b-form-select
+                  id="input-15"
+                  v-model="form.status_rumah"
+                  :options="status_rumah"
+                  required
+                ></b-form-select>
               </b-form-group>
             </b-col>
             <b-col sm="12" md="4" lg="4">
@@ -160,10 +195,10 @@
               </b-form-group>
             </b-col>
             <b-col sm="12" md="4" lg="4">
-              <b-form-group id="input-group-14" label="Upload Berkas" label-for="input-14">
+              <b-form-group id="input-group-17" label="Upload Berkas">
                 <b-form-file
-                  v-model="file"
-                  :state="Boolean(file)"
+                  v-model="file_path"
+                  :state="Boolean(file_path)"
                   placeholder="Pilih file..."
                   drop-placeholder="Drop file here..."
                 ></b-form-file>
@@ -194,23 +229,23 @@ export default {
       form: {
         email: "",
         nama: "",
-        jenkel: null,
+        jenis_kelamin: null,
         nim: "",
         jurusan: null,
         nohp: "",
         alamat: "",
-        riwayat: null,
+        riwayat_beasiswa: null,
         ipk: null,
-        organisasi: null,
-        sertifikat: null,
-        penghasilan: null,
-        tanggungan: null,
-        rumah: null,
+        jmlh_organisasi: null,
+        jmlh_sertifikat: null,
+        penghasilan_ortu: null,
+        jmlh_tanggungan: null,
+        status_rumah: null,
         transportasi: null,
-        file: null,
+        file_path: null,
         checked: []
       },
-      jenkels: [
+      jenis_kelamin: [
         { text: "Jenis Kelamin", value: null },
         "Laki-Laki",
         "Perempuan"
@@ -225,7 +260,7 @@ export default {
         "Teknik Elektro",
         "Teknik Informatika dan Komputer"
       ],
-      riwayat: [
+      riwayat_beasiswa: [
         { text: "Riwayat Beasiswa", value: null },
         "Belum Pernah",
         "Pernah atau Sedang Menerima Beasiswa"
@@ -236,31 +271,31 @@ export default {
         "3.25 - 3.49",
         "3.00 - 3.24"
       ],
-      organisasi: [
+      jmlh_organisasi: [
         { text: "Jumlah Organisasi", value: null },
         ">= 3",
         "1 atau 2",
         "< 1"
       ],
-      sertifikat: [
+      jmlh_sertifikat: [
         { text: "Jumlah Sertifikat", value: null },
         ">= 3",
         "1 atau 2",
         "< 1"
       ],
-      penghasilan: [
+      penghasilan_ortu: [
         { text: "Range Penghasilan Ortu", value: null },
         "<= 1.5 juta",
         "1.6 - 3 juta",
         "> 3 juta"
       ],
-      tanggungan: [
+      jmlh_tanggungan: [
         { text: "Jumlah Tanggungan Ortu", value: null },
         ">= 5",
         "2 atau 4",
         "1 atau 2"
       ],
-      rumah: [
+      status_rumah: [
         { text: "Status Kepemilikan Rumah", value: null },
         "Ngontrak",
         "Menumpang",
