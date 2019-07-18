@@ -61,6 +61,12 @@ export default new Router({
         import(
           /* webpackChunkName: "about" */ "@/components/FormDonasibarang.vue"
         )
+    },
+    {
+      path: "/detailbarang",
+      name: "DetailLelang",
+      component: () =>
+        import(/* webpackChunkName: "about" */ "@/components/DetailBaranglelang.vue")
     }
   ]
 });

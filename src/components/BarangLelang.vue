@@ -25,9 +25,9 @@
                 >Nama penjual barang{{nama_penjual}}</span>
           </b-col>
           <b-col lg="5" md="3" sm="12">
-           <b-button href="#" class="btn-orange">
+           <router-link to="/detailbarang" tag="button" class="btn-orange"> 
             <font-awesome-icon icon="gift" class="bar"></font-awesome-icon> Tawar 
-           </b-button>
+           </router-link>
           </b-col>
          </b-row>
          <br />
