@@ -2,7 +2,7 @@
   <div class="form-beasiswa">
     <b-container>
       <center>
-        <h3 style>Selamat Kepada Penerima Beasiswa Donasi MoveOn</h3>
+        <h3 style>Form Beasiswa Donasi MoveOn</h3>
         <div class="garis-orange"></div>
       </center>
       <div class="form">

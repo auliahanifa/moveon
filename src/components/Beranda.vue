@@ -179,6 +179,7 @@ export default {
     background-image: url("../assets/img/kids.jpg");
     /* background-size: auto; */
     position: center;
+    background-size: cover;
     min-width: 100%;
     min-height: 500px;
     background-repeat: no-repeat;

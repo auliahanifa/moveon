@@ -67,6 +67,12 @@ export default new Router({
       name: "DetailLelang",
       component: () =>
         import(/* webpackChunkName: "about" */ "@/components/DetailBaranglelang.vue")
+    },
+    {
+      path: "/dashboarduser",
+      name: "Dashboard",
+      component: () =>
+        import(/* webpackChunkName: "about" */ "@/components/Dashboarduser.vue")
     }
   ]
 });

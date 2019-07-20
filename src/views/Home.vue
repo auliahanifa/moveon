@@ -1,4 +1,6 @@
 <template>
+
+
 </template>
 
 <script>
@@ -8,7 +10,7 @@ import Beranda from '@/components/Beranda.vue'
 export default {
   name: 'home',
   components: {
-    Beranda
+    Beranda, HelloWorld
   }
 }
 </script>

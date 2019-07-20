@@ -270,3 +270,51 @@
     text-decoration: none;
     background-color: transparent;
 }
+
+/* Login */
+
+.formlogin{
+    background-image: url("../img/kids.jpg") ;
+    background-repeat:  no-repeat center center fixed; 
+    min-height: 640px;
+    background-size: cover;
+    padding: 40px;
+    background-attachment: fixed;
+    background-position: right center; 
+  }
+  
+  .formlogin backgroung-image{
+         filter: blur(20px);
+    -webkit-filter: blur(20px);
+  
+  }
+
+  .login-header-section{
+    width: 80%;
+    height: auto;
+    background: linear-gradient(270deg, #F64A00 0%, rgba(247, 147, 23, 0) 100%), #F79317;
+    margin: auto;
+    -webkit-mask-attachment: fixed;
+    position: right center;
+}
+
+.login-header-section h3{
+    padding: 15px;
+    color: white;
+    size: 6px;
+    text-align: left;
+    margin-top: 150px;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+.formlogin button {
+    width: 165px;
+    height: 43px;
+    margin: auto;
+    background: #FB574C;
+    border: 3px solid #FB574C;
+    box-sizing: border-box;
+    border-radius: 22px;
+}

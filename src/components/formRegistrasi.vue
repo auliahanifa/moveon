@@ -1,7 +1,9 @@
 <template>
 
     <div >
+     <div class="bg-img"></div>
      <b-container class="registrasiAkun">
+       
        <b-row>
        <b-col cols="4" class="kiri">
          <h2>Halo Agen Kebaikan!</h2>
@@ -15,6 +17,7 @@
         
         <div class="form-section">   
             <!-- <h1>ini isinya form Login</h1> -->
+        <center>
           <b-form @submit="onSubmit" v-if="show">
             
           <b-form-group id="input-group-1" label-for="input-1">
@@ -47,10 +50,10 @@
 
           <b-button type="submit" >Buat akun</b-button>
           <br>
-          <p>Sudah punya akun ? <router-link to="/login">Masuk disini.</router-link></p>
+          <p class="masuk">Sudah punya akun ? <router-link to="/login">Masuk disini.</router-link></p>
           <!-- <b-button type="reset" variant="danger">Reset</b-button> -->
           </b-form>
-            
+          </center>  
         </div>
       </b-col>
       </b-row>
@@ -102,42 +105,56 @@ export default {
 
 <style scoped>
 
+
 .registrasiAkun {
     background-image: url("../assets/img/kids.jpg");
+
     position: center;
     min-width: 100%;
     height: 100%;
     background-repeat: no-repeat;
+    background-size: cover;
 
 }
 
 .kiri {
-    width: 400px;
+    background-color: rgb(0,0,0,0.3) ;
+    
+    width: 100%;
     height: auto;
     position: center;
-    padding: 20px;
+    padding: 30px;
     text-align: center;
     margin-top: 200px;
     padding: 20px;
 }
 
 .kiri h2{
+  font-family:Quicksand;
     color: whitesmoke;
     font-weight: bold;
 }
 
-p{
+.kiri p{
     text-align: center;
-    font-family: Arial, Helvetica, sans-serif;
-    color: whitesmoke;
-    font-weight: bold;
+    font-family: Quicksand;
+    color: #F8F4F4;
+
+    font-size: 23px;
+}
+
+.form-section p{
+    text-align: center;
+    font-family: Quicksand;
+    color: black;
+
     font-size: 23px;
 }
 
 
 .header-section{
-    width: 630px;
-    height: 60px;
+    width: 100%;
+    height: auto;
     background: linear-gradient(270deg, #F64A00 0%, rgba(247, 147, 23, 0) 100%), #F79317;
     margin-top: 150px;
     margin-left: auto;
@@ -156,13 +173,14 @@ button {
     height: 43px;
     margin: auto;
     background: #FB574C;
-    border: 3px solid #FB574C;
+    border: 2px solid #FB574C;
     box-sizing: border-box;
     border-radius: 22px;
 }
 
-p {
-     padding: 20px;
+.masuk {
+      
+     padding: 10px;
      font-weight: bold;
 }
 
@@ -170,7 +188,7 @@ p {
     background-attachment: fixed;
     background-position: center;
     background-repeat:  no-repeat center center fixed;
-    width: 630px;
+    width: 100%;
     height: auto;
     background-color: #F8F4F4;
     margin:auto;
@@ -178,18 +196,18 @@ p {
 }
 
 .custom-select {
-    width: 500px;
-    height: 55px;
+    width: 100%;
+    height: 45px;
     border: 2px solid #FB574C;
     box-sizing: border-box;
     border-radius: 13px;
-    margin: auto;
+    /* margin: auto; */
 
 }
 
 .form-control {
-    width: 500px;
-    height: 55px;
+    width: 100%;
+    height: 45px;
     border: 2px solid #FB574C;
     box-sizing: border-box;
     border-radius: 13px;
