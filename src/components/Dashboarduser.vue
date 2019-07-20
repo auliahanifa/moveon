@@ -138,7 +138,7 @@
                     <td>{{ tgl_upload }}</td>
                     <td>{{ harga }}</td>
                     <td>{{ id_penawar }}</td>
-                    <td><b-button class="primary">Hapus</b-button><span>&nbsp</span><b-button class="primary">Update</b-button></td>
+                    <td><b-button class="primary">Hapus</b-button><span v-text="nbsp"> </span><b-button class="primary">Update</b-button></td>
                     </tr>
                 </tbody>
              </table>
@@ -172,6 +172,7 @@ export default {
       tgl_upload:'',
       harga: '',
       id_penawar:'',
+      nbsp:'    ',
       show: true
      }
     },
