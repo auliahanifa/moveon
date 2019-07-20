@@ -1,12 +1,17 @@
 <template>
-  <div id="baranglelang">
-    
+  <div id="baranglelang" style="margin-top:100px;">
+    <center>
     <h3>ini isinya daftar barang lelang</h3>
     <button v-on:click="counter += 5000">Tawar</button>
     <p>Harga Baranggg Rp.{{ counter }},00</p>
     <br>
-
+    </center>
     <b-container>
+
+      
+
+
+
       <b-row>
         <b-col class="col-sm-12 col-md-6 col-lg-4">
         <b-card

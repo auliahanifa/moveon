@@ -5,9 +5,24 @@
          <h3 style="margin-top:100px;">Dashboard Anda</h3>
          <div class="garis-orange" style="width:260px;"></div>
          <br />
-         <b-img src="@/assets/img/user.png" rounded="circle" width="130"></b-img>
+         
+         <div v-if="!image">
+         <h4>uplaod foto profil</h4>
+          <input type="file" @change="onFileChange">
+         </div>
+         <div v-else-if="image">
+         <b-img :src="image" ></b-img>
          <br/>
-         <b-button>ganti foto</b-button>
+         <button @click="removeImage">Remove image</button>
+         </div>
+         <div v-else>
+           <img :src="image" alt="">
+         <br>
+         <b-button @click="gantiImage">Ganti Foto</b-button>
+
+         </div>
+        
+        <b-button>ganti foto</b-button>
         </center>
         <br />
         
@@ -71,10 +86,10 @@
                 <tbody>
                     <tr>
                     <th scope="row">{{ id_barang }}</th>
-                    <td>{{ foto_barang }}</td>
+                    <td><img v-bind:src="gambar_barang" ></td>
                     <td>{{ nama_barang }}</td>
                     <td>{{ harga_barang }}</td>
-                    <td><b-button class="primary">Selesaikan Pembayaran</b-button></td>
+                    <td><b-button class="primary"><router-link to="/detailgalangdana"> Selesaikan Pembayaran</router-link></b-button></td>
                     </tr>
                 </tbody>
              </table>
@@ -148,6 +163,8 @@ export default {
             password: "",
             file_path: null,            
       },
+      image:'',
+      gambar_barang:'',
       id_barang:'',
       nama_barang:'',
       harga_barang:'',
@@ -156,17 +173,51 @@ export default {
       harga: '',
       id_penawar:'',
       show: true
-      };
+     }
+    },
+     methods: {
+          onFileChange(e) {
+              var files = e.target.files || e.dataTransfer.files;
+              if (!files.length)
+              return;
+              this.createImage(files[0]);
+          },
+          createImage(file) {
+              var image = new Image();
+              var reader = new FileReader();
+              var vm = this;
+
+              reader.onload = (e) => {
+                vm.image = e.target.result;
+              };
+              reader.readAsDataURL(file);
+          },
+          removeImage: function (e) {
+              this.image ='';
+          },
+          gantiImage(e) {
+              var files = e.target.files || e.dataTransfer.files;
+              return this.createImage(files[0]);
+          }
+        }    
+      
+};
         
-    } 
-    
-}
+
 </script>
 <style scoped>
 
 /* dashboard user */
 
 /* edit profil */
+
+img {
+  width: 30%;
+  margin: auto;
+  display: block;
+  margin-bottom: 10px;
+}
+
 .form-profil button{
     width: 280px;
     float: left;

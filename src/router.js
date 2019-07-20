@@ -73,6 +73,12 @@ export default new Router({
       name: "Dashboard",
       component: () =>
         import(/* webpackChunkName: "about" */ "@/components/Dashboarduser.vue")
+    },
+    {
+      path: "/detailgalangdana",
+      name: "GalangdanaDetail",
+      component: () =>
+        import(/* webpackChunkName: "about" */ "@/components/Detailgalangdana.vue")
     }
   ]
 });
