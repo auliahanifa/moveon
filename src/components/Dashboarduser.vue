@@ -10,18 +10,12 @@
          <h4>uplaod foto profil</h4>
           <input type="file" @change="onFileChange">
          </div>
-         <div v-else-if="image">
+         <div v-else>
          <b-img :src="image" ></b-img>
          <br/>
          <button @click="removeImage">Remove image</button>
          </div>
-         <div v-else>
-           <img :src="image" alt="">
-         <br>
-         <b-button @click="gantiImage">Ganti Foto</b-button>
-
-         </div>
-        
+        <br>
         <b-button>ganti foto</b-button>
         </center>
         <br />
@@ -172,7 +166,7 @@ export default {
       tgl_upload:'',
       harga: '',
       id_penawar:'',
-      nbsp:'    ',
+      nbsp:'  ',
       show: true
      }
     },
@@ -195,10 +189,6 @@ export default {
           },
           removeImage: function (e) {
               this.image ='';
-          },
-          gantiImage(e) {
-              var files = e.target.files || e.dataTransfer.files;
-              return this.createImage(files[0]);
           }
         }    
       
