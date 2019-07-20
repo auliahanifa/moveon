@@ -13,7 +13,7 @@
          <div v-else>
          <b-img :src="image" ></b-img>
          <br/>
-         <button @click="removeImage">Remove image</button>
+         <!-- <button @click="removeImage">Remove image</button> -->
          </div>
         <br>
         <b-button>ganti foto</b-button>
@@ -169,30 +169,28 @@ export default {
       nbsp:'  ',
       show: true
      }
-    },
-     methods: {
-          onFileChange(e) {
-              var files = e.target.files || e.dataTransfer.files;
-              if (!files.length)
-              return;
-              this.createImage(files[0]);
-          },
-          createImage(file) {
-              var image = new Image();
-              var reader = new FileReader();
-              var vm = this;
+    }
+    //  methods: {
+    //       onFileChange(e) {
+    //           var files = e.target.files || e.dataTransfer.files;
+    //           if (!files.length)
+    //           return;
+    //           this.createImage(files[0]);
+    //       },
+    //       createImage(file) {
+    //           var image = new Image();
+    //           var reader = new FileReader();
+    //           var vm = this;
 
-              reader.onload = (e) => {
-                vm.image = e.target.result;
-              };
-              reader.readAsDataURL(file);
-          },
-          removeImage: function (e) {
-              this.image ='';
-          }
-        }    
+    //           reader.onload = (e) => {
+    //             vm.image = e.target.result;
+    //           };
+    //           reader.readAsDataURL(file);
+    //       },
+          
+    }    
       
-};
+;
         
 
 </script>
