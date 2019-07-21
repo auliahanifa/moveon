@@ -4,9 +4,11 @@
     </div>
 </template>
 <script>
-
 export default {
     name: 'daftar',
-    components: 'formRegistrasi'
+    components: {
+        formRegistrasi
+}
+
 }
 </script>

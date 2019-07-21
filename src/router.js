@@ -79,6 +79,12 @@ export default new Router({
       name: "GalangdanaDetail",
       component: () =>
         import(/* webpackChunkName: "about" */ "@/components/Detailgalangdana.vue")
+    },
+    {
+      path: "/Uploadbuktibayar",
+      name: "UploadBuktibayar",
+      component: () =>
+        import(/* webpackChunkName: "about" */ "@/components/SelesaikanBayar.vue")
     }
   ]
 });

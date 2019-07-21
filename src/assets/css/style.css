@@ -276,21 +276,17 @@
 .formlogin{
     background-image: url("../img/kids.jpg") ;
     background-repeat:  no-repeat center center fixed; 
-    min-height: 640px;
+    min-height: auto;
     background-size: cover;
-    padding: 40px;
+    padding: 20px;
     background-attachment: fixed;
     background-position: right center; 
+    width: auto;
   }
   
-  .formlogin backgroung-image{
-         filter: blur(20px);
-    -webkit-filter: blur(20px);
   
-  }
-
   .login-header-section{
-    width: 80%;
+    width: 100%;
     height: auto;
     background: linear-gradient(270deg, #F64A00 0%, rgba(247, 147, 23, 0) 100%), #F79317;
     margin: auto;
@@ -310,8 +306,8 @@
 }
 
 .formlogin button {
-    width: 165px;
-    height: 43px;
+    width: 80%;
+    height: 38px;
     margin: auto;
     background: #FB574C;
     border: 3px solid #FB574C;

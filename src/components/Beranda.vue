@@ -1,5 +1,5 @@
 <template>
-  <div class="Beranda">
+  <div class="Beranda" >
     <b-container class="header-section">
         <b-row><h3>{{ header_text1 }}</h3></b-row>
         <h4>{{ header_text1_a }}</h4>
@@ -11,22 +11,27 @@
     <center>
     <b-container class="body-cerita">
             <b-row>
-             <b-col class="col-sm-12 col-md-6 col-lg-6">
+             <b-col sm="12" md="6" lg="6">
                  <h3>{{ judul_section }}</h3>
                  <h5>{{ deskripsi_section }}</h5>
-                 <b-button variant="primary" class="btn_app2"><router-link to="/formgalangdanaa"> {{ btn_mulaigd }}</router-link></b-button>
+                 <router-link to="/formgalangdanaa"> <b-button variant="primary" class="btn_app2">{{ btn_mulaigd }}</b-button></router-link>
              </b-col>
-             <b-col class="col-sm-12 col-md-6 col-lg-6">
+             <b-col sm="12" md="6" lg="6">
              <b-card overlay 
                  img-src="@/assets/img/charity.jpg"
                  img-alt="Card Image"
                  text-variant="white"
                  title="Nama Galang Dana"
-                 sub-title="Subtitle"
+                 v-bind:sub-title="dana_target"
              >
+              
               <b-card-text>
-                Some quick example text to build on the card and make up the bulk of the card's content.
+                  {{ nama_fundraiser }} <br/>
+                <center>
+                <router-link to="/donasi"><b-button> Lihat semua</b-button></router-link>                
+                </center>
               </b-card-text>
+              
              </b-card>
             </b-col>
         </b-row>
@@ -36,38 +41,12 @@
 
 
     <b-container class="body-baranglelang">
+        <br><br>
+
      <b-row>
         <h3>Ikuti lelang di moveon lalu salurkan uang anda untuk galang dana yang menjadi destinasi bantuan anda</h3>
      </b-row><br>
-      <b-row>
-       <div>
-       <b-card-group deck>
-        <b-card title="Title" img-src="@/assets/img/sepatu.jpg" img-alt="Image" img-top>
-        <p style="font-size:18px; font-weight:bold; font-family:Quicksand">Sepatu Nike 260 Running shoes</p>
-        <b-card-text>
-            {{deskripsi_brg}} <br> {{ harga_brg }} <br> {{nama_pemilik}} 
-        </b-card-text>
-        <div slot="footer"><small class="text-muted">Last updated 3 mins ago</small></div>
-        </b-card>
-
-        <b-card title="Title" img-src="@/assets/img/heels.jpg" img-alt="Image" img-top>
-        <p style="font-size:15px; font-weight:bold">Sepatu Nike 260 Running shoes</p>
-        <b-card-text>
-            {{deskripsi_brg}} <br> {{ harga_brg }} <br> {{nama_pemilik}} 
-        </b-card-text>
-        <div slot="footer"><small class="text-muted">Last updated 3 mins ago</small></div>
-        </b-card>
-
-        <b-card title="Title" img-src="@/assets/img/jaket.jpg" img-alt="Image" img-top>
-        <p style="font-size:15px; font-weight:bold">Jaket Kulit Vhemian Rhapsody L</p>
-        <b-card-text>
-            {{deskripsi_brg}} <br> {{ harga_brg }} <br> {{nama_pemilik}} 
-        </b-card-text>
-        <div slot="footer"><small class="text-muted">Last updated 3 mins ago</small></div>
-        </b-card>
-       </b-card-group>
-      </div>
-     </b-row>
+      
      <br>
     
     
@@ -107,14 +86,14 @@
     <b-container class="sosmed">
     
       <b-row >
-        <b-col cols="3">
+        <b-col sm="12" md="3" lg="3">
             <img src="@/assets/img/logomuvon.png" alt="logo">
         </b-col>
-        <b-col cols="3">
+        <b-col sm="12" md="3" lg="3">
             <p>Temukan kami di: </p>
         </b-col> 
         
-        <b-col cols="6">
+        <b-col sm="12" md="6" lg="6">
             <div class="sosmed-logo">
             <img src="@/assets/img/twiter.png" alt="twitter">
             <img src="@/assets/img/fb.png" alt="fb">
@@ -127,24 +106,21 @@
     </b-container>
     </center>
 
-    <b-container class="footer">
-        <b-row >     
-        <b-col class="col-sm-12 col-md-12 col-lg-12">
-
-        </b-col>
-        <b-col class="col-sm-12 col-md-12 col-lg-12">
-
-        </b-col>
-        </b-row>
-    </b-container>
+    <div style="background-color:#1f4f77; padding-top:10px; padding-bottom:5px">
+    <center>
+      <p style="color:white; font-size:12px">Copyright © Moveon Team 2019</p>
+    </center>
   </div>
+</div>
     
 </template>
 <script>
+
 export default {
     name: 'beranda',
     data() {
         return{
+        img_galangdana:'',
         header_text1: 'Setiap hari setiap manusia berkesempatan menjadi penolong bagi manusia lain',
         header_text1_a: 'sudahkah anda mencoba?',
         header_text2: 'Tidak hanya dengan uang, bahkan barang anda dapat begitu berarti bagi mereka',
@@ -155,7 +131,9 @@ export default {
         deskripsi_section:'kumpulan kisah inspiratif yang membuat kami percaya, bahwa hal baik dapat dimulai kapan dan dimana saja. setiap manusia diberikan kesempatan untuk ikut berkontribusi dan menginspirasi',
         deskripsi_brg:'ahkahsashk kshdksdskdhsd',
         harga_brg:'Rp. 298,000',
-        nama_pemilik:'Anastasya Widyarini'
+        nama_pemilik:'Anastasya Widyarini',
+        dana_target:'',
+        nama_fundraiser:'',
         }
     }
 }
@@ -167,6 +145,8 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   /* text-align: center; */
   position: relative;
+  width: 100%;
+
   }
 
   hr {
@@ -181,8 +161,9 @@ export default {
     position: center;
     background-size: cover;
     min-width: 100%;
-    min-height: 500px;
+    min-height: 100%;
     background-repeat: no-repeat;
+    padding: 30px;
     }
 
 .header-section h3{
@@ -298,10 +279,10 @@ button a{
 
 
 .card{
-    position: right;
+    width: 100%;
 }
 .card-img{
-    width: 600px;
+    width: 100%;
     height: 320px;
     top: 0;
     right: 0;
@@ -312,13 +293,13 @@ button a{
 }
 
 .card-img-top {
-    width: 100%;
+    width: 80%;
     max-height: 230px;
     border-top-left-radius: calc(0.25rem - 1px);
     border-top-right-radius: calc(0.25rem - 1px);
 }
 .card-img-overlay {
-    width: 600px;
+    width: 100%;
     align-content: center;
 }
 
@@ -471,6 +452,10 @@ color: #2F7196;
 .footer{
     background-color: #FDFBEB;
 
+}
+div.card{
+    width: 80%;
+    position: center;
 }
 
 </style>

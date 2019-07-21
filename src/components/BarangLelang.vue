@@ -1,130 +1,37 @@
 <template>
   <div id="baranglelang" style="margin-top:100px;">
     <center>
-    <h3>ini isinya daftar barang lelang</h3>
-    <button v-on:click="counter += 5000">Tawar</button>
+    <h3>Selamat datang di Menu Lelang</h3>
+    <h4>Dengan Lelang, Anda dapat menolong orang</h4>
+    <!-- <button v-on:click="counter += 5000">Tawar</button>
     <p>Harga Baranggg Rp.{{ counter }},00</p>
-    <br>
+    <br> -->
     </center>
     <b-container>
-
-      
-
-
-
-      <b-row>
-        <b-col class="col-sm-12 col-md-6 col-lg-4">
-        <b-card
-          img-src="@/assets/img/beasiswa3.jpg"
-          img-alt="Image"
-          img-top
-          tag="article"
-          style="max-width: 20rem; text-align:left"
-          class="mb-2"
-        >
-         <b-row>
-          <b-col lg="7" md="5" sm="12">
-            <b-img src="@/assets/img/user.png" rounded="circle" width="30"></b-img>
-              <span
-                style="font-size:10px; padding-left:10px; font-weight:bold"
-                >Nama penjual barang{{nama_penjual}}</span>
-          </b-col>
-          <b-col lg="5" md="3" sm="12">
-           <router-link to="/detailbarang" tag="button" class="btn-orange"> 
-            <font-awesome-icon icon="gift" class="bar"></font-awesome-icon> Tawar 
-           </router-link>
-          </b-col>
-         </b-row>
-         <br />
-         <b-progress
-          :value="value"
-          :max="max"
-          class="mb-3"
-          variant="warning"
-          style="border-radius:10px;"
-          show-progress
+      <table class="tabel-baranglelang">
+        <tr>
+          <td>
+            <div class="detail-foto" style="width: 100%; height: 17rem; border:2 px solid black; 
+              background-color: lightblue;">
+              <img v-bind:src="gambar_barang" alt="" style="width: 100%; height: 17rem; padding:5px;">
+            </div>
+            <b-card
+              v-bind:title="nama_barang"
+              tag="article"
+              style="max-width: 100%; font-style:bold;"
+              class="mb-2"
           >
-         </b-progress>
-           <p style="font-size:15px; font-weight:bold">Bantu untuk Dana Beasiswa</p>
-           <b-card-text>Dana beasiswa ini akan diberikan kepada teman-teman mahasiswa Politeknik Negeri Jakarta, yang sedang membutuhkan bantuan biaya untuk kebutuhan kuliah. Yuk bantu teman-teman kita yang membutuhkan.</b-card-text>
-        </b-card>
-        </b-col>
-
-        <b-col class="col-sm-12 col-md-6 col-lg-4">
-        <b-card
-          img-src="@/assets/img/beasiswa3.jpg"
-          img-alt="Image"
-          img-top
-          tag="article"
-          style="max-width: 20rem; text-align:left"
-          class="mb-2"
-        >
-         <b-row>
-          <b-col lg="7" md="5" sm="12">
-            <b-img src="@/assets/img/user.png" rounded="circle" width="30"></b-img>
-              <span
-                style="font-size:10px; padding-left:10px; font-weight:bold"
-                >Admin Donasi MoveOn</span>
-          </b-col>
-          <b-col lg="5" md="3" sm="12">
-           <b-button href="#" class="btn-orange">
-            <font-awesome-icon icon="gift" class="bar"></font-awesome-icon>Donasi
-           </b-button>
-          </b-col>
-         </b-row>
-         <br />
-         <b-progress
-          :value="value"
-          :max="max"
-          class="mb-3"
-          variant="warning"
-          style="border-radius:10px;"
-          show-progress
-          >
-         </b-progress>
-           <p style="font-size:15px; font-weight:bold">Bantu untuk Dana Beasiswa</p>
-           <b-card-text>Dana beasiswa ini akan diberikan kepada teman-teman mahasiswa Politeknik Negeri Jakarta, yang sedang membutuhkan bantuan biaya untuk kebutuhan kuliah. Yuk bantu teman-teman kita yang membutuhkan.</b-card-text>
-        </b-card>
-        </b-col>
-        
-        
-        <b-col class="col-sm-12 col-md-6 col-lg-4">
-        <b-card
-          img-src="@/assets/img/beasiswa3.jpg"
-          img-alt="Image"
-          img-top
-          tag="article"
-          style="max-width: 20rem; text-align:left"
-          class="mb-2"
-        >
-         <b-row>
-          <b-col lg="7" md="5" sm="12">
-            <b-img src="@/assets/img/user.png" rounded="circle" width="30"></b-img>
-              <span
-                style="font-size:10px; padding-left:10px; font-weight:bold"
-                >Admin Donasi MoveOn</span>
-          </b-col>
-          <b-col lg="5" md="3" sm="12">
-           <b-button href="#" class="btn-orange">
-            <font-awesome-icon icon="gift" class="bar"></font-awesome-icon>Donasi
-           </b-button>
-          </b-col>
-         </b-row>
-         <br />
-         <b-progress
-          :value="value"
-          :max="max"
-          class="mb-3"
-          variant="warning"
-          style="border-radius:10px;"
-          show-progress
-          >
-         </b-progress>
-           <p style="font-size:15px; font-weight:bold">Bantu untuk Dana Beasiswa</p>
-           <b-card-text>Dana beasiswa ini akan diberikan kepada teman-teman mahasiswa Politeknik Negeri Jakarta, yang sedang membutuhkan bantuan biaya untuk kebutuhan kuliah. Yuk bantu teman-teman kita yang membutuhkan.</b-card-text>
-        </b-card>
-        </b-col>
-      </b-row>
+              <b-card-text> <b>Pemilik barang
+              {{ nama_donatur }} <br/>dipublikasikan sejak {{ date_barang }}</b>
+              </b-card-text>
+              <b-card-text>Harga Barang Rp.{{ harga_barang }}</b-card-text>
+              <router-link to="/detailbarang"><b-button >
+              Ikut Lelang
+              </b-button></router-link>
+            </b-card>
+        </td>
+        </tr>
+      </table>
     </b-container>
   
 
@@ -132,6 +39,8 @@
 </template>
 
 <script>
+
+
 export default {
   name: 'baranglelang',
   data() {

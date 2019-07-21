@@ -72,15 +72,15 @@ export default {
 .form-section {
    
     background-repeat:  no-repeat center center fixed;
-    width: 80%;
+    width: 100%;
     height: auto;
     background-color: #F8F4F4;
     margin:auto;
-    padding: 40px;
+    padding: 20px;
 }
 
 .form-control {
-    width: 70%;
+    width: 90%;
     border: 2px solid #FB574C;
     box-sizing: border-box;
     border-radius: 13px;

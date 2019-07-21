@@ -19,25 +19,18 @@
                     <b-img v-bind:src="ava_pengguna" rounded="circle" width="90"></b-img>
                     </center>
                     <br> 
-                    <p style="font-size:18px; padding-left:10px; font-weight:bold"
-                    >Nama penjual:{{nama_penjual}} </p>
-                    
-                    <p style="font-size:16px; padding-left:10px; font-weight:bold"
-                    >Harga Barang: Rp. {{ counter }}</p>
-                    
-                    <p style="font-size:16px; padding-left:10px; font-weight:bold"  
-                    >Bidder: {{ no_token }}</p>
-                    
-                    <p style="font-size:16px; padding-left:10px; font-weight:bold"
-                    >Diposting: {{ created_at }}</p>
-                    
-                    <p style="font-size:16px; padding-left:10px; font-weight:bold"
-                    >Berlaku sampai {{ waktu_berakhir }}</p>
-                    
-                    <p style="font-size:16px; padding-left:10px; font-weight:bold"
-                    >Kondisi {{ kondisi }}</p>
-                    
-                    
+                    <p style="font-size:14px; padding:2px; font-weight:normal">
+                      Nama penjual:{{nama_penjual}} </p>
+                    <p style="font-size:14px; padding:2px; font-weight:normal">
+                      Harga Barang: Rp. {{ counter }}</p>
+                    <p style="font-size:14px; padding:2px; font-weight:normal">
+                      Bidder: {{ no_token }}</p>
+                    <p style="font-size:14px; padding:2px; font-weight:normal">
+                      Diposting: {{ created_at }}</p>
+                    <p style="font-size:14px; padding:2px; font-weight:normal">
+                      Berlaku sampai {{ waktu_berakhir }}</p>
+                    <p style="font-size:14px; padding:2px; font-weight:normal">
+                      Kondisi {{ kondisi }}</p>
                     <!-- <form action="input"></form> -->
                 </b-col>
 
@@ -46,9 +39,6 @@
                     <font-awesome-icon icon="gift" class="bar"></font-awesome-icon> Tawar 
                 </b-button>
                 </b-col>
-
-                
-                
                 </b-card>
               </b-col>
             </b-row>
@@ -89,6 +79,4 @@ export default {
 }
 </script>
 <style scoped>
-.detail-foto {
-}
 </style>

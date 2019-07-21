@@ -5,12 +5,12 @@
      <b-container class="registrasiAkun">
        
        <b-row>
-       <b-col cols="4" class="kiri">
+       <b-col sm="12" md="6" lg="4" class="kiri">
          <h2>Halo Agen Kebaikan!</h2>
          <p>Selamat bergabung dengan Moveon, dan mulailah menjadi kontributor sekarang</p>
        </b-col>
 
-      <b-col cols="8">
+      <b-col sm="12" md="6" lg="8">
         <div class="header-section">
          <h3>Daftar akun baru</h3>
         </div>
@@ -169,7 +169,7 @@ export default {
 }
 
 button {
-    width: 165px;
+    width: 80%;
     height: 43px;
     margin: auto;
     background: #FB574C;
@@ -192,7 +192,7 @@ button {
     height: auto;
     background-color: #F8F4F4;
     margin:auto;
-    padding: 50px;
+    padding: 20px;
 }
 
 .custom-select {

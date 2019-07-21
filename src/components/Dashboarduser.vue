@@ -20,7 +20,7 @@
         </center>
         <br />
         
-        <div class="form-profil" sm="6" md="8" lg="8">
+        <div class="form-profil" sm="12" md="8" lg="8">
          <b-form @submit="onSubmit" @reset="onReset" v-if="show">
           <h4 class="kategori-data">Profil Anda</h4>
           <div class="garis-orange"></div>
@@ -83,7 +83,7 @@
                     <td><img v-bind:src="gambar_barang" ></td>
                     <td>{{ nama_barang }}</td>
                     <td>{{ harga_barang }}</td>
-                    <td><b-button class="primary"><router-link to="/detailgalangdana"> Selesaikan Pembayaran</router-link></b-button></td>
+                    <td><b-button class="primary"><router-link to="/Uploadbuktibayar"> Selesaikan Pembayaran</router-link></b-button></td>
                     </tr>
                 </tbody>
              </table>
