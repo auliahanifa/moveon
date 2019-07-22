@@ -73,7 +73,7 @@
                   style="border-radius:10px;"
                   show-progress
                 ></b-progress>
-                <p style="font-size:15px; font-weight:bold">Bantu untuk Dana Beasiswa</p>
+                <p style="font-size:15px; font-weight:bold">{{galang_dana.judul}}</p>
                 <b-card-text>Dana beasiswa ini akan diberikan kepada teman-teman mahasiswa Politeknik Negeri Jakarta, yang sedang membutuhkan bantuan biaya untuk kebutuhan kuliah. Yuk bantu teman-teman kita yang membutuhkan.</b-card-text>
               </b-card>
             </center>
@@ -228,8 +228,21 @@ export default {
   data() {
     return {
       value: 33.333333333,
-      max: 50
+      max: 50,
+      pengumuman: [],
+      galang_dana: {}
     };
+  },
+  created() {
+    axios.get(`http://adminmoveon.test/api/beasiswa`)
+    .then(response => {
+      // JSON responses are automatically parsed.
+      this.pengumuman = response.data.pengumuman;
+      this.galang_dana = response.data.galang_dana;
+    })
+    .catch(e => {
+      this.errors.push(e)
+    })
   }
   // methods: {
   //   onSlideStart(slide) {
