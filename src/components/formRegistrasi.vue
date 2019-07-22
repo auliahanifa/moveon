@@ -25,7 +25,7 @@
           </b-form-group>
 
           <b-form-group id="input-group-2" label-for="input-2">
-             <b-form-input id="input-2" v-model="form.notelp" type="tel" required placeholder="nomor telepon"></b-form-input>
+             <b-form-input id="input-2" v-model="form.no_hp" type="tel" required placeholder="nomor telepon"></b-form-input>
           </b-form-group>
 
           <b-form-group id="input-group-3" label-for="input-3">
@@ -33,11 +33,11 @@
           </b-form-group>
 
           <b-form-group id="input-group-4" label-for="input-4">
-             <b-form-select  id="input-4" v-model="form.card"  :options="cards" required></b-form-select>
+             <b-form-select  id="input-4" v-model="form.jenis_identitas"  :options="cards" required></b-form-select>
           </b-form-group>
 
           <b-form-group id="input-group-5" label-for="input-5">
-             <b-form-input id="input-5" v-model="form.nomorid" type="number" required placeholder="isi nomor identitas sesuai kartu yang dipilih"></b-form-input>
+             <b-form-input id="input-5" v-model="form.no_identitas" type="number" required placeholder="isi nomor identitas sesuai kartu yang dipilih"></b-form-input>
           </b-form-group>
             
           <b-form-group id="input-group-6" label-for="input-6">
@@ -61,18 +61,21 @@
     </div>
 </template>
 <script>
+import axios from 'axios';
 export default {
     name:'formregis',
     data() {
       return {
         form: {
-          name:'',
-          notelp:'',
-          nomorid:'',
+          nama:'',
+          no_hp:'',
+          no_identitas:'',
           repassword:'',
           email: '',
           password: '',
-          card: null,
+          jenis_identitas: null,
+          jenis_kelamin: '',
+          alamat: 'depok',
 
           
         //   checked: []
@@ -85,6 +88,13 @@ export default {
       onSubmit(evt) {
         evt.preventDefault()
         alert(JSON.stringify(this.form))
+        axios.post('http://localhost:8000/api/pengguna', this.form)
+        .then(function (response) {
+          alert(response);
+        })
+        .catch(function (error) {
+          alert(error);
+        });
       },
       onReset(evt) {
         evt.preventDefault()
