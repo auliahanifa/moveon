@@ -163,7 +163,7 @@ export default {
     min-width: 100%;
     min-height: 100%;
     background-repeat: no-repeat;
-    padding: 30px;
+    padding: 10px;
     }
 
 .header-section h3{
