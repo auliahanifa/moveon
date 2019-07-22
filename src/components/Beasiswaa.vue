@@ -73,8 +73,8 @@
                   style="border-radius:10px;"
                   show-progress
                 ></b-progress>
-                <p style="font-size:15px; font-weight:bold">{{galang_dana.judul}}</p>
-                <b-card-text>Dana beasiswa ini akan diberikan kepada teman-teman mahasiswa Politeknik Negeri Jakarta, yang sedang membutuhkan bantuan biaya untuk kebutuhan kuliah. Yuk bantu teman-teman kita yang membutuhkan.</b-card-text>
+                <p style="font-size:15px; font-weight:bold">{{galang_beasiswa.judul}}</p>
+                <b-card-text>{{galang_beasiswa.deskripsi}}</b-card-text>
               </b-card>
             </center>
           </b-col>
@@ -220,6 +220,8 @@
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
   name: "beasiswaa",
   // props: {
@@ -230,7 +232,7 @@ export default {
       value: 33.333333333,
       max: 50,
       pengumuman: [],
-      galang_dana: {}
+      galang_beasiswa: {}
     };
   },
   created() {
@@ -238,7 +240,7 @@ export default {
     .then(response => {
       // JSON responses are automatically parsed.
       this.pengumuman = response.data.pengumuman;
-      this.galang_dana = response.data.galang_dana;
+      this.galang_beasiswa = response.data.galang_beasiswa;
     })
     .catch(e => {
       this.errors.push(e)
