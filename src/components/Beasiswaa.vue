@@ -148,45 +148,16 @@
           <h3
             style="letter-spacing: 2px; font-weight: bold;"
           >Selamat Kepada Penerima Beasiswa Donasi MoveOn</h3>
-          <h5 style="margin-bottom:50px">
-            Periode
-            <span>Genap 2019</span>
-          </h5>
+          <h5 style="margin-bottom:50px">{{pengumuman[0].periode}}</h5>
         </center>
         <b-row>
-          <b-col sm="12" md="4" lg="4">
+          <b-col sm="12" md="4" lg="4" v-for="item in pengumuman">
             <center>
               <b-img src="@/assets/img/user.png" rounded="circle" width="130"></b-img>
               <div class="box-penerima">
-                <h6>Esti Rosmana</h6>
-                <p style="font-size:14px;">
-                  TIK 20<span>15</span>
-                </p>
-                <h6>4615010017</h6>
-              </div>
-            </center>
-          </b-col>
-          <b-col sm="12" md="4" lg="4">
-            <center>
-              <b-img src="@/assets/img/user.png" rounded="circle" width="130"></b-img>
-              <div class="box-penerima">
-                <h6>Hanifa Aulia</h6>
-                <p style="font-size:14px;">
-                  TIK 20<span>15</span>
-                </p>
-                <h6>4615010003</h6>
-              </div>
-            </center>
-          </b-col>
-          <b-col sm="12" md="4" lg="4">
-            <center>
-              <b-img src="@/assets/img/user.png" rounded="circle" width="130"></b-img>
-              <div class="box-penerima">
-                <h6>Leonardo Ahmad</h6>
-                <p style="font-size:14px;">
-                  TGP 20<span>15</span>
-                </p>
-                <h6>4615020015</h6>
+                <h6>{{item.nama}}</h6>
+                <p style="font-size:14px;">{{item.jurusan}}</p>
+                <h6>{{item.nim}}</h6>
               </div>
             </center>
           </b-col>
