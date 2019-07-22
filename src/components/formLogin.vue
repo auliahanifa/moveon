@@ -29,6 +29,7 @@
     </div>
 </template>
 <script>
+import axios from 'axios';
 export default {
     name: 'formlogin',
     data() {
@@ -44,6 +45,18 @@ export default {
       onSubmit(evt) {
         evt.preventDefault()
         alert(JSON.stringify(this.form))
+         axios
+            .get('http://localhost:8000/api/login/')
+            .then(response => {
+            alert(JSON.stringify(response))
+              
+            })
+            .catch(error => {
+              alert(error);
+              this.errored = true
+            })
+            .finally(() => this.loading = false)
+
       },
       onReset(evt) {
         evt.preventDefault()
