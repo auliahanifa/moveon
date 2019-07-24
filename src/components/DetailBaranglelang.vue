@@ -20,17 +20,17 @@
                     </center>
                     <br> 
                     <p style="font-size:14px; padding:2px; font-weight:normal">
-                      Nama penjual:{{nama_penjual}} </p>
+                      Nama Barang:{{baranglelang.nama_barang}} </p>
                     <p style="font-size:14px; padding:2px; font-weight:normal">
-                      Harga Barang: Rp. {{ counter }}</p>
+                      Harga Barang: Rp. {{ baranglelang.harga_awal }}</p>
+                    <!-- <p style="font-size:14px; padding:2px; font-weight:normal">
+                      Bidder: {{ baranglelang.no_token }}</p> -->
                     <p style="font-size:14px; padding:2px; font-weight:normal">
-                      Bidder: {{ no_token }}</p>
+                      Diposting: {{ baranglelang.created_at }}</p>
                     <p style="font-size:14px; padding:2px; font-weight:normal">
-                      Diposting: {{ created_at }}</p>
-                    <p style="font-size:14px; padding:2px; font-weight:normal">
-                      Berlaku sampai {{ waktu_berakhir }}</p>
-                    <p style="font-size:14px; padding:2px; font-weight:normal">
-                      Kondisi {{ kondisi }}</p>
+                      Berlaku sampai {{ baranglelang.waktu_berakhir }}</p>
+                    <!-- <p style="font-size:14px; padding:2px; font-weight:normal">
+                      Kondisi {{ kondisi }}</p> -->
                     <!-- <form action="input"></form> -->
                 </b-col>
 
@@ -47,7 +47,7 @@
             <b-col cols="12">
                 <center>
              <b-card bg-variant="white" text-variant="black" header="Deskripsi" class="text-center" style="margin-top:30px; width:100%;">
-                <b-card-text>{{ deskripsi_barang }}</b-card-text>
+                <b-card-text>{{ baranglelang.deskripsi }}</b-card-text>
              </b-card>
              </center>
              </b-col>
@@ -60,14 +60,8 @@ export default {
     name:'detail-lelang',
   data() {
     return{
-      foto_barang:'',
-      counter: 0,
-      no_token:'',
-      created_at:'',
-      waktu_berakhir:'',      
-      nama_penjual:'',
       ava_pengguna: null,
-      deskripsi_barang:''
+      baranglelang:{}
 
     }
     
@@ -75,6 +69,16 @@ export default {
   },
   props: {
     msg: String
+  },
+  created() {
+    axios.get(`https://donasimoveon.com/api/donasibarang`)
+    .then(response => {
+      // JSON responses are automatically parsed.
+      this.baranglelang = response.data.baranglelang;
+    })
+    .catch(e => {
+      this.errors.push(e)
+    })
   }
 }
 </script>

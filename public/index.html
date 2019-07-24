@@ -7,7 +7,9 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0" />
     <meta name="theme_color" content="orange">
     <link rel="icon" href="<%= BASE_URL %>icon.png" />
-    <script src="script.js"></script>
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    
     <title>Donasi MoveOn</title>
   </head>
 
@@ -18,19 +20,7 @@
     </noscript>
     <div id="app"></div>
     <!-- built files will be auto injected -->
+    <script src="script.js"></script>
   </body>
 
 </html>
-<!-- <script>
-if('serviceworker' in navigator){
-  window.addEventListener('load', ()=>{
-    navigator.serviceWorker.register('/sw.js');
-  });
-}
-
-// if('serviceWorker' in navigator) {
-//   navigator.serviceWorker
-//            .register('/sw.js')
-//            .then(function() { console.log("Service Worker Registered"); });
-// }
-</script> -->

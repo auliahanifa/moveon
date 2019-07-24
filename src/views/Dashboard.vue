@@ -1,5 +1,8 @@
 <template>
-    <Dashboarduser/>
+    <Dashboarduser>
+        <script src="script.js"></script>
+    </Dashboarduser>
+    
 </template>
 <script>
 export default {

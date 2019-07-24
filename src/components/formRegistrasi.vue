@@ -39,13 +39,17 @@
           <b-form-group id="input-group-5" label-for="input-5">
              <b-form-input id="input-5" v-model="form.no_identitas" type="number" required placeholder="isi nomor identitas sesuai kartu yang dipilih"></b-form-input>
           </b-form-group>
-            
+
           <b-form-group id="input-group-6" label-for="input-6">
-             <b-form-input id="input-6" v-model="form.password" type="password" required placeholder="kata sandi"></b-form-input>
+             <b-form-select  id="input-4" v-model="form.jenis_kelamin"  :options="genders" required></b-form-select>
           </b-form-group>
 
           <b-form-group id="input-group-7" label-for="input-7">
-             <b-form-input id="input-7" v-model="form.repassword" type="password" required placeholder="ulang kata sandi"></b-form-input>
+             <b-textarea id="input-5" v-model="form.alamat" type="textarea" required placeholder="Masukkan alamat anda"></b-textarea>
+          </b-form-group>
+            
+          <b-form-group id="input-group-8" label-for="input-8">
+             <b-form-input id="input-6" v-model="form.password" type="password" required placeholder="kata sandi"></b-form-input>
           </b-form-group>
 
           <b-button type="submit" >Buat akun</b-button>
@@ -70,17 +74,17 @@ export default {
           nama:'',
           no_hp:'',
           no_identitas:'',
-          repassword:'',
           email: '',
           password: '',
           jenis_identitas: null,
           jenis_kelamin: '',
-          alamat: 'depok',
+          alamat: '',
 
           
         //   checked: []
         },
         cards: ['KTP', 'Kartu Pelajar'],
+        genders: ['Laki-laki', 'Perempuan'],
         show: true
       }
     },
