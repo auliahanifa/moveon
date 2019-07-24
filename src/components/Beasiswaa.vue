@@ -151,7 +151,7 @@
           <h5 style="margin-bottom:50px">{{pengumuman[0].periode}}</h5>
         </center>
         <b-row>
-          <b-col sm="12" md="4" lg="4" v-for="item in pengumuman">
+          <b-col sm="12" md="4" lg="4" v-for="item in pengumuman" v-bind:key="item.id">
             <center>
               <b-img src="@/assets/img/user.png" rounded="circle" width="130"></b-img>
               <div class="box-penerima">
@@ -191,7 +191,7 @@
 </template>
 
 <script>
-import axios from 'axios';
+import axios from "axios";
 
 export default {
   name: "beasiswaa",
@@ -207,15 +207,16 @@ export default {
     }
   },
   created() {
-    axios.get(`http://admin.donasimoveon.com/api/beasiswa`)
-    .then(response => {
-      // JSON responses are automatically parsed.
-      this.pengumuman = response.data.pengumuman;
-      this.galang_beasiswa = response.data.galang_beasiswa;
-    })
-    .catch(e => {
-      this.errors.push(e)
-    })
+    axios
+      .get(`http://127.0.0.1:8000/api/beasiswa`)
+      .then(response => {
+        // JSON responses are automatically parsed.
+        this.pengumuman = response.data.pengumuman;
+        this.galang_beasiswa = response.data.galang_beasiswa;
+      })
+      .catch(e => {
+        this.errors.push(e);
+      });
   }
   // methods: {
   //   onSlideStart(slide) {
