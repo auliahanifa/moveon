@@ -257,12 +257,12 @@
   </div>
 </template>
 <script>
-import axios from 'axios';
+import axios from "axios";
 export default {
   name: "form_beasiswa",
   data() {
     return {
-      errors:[],
+      errors: [],
       form: {
         email: "",
         nama: "",
@@ -350,36 +350,37 @@ export default {
   },
   methods: {
     onSubmit() {
-      axios.post(`http://adminmoveon.test/api/pendaftar`, 
-      {
-          "nama" : this.form.nama,
-          "email" : this.form.email,
-          "nim" : this.form.nim,
-          "jurusan" : this.form.jurusan,
-          "no_hp" : this.form.nohp,
-          "alamat" : this.form.alamat,
-          "jenis_kelamin" : this.form.jenis_kelamin,
-          "riwayat_beasiswa" : this.form.riwayat_beasiswa,
-          "ipk" : this.form.ipk,
-          "jmlh_organisasi" : this.form.jmlh_organisasi,
-          "jmlh_sertifikat" : this.form.jmlh_sertifikat,
-          "penghasilan_ortu" : this.form.penghasilan_ortu,
-          "jmlh_tanggungan" : this.form.jmlh_tanggungan,
-          "status_rumah" : this.form.status_rumah,
-          "transportasi" : this.form.transportasi,
-          "file_path" : this.form.file_path
-        
-      },
-      {
-        headers: {
-          "Content-Type": "application/json"
-        }
-      }
-      )
-      .then(response => {})
-      .catch(e => {
-        this.errors.push(e)
-      })
+      axios
+        .post(
+          `http://127.0.0.1:8000/api/pendaftar`,
+          {
+            nama: this.form.nama,
+            email: this.form.email,
+            nim: this.form.nim,
+            jurusan: this.form.jurusan,
+            no_hp: this.form.nohp,
+            alamat: this.form.alamat,
+            jenis_kelamin: this.form.jenis_kelamin,
+            riwayat_beasiswa: this.form.riwayat_beasiswa,
+            ipk: this.form.ipk,
+            jmlh_organisasi: this.form.jmlh_organisasi,
+            jmlh_sertifikat: this.form.jmlh_sertifikat,
+            penghasilan_ortu: this.form.penghasilan_ortu,
+            jmlh_tanggungan: this.form.jmlh_tanggungan,
+            status_rumah: this.form.status_rumah,
+            transportasi: this.form.transportasi,
+            file_path: this.form.file_path
+          },
+          {
+            headers: {
+              "Content-Type": "application/json"
+            }
+          }
+        )
+        .then(response => {})
+        .catch(e => {
+          this.errors.push(e);
+        });
     }
   }
 };

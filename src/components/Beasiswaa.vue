@@ -12,7 +12,7 @@
     <div class="section-1">
       <b-container>
         <b-row>
-          <b-col cols="8">
+          <b-col lg="8" md="7" sm="12">
             <h3>Apa itu Beasiswa?</h3>
             <br />
             <p class="paragraf">
@@ -40,7 +40,7 @@
               yang membutuhkan bantuan biaya pendidikan.
             </p>
           </b-col>
-          <b-col cols="4">
+          <b-col lg="4" md="5" sm="12">
             <center>
               <h6>Siap Memberi Bantuan?</h6>
               <p>Ayo berdonasi menggunakan #DonasiMoveOn</p>
@@ -53,13 +53,11 @@
                 class="mb-2"
               >
                 <b-row>
-                  <b-col lg="7" md="5" sm="12">
+                  <b-col lg="6" md="5" sm="12">
                     <b-img src="@/assets/img/user.png" rounded="circle" width="30"></b-img>
-                    <span
-                      style="font-size:10px; padding-left:10px; font-weight:bold"
-                    >Admin Donasi MoveOn</span>
+                    <span style="font-size:10px; padding-left:10px; font-weight:bold">Admin MoveOn</span>
                   </b-col>
-                  <b-col lg="5" md="3" sm="12">
+                  <b-col lg="6" md="12" sm="12">
                     <b-button href="#" class="btn-orange">
                       <font-awesome-icon icon="gift" class="bar"></font-awesome-icon>Donasi
                     </b-button>
