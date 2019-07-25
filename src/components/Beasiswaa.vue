@@ -208,7 +208,7 @@ export default {
   },
   created() {
     axios
-      .get(`http://127.0.0.1:8000/api/beasiswa`)
+      .get(`http://127.0.0.1:8001/api/beasiswa`)
       .then(response => {
         // JSON responses are automatically parsed.
         this.pengumuman = response.data.pengumuman;

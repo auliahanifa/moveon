@@ -1,52 +1,65 @@
 <template>
   <div class="Galangdana" style="margin-top:100px;">
       <b-container class="rowing-set" >
-       <table class="tableGalangdana">
-                <thead>
-                    <tr>
-                    <th scope="col">No.</th>
-                    <th scope="col">Gambar</th>
-                    <th scope="col">Keterangan</th>
-                    <th scope="col">Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                    <th scope="row">{{ id_galangdana }}</th>
-                    <td><img v-bind:src="img_Galangdana" ></td>
-                    <td>{{ nama_fundraiser }} <br> {{ judul_galangdana }} <br/> {{ dana_terkini }} <br/> {{ waktu_tersisa }} </td>
-                    <td><router-link to="/detailgalangdana"><b-button>selengkapnya</b-button></router-link></td>
-                    </tr>
-                </tbody>
-             </table>
+        <b-row>
+          <b-col sm="12" md="6" lg="4" v-for="item in galangdana" :key="item.id">
+            <div class="gambar-galangdana" style="max-width:100%; height:12rem; background-color:pink; padding:4px;">
+                 <img v-bind:src="item.path_photo" alt="foto-galangdana">
+            </div>
+            <b-card
+              v-bind:title="item.judul"
+              tag="article"
+              style="width: 100%;"
+              class="mb-2"
+            >
+              <b-card-text>
+                {{ item.created_at }}
+              </b-card-text>
+              <b-card-text>
+                {{ item.deskripsi }}
+              </b-card-text>
+              <h5> Dana terkumpul sebesar Rp. {{ item.dana_terkini }} dari {{ item.target_dana }}</h5>
+              <p>Diterbitkan oleh {{ item.id_pengguna }}</p>
+              <router-link to="/detailgalangdana">
+               <b-button variant="white" style="background-color:orange; width:100%;">Selengkapnya</b-button>
+              </router-link>
+              
+            </b-card>
+          </b-col>
+        </b-row>
       </b-container>
     
   </div>
 </template>
+
+<script>
+import axios from 'axios';
+
+export default {
   name:'Galangdana',
   data() {
     return {
-      id_galangdana:''
-      nama_fundraiser:'',
-      judul_galangdana:'',
-      dana_terkini:'',
-      waktu_tersisa:'',
-      
-    }
+      galangdana: []
+    };
   },
-<script>
-// import firstTable from './firstTable.vue';
-// import secondTable from './secondTable.vue';
-// import thirdTable from './thirdTable.vue';
-
-export default {
-
-  name: 'Galangdana',
-  props: {
+  props:{
     msg: String
+  },
+  created() {
+    axios
+      .get(`http://localhost:8001/api/galangdana`)
+      .then(response => {
+        // JSON responses are automatically parsed.
+        this.galangdana = response.data.galangdana;
+      })
+      .catch(e => {
+        this.errors.push(e);
+      });
   }
 }
+  
 </script>
+
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
