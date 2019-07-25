@@ -9,6 +9,7 @@
         <div class="garis-orange"></div>
       </center>
       <div class="form">
+        
         <b-form @submit="onSubmit" @reset="onReset" v-if="show">
           <b-form-group id="input-group-1" label="Nama Barang" label-for="input-1">
             <b-form-input

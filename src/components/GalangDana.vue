@@ -47,7 +47,7 @@ export default {
   },
   created() {
     axios
-      .get(`http://localhost:8001/api/galangdana`)
+      .get(`http://localhost:8000/api/galangdana`)
       .then(response => {
         // JSON responses are automatically parsed.
         this.galangdana = response.data.galangdana;

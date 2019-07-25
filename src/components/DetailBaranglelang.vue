@@ -71,7 +71,7 @@ export default {
     msg: String
   },
   created() {
-    axios.show(`http://localhost:127.0.0.8000/donasibarang`)
+    axios.show(`http://localhost:8000/donasibarang`)
     .then(response => {
       // JSON responses are automatically parsed.
       this.baranglelang = response.data.baranglelang;

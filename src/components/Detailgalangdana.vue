@@ -3,30 +3,30 @@
         <b-container>
             <h3>{{ jdl_galangdana }}</h3>
             <b-row>
-                <b-col sm="12" md="8" lg="6">
+                <b-col sm="12" md="8" lg="6" v-for="item in detail" :key="item.id">
                     
                     <div class="detail-foto" style="width: 100%; height: 23rem; border:2 px solid black; 
                     background-color: lightblue;">
-                    <img v-bind:src="foto_galangdana" alt="" style="width: 100%; height: 23rem; padding:5px;">
+                    <img v-bind:src="item.path_photo" alt="" style="width: 100%; height: 23rem; padding:5px;">
                     </div>
                 </b-col>
                     
                 <b-col sm="12" md="12" lg="6">
                  
                  <b-card
-                    v-bind:title="dana_terkumpul"
+                    v-bind:title="item.judul"
                     tag="article"
                     style="max-width: 100%; font-style:bold;"
                     class="mb-2"
                 >
-                    <b-card-text> <b>Terkumpul dari Rp.
-                    {{ dana_target }}</b>
+                    <b-card-text>Terkumpul {{ item.dana_terkini }} dari Rp.
+                    {{ item.target_dana }}
                     </b-card-text>
                     <div>
-                    <b-progress :value="value" :max="max" class="mb-4"></b-progress>        
+                    <b-progress :value="item.dana_terkini" :max="item.target_dana" class="mb-4"></b-progress>        
                     </div>
-                    <b-card-text>{{ waktu_sisa }}
-                    hari tersisa</b-card-text>
+                    <b-card-text>Dipublikasikan sejak{{ item.created_at }}
+                    <br/>{{ item.range_waktu }} hari tersisa</b-card-text>
                     <b-button>
                     Donasi Sekarang
                     </b-button>
@@ -35,14 +35,14 @@
                     <b-button ><a href="whatsapp://send?text=The text to share!" data-action="share/whatsapp/share">Share via Whatsapp</a>
                     </b-button>
                     <b-card-text>
-                    Penggalangan dana dimulai sejak {{ galangdana_createdat }} oleh :
-                    </b-card-text>
+                    Penggalangan dana dimulai sejak {{ item.created_at }} oleh :
+                    {{ item.id_pengguna }} </b-card-text>
                     <center>
                     <div class="garis-orange" style="width:100%"></div>
                     </center>
                     <b-card-text>
-                    <span>
-                    <b-img v-bind:src="foto_pengguna" rounded="circle" width="150px"></b-img> Nama Fundraiser{{ nama_fundraiser }}</span>
+                    <span v-for="profil in pengguna" :key="profil.id">
+                    <b-img v-bind:src="profil.path_photo" rounded="circle" width="150px"></b-img> Nama Fundraiser{{ profil.nama }}</span>
                     </b-card-text>
                 </b-card>
                 </b-col>
@@ -55,7 +55,7 @@
                     <div class="garis-orange" width="100%"></div>
                     <br>
                     <div class="update-galangdana" width="100%" height="auto" background-color="lightblue">
-                        <p>Belum ada update.{{ data_update }}</p>
+                        <p>Belum ada update.{{ item.update }}</p>
                     </div>
                     <br><br>
 
@@ -63,7 +63,7 @@
                     <div class="garis-orange" width="100%"></div>
                     <br>
                     <div class="deskripsi-galangdana" width="100%" height="auto" border="2 px solid orange">
-                    <p> {{ deskripsi_galangdana }} </p>
+                    <p> {{ item.deskripsi }} </p>
                     </div>
 
                     <br><br>
@@ -93,7 +93,10 @@
 
     </div> 
 
-</template><script>
+</template>
+<script>
+import axios from 'axios';
+
 export default {
     name:'Detailgalangdana',
     components:{
@@ -101,18 +104,25 @@ export default {
     },
     data() {
         return{
-            foto_galangdana:require('../assets/img/beasiswa1.jpg'),
-            jdl_galangdana:'Judul Galang Dana',
-            dana_terkumpul:'Rp.' +0,
-            dana_target:+0 ,
-            value:+0,
-            max:100,
-            deskripsi_galangdana:'',
-            data_update:null,
+            detail:{},
+            pengguna:{}
 
-
-        }
-    }
+        };
+    },
+    props: {
+    msg: String
+  },
+    created() {
+        axios.show(`http://localhost:8000/api/galangdana/:id`)
+        .then(response => {
+        // JSON responses are automatically parsed.
+        this.detail = response.data.detail;
+        })
+        .catch(e => {
+        this.errors.push(e)
+        })
+    },
+    
     
 }
 </script>
