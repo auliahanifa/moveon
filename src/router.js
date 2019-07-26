@@ -21,6 +21,11 @@ export default new Router({
       component: () => import("@/components/Beasiswaa.vue")
     },
     {
+      path: "/detail_gbeasiswa",
+      name: "detai_gbeasiswa",
+      component: () => import("@/components/DetailGbeasiswa.vue")
+    },
+    {
       path: "/lelang",
       name: "Lelang",
       component: () =>
@@ -66,7 +71,9 @@ export default new Router({
       path: "/detailbarang",
       name: "DetailLelang",
       component: () =>
-        import(/* webpackChunkName: "about" */ "@/components/DetailBaranglelang.vue")
+        import(
+          /* webpackChunkName: "about" */ "@/components/DetailBaranglelang.vue"
+        )
     },
     {
       path: "/dashboarduser",
@@ -78,13 +85,17 @@ export default new Router({
       path: "/detailgalangdana",
       name: "GalangdanaDetail",
       component: () =>
-        import(/* webpackChunkName: "about" */ "@/components/Detailgalangdana.vue")
+        import(
+          /* webpackChunkName: "about" */ "@/components/Detailgalangdana.vue"
+        )
     },
     {
       path: "/Uploadbuktibayar",
       name: "UploadBuktibayar",
       component: () =>
-        import(/* webpackChunkName: "about" */ "@/components/SelesaikanBayar.vue")
+        import(
+          /* webpackChunkName: "about" */ "@/components/SelesaikanBayar.vue"
+        )
     }
   ]
 });
