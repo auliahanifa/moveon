@@ -45,7 +45,7 @@
               <h6>Siap Memberi Bantuan?</h6>
               <p>Ayo berdonasi menggunakan #DonasiMoveOn</p>
               <b-card
-                img-src="@/assets/img/beasiswa3.jpg"
+                :img-src="'http://admin.donasimoveon.com'+galang_beasiswa.path_photo"
                 img-alt="Image"
                 img-top
                 tag="article"
@@ -206,7 +206,7 @@ export default {
   },
   created() {
     axios
-      .get(`http://127.0.0.1:8000/api/beasiswa`)
+      .get(`http://adminmoveon.test/api/beasiswa`)
       .then(response => {
         // JSON responses are automatically parsed.
         this.pengumuman = response.data.pengumuman;
