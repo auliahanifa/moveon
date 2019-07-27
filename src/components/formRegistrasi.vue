@@ -21,35 +21,37 @@
           <b-form @submit="onSubmit" v-if="show">
             
           <b-form-group id="input-group-1" label-for="input-1">
-             <b-form-input id="input-1" v-model="form.nama" type="name" required placeholder="masukkan nama anda"></b-form-input>
+             <b-form-input id="input-1" v-model="nama" type="name" required placeholder="masukkan nama anda"></b-form-input>
           </b-form-group>
 
           <b-form-group id="input-group-2" label-for="input-2">
-             <b-form-input id="input-2" v-model="form.no_hp" type="tel" required placeholder="nomor telepon"></b-form-input>
+             <b-form-input id="input-2" v-model="no_hp" type="tel" required placeholder="nomor telepon"></b-form-input>
           </b-form-group>
 
           <b-form-group id="input-group-3" label-for="input-3">
-             <b-form-input id="input-3" v-model="form.email" type="email" required placeholder="masukkan email anda"></b-form-input>
+             <b-form-input id="input-3" v-model="email" type="email" required placeholder="masukkan email anda"></b-form-input>
           </b-form-group>
-
+          
+          <!-- //sebelumnya form select -->
           <b-form-group id="input-group-4" label-for="input-4">
-             <b-form-select  id="input-4" v-model="form.jenis_identitas"  :options="cards" required></b-form-select>
+             <b-form-input id="input-4" v-model="jenis_identitas" type="text" required placeholder="jenis kartu identitas"></b-form-input>
           </b-form-group>
 
           <b-form-group id="input-group-5" label-for="input-5">
-             <b-form-input id="input-5" v-model="form.no_identitas" type="number" required placeholder="isi nomor identitas sesuai kartu yang dipilih"></b-form-input>
+             <b-form-input id="input-5" v-model="no_identitas"  required placeholder="isi nomor identitas sesuai kartu yang dipilih"></b-form-input>
           </b-form-group>
-
+          
+          <!-- //sebelumnya form select -->
           <b-form-group id="input-group-6" label-for="input-6">
-             <b-form-select  id="input-4" v-model="form.jenis_kelamin"  :options="genders" required></b-form-select>
+             <b-form-input  id="input-4" v-model="jenis_kelamin" required placeholder="jenis kelamin"></b-form-input>
           </b-form-group>
 
           <b-form-group id="input-group-7" label-for="input-7">
-             <b-textarea id="input-5" v-model="form.alamat" type="textarea" required placeholder="Masukkan alamat anda"></b-textarea>
+             <b-textarea id="input-5" v-model="alamat" type="textarea" required placeholder="Masukkan alamat anda"></b-textarea>
           </b-form-group>
             
-          <b-form-group id="input-group-8" label-for="input-8">
-             <b-form-input id="input-6" v-model="form.password" type="password" required placeholder="kata sandi"></b-form-input>
+          <b-form-group id="input-group-8" label-for="input-8" label="password">
+             <b-form-input id="input-6" v-model="password" type="password" required placeholder="kata sandi"></b-form-input>
           </b-form-group>
 
           <b-button type="submit" >Buat akun</b-button>
@@ -67,54 +69,98 @@
 <script>
 import axios from 'axios';
 export default {
+   mounted(){
+      console.log('component mounted')
+    },
     name:'formregis',
     data() {
       return {
-        form: {
-          nama:'',
-          no_hp:'',
-          no_identitas:'',
-          email: '',
-          password: '',
-          jenis_identitas: null,
-          jenis_kelamin: '',
-          alamat: '',
-
-          
-        //   checked: []
-        },
-        cards: ['KTP', 'Kartu Pelajar'],
-        genders: ['Laki-laki', 'Perempuan'],
+        nama:'',
+        no_hp:'',
+        no_identitas:'',
+        email: '',
+        password: '',
+        jenis_identitas: '',
+        jenis_kelamin: '',
+        alamat: '',
+        // cards: ['KTP', 'Kartu Pelajar'],
+        // genders: ['Laki-laki', 'Perempuan'],
         show: true
       }
     },
     methods: {
-      onSubmit(evt) {
-        evt.preventDefault()
-        alert(JSON.stringify(this.form))
-        axios.post('http://localhost:8000/api/pengguna', this.form)
-        .then(function (response) {
-          alert(response);
-        })
-        .catch(function (error) {
-          alert(error);
-        });
+      // onSubmit(evt) {
+      //   evt.preventDefault()
+      //   alert(JSON.stringify(this.form))
+      //   axios.post('http://localhost:8000/api/pengguna/', {
+      //       nama: this.nama,
+      //       no_hp: this.no_hp,
+      //       email: this.email,
+      //       jenis_identitas: this.jenis_identitas,
+      //       no_identitas: this.no_identitas,
+      //       jenis_kelamin: this.jenis_kelamin,
+      //       alamat: this.alamat,
+      //       password: this.password
+      //   })
+      //   .then(function (response) {
+      //     alert(response);
+      //   })
+      //   .catch(function (error) {
+      //     alert(error);
+      //   });
       },
-      onReset(evt) {
-        evt.preventDefault()
-        // Reset our form values
-        this.form.email = ''
-        this.form.password = ''
-        // this.form.checked = []
-        // Trick to reset/clear native browser form validation state
-        this.show = false
-        this.$nextTick(() => {
-          this.show = true
-        })
-      }
-    }
+      // onReset(evt) {
+      //   evt.preventDefault()
+      //   // Reset our form values
+      //   this.email = ''
+      //   this.password = ''
+        
+      //   // Trick to reset/clear native browser form validation state
+      //   this.show = false
+      //   this.$nextTick(() => {
+      //     this.show = true
+      //   })
+      // }
+    methods:{
+    onSubmit(e){
+      e.preventDefault();
+      // let currentObj = this;
+      // alert(JSON.stringify(this.form))
+      axios.post('/api/pengguna',{
+        nama: this.nama,
+        no_hp:this.no_hp,
+        no_identitas:this.no_identitas,
+        email: this.email,
+        password: this.password,
+        jenis_identitas: this.jenis_identitas,
+        jenis_kelamin: this.jenis_kelamin,
+        alamat: this.alamat
+      })
+      // .then(function (response) {
+      //   alert(response);
+      // })
+     .then(function (response) {
+     this.response;
+     console.log(response);
+      });
+ 
+      // .catch(function (error) {
+      //   alert(error);
+      // });
+      
 
-}
+    }
+      // .then(function(response){
+      //    console.log(response.data);
+      //   this.response.data;
+      // })
+     
+    }
+  }
+   
+
+
+
 </script>
 
 <style scoped>

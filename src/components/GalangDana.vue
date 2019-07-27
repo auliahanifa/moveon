@@ -45,7 +45,7 @@ export default {
   props:{
     msg: String
   },
-  created() {
+    created() {
     axios
       .get(`http://localhost:8000/api/galangdana`)
       .then(response => {
@@ -55,8 +55,10 @@ export default {
       .catch(e => {
         this.errors.push(e);
       });
-  }
-}
+    } 
+
+
+};
   
 </script>
 

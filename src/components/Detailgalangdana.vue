@@ -41,8 +41,8 @@
                     <div class="garis-orange" style="width:100%"></div>
                     </center>
                     <b-card-text>
-                    <span v-for="profil in pengguna" :key="profil.id">
-                    <b-img v-bind:src="profil.path_photo" rounded="circle" width="150px"></b-img> Nama Fundraiser{{ profil.nama }}</span>
+                    <!-- <span> -->
+                    <!-- <b-img v-bind:src="path_photo" rounded="circle" width="150px"></b-img> Nama Fundraiser{{ nama }}</span> -->
                     </b-card-text>
                 </b-card>
                 </b-col>
@@ -54,13 +54,11 @@
                     <h5>Update</h5>
                     <div class="garis-orange" width="100%"></div>
                     <br>
-                    <div class="update-galangdana" width="100%" height="auto" background-color="lightblue">
-                        <p>Belum ada update.{{ item.update }}</p>
-                    </div>
-                    <br><br>
 
                     <h5>Deskripsi Galang dana</h5>
                     <div class="garis-orange" width="100%"></div>
+                    <br>
+                    <p>Belum ada update.{{ item.update }}</p>
                     <br>
                     <div class="deskripsi-galangdana" width="100%" height="auto" border="2 px solid orange">
                     <p> {{ item.deskripsi }} </p>
@@ -104,24 +102,15 @@ export default {
     },
     data() {
         return{
-            detail:{},
-            pengguna:{}
-
+            jmlh_donatur: 41,
+            detail:[]
+            
         };
     },
     props: {
     msg: String
   },
-    created() {
-        axios.show(`http://localhost:8000/api/galangdana/:id`)
-        .then(response => {
-        // JSON responses are automatically parsed.
-        this.detail = response.data.detail;
-        })
-        .catch(e => {
-        this.errors.push(e)
-        })
-    },
+    
     
     
 }
