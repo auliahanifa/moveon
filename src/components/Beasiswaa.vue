@@ -45,11 +45,11 @@
               <h6>Siap Memberi Bantuan?</h6>
               <p>Ayo berdonasi menggunakan #DonasiMoveOn</p>
               <b-card
-                img-src="@/assets/img/beasiswa3.jpg"
+                :img-src="'http://admin.donasimoveon.com'+ galang_beasiswa.path_photo"
                 img-alt="Image"
                 img-top
                 tag="article"
-                style="max-width: 20rem; text-align:left"
+                style="max-width: 20rem; text-align:left; "
                 class="mb-2"
               >
                 <b-row>
@@ -59,20 +59,21 @@
                   </b-col>
                   <b-col lg="6" md="12" sm="12">
                     <b-button href="#" class="btn-orange">
-                      <font-awesome-icon icon="gift" class="bar"></font-awesome-icon>Donasi
+                      <router-link to="/Lelang/">Donasi</router-link>
                     </b-button>
                   </b-col>
                 </b-row>
                 <b-progress
-                  :value="value"
-                  :max="max"
+                  :value="hari_terpakai"
+                  :max="jumlah_hari"
                   class="mb-3"
                   variant="warning"
                   style="border-radius:10px;"
                   show-progress
                 ></b-progress>
+                <p style="font-size:15px; font-weight:bold; text-align: right">{{ sisa_hari }} Hari</p>
                 <p style="font-size:15px; font-weight:bold">{{galang_beasiswa.judul}}</p>
-                <b-card-text>{{galang_beasiswa.deskripsi}}</b-card-text>
+                <b-card-text>{{galang_beasiswa.deskripsi.substring(0,100)}}</b-card-text>
               </b-card>
             </center>
           </b-col>
@@ -151,7 +152,11 @@
         <b-row>
           <b-col sm="12" md="4" lg="4" v-for="item in pengumuman" v-bind:key="item.id">
             <center>
-              <b-img src="@/assets/img/user.png" rounded="circle" width="130"></b-img>
+              <b-img
+                :src="'http://admin.donasimoveon.com' + item.path_photo"
+                rounded="circle"
+                width="130"
+              ></b-img>
               <div class="box-penerima">
                 <h6>{{item.nama}}</h6>
                 <p style="font-size:14px;">{{item.jurusan}}</p>
@@ -190,6 +195,7 @@
 
 <script>
 import axios from "axios";
+import { parse } from "querystring";
 
 export default {
   name: "beasiswaa",
@@ -198,19 +204,23 @@ export default {
   // },
   data() {
     return {
-      value: 33.333333333,
-      max: 50,
       pengumuman: [],
-      galang_beasiswa: {}
-    }
+      galang_beasiswa: {},
+      sisa_hari: "",
+      hari_terpakai: null,
+      jumlah_hari: null
+    };
   },
   created() {
     axios
-      .get(`http://127.0.0.1:8000/api/beasiswa`)
+      .get(`http://admin.donasimoveon.com/api/beasiswa`)
       .then(response => {
         // JSON responses are automatically parsed.
         this.pengumuman = response.data.pengumuman;
         this.galang_beasiswa = response.data.galang_beasiswa;
+        this.sisa_hari = response.data.sisa_hari.sisa;
+        this.hari_terpakai = parseInt(response.data.hari_terpakai);
+        this.jumlah_hari = parseInt(response.data.galang_beasiswa.range_waktu);
       })
       .catch(e => {
         this.errors.push(e);
