@@ -329,3 +329,7 @@
     box-sizing: border-box;
     border-radius: 22px;
 }
+
+.img-header {
+    object-fit: cover
+}

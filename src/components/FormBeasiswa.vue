@@ -23,12 +23,14 @@
                 label-for="input-2"
                 class="label"
               >
-                <b-form-select
+                <b-form-radio v-model="selected" name="some-radios" value="Laki-laki">Laki-laki</b-form-radio>
+                <b-form-radio v-model="selected" name="some-radios" value="Perempuan">Perempuan</b-form-radio>
+                <!-- <b-form-select
                   id="input-2"
                   v-model="form.jenis_kelamin"
                   :options="jenis_kelamin"
                   required
-                ></b-form-select>
+                ></b-form-select>-->
               </b-form-group>
             </b-col>
           </b-row>
@@ -46,7 +48,7 @@
             </b-col>
           </b-row>
           <b-row>
-            <b-col sm="6" md="6" lg="6">
+            <b-col sm="12" md="6" lg="6">
               <b-form-group
                 id="input-group-5"
                 label="Nomor Telepon"
@@ -61,12 +63,12 @@
                 ></b-form-input>
               </b-form-group>
             </b-col>
-            <b-col sm="6" md="6" lg="6">
+            <b-col sm="12" md="6" lg="6">
               <b-form-group
                 id="input-group-7"
                 label="Email"
                 label-for="input-7"
-                description="We'll never share your email with anyone else."
+                description="Kami tidak akan menyebarkan email Anda kepada siapa pun"
               >
                 <b-form-input
                   id="input-7"
@@ -107,66 +109,78 @@
             </b-col>
           </b-row>
           <b-row>
-            <b-col sm="6" md="6" lg="6">
+            <b-col sm="12" md="6" lg="6">
               <b-form-group
                 id="input-group-13"
                 label="Penghasilan Orang Tua (per bulan)"
                 label-for="input-13"
-                class="label"
               >
-                <b-form-select
-                  id="input-13"
+                <b-form-input
+                  id="input-7"
                   v-model="form.penghasilan_ortu"
-                  :options="penghasilan_ortu"
+                  type="number"
                   required
-                ></b-form-select>
+                  placeholder="Ex: 1000000"
+                ></b-form-input>
               </b-form-group>
             </b-col>
-            <b-col sm="6" md="6" lg="6">
+            <b-col sm="12" md="6" lg="6">
               <b-form-group
                 id="input-group-14"
                 label="Jumlah Tanggungan Orang Tua"
                 label-for="input-14"
                 class="label"
               >
-                <b-form-select
+                <b-form-input
                   id="input-14"
                   v-model="form.jmlh_tanggungan"
-                  :options="jmlh_tanggungan"
+                  type="number"
+                  placeholder="Ex: 5"
                   required
-                ></b-form-select>
+                ></b-form-input>
               </b-form-group>
             </b-col>
           </b-row>
           <b-row>
-            <b-col sm="6" md="6" lg="6">
+            <b-col sm="12" md="6" lg="6">
               <b-form-group
                 id="input-group-15"
-                label="Status Kepemilikan Tempat Tinggal"
+                label="Status Kepemilikan Tempat Tinggal :"
                 label-for="input-15"
                 class="label"
               >
-                <b-form-select
+                <b-form-radio v-model="selected2" name="some-radios" value="Ngontrak">Ngontrak</b-form-radio>
+                <b-form-radio v-model="selected2" name="some-radios" value="Menumpang">Menumpang</b-form-radio>
+                <b-form-radio
+                  v-model="selected2"
+                  name="some-radios"
+                  value="Rumah Sendiri"
+                >Rumah Sendiri</b-form-radio>
+
+                <!-- <b-form-select
                   id="input-15"
                   v-model="form.status_rumah"
                   :options="status_rumah"
                   required
-                ></b-form-select>
+                ></b-form-select>-->
               </b-form-group>
             </b-col>
-            <b-col sm="6" md="6" lg="6">
+            <b-col sm="12" md="6" lg="6">
               <b-form-group
                 id="input-group-16"
-                label="Transportasi yang Dimiliki"
+                label="Transportasi yang Dimiliki :"
                 label-for="input-16"
                 class="label"
               >
-                <b-form-select
+                <b-form-radio v-model="selected3" name="some-radios" value="Tidak punya">Tidak Punya</b-form-radio>
+                <b-form-radio v-model="selected3" name="some-radios" value="Motor">Motor</b-form-radio>
+                <b-form-radio v-model="selected3" name="some-radios" value="Mobil">Mobil</b-form-radio>
+                <!-- <b-form-select
                   id="input-16"
                   v-model="form.transportasi"
                   :options="transportasi"
                   required
-                ></b-form-select>
+                ></b-form-select>-->
               </b-form-group>
             </b-col>
           </b-row>
@@ -176,60 +190,78 @@
           <div class="garis-orange"></div>
           <br />
           <b-row>
-            <b-col sm="12" md="4" lg="4">
+            <b-col sm="12" md="6" lg="6">
               <b-form-group
                 id="input-group-9"
-                label="Riwayat Beasiswa"
+                label="Riwayat Beasiswa :"
                 label-for="input-9"
                 class="label"
               >
-                <b-form-select
+                <b-form-radio
+                  v-model="selected4"
+                  name="some-radios"
+                  value="Belum pernah menerima"
+                >Belum Pernah Menerima</b-form-radio>
+                <b-form-radio
+                  v-model="selected4"
+                  name="some-radios"
+                  value="Sudah/sedang menerima"
+                >Sudah / Sedang Menerima</b-form-radio>
+                <!-- <b-form-select
                   id="input-9"
                   v-model="form.riwayat_beasiswa"
                   :options="riwayat_beasiswa"
                   required
-                ></b-form-select>
+                ></b-form-select>-->
               </b-form-group>
             </b-col>
-            <b-col sm="12" md="4" lg="4">
+            <b-col sm="12" md="6" lg="6">
               <b-form-group id="input-group-10" label="IPK" label-for="input-10" class="label">
-                <b-form-select id="input-10" v-model="form.ipk" :options="ipk" required></b-form-select>
+                <b-form-input
+                  id="input-10"
+                  v-model="form.ipk"
+                  type="number"
+                  placeholder="Ex: 3.50"
+                  required
+                ></b-form-input>
               </b-form-group>
             </b-col>
-            <b-col sm="12" md="4" lg="4">
+          </b-row>
+          <br />
+          <b-row>
+            <b-col sm="12" md="6" lg="4">
               <b-form-group
                 id="input-group-11"
                 label="Jumlah Organisasi"
                 label-for="input-11"
                 class="label"
               >
-                <b-form-select
+                <b-form-input
                   id="input-11"
                   v-model="form.jmlh_organisasi"
-                  :options="jmlh_organisasi"
+                  type="number"
+                  placeholder="Ex: 5"
                   required
-                ></b-form-select>
+                ></b-form-input>
               </b-form-group>
             </b-col>
-          </b-row>
-          <br />
-          <b-row>
-            <b-col sm="12" md="4" lg="4">
+            <b-col sm="12" md="6" lg="4">
               <b-form-group
                 id="input-group-12"
                 label="Prestasi Ekstra (Jumlah Sertifikat)"
                 label-for="input-12"
                 class="label"
               >
-                <b-form-select
+                <b-form-input
                   id="input-12"
                   v-model="form.jmlh_sertifikat"
-                  :options="jmlh_sertifikat"
+                  type="number"
+                  placeholder="Ex: 5"
                   required
-                ></b-form-select>
+                ></b-form-input>
               </b-form-group>
             </b-col>
-            <b-col sm="12" md="4" lg="4">
+            <b-col sm="12" md="6" lg="4">
               <b-form-group id="input-group-17" class="label" label="Upload Berkas">
                 <b-form-file
                   v-model="file_path"
@@ -262,31 +294,35 @@ export default {
   name: "form_beasiswa",
   data() {
     return {
+      data: {},
       errors: [],
       form: {
         email: "",
         nama: "",
-        jenis_kelamin: null,
+        selected: "",
         nim: "",
         jurusan: null,
         nohp: "",
         alamat: "",
-        riwayat_beasiswa: null,
-        ipk: null,
-        jmlh_organisasi: null,
-        jmlh_sertifikat: null,
-        penghasilan_ortu: null,
-        jmlh_tanggungan: null,
-        status_rumah: null,
-        transportasi: null,
+        // riwayat_beasiswa: null,
+        ipk: "",
+        jmlh_organisasi: "",
+        jmlh_sertifikat: "",
+        penghasilan_ortu: "",
+        jmlh_tanggungan: "",
+        selected2: "",
+        selected3: "",
+        selected4: "",
+        // status_rumah: null,
+        // transportasi: null,
         file_path: null,
         checked: []
       },
-      jenis_kelamin: [
-        { text: "Jenis Kelamin", value: null },
-        "Laki-Laki",
-        "Perempuan"
-      ],
+      // jenis_kelamin: [
+      //   { text: "Jenis Kelamin", value: null },
+      //   "Laki-Laki",
+      //   "Perempuan"
+      // ],
       jurusans: [
         { text: "Jurusan", value: null },
         "Administrasi Niaga",
@@ -297,53 +333,24 @@ export default {
         "Teknik Elektro",
         "Teknik Informatika dan Komputer"
       ],
-      riwayat_beasiswa: [
-        { text: "Riwayat Beasiswa", value: null },
-        "Belum Pernah",
-        "Pernah atau Sedang Menerima Beasiswa"
-      ],
-      ipk: [
-        { text: "Range IPK", value: null },
-        "3.50 - 4.00",
-        "3.25 - 3.49",
-        "3.00 - 3.24"
-      ],
-      jmlh_organisasi: [
-        { text: "Jumlah Organisasi", value: null },
-        ">= 3",
-        "1 atau 2",
-        "< 1"
-      ],
-      jmlh_sertifikat: [
-        { text: "Jumlah Sertifikat", value: null },
-        ">= 3",
-        "1 atau 2",
-        "< 1"
-      ],
-      penghasilan_ortu: [
-        { text: "Pilih..", value: null },
-        "<= 1.5 juta",
-        "1.6 - 3 juta",
-        "> 3 juta"
-      ],
-      jmlh_tanggungan: [
-        { text: "Pilih..", value: null },
-        ">= 5",
-        "2 atau 4",
-        "1 atau 2"
-      ],
-      status_rumah: [
-        { text: "Pilih..", value: null },
-        "Ngontrak",
-        "Menumpang",
-        "Rumah Sendiri"
-      ],
-      transportasi: [
-        { text: "Pilih..", value: null },
-        "Tidak Punya",
-        "Motor",
-        "Mobil"
-      ],
+      // riwayat_beasiswa: [
+      //   { text: "Riwayat Beasiswa", value: null },
+      //   "Belum Pernah",
+      //   "Pernah atau Sedang Menerima Beasiswa"
+      // ],
+
+      // status_rumah: [
+      //   { text: "Pilih..", value: null },
+      //   "Ngontrak",
+      //   "Menumpang",
+      //   "Rumah Sendiri"
+      // ],
+      // transportasi: [
+      //   { text: "Pilih..", value: null },
+      //   "Tidak Punya",
+      //   "Motor",
+      //   "Mobil"
+      // ],
 
       show: true
     };
@@ -352,7 +359,7 @@ export default {
     onSubmit() {
       axios
         .post(
-          `http://127.0.0.1:8000/api/pendaftar`,
+          `http://adminmoveon.test/api/pendaftar`,
           {
             nama: this.form.nama,
             email: this.form.email,
@@ -373,11 +380,13 @@ export default {
           },
           {
             headers: {
-              "Content-Type": "application/json"
+              "Content-Type": "multipart/form-data"
             }
           }
         )
-        .then(response => {})
+        .then(response => {
+          this.data = response.data;
+        })
         .catch(e => {
           this.errors.push(e);
         });
