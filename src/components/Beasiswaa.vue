@@ -1,12 +1,6 @@
 <template>
   <div class="beasiswa">
-    <b-img
-      src="@/assets/img/beasiswa3.jpg"
-      slot="img"
-      class="d-block w-100 img-header"
-      width="100%"
-      height="300"
-    />
+    <b-img src="@/assets/img/beasiswa3.jpg" slot="img" class="d-block w-100 img-header" width="100%" height="300" />
     <div class="section-1">
       <b-container>
         <b-row>
@@ -14,13 +8,12 @@
             <h3>Apa itu Beasiswa?</h3>
             <p class="paragraf">
               Beasiswa adalah tunjangan yang diberikan kepada pelajar atau mahasiswa sebagai bantuan biaya belajar.
-              Undang-undang Nomor 12 Tahun 2012 tentang Pendidikan Tinggi di dalam Pasal 76
-              Ayat (2) menjelaskan tentang pemenuhan hak Mahasiswa yaitu mahasiswa pemerintah
-              harus memberikan (a) beasiswa kepada Mahasiswa berprestasi; (b) bantuan atau
-              membebaskan biaya Pendidikan; dan/atau (c) pinjaman dana tanpa bunga yang wajib
-              dilunasi setelah lulus dan/atau memperoleh pekerjaan. Beasiswa merupakan bantuan yang diberikan oleh lembaga
-              pemerintah, perusahaan atau yayasan kepada pelajar atau mahasiswa sebagai bantuan
-              biaya belajar, beasiswa ini juga merupakan hak mahasiswa.
+              Undang-undang Nomor 12 Tahun 2012 tentang Pendidikan Tinggi di dalam Pasal 76 Ayat (2) menjelaskan tentang
+              pemenuhan hak Mahasiswa yaitu mahasiswa pemerintah harus memberikan (a) beasiswa kepada Mahasiswa
+              berprestasi; (b) bantuan atau membebaskan biaya Pendidikan; dan/atau (c) pinjaman dana tanpa bunga yang
+              wajib dilunasi setelah lulus dan/atau memperoleh pekerjaan. Beasiswa merupakan bantuan yang diberikan oleh
+              lembaga pemerintah, perusahaan atau yayasan kepada pelajar atau mahasiswa sebagai bantuan biaya belajar,
+              beasiswa ini juga merupakan hak mahasiswa.
             </p>
             <br />
             <br />
@@ -31,24 +24,20 @@
               <span style="color:#fb6340; font-weight:bold;">MoveOn</span> ?
             </h3>
             <p class="paragraf">
-              Beasiswa Donasi MoveOn adalah beasiswa dari aplikasi Donasi MoveOn untuk mahasiswa aktif Politeknik Negeri Jakarta. Mahasiswa yang berhak menerima beasiswa ini minimal sudah semester 2
-              dan memiliki IPK minimal 3.00. Aplikasi Donasi MoveOn apasih? Aplikasi Donasi MoveOn adalah aplikasi web donasi dengan mekanisme lelang barang
-              bekas secara online, dimana pada aplikasi tersebut terdapat fitur beasiswa. Dimana, hasil lelang yang didapat disalurkan untuk dana beasiswa ini. Beasiswa ini dibuat untuk membantu mahasiswa
-              yang membutuhkan bantuan biaya pendidikan.
+              Beasiswa Donasi MoveOn adalah beasiswa dari aplikasi Donasi MoveOn untuk mahasiswa aktif Politeknik Negeri
+              Jakarta. Mahasiswa yang berhak menerima beasiswa ini minimal sudah semester 2 dan memiliki IPK minimal
+              3.00. Aplikasi Donasi MoveOn apasih? Aplikasi Donasi MoveOn adalah aplikasi web donasi dengan mekanisme
+              lelang barang bekas secara online, dimana pada aplikasi tersebut terdapat fitur beasiswa. Dimana, hasil
+              lelang yang didapat disalurkan untuk dana beasiswa ini. Beasiswa ini dibuat untuk membantu mahasiswayang
+              membutuhkan bantuan biaya pendidikan.
             </p>
           </b-col>
           <b-col lg="4" md="5" sm="12">
             <center v-if="galang_beasiswa != null">
               <h6>Siap Memberi Bantuan?</h6>
               <p>Ayo berdonasi menggunakan #DonasiMoveOn</p>
-              <b-card
-                :img-src="'http://admin.donasimoveon.com' + galang_beasiswa.path_photo"
-                img-alt="Image"
-                img-top
-                tag="article"
-                style="text-align:left; "
-                class="mb-2 img-card"
-              >
+              <b-card :img-src="'http://admin.donasimoveon.com' + galang_beasiswa.path_photo" img-alt="Image" img-top
+                tag="article" style="text-align:left; " class="mb-2 img-card">
                 <b-row>
                   <b-col lg="6" md="5" sm="12">
                     <b-img src="@/assets/img/user.png" rounded="circle" width="30"></b-img>
@@ -60,16 +49,17 @@
                     </b-button>
                   </b-col>
                 </b-row>
-                <b-progress
-                  :value="hari_terpakai"
-                  :max="jumlah_hari"
-                  class="mb-3"
-                  variant="warning"
-                  style="border-radius:10px;"
-                  show-progress
-                ></b-progress>
-                <p style="font-size:15px; font-weight:bold; text-align: right">{{ sisa_hari }} Hari</p>
-                <p style="font-size:15px; font-weight:bold">{{galang_beasiswa.judul}}</p>
+                <b-progress :value="galang_beasiswa.dana_terkini" :max="galang_beasiswa.target_dana" class="mb-3" variant="warning"
+                  style="border-radius:10px;"></b-progress>
+                <div class="row">
+                  <div class="col-md-8">
+                    <p style="font-size:14px;"><span style="font-weight:bold; ">Rp {{ galang_beasiswa.dana_terkini }}</span>  terkumpul</p>
+                  </div>
+                  <div class="col-md-4">
+                    <p style="font-size:14px; text-align: right"><span style="font-weight:bold; ">{{ sisa_hari }}</span> Hari</p>
+                  </div>
+                </div>
+                <p style="font-size:16px; font-weight:bold">{{galang_beasiswa.judul}}</p>
                 <b-card-text>{{galang_beasiswa.deskripsi.substring(0,100)}}</b-card-text>
               </b-card>
             </center>
@@ -83,9 +73,7 @@
     <div class="section-2">
       <b-container>
         <center>
-          <h3
-            style="letter-spacing: 2px; font-weight: bold; margin-bottom:50px"
-          >Jadwal Donasi MoveOn</h3>
+          <h3 style="letter-spacing: 2px; font-weight: bold; margin-bottom:50px">Jadwal Donasi MoveOn</h3>
         </center>
         <b-row>
           <b-col sm="12" md="6" lg="6">
@@ -144,26 +132,15 @@
     <div class="section-3">
       <b-container>
         <center>
-          <h3
-            style="letter-spacing: 2px; font-weight: bold;"
-          >Selamat Kepada Penerima Beasiswa Donasi MoveOn</h3>
+          <h3 style="letter-spacing: 2px; font-weight: bold;">Selamat Kepada Penerima Beasiswa Donasi MoveOn</h3>
           <h5 style="margin-bottom:50px">{{pengumuman[0].periode}}</h5>
         </center>
         <b-row>
           <b-col sm="12" md="4" lg="4" v-for="item in pengumuman" v-bind:key="item.id">
             <center>
-              <b-img
-                v-if="item.path_photo === ''"
-                src="@/assets/img/user.png"
-                rounded="circle"
-                width="130"
-              ></b-img>
-              <b-img
-                v-else
-                :src="'http://admin.donasimoveon.com' + item.path_photo"
-                rounded="circle"
-                width="130"
-              ></b-img>
+              <b-img v-if="item.path_photo === ''" src="@/assets/img/user.png" rounded="circle" width="130"></b-img>
+              <b-img v-else :src="'http://admin.donasimoveon.com' + item.path_photo" rounded="circle" width="130">
+              </b-img>
               <div class="box-penerima">
                 <h6>{{item.nama}}</h6>
                 <p style="font-size:14px;">{{item.jurusan}}</p>
@@ -185,9 +162,9 @@
             </p>
           </b-col>
           <b-col lg="2" md="4" sm="12">
-            <b-button class="btn-white">
-              <router-link to="/daftar_beasiswa">DAFTAR</router-link>
-            </b-button>
+            <router-link to="/daftar_beasiswa">
+              <b-button class="btn-white"><span style="color:#f79317;">DAFTAR</span></b-button>
+            </router-link>
           </b-col>
         </b-row>
       </b-container>
@@ -201,47 +178,47 @@
 </template>
 
 <script>
-import axios from "axios";
-// import { parse } from "querystring";
+  import axios from "axios";
+  // import { parse } from "querystring";
 
-export default {
-  name: "beasiswaa",
-  // props: {
-  //   msg: String
-  // },
-  data() {
-    return {
-      pengumuman: [],
-      galang_beasiswa: {},
-      sisa_hari: "",
-      hari_terpakai: null,
-      jumlah_hari: null
-    };
-  },
-  created() {
-    axios
-      .get(`http://adminmoveon.test/api/beasiswa`)
-      .then(response => {
-        // JSON responses are automatically parsed.
-        this.pengumuman = response.data.pengumuman;
-        this.galang_beasiswa = response.data.galang_beasiswa;
-        this.sisa_hari = response.data.sisa_hari;
-        this.hari_terpakai = parseInt(response.data.hari_terpakai);
-        this.jumlah_hari = parseInt(response.data.galang_beasiswa.range_waktu);
-      })
-      .catch(e => {
-        this.errors.push(e);
-      });
-  }
-  // methods: {
-  //   onSlideStart(slide) {
-  //     this.sliding = true;
-  //   },
-  //   onSlideEnd(slide) {
-  //     this.sliding = false;
-  //   }
-  // }
-};
+  export default {
+    name: "beasiswaa",
+    // props: {
+    //   msg: String
+    // },
+    data() {
+      return {
+        pengumuman: [],
+        galang_beasiswa: {},
+        sisa_hari: "",
+        hari_terpakai: null,
+        jumlah_hari: null
+      };
+    },
+    created() {
+      axios
+        .get(`http://adminmoveon.test/api/beasiswa`)
+        .then(response => {
+          // JSON responses are automatically parsed.
+          this.pengumuman = response.data.pengumuman;
+          this.galang_beasiswa = response.data.galang_beasiswa;
+          this.sisa_hari = response.data.sisa_hari;
+          this.target_dana = parseInt(response.data.galang_beasiswa.target_dana);
+          this.dana_terkini = parseInt(response.data.galang_beasiswa.dana_terkini);
+        })
+        .catch(e => {
+          this.errors.push(e);
+        });
+    }
+    // methods: {
+    //   onSlideStart(slide) {
+    //     this.sliding = true;
+    //   },
+    //   onSlideEnd(slide) {
+    //     this.sliding = false;
+    //   }
+    // }
+  };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
