@@ -3,10 +3,10 @@
         <b-container>
             <b-row style="margin-top:100px;">
 
-                <b-col sm="12" md="12" lg="6">
-                    <div class="detail-foto" style="width: 100%; height: 23rem; border:2 px solid black; 
+                <b-col sm="12" md="12" lg="6" v-for="item in baranglelang" :key="item.id">
+                  <div class="detail-foto" style="width: 100%; height: 23rem; border:2 px solid black; 
                     background-color: lightblue;">
-                    <img v-bind:src="foto_barang" alt="" style="width:auto; height:auto;">
+                    <img v-bind:src="item.path_photo" alt="" style="width:auto; height:auto;">
                     </div>
                 
                 </b-col>
@@ -20,17 +20,17 @@
                     </center>
                     <br> 
                     <p style="font-size:14px; padding:2px; font-weight:normal">
-                      Nama penjual:{{nama_penjual}} </p>
+                      Nama Barang:{{item.nama_barang}} </p>
                     <p style="font-size:14px; padding:2px; font-weight:normal">
-                      Harga Barang: Rp. {{ counter }}</p>
+                      Harga Barang: Rp. {{ item.harga_awal }}</p>
+                    <!-- <p style="font-size:14px; padding:2px; font-weight:normal">
+                      Bidder: {{ baranglelang.no_token }}</p> -->
                     <p style="font-size:14px; padding:2px; font-weight:normal">
-                      Bidder: {{ no_token }}</p>
+                      Diposting: {{ item.created_at }}</p>
                     <p style="font-size:14px; padding:2px; font-weight:normal">
-                      Diposting: {{ created_at }}</p>
-                    <p style="font-size:14px; padding:2px; font-weight:normal">
-                      Berlaku sampai {{ waktu_berakhir }}</p>
-                    <p style="font-size:14px; padding:2px; font-weight:normal">
-                      Kondisi {{ kondisi }}</p>
+                      Barang Tersedia</p>
+                    <!-- <p style="font-size:14px; padding:2px; font-weight:normal">
+                      Kondisi {{ kondisi }}</p> -->
                     <!-- <form action="input"></form> -->
                 </b-col>
 
@@ -47,7 +47,7 @@
             <b-col cols="12">
                 <center>
              <b-card bg-variant="white" text-variant="black" header="Deskripsi" class="text-center" style="margin-top:30px; width:100%;">
-                <b-card-text>{{ deskripsi_barang }}</b-card-text>
+                <b-card-text>{{ item.deskripsi }}</b-card-text>
              </b-card>
              </center>
              </b-col>
@@ -60,21 +60,25 @@ export default {
     name:'detail-lelang',
   data() {
     return{
-      foto_barang:'',
-      counter: 0,
-      no_token:'',
-      created_at:'',
-      waktu_berakhir:'',      
-      nama_penjual:'',
       ava_pengguna: null,
-      deskripsi_barang:''
+      baranglelang: []
 
-    }
+    };
     
     
   },
   props: {
     msg: String
+  },
+  created() {
+    axios.show(`http://localhost:8000/donasibarang`)
+    .then(response => {
+      // JSON responses are automatically parsed.
+      this.baranglelang = response.data.baranglelang;
+    })
+    .catch(e => {
+      this.errors.push(e)
+    })
   }
 }
 </script>

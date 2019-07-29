@@ -35,8 +35,6 @@ export default {
     data() {
       return {
         form: {
-          email: '',
-          password: ''
         },
         show: true
       }
