@@ -262,6 +262,7 @@ export default {
   name: "form_beasiswa",
   data() {
     return {
+      data: {},
       errors: [],
       form: {
         email: "",
@@ -377,7 +378,9 @@ export default {
             }
           }
         )
-        .then(response => {})
+        .then(response => {
+          this.data = response.data;
+        })
         .catch(e => {
           this.errors.push(e);
         });

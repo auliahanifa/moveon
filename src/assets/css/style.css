@@ -229,6 +229,21 @@
     margin-bottom: 50px;
 }
 
+.btn-orange a {
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.btn-white a:hover,
+.btn-white a:focus {
+    color: #ffffff;
+    font-weight: bold;
+    text-decoration: none;
+    background-color: transparent;
+}
+
 .btn-orange:hover,
 .btn-orange:focus {
     background: #fb6340;
@@ -273,19 +288,19 @@
 
 /* Login */
 
-.formlogin{
-    background-image: url("../img/kids.jpg") ;
-    background-repeat:  no-repeat center center fixed; 
+.formlogin {
+    background-image: url("../img/kids.jpg");
+    background-repeat: no-repeat center center fixed;
     min-height: auto;
     background-size: cover;
     padding: 20px;
     background-attachment: fixed;
-    background-position: right center; 
+    background-position: right center;
     width: auto;
-  }
-  
-  
-  .login-header-section{
+}
+
+
+.login-header-section {
     width: 100%;
     height: auto;
     background: linear-gradient(270deg, #F64A00 0%, rgba(247, 147, 23, 0) 100%), #F79317;
@@ -294,7 +309,7 @@
     position: right center;
 }
 
-.login-header-section h3{
+.login-header-section h3 {
     padding: 15px;
     color: white;
     size: 6px;
@@ -313,4 +328,8 @@
     border: 3px solid #FB574C;
     box-sizing: border-box;
     border-radius: 22px;
+}
+
+.img-header {
+    object-fit: cover
 }
