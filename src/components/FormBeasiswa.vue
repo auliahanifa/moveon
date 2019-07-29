@@ -145,36 +145,42 @@
             <b-col sm="12" md="6" lg="6">
               <b-form-group
                 id="input-group-15"
-                label="Status Kepemilikan Tempat Tinggal"
+                label="Status Kepemilikan Tempat Tinggal :"
                 label-for="input-15"
                 class="label"
               >
-                <!-- <b-form-group label="Individual radios">
-                <b-form-radio v-model="selected" name="some-radios" value="Ngontrak">Ngontrak</b-form-radio>
-                <b-form-radio v-model="selected" name="some-radios" value="Menumpang">Menumpang</b-form-radio>
-                <b-form-radio v-model="selected" name="some-radios" value="Rumah Sendiri">Rumah Sendiri</b-form-radio>
-                </b-form-group>-->
-                <b-form-select
+                <b-form-radio v-model="selected2" name="some-radios" value="Ngontrak">Ngontrak</b-form-radio>
+                <b-form-radio v-model="selected2" name="some-radios" value="Menumpang">Menumpang</b-form-radio>
+                <b-form-radio
+                  v-model="selected2"
+                  name="some-radios"
+                  value="Rumah Sendiri"
+                >Rumah Sendiri</b-form-radio>
+
+                <!-- <b-form-select
                   id="input-15"
                   v-model="form.status_rumah"
                   :options="status_rumah"
                   required
-                ></b-form-select>
+                ></b-form-select>-->
               </b-form-group>
             </b-col>
             <b-col sm="12" md="6" lg="6">
               <b-form-group
                 id="input-group-16"
-                label="Transportasi yang Dimiliki"
+                label="Transportasi yang Dimiliki :"
                 label-for="input-16"
                 class="label"
               >
-                <b-form-select
+                <b-form-radio v-model="selected3" name="some-radios" value="Tidak punya">Tidak Punya</b-form-radio>
+                <b-form-radio v-model="selected3" name="some-radios" value="Motor">Motor</b-form-radio>
+                <b-form-radio v-model="selected3" name="some-radios" value="Mobil">Mobil</b-form-radio>
+                <!-- <b-form-select
                   id="input-16"
                   v-model="form.transportasi"
                   :options="transportasi"
                   required
-                ></b-form-select>
+                ></b-form-select>-->
               </b-form-group>
             </b-col>
           </b-row>
@@ -184,22 +190,32 @@
           <div class="garis-orange"></div>
           <br />
           <b-row>
-            <b-col sm="12" md="4" lg="4">
+            <b-col sm="12" md="6" lg="6">
               <b-form-group
                 id="input-group-9"
-                label="Riwayat Beasiswa"
+                label="Riwayat Beasiswa :"
                 label-for="input-9"
                 class="label"
               >
-                <b-form-select
+                <b-form-radio
+                  v-model="selected4"
+                  name="some-radios"
+                  value="Belum pernah menerima"
+                >Belum Pernah Menerima</b-form-radio>
+                <b-form-radio
+                  v-model="selected4"
+                  name="some-radios"
+                  value="Sudah/sedang menerima"
+                >Sudah / Sedang Menerima</b-form-radio>
+                <!-- <b-form-select
                   id="input-9"
                   v-model="form.riwayat_beasiswa"
                   :options="riwayat_beasiswa"
                   required
-                ></b-form-select>
+                ></b-form-select>-->
               </b-form-group>
             </b-col>
-            <b-col sm="12" md="4" lg="4">
+            <b-col sm="12" md="6" lg="6">
               <b-form-group id="input-group-10" label="IPK" label-for="input-10" class="label">
                 <b-form-input
                   id="input-10"
@@ -210,7 +226,10 @@
                 ></b-form-input>
               </b-form-group>
             </b-col>
-            <b-col sm="12" md="4" lg="4">
+          </b-row>
+          <br />
+          <b-row>
+            <b-col sm="12" md="6" lg="4">
               <b-form-group
                 id="input-group-11"
                 label="Jumlah Organisasi"
@@ -226,9 +245,6 @@
                 ></b-form-input>
               </b-form-group>
             </b-col>
-          </b-row>
-          <br />
-          <b-row>
             <b-col sm="12" md="6" lg="4">
               <b-form-group
                 id="input-group-12"
@@ -283,27 +299,30 @@ export default {
       form: {
         email: "",
         nama: "",
-        jenis_kelamin: null,
+        selected: "",
         nim: "",
         jurusan: null,
         nohp: "",
         alamat: "",
-        riwayat_beasiswa: null,
-        ipk: null,
-        jmlh_organisasi: null,
-        jmlh_sertifikat: null,
-        penghasilan_ortu: null,
-        jmlh_tanggungan: null,
-        status_rumah: null,
-        transportasi: null,
+        // riwayat_beasiswa: null,
+        ipk: "",
+        jmlh_organisasi: "",
+        jmlh_sertifikat: "",
+        penghasilan_ortu: "",
+        jmlh_tanggungan: "",
+        selected2: "",
+        selected3: "",
+        selected4: "",
+        // status_rumah: null,
+        // transportasi: null,
         file_path: null,
         checked: []
       },
-      jenis_kelamin: [
-        { text: "Jenis Kelamin", value: null },
-        "Laki-Laki",
-        "Perempuan"
-      ],
+      // jenis_kelamin: [
+      //   { text: "Jenis Kelamin", value: null },
+      //   "Laki-Laki",
+      //   "Perempuan"
+      // ],
       jurusans: [
         { text: "Jurusan", value: null },
         "Administrasi Niaga",
@@ -314,53 +333,24 @@ export default {
         "Teknik Elektro",
         "Teknik Informatika dan Komputer"
       ],
-      riwayat_beasiswa: [
-        { text: "Riwayat Beasiswa", value: null },
-        "Belum Pernah",
-        "Pernah atau Sedang Menerima Beasiswa"
-      ],
-      ipk: [
-        { text: "Range IPK", value: null },
-        "3.50 - 4.00",
-        "3.25 - 3.49",
-        "3.00 - 3.24"
-      ],
-      jmlh_organisasi: [
-        { text: "Jumlah Organisasi", value: null },
-        ">= 3",
-        "1 atau 2",
-        "< 1"
-      ],
-      jmlh_sertifikat: [
-        { text: "Jumlah Sertifikat", value: null },
-        ">= 3",
-        "1 atau 2",
-        "< 1"
-      ],
-      penghasilan_ortu: [
-        { text: "Pilih..", value: null },
-        "<= 1.5 juta",
-        "1.6 - 3 juta",
-        "> 3 juta"
-      ],
-      jmlh_tanggungan: [
-        { text: "Pilih..", value: null },
-        ">= 5",
-        "2 atau 4",
-        "1 atau 2"
-      ],
-      status_rumah: [
-        { text: "Pilih..", value: null },
-        "Ngontrak",
-        "Menumpang",
-        "Rumah Sendiri"
-      ],
-      transportasi: [
-        { text: "Pilih..", value: null },
-        "Tidak Punya",
-        "Motor",
-        "Mobil"
-      ],
+      // riwayat_beasiswa: [
+      //   { text: "Riwayat Beasiswa", value: null },
+      //   "Belum Pernah",
+      //   "Pernah atau Sedang Menerima Beasiswa"
+      // ],
+
+      // status_rumah: [
+      //   { text: "Pilih..", value: null },
+      //   "Ngontrak",
+      //   "Menumpang",
+      //   "Rumah Sendiri"
+      // ],
+      // transportasi: [
+      //   { text: "Pilih..", value: null },
+      //   "Tidak Punya",
+      //   "Motor",
+      //   "Mobil"
+      // ],
 
       show: true
     };
