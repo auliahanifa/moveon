@@ -183,44 +183,42 @@
   import axios from "axios";
   // import { parse } from "querystring";
 
-export default {
-  name: "beasiswaa",
-  // props: {
-  //   msg: String
-  // },
-  data() {
-    return {
-      pengumuman: [],
-      galang_beasiswa: {},
-      sisa_hari: "",
-      hari_terpakai: null,
-      jumlah_hari: null
-    };
-  },
-  created() {
-    axios
-      .get(`http://127.0.0.1:8000/api/beasiswa`)
-      .then(response => {
-        // JSON responses are automatically parsed.
-        this.pengumuman = response.data.pengumuman;
-        this.galang_beasiswa = response.data.galang_beasiswa;
-        this.sisa_hari = response.data.sisa_hari;
-        this.hari_terpakai = parseInt(response.data.hari_terpakai);
-        this.jumlah_hari = parseInt(response.data.galang_beasiswa.range_waktu);
-      })
-      .catch(e => {
-        this.errors.push(e);
-      });
+  export default {
+    name: "beasiswaa",
+    // props: {
+    //   msg: String
+    // },
+    data() {
+      return {
+        pengumuman: [],
+        galang_beasiswa: {},
+        sisa_hari: "",
+        hari_terpakai: null,
+        jumlah_hari: null
+      };
+    },
+    created() {
+      axios
+        .get(`http://adminmoveon.test/api/beasiswa`)
+        .then(response => {
+          // JSON responses are automatically parsed.
+          this.pengumuman = response.data.pengumuman;
+          this.galang_beasiswa = response.data.galang_beasiswa;
+          this.sisa_hari = response.data.sisa_hari;
+        })
+        .catch(e => {
+          this.errors.push(e);
+        });
+    }
+    // methods: {
+    //   onSlideStart(slide) {
+    //     this.sliding = true;
+    //   },
+    //   onSlideEnd(slide) {
+    //     this.sliding = false;
+    //   }
+    // }
   }
-  // methods: {
-  //   onSlideStart(slide) {
-  //     this.sliding = true;
-  //   },
-  //   onSlideEnd(slide) {
-  //     this.sliding = false;
-  //   }
-  // }
-}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
