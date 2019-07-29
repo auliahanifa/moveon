@@ -1,51 +1,46 @@
 <template>
   <div class="Galangdana" style="margin-top:100px;">
-      <b-container class="rowing-set" >
-        <b-row>
-          <b-col sm="12" md="6" lg="4" v-for="item in galangdana" :key="item.id">
-            <div class="gambar-galangdana" style="max-width:100%; height:12rem; background-color:pink; padding:4px;">
-                 <img v-bind:src="item.path_photo" alt="foto-galangdana">
-            </div>
-            <b-card
-              v-bind:title="item.judul"
-              tag="article"
-              style="width: 100%;"
-              class="mb-2"
-            >
-              <b-card-text>
-                {{ item.created_at }}
-              </b-card-text>
-              <b-card-text>
-                {{ item.deskripsi }}
-              </b-card-text>
-              <h5> Dana terkumpul sebesar Rp. {{ item.dana_terkini }} dari {{ item.target_dana }}</h5>
-              <p>Diterbitkan oleh {{ item.id_pengguna }}</p>
-              <router-link to="/detailgalangdana">
-               <b-button variant="white" style="background-color:orange; width:100%;">Selengkapnya</b-button>
-              </router-link>
-              
-            </b-card>
-          </b-col>
-        </b-row>
-      </b-container>
-    
+    <b-container class="rowing-set">
+      <b-row>
+        <b-col sm="12" md="6" lg="4" v-for="item in galangdana" :key="item.id">
+          <div
+            class="gambar-galangdana"
+            style="max-width:100%; height:12rem; background-color:pink; padding:4px;"
+          >
+            <img
+              v-bind:src="'http://admin.donasimoveon.com' + item.path_photo"
+              alt="foto-galangdana"
+            />
+          </div>
+          <b-card v-bind:title="item.judul" tag="article" style="width: 100%;" class="mb-2">
+            <b-card-text>{{ item.created_at }}</b-card-text>
+            <b-card-text>{{ item.deskripsi }}</b-card-text>
+            <h5>Dana terkumpul sebesar Rp. {{ item.dana_terkini }} dari {{ item.target_dana }}</h5>
+            <p>Diterbitkan oleh {{ item.id_pengguna }}</p>
+            <router-link to="/detailgalangdana">
+              <b-button variant="white" style="background-color:orange; width:100%;">Selengkapnya</b-button>
+            </router-link>
+          </b-card>
+        </b-col>
+      </b-row>
+    </b-container>
   </div>
 </template>
 
 <script>
-import axios from 'axios';
+import axios from "axios";
 
 export default {
-  name:'Galangdana',
+  name: "Galangdana",
   data() {
     return {
       galangdana: []
     };
   },
-  props:{
+  props: {
     msg: String
   },
-    created() {
+  created() {
     axios
       .get(`http://127.0.0.1:8000/api/galangdana`)
       .then(response => {
@@ -55,11 +50,8 @@ export default {
       .catch(e => {
         this.errors.push(e);
       });
-    } 
-
-
+  }
 };
-  
 </script>
 
 
@@ -87,13 +79,12 @@ table th {
 table td {
   text-align: left;
   padding: 5px;
-  border-right: 2px solid #7D82A8;
+  border-right: 2px solid #7d82a8;
 }
 table td:last-child {
   border-right: none;
 }
 table tbody tr:nth-child(2n) td {
-  background: #D4D8F9;
+  background: #d4d8f9;
 }
-
 </style>

@@ -16,7 +16,7 @@
             style="width: 100%; height: 15rem; border:2 px solid black; 
               background-color: lightblue;"
           >
-            <img v-bind:src="item.path_photo" alt style="width: 100%; height: 5rem; padding:5px;" />
+            <img v-bind:src="'http://admin.donasimoveon.com' + item.path_photo" alt style="width: 100%; height: 5rem; padding:5px;" />
           </div>
           <b-card
             v-bind:title="item.nama_barang"
