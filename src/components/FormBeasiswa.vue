@@ -23,12 +23,14 @@
                 label-for="input-2"
                 class="label"
               >
-                <b-form-select
+                <b-form-radio v-model="selected" name="some-radios" value="Laki-laki">Laki-laki</b-form-radio>
+                <b-form-radio v-model="selected" name="some-radios" value="Perempuan">Perempuan</b-form-radio>
+                <!-- <b-form-select
                   id="input-2"
                   v-model="form.jenis_kelamin"
                   :options="jenis_kelamin"
                   required
-                ></b-form-select>
+                ></b-form-select>-->
               </b-form-group>
             </b-col>
           </b-row>
@@ -66,7 +68,7 @@
                 id="input-group-7"
                 label="Email"
                 label-for="input-7"
-                description="We'll never share your email with anyone else."
+                description="Kami tidak akan menyebarkan email Anda kepada siapa pun"
               >
                 <b-form-input
                   id="input-7"
@@ -112,14 +114,14 @@
                 id="input-group-13"
                 label="Penghasilan Orang Tua (per bulan)"
                 label-for="input-13"
-                class="label"
               >
-                <b-form-select
-                  id="input-13"
+                <b-form-input
+                  id="input-7"
                   v-model="form.penghasilan_ortu"
-                  :options="penghasilan_ortu"
+                  type="number"
                   required
-                ></b-form-select>
+                  placeholder="Ex: 1000000"
+                ></b-form-input>
               </b-form-group>
             </b-col>
             <b-col sm="12" md="6" lg="6">
@@ -129,12 +131,13 @@
                 label-for="input-14"
                 class="label"
               >
-                <b-form-select
+                <b-form-input
                   id="input-14"
                   v-model="form.jmlh_tanggungan"
-                  :options="jmlh_tanggungan"
+                  type="number"
+                  placeholder="Ex: 5"
                   required
-                ></b-form-select>
+                ></b-form-input>
               </b-form-group>
             </b-col>
           </b-row>
@@ -146,6 +149,11 @@
                 label-for="input-15"
                 class="label"
               >
+                <!-- <b-form-group label="Individual radios">
+                <b-form-radio v-model="selected" name="some-radios" value="Ngontrak">Ngontrak</b-form-radio>
+                <b-form-radio v-model="selected" name="some-radios" value="Menumpang">Menumpang</b-form-radio>
+                <b-form-radio v-model="selected" name="some-radios" value="Rumah Sendiri">Rumah Sendiri</b-form-radio>
+                </b-form-group>-->
                 <b-form-select
                   id="input-15"
                   v-model="form.status_rumah"
@@ -193,7 +201,13 @@
             </b-col>
             <b-col sm="12" md="4" lg="4">
               <b-form-group id="input-group-10" label="IPK" label-for="input-10" class="label">
-                <b-form-select id="input-10" v-model="form.ipk" :options="ipk" required></b-form-select>
+                <b-form-input
+                  id="input-10"
+                  v-model="form.ipk"
+                  type="number"
+                  placeholder="Ex: 3.50"
+                  required
+                ></b-form-input>
               </b-form-group>
             </b-col>
             <b-col sm="12" md="4" lg="4">
@@ -203,12 +217,13 @@
                 label-for="input-11"
                 class="label"
               >
-                <b-form-select
+                <b-form-input
                   id="input-11"
                   v-model="form.jmlh_organisasi"
-                  :options="jmlh_organisasi"
+                  type="number"
+                  placeholder="Ex: 5"
                   required
-                ></b-form-select>
+                ></b-form-input>
               </b-form-group>
             </b-col>
           </b-row>
@@ -221,12 +236,13 @@
                 label-for="input-12"
                 class="label"
               >
-                <b-form-select
+                <b-form-input
                   id="input-12"
                   v-model="form.jmlh_sertifikat"
-                  :options="jmlh_sertifikat"
+                  type="number"
+                  placeholder="Ex: 5"
                   required
-                ></b-form-select>
+                ></b-form-input>
               </b-form-group>
             </b-col>
             <b-col sm="12" md="6" lg="4">
