@@ -1,5 +1,5 @@
 <template>
-
+  <script src="script.js"></script>
 
 </template>
 
@@ -10,7 +10,7 @@ import Beranda from '@/components/Beranda.vue'
 export default {
   name: 'home',
   components: {
-    Beranda, HelloWorld
+    Beranda
   }
 }
 </script>

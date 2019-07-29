@@ -49,16 +49,18 @@
                     </b-button>
                   </b-col>
                 </b-row>
+                <p style="font-size:16px;">Target Dana <span style="font-weight:bold;">Rp {{galang_beasiswa.target_dana}}</span></p>
                 <b-progress :value="galang_beasiswa.dana_terkini" :max="galang_beasiswa.target_dana" class="mb-3" variant="warning"
                   style="border-radius:10px;"></b-progress>
                 <div class="row">
                   <div class="col-md-8">
-                    <p style="font-size:14px;"><span style="font-weight:bold; ">Rp {{ galang_beasiswa.dana_terkini }}</span>  terkumpul</p>
+                    <p style="font-size:14px;"><span style="font-weight:bold;">Rp {{ galang_beasiswa.dana_terkini }}</span>  terkumpul</p>
                   </div>
                   <div class="col-md-4">
                     <p style="font-size:14px; text-align: right"><span style="font-weight:bold; ">{{ sisa_hari }}</span> Hari</p>
                   </div>
                 </div>
+                <br>
                 <p style="font-size:16px; font-weight:bold">{{galang_beasiswa.judul}}</p>
                 <b-card-text>{{galang_beasiswa.deskripsi.substring(0,100)}}</b-card-text>
               </b-card>

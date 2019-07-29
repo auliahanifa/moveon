@@ -13,17 +13,26 @@
           <b-form-group id="input-group-1" label="Judul Galang Dana" label-for="input-1">
             <b-form-input
               id="input-1"
-              v-model="form.judul"
+              v-model="judul"
               required
               placeholder="Contoh: Bantu Ibunya Rendi yang Sakit"
             ></b-form-input>
           </b-form-group>
 
-          <b-form-group id="input-group-8" label="Deskripsi Galang Dana" label-for="textarea">
+          <b-form-group id="input-group-2" label="Nama Anda" label-for="input-2">
+            <b-form-input
+              id="input-2"
+              v-model="id_pengguna"
+              required
+              placeholder="Masukkan Id Anda"
+            ></b-form-input>
+          </b-form-group>
+
+          <b-form-group id="input-group-3" label="" label-for="textarea">
             <small>Tuliskan cerita galang dana Anda</small>
             <b-form-textarea
               id="textarea"
-              v-model="form.deskripsi"
+              v-model="deskripsi"
               placeholder="Tuliskan deskripsi galang dana anda"
               rows="3"
               max-rows="6"
@@ -50,7 +59,7 @@
             <b-form-input
               id="input-1"
               type="number"
-              v-model="form.judul"
+              v-model="judul"
               required
               placeholder="Contoh: 1000000"
             ></b-form-input>
@@ -63,7 +72,7 @@
             <b-form-input
               id="input-1"
               type="number"
-              v-model="form.range_waktu"
+              v-model="range_waktu"
               required
               placeholder="Masukkan jumlah hari (contoh: 90)"
             ></b-form-input>
@@ -87,15 +96,9 @@ export default {
   name: "form-galangdana",
   data() {
     return {
-      form: {
-        nama_barang: "",
-        harga_awal: "",
-        deskripsi: "",
-        file: null,
-        range_waktu: "",
-        checked: []
-      },
-
+      judul:'',
+      id_pengguna:'',
+      file:'',
       show: true
     };
   }

@@ -4,7 +4,7 @@
         <b-row><h3>{{ header_text1 }}</h3></b-row>
         <h4>{{ header_text1_a }}</h4>
         <h5>{{ header_text2 }}</h5>
-        <b-button variant="outline" class="btn_app"><router-link to="/donasi_barang">{{ btn_donasibarang }}</router-link></b-button>
+        <router-link to="/donasi_barang"><b-button variant="outline" class="btn_app" >{{ btn_donasibarang }}</b-button></router-link>
         <div class="batasan"></div>
     </b-container>
 
@@ -116,6 +116,7 @@
 </template>
 <script>
 
+
 export default {
     name: 'beranda',
     data() {
@@ -135,7 +136,8 @@ export default {
         dana_target:'',
         nama_fundraiser:'',
         }
-    }
+    },
+    
 }
 </script>
 <style scoped>
