@@ -1,6 +1,12 @@
 <template>
   <div class="beasiswa">
-    <b-img src="@/assets/img/beasiswa3.jpg" slot="img" class="d-block w-100 img-header" width="100%" height="300" />
+    <b-img
+      src="@/assets/img/beasiswa3.jpg"
+      slot="img"
+      class="d-block w-100 img-header"
+      width="100%"
+      height="300"
+    />
     <div class="section-1">
       <b-container>
         <b-row>
@@ -36,12 +42,24 @@
             <center v-if="galang_beasiswa != null">
               <h6>Siap Memberi Bantuan?</h6>
               <p>Ayo berdonasi menggunakan #DonasiMoveOn</p>
-              <b-card :img-src="'http://admin.donasimoveon.com' + galang_beasiswa.path_photo" img-alt="Image" img-top
-                tag="article" style="text-align:left; " class="mb-2 img-card">
+              <b-card
+                :img-src="'http://admin.donasimoveon.com' + galang_beasiswa.path_photo"
+                img-alt="Image"
+                img-top
+                tag="article"
+                style="text-align:left; "
+                class="mb-2 img-card"
+              >
                 <b-row>
                   <b-col lg="6" md="5" sm="12">
-                    <b-img src="@/assets/img/user.png" rounded="circle" width="30"></b-img>
-                    <span style="font-size:10px; padding-left:10px; font-weight:bold">Admin MoveOn</span>
+                    <b-img
+                      :src="'http://admin.donasimoveon.com' + avatar_admin"
+                      rounded="circle"
+                      width="30"
+                    ></b-img>
+                    <span
+                      style="font-size:10px; padding-left:10px; font-weight:bold"
+                    >{{ nama_admin }}</span>
                   </b-col>
                   <b-col lg="6" md="12" sm="12">
                     <b-button href="#" class="btn-orange btn-sm">
@@ -49,18 +67,32 @@
                     </b-button>
                   </b-col>
                 </b-row>
-                <p style="font-size:16px;">Target Dana <span style="font-weight:bold;">Rp {{galang_beasiswa.target_dana}}</span></p>
-                <b-progress :value="galang_beasiswa.dana_terkini" :max="galang_beasiswa.target_dana" class="mb-3" variant="warning"
-                  style="border-radius:10px;"></b-progress>
+                <p style="font-size:16px;">
+                  Target Dana
+                  <span
+                    style="font-weight:bold;"
+                  >{{galang_beasiswa.target_dana | currency}}</span>
+                </p>
+                <b-progress
+                  :value="galang_beasiswa.dana_terkini"
+                  :max="galang_beasiswa.target_dana"
+                  class="mb-3"
+                  variant="warning"
+                  style="border-radius:10px;"
+                ></b-progress>
                 <div class="row">
                   <div class="col-md-8">
-                    <p style="font-size:14px;"><span style="font-weight:bold;">Rp {{ galang_beasiswa.dana_terkini }}</span>  terkumpul</p>
+                    <p style="font-size:14px;">
+                      <span style="font-weight:bold;">{{ galang_beasiswa.dana_terkini | currency }}</span> terkumpul
+                    </p>
                   </div>
                   <div class="col-md-4">
-                    <p style="font-size:14px; text-align: right"><span style="font-weight:bold; ">{{ sisa_hari }}</span> Hari Lagi</p>
+                    <p style="font-size:14px; text-align: right">
+                      <span style="font-weight:bold; ">{{ sisa_hari }}</span> Hari Lagi
+                    </p>
                   </div>
                 </div>
-                <br>
+                <br />
                 <p style="font-size:16px; font-weight:bold">{{galang_beasiswa.judul}}</p>
                 <b-card-text>{{galang_beasiswa.deskripsi.substring(0,100)}}</b-card-text>
               </b-card>
@@ -75,7 +107,9 @@
     <div class="section-2">
       <b-container>
         <center>
-          <h3 style="letter-spacing: 2px; font-weight: bold; margin-bottom:50px">Jadwal Donasi MoveOn</h3>
+          <h3
+            style="letter-spacing: 2px; font-weight: bold; margin-bottom:50px"
+          >Jadwal Donasi MoveOn</h3>
         </center>
         <b-row>
           <b-col sm="12" md="6" lg="6">
@@ -134,15 +168,26 @@
     <div class="section-3">
       <b-container>
         <center>
-          <h3 style="letter-spacing: 2px; font-weight: bold;">Selamat Kepada Penerima Beasiswa Donasi MoveOn</h3>
+          <h3
+            style="letter-spacing: 2px; font-weight: bold;"
+          >Selamat Kepada Penerima Beasiswa Donasi MoveOn</h3>
           <h5 style="margin-bottom:50px">{{pengumuman[0].periode}}</h5>
         </center>
         <b-row>
           <b-col sm="12" md="4" lg="4" v-for="item in pengumuman" v-bind:key="item.id">
             <center>
-              <b-img v-if="item.path_photo === ''" src="@/assets/img/user.png" rounded="circle" width="130"></b-img>
-              <b-img v-else :src="'http://admin.donasimoveon.com' + item.path_photo" rounded="circle" width="130">
-              </b-img>
+              <b-img
+                v-if="item.path_photo === ''"
+                src="@/assets/img/user.png"
+                rounded="circle"
+                width="130"
+              ></b-img>
+              <b-img
+                v-else
+                :src="'http://admin.donasimoveon.com' + item.path_photo"
+                rounded="circle"
+                width="130"
+              ></b-img>
               <div class="box-penerima">
                 <h6>{{item.nama}}</h6>
                 <p style="font-size:14px;">{{item.jurusan}}</p>
@@ -165,7 +210,9 @@
           </b-col>
           <b-col lg="2" md="4" sm="12">
             <router-link to="/daftar_beasiswa">
-              <b-button class="btn-white"><span style="color:#f79317;">DAFTAR</span></b-button>
+              <b-button class="btn-white">
+                <span style="color:#f79317;">DAFTAR</span>
+              </b-button>
             </router-link>
           </b-col>
         </b-row>
@@ -180,45 +227,47 @@
 </template>
 
 <script>
-  import axios from "axios";
-  // import { parse } from "querystring";
+import axios from "axios";
+// import { parse } from "querystring";
 
-  export default {
-    name: "beasiswaa",
-    // props: {
-    //   msg: String
-    // },
-    data() {
-      return {
-        pengumuman: [],
-        galang_beasiswa: {},
-        sisa_hari: "",
-        hari_terpakai: null,
-        jumlah_hari: null
-      };
-    },
-    created() {
-      axios
-        .get(`http://adminmoveon.test/api/beasiswa`)
-        .then(response => {
-          // JSON responses are automatically parsed.
-          this.pengumuman = response.data.pengumuman;
-          this.galang_beasiswa = response.data.galang_beasiswa;
-          this.sisa_hari = response.data.sisa_hari;
-        })
-        .catch(e => {
-          this.errors.push(e);
-        });
-    }
-    // methods: {
-    //   onSlideStart(slide) {
-    //     this.sliding = true;
-    //   },
-    //   onSlideEnd(slide) {
-    //     this.sliding = false;
-    //   }
-    // }
+export default {
+  name: "beasiswaa",
+  // props: {
+  //   msg: String
+  // },
+  data() {
+    return {
+      pengumuman: [],
+      galang_beasiswa: {},
+      sisa_hari: "",
+      avatar_admin: "",
+      nama_admin: ""
+    };
+  },
+  created() {
+    axios
+      .get(`http://127.0.0.1:8000/api/beasiswa`)
+      .then(response => {
+        // JSON responses are automatically parsed.
+        this.pengumuman = response.data.pengumuman;
+        this.galang_beasiswa = response.data.galang_beasiswa;
+        this.sisa_hari = response.data.sisa_hari;
+        this.avatar_admin = response.data.avatar_admin;
+        this.nama_admin = response.data.nama_admin;
+      })
+      .catch(e => {
+        this.errors.push(e);
+      });
   }
+  // methods: {
+  //   onSlideStart(slide) {
+  //     this.sliding = true;
+  //   },
+  //   onSlideEnd(slide) {
+  //     this.sliding = false;
+  //   }
+  // }
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
