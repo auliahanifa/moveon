@@ -52,8 +52,14 @@
               >
                 <b-row>
                   <b-col lg="6" md="5" sm="12">
-                    <b-img src="@/assets/img/user.png" rounded="circle" width="30"></b-img>
-                    <span style="font-size:10px; padding-left:10px; font-weight:bold">Admin MoveOn</span>
+                    <b-img
+                      :src="'http://admin.donasimoveon.com' + avatar_admin"
+                      rounded="circle"
+                      width="30"
+                    ></b-img>
+                    <span
+                      style="font-size:10px; padding-left:10px; font-weight:bold"
+                    >{{ nama_admin }}</span>
                   </b-col>
                   <b-col lg="6" md="12" sm="12">
                     <b-button href="#" class="btn-orange btn-sm">
@@ -231,7 +237,9 @@ export default {
     return {
       pengumuman: [],
       galang_beasiswa: {},
-      sisa_hari: ""
+      sisa_hari: "",
+      avatar_admin: "",
+      nama_admin: ""
     };
   },
   created() {
@@ -242,6 +250,8 @@ export default {
         this.pengumuman = response.data.pengumuman;
         this.galang_beasiswa = response.data.galang_beasiswa;
         this.sisa_hari = response.data.sisa_hari;
+        this.avatar_admin = response.data.avatar_admin;
+        this.nama_admin = response.data.nama_admin;
       })
       .catch(e => {
         this.errors.push(e);
