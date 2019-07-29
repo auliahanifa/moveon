@@ -38,7 +38,7 @@
             </p>
           </b-col>
           <b-col lg="4" md="5" sm="12">
-            <center>
+            <center v-if="galang_beasiswa != null">
               <h6>Siap Memberi Bantuan?</h6>
               <p>Ayo berdonasi menggunakan #DonasiMoveOn</p>
               <b-card
@@ -72,6 +72,9 @@
                 <p style="font-size:15px; font-weight:bold">{{galang_beasiswa.judul}}</p>
                 <b-card-text>{{galang_beasiswa.deskripsi.substring(0,100)}}</b-card-text>
               </b-card>
+            </center>
+            <center v-else>
+              <h6>Saat ini Galang Dana Beasiswa Tidak Tersedia</h6>
             </center>
           </b-col>
         </b-row>
@@ -217,7 +220,7 @@ export default {
   },
   created() {
     axios
-      .get(`http://admin.donasimoveon.com/api/beasiswa`)
+      .get(`http://adminmoveon.test/api/beasiswa`)
       .then(response => {
         // JSON responses are automatically parsed.
         this.pengumuman = response.data.pengumuman;

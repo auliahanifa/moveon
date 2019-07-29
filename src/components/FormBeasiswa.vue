@@ -359,7 +359,7 @@ export default {
     onSubmit() {
       axios
         .post(
-          `http://127.0.0.1:8000/api/pendaftar`,
+          `http://adminmoveon.test/api/pendaftar`,
           {
             nama: this.form.nama,
             email: this.form.email,
@@ -380,7 +380,7 @@ export default {
           },
           {
             headers: {
-              "Content-Type": "application/json"
+              "Content-Type": "multipart/form-data"
             }
           }
         )
