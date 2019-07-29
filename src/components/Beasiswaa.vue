@@ -69,7 +69,9 @@
                 </b-row>
                 <p style="font-size:16px;">
                   Target Dana
-                  <span style="font-weight:bold;">Rp {{galang_beasiswa.target_dana}}</span>
+                  <span
+                    style="font-weight:bold;"
+                  >{{galang_beasiswa.target_dana | currency}}</span>
                 </p>
                 <b-progress
                   :value="galang_beasiswa.dana_terkini"
@@ -81,7 +83,7 @@
                 <div class="row">
                   <div class="col-md-8">
                     <p style="font-size:14px;">
-                      <span style="font-weight:bold;">Rp {{ galang_beasiswa.dana_terkini }}</span> terkumpul
+                      <span style="font-weight:bold;">{{ galang_beasiswa.dana_terkini | currency }}</span> terkumpul
                     </p>
                   </div>
                   <div class="col-md-4">
