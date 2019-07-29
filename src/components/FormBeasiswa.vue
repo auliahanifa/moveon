@@ -46,7 +46,7 @@
             </b-col>
           </b-row>
           <b-row>
-            <b-col sm="6" md="6" lg="6">
+            <b-col sm="12" md="6" lg="6">
               <b-form-group
                 id="input-group-5"
                 label="Nomor Telepon"
@@ -61,7 +61,7 @@
                 ></b-form-input>
               </b-form-group>
             </b-col>
-            <b-col sm="6" md="6" lg="6">
+            <b-col sm="12" md="6" lg="6">
               <b-form-group
                 id="input-group-7"
                 label="Email"
@@ -107,7 +107,7 @@
             </b-col>
           </b-row>
           <b-row>
-            <b-col sm="6" md="6" lg="6">
+            <b-col sm="12" md="6" lg="6">
               <b-form-group
                 id="input-group-13"
                 label="Penghasilan Orang Tua (per bulan)"
@@ -122,7 +122,7 @@
                 ></b-form-select>
               </b-form-group>
             </b-col>
-            <b-col sm="6" md="6" lg="6">
+            <b-col sm="12" md="6" lg="6">
               <b-form-group
                 id="input-group-14"
                 label="Jumlah Tanggungan Orang Tua"
@@ -139,7 +139,7 @@
             </b-col>
           </b-row>
           <b-row>
-            <b-col sm="6" md="6" lg="6">
+            <b-col sm="12" md="6" lg="6">
               <b-form-group
                 id="input-group-15"
                 label="Status Kepemilikan Tempat Tinggal"
@@ -154,7 +154,7 @@
                 ></b-form-select>
               </b-form-group>
             </b-col>
-            <b-col sm="6" md="6" lg="6">
+            <b-col sm="12" md="6" lg="6">
               <b-form-group
                 id="input-group-16"
                 label="Transportasi yang Dimiliki"
@@ -214,7 +214,7 @@
           </b-row>
           <br />
           <b-row>
-            <b-col sm="12" md="4" lg="4">
+            <b-col sm="12" md="6" lg="4">
               <b-form-group
                 id="input-group-12"
                 label="Prestasi Ekstra (Jumlah Sertifikat)"
@@ -229,7 +229,7 @@
                 ></b-form-select>
               </b-form-group>
             </b-col>
-            <b-col sm="12" md="4" lg="4">
+            <b-col sm="12" md="6" lg="4">
               <b-form-group id="input-group-17" class="label" label="Upload Berkas">
                 <b-form-file
                   v-model="file_path"

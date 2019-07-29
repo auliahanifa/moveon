@@ -26,7 +26,8 @@
             <br />
             <h3>
               Apa itu Beasiswa
-              <br /><span style="font-weight:bold;">DONASI </span>
+              <br />
+              <span style="font-weight:bold;">DONASI</span>
               <span style="color:#fb6340; font-weight:bold;">MoveOn</span> ?
             </h3>
             <p class="paragraf">
@@ -46,7 +47,8 @@
                 img-top
                 tag="article"
                 style="text-align:left; "
-                class="mb-2 img-card">
+                class="mb-2 img-card"
+              >
                 <b-row>
                   <b-col lg="6" md="5" sm="12">
                     <b-img src="@/assets/img/user.png" rounded="circle" width="30"></b-img>
@@ -172,14 +174,14 @@
     <div class="section-4">
       <b-container>
         <b-row>
-          <b-col cols="10">
+          <b-col lg="10" md="8" sm="12">
             <p style="color:white; letter-spacing:2pxs">
               Kamu siap menjadi penerima Beasiswa
               <br />
               <span style="font-size:30px; font-weight:bold;">Donasi MoveOn selanjutnya?</span>
             </p>
           </b-col>
-          <b-col cols="2" style="margin-left:-50px">
+          <b-col lg="2" md="4" sm="12">
             <b-button class="btn-white">
               <router-link to="/daftar_beasiswa">DAFTAR</router-link>
             </b-button>
