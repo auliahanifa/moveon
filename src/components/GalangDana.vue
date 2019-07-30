@@ -7,10 +7,14 @@
             class="gambar-galangdana"
             style="max-width:100%; height:12rem; background-color:pink; padding:4px;"
           >
-            <img
+            <b-img
               v-bind:src="'http://admin.donasimoveon.com' + item.path_photo"
               alt="foto-galangdana"
-            />
+              img-top
+              tag="article"
+              style="text-align:left; "
+              class="mb-2 img-card"
+            ></b-img>
           </div>
           <b-card v-bind:title="item.judul" tag="article" style="width: 100%;" class="mb-2">
             <b-card-text>{{ item.created_at }}</b-card-text>
@@ -42,7 +46,7 @@ export default {
   },
   created() {
     axios
-      .get(`admin.donasimoveon.com/api/galangdana`)
+      .get(`http://127.0.0.1:8000/api/galangdana`)
       .then(response => {
         // JSON responses are automatically parsed.
         this.galangdana = response.data.galangdana;
