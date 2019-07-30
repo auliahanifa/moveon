@@ -88,7 +88,7 @@ export default {
         show: true
       }
     },
-    methods: {
+    // methods: {
       // onSubmit(evt) {
       //   evt.preventDefault()
       //   alert(JSON.stringify(this.form))
@@ -108,7 +108,7 @@ export default {
       //   .catch(function (error) {
       //     alert(error);
       //   });
-      },
+
       // onReset(evt) {
       //   evt.preventDefault()
       //   // Reset our form values
@@ -126,7 +126,7 @@ export default {
       e.preventDefault();
       // let currentObj = this;
       // alert(JSON.stringify(this.form))
-      axios.post('/api/pengguna',{
+      axios.post('http://localhost:8000/api/pengguna',{
         nama: this.nama,
         no_hp:this.no_hp,
         no_identitas:this.no_identitas,
@@ -140,8 +140,7 @@ export default {
       //   alert(response);
       // })
      .then(function (response) {
-     this.response;
-     console.log(response);
+        console.log(response);
       });
  
       // .catch(function (error) {
@@ -150,13 +149,9 @@ export default {
       
 
     }
-      // .then(function(response){
-      //    console.log(response.data);
-      //   this.response.data;
-      // })
      
-    }
   }
+}
    
 
 

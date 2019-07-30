@@ -10,11 +10,9 @@
             <b-img
               v-bind:src="'http://admin.donasimoveon.com' + item.path_photo"
               alt="foto-galangdana"
-              img-top
-              tag="article"
-              style="text-align:left; "
-              class="mb-2 img-card"
-            ></b-img>
+              width="230"
+              height="auto"
+            />
           </div>
           <b-card v-bind:title="item.judul" tag="article" style="width: 100%;" class="mb-2">
             <b-card-text>{{ item.created_at }}</b-card-text>
