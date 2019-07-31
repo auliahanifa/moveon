@@ -234,7 +234,7 @@
         evt.preventDefault()
         axios
           .post(
-            `http://adminmoveon.test/api/pendaftar`, {
+            `http://127.0.0.1:8000/api/pendaftar`, {
                 nama: this.form.nama,
                 email: this.form.email,
                 nim: this.form.nim,
