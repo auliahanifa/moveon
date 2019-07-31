@@ -74,8 +74,8 @@
                   >{{galang_beasiswa.target_dana | currency}}</span>
                 </p>
                 <b-progress
-                  :value="galang_beasiswa.dana_terkini"
-                  :max="galang_beasiswa.target_dana"
+                  :value="parseInt(galang_beasiswa.dana_terkini)"
+                  :max="parseInt(galang_beasiswa.target_dana)"
                   class="mb-3"
                   variant="warning"
                   style="border-radius:10px;"
