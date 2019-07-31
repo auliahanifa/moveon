@@ -8,32 +8,33 @@
       <br>-->
     </center>
     <br />
+    <br />
     <b-container>
       <b-row>
-        <b-col lg="3" md="6" sm="12" v-for="item in barang" v-bind:key="item.id">
-          <div
-            class="detail-foto"
-            style="width: 100%; height: 15rem; border:2 px solid black; 
-              background-color: lightblue;"
-          >
-            <img v-bind:src="'http://admin.donasimoveon.com' + item.path_photo" alt style="width: 100%; height: 5rem; padding:5px;" />
-          </div>
+        <b-col lg="3" md="4" sm="6" v-for="item in barang" v-bind:key="item.id">
           <b-card
-            v-bind:title="item.nama_barang"
+            :title="item.nama_barang"
+            :img-src="'http://admin.donasimoveon.com' + item.path_photo"
+            img-alt="Image"
+            img-top
             tag="article"
-            style="max-width: 100%; font-style:bold;"
+            style="max-width: 20rem; font-size:15px"
+            img-height="150px"
             class="mb-2"
           >
-            <b-card-text>
+            <b-card-text class="text">
               Pemilik barang:
               {{ item.id_pengguna }}
               <br />
-              <small>dipublikasikan sejak {{ item.created_date }}</small>
+              <b-card-text style="font-size:10px;">{{ item.created_at }}</b-card-text>
             </b-card-text>
-            <b-card-text>Harga Barang Rp.{{ item.harga_awal }}</b-card-text>
-            <b-card-text>{{ item.deskripsi }}</b-card-text>
+            <b-card-text style="font-size:13px;">
+              Harga Barang
+              <span style="font-weight:bold">{{ item.harga_awal | currency }}</span>
+            </b-card-text>
+            <b-card-text>{{ item.deskripsi.substring(0,20) }}...</b-card-text>
             <router-link to="/detailbarang">
-              <b-button>Ikut Lelang</b-button>
+              <b-button class="btn-orange btn-sm">Ikut Lelang</b-button>
             </router-link>
           </b-card>
         </b-col>
@@ -81,5 +82,8 @@ li {
 }
 a {
   color: #42b983;
+}
+text {
+  font-size: 12px;
 }
 </style>

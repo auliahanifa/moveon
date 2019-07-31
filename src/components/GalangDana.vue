@@ -1,26 +1,38 @@
 <template>
   <div class="Galangdana" style="margin-top:100px;">
+    <center>
+      <h3>Selamat datang di Menu Donasi</h3>
+      <h4>Galang dana yang dapat dibantu dengan Donasi Anda</h4>
+    </center>
+    <br />
+    <br />
     <b-container class="rowing-set">
       <b-row>
         <b-col sm="12" md="6" lg="4" v-for="item in galangdana" :key="item.id">
-          <div
-            class="gambar-galangdana"
-            style="max-width:100%; height:12rem; background-color:pink; padding:4px;"
+          <b-card
+            :title="item.judul.substring(0,20)+'...'"
+            :img-src="'http://admin.donasimoveon.com' + item.path_photo"
+            img-alt="Image"
+            img-top
+            tag="article"
+            style="max-width: 20rem; font-size:12px;"
+            img-height="150px"
+            class="mb-2"
           >
-            <b-img
-              v-bind:src="'http://admin.donasimoveon.com' + item.path_photo"
-              alt="foto-galangdana"
-              width="230"
-              height="auto"
-            />
-          </div>
-          <b-card v-bind:title="item.judul" tag="article" style="width: 100%;" class="mb-2">
-            <b-card-text>{{ item.created_at }}</b-card-text>
-            <b-card-text>{{ item.deskripsi }}</b-card-text>
-            <h5>Dana terkumpul sebesar Rp. {{ item.dana_terkini }} dari {{ item.target_dana }}</h5>
+            <br />
+            <b-card-text style="font-size:10px;">{{ item.created_at }}</b-card-text>
+            <b-card-text style="font-size:13px;">{{ item.deskripsi.substring(0,100) }}...</b-card-text>
+            <p>
+              Dana terkumpul sebesar
+              <span
+                style="font-weight:bold"
+              >{{ item.dana_terkini | currency }}</span>
+              <br />dari
+              <b>{{ item.target_dana | currency}}</b>
+            </p>
             <p>Diterbitkan oleh {{ item.id_pengguna }}</p>
             <router-link to="/detailgalangdana">
-              <b-button variant="white" style="background-color:orange; width:100%;">Selengkapnya</b-button>
+              <b-button class="btn-orange btn-sm">Selengkapnya</b-button>
             </router-link>
           </b-card>
         </b-col>
