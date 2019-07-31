@@ -93,7 +93,6 @@
 
 </template>
 <script>
-import axios from 'axios';
 
 export default {
     name:'Detailgalangdana',
@@ -109,7 +108,7 @@ export default {
     },
     props: {
     msg: String
-  },
+  }
     
     
     
@@ -117,9 +116,8 @@ export default {
 </script>
 <style scoped>
 .bawah{
-    width: 96%;
+width: 96%;
 height: auto;
-
 background: #FCF5C1;
 border-radius: 12px;
 }
