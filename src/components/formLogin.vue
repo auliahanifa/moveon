@@ -44,7 +44,7 @@ export default {
         evt.preventDefault()
         alert(JSON.stringify(this.form))
          axios
-            .get('http://localhost:8000/api/login/')
+            .post('http://localhost:8000/api/login/')
             .then(response => {
             alert(JSON.stringify(response))
               
