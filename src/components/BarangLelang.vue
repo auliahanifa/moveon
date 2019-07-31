@@ -8,6 +8,7 @@
       <br>-->
     </center>
     <br />
+    <br />
     <b-container>
       <b-row>
         <b-col lg="3" md="4" sm="6" v-for="item in barang" v-bind:key="item.id">

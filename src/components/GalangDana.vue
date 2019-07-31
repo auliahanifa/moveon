@@ -1,5 +1,11 @@
 <template>
   <div class="Galangdana" style="margin-top:100px;">
+    <center>
+      <h3>Selamat datang di Menu Donasi</h3>
+      <h4>Galang dana yang dapat dibantu dengan Donasi Anda</h4>
+    </center>
+    <br />
+    <br />
     <b-container class="rowing-set">
       <b-row>
         <b-col sm="12" md="6" lg="4" v-for="item in galangdana" :key="item.id">
