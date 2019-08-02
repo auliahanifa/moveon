@@ -3,7 +3,7 @@
   "short_name": "moveon",
   "start_url": "./index.html",
   "display": "standalone",
-  "background_color": "#fffff",
+  "background_color": "#ffffff",
   "theme_color": "#FF4500",
 
   "icons": [

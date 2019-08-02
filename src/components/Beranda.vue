@@ -140,7 +140,7 @@
       </b-container>
     </center>
 
-    <div style="background-color:#1f4f77; padding-top:10px; padding-bottom:5px">
+    <div style="background-color:#414040; padding-top:10px; padding-bottom:5px">
       <center>
         <p style="color:white; font-size:12px">Copyright © Moveon Team 2019</p>
       </center>
