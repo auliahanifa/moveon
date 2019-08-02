@@ -17,28 +17,9 @@
               </b-form-group>
             </b-col>
             <b-col sm="6" md="4" lg="4">
-              <b-form-group
-                id="input-group-2"
-                label="Jenis Kelamin"
-                label-for="input-2"
-                class="label"
-              >
-                <b-form-radio
-                  v-model="form.jenis_kelamin"
-                  name="jenis-kelamin"
-                  value="Laki-laki"
-                >Laki-laki</b-form-radio>
-                <b-form-radio
-                  v-model="form.jenis_kelamin"
-                  name="jenis-kelamin"
-                  value="Perempuan"
-                >Perempuan</b-form-radio>
-                <!-- <b-form-select
-                  id="input-2"
-                  v-model="form.jenis_kelamin"
-                  :options="jenis_kelamin"
-                  required
-                ></b-form-select>-->
+              <b-form-group label="Jenis Kelamin">
+                <b-form-radio v-model="form.jenis_kelamin" name="jenis-kelamin" value="Laki-laki">Laki-laki</b-form-radio>
+                <b-form-radio v-model="form.jenis_kelamin" name="jenis-kelamin" value="Perempuan">Perempuan</b-form-radio>
               </b-form-group>
             </b-col>
           </b-row>
@@ -319,6 +300,7 @@
 </template>
 <script>
 import axios from "axios";
+
 export default {
   name: "form_beasiswa",
   data() {
@@ -368,9 +350,9 @@ export default {
       evt.preventDefault();
       axios
         .post(
-          `http://adminmoveon.test/api/pendaftar`,
+          `http://admin.donasimoveon.com/api/pendaftar`,
           {
-            nama: this.form.nama,
+            nama: form.name,
             email: this.form.email,
             nim: this.form.nim,
             jurusan: this.form.jurusan,
@@ -387,11 +369,6 @@ export default {
             transportasi: this.form.transportasi,
             file_path: this.form.file_path,
             image: this.form.image
-          },
-          {
-            headers: {
-              "Content-Type": "multipart/form-data"
-            }
           }
         )
         .then(response => {
