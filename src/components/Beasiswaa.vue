@@ -104,7 +104,44 @@
         </b-row>
       </b-container>
     </div>
-    <div class="section-syarat"></div>
+    <div class="section-syarat">
+      <b-container>
+        <b-row>
+          <b-col md="6" lg="6" sm="12">
+            <b-img src="@/assets/img/Group.png" fluid></b-img>
+          </b-col>
+          <b-col md="6" lg="6" sm="12">
+            <center>
+              <h4
+                style="letter-spacing: 2px; font-weight: bold; "
+              >Syarat Pendaftaran Beasiswa Donasi MoveOn</h4>
+              <div class="garis-orange"></div>
+              <br />
+            </center>
+
+            <b-col>
+              <ul style="list-style-type: none;">
+                <li>
+                  <font-awesome-icon icon="check-square"></font-awesome-icon>Mahasiswa aktif Politknik Negeri Jakarta
+                </li>
+                <li>
+                  <font-awesome-icon icon="check-square"></font-awesome-icon>Minimal semester 2
+                </li>
+                <li>
+                  <font-awesome-icon icon="check-square"></font-awesome-icon>Minimal ipk 3.00
+                </li>
+                <li>
+                  <font-awesome-icon icon="check-square"></font-awesome-icon>Scan KTM, marksheet, kartu keluarga, sertifikat organisasi, dan sertifikat lomba
+                </li>
+                <li>
+                  <font-awesome-icon icon="check-square"></font-awesome-icon>Berkas dijadikan satu dan diupload dalam bentuk file pdf
+                </li>
+              </ul>
+            </b-col>
+          </b-col>
+        </b-row>
+      </b-container>
+    </div>
     <div class="section-2">
       <b-container>
         <center>

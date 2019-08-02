@@ -144,10 +144,17 @@
     font-weight: bold;
 }
 
-.section-2 {
+.section-syarat {
     padding-top: 100px;
     padding-bottom: 50px;
     background-color: #eeeeee;
+
+}
+
+.section-2 {
+    padding-top: 100px;
+    padding-bottom: 50px;
+    background-color: white;
 }
 
 .garis-orange {
@@ -159,7 +166,7 @@
 .section-3 {
     padding-top: 100px;
     padding-bottom: 50px;
-    background-color: #ffffff;
+    background-color: #eeeeee;
 }
 
 .box-penerima {
