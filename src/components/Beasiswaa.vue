@@ -246,7 +246,7 @@ export default {
   },
   created() {
     axios
-      .get(`http://admin.donasimoveon.com/api/beasiswa`)
+      .get(`https://admin.donasimoveon.com/api/beasiswa`)
       .then(response => {
         // JSON responses are automatically parsed.
         this.pengumuman = response.data.pengumuman;
