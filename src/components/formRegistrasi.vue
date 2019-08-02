@@ -49,13 +49,7 @@
 
                 <!-- //sebelumnya form select -->
                 <b-form-group id="input-group-4" label-for="input-4">
-                  <b-form-input
-                    id="input-4"
-                    v-model="jenis_identitas"
-                    type="text"
-                    required
-                    placeholder="jenis kartu identitas"
-                  ></b-form-input>
+                  <b-form-select id="input-4" v-model="jenis_identitas" :options="cards" required></b-form-select>
                 </b-form-group>
 
                 <b-form-group id="input-group-5" label-for="input-5">
@@ -69,12 +63,7 @@
 
                 <!-- //sebelumnya form select -->
                 <b-form-group id="input-group-6" label-for="input-6">
-                  <b-form-input
-                    id="input-4"
-                    v-model="jenis_kelamin"
-                    required
-                    placeholder="jenis kelamin"
-                  ></b-form-input>
+                  <b-form-select id="input-4" v-model="jenis_kelamin" :options="genders" required></b-form-select>
                 </b-form-group>
 
                 <b-form-group id="input-group-7" label-for="input-7">
@@ -134,8 +123,8 @@ export default {
       jenis_identitas: "",
       jenis_kelamin: "",
       alamat: "",
-      // cards: ['KTP', 'Kartu Pelajar'],
-      // genders: ['Laki-laki', 'Perempuan'],
+      cards: ["KTP", "Kartu Pelajar"],
+      genders: ["Laki-laki", "Perempuan"],
       show: true
     };
   },
