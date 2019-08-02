@@ -94,7 +94,7 @@
                 </div>
                 <br />
                 <p style="font-size:16px; font-weight:bold">{{galang_beasiswa.judul}}</p>
-                <b-card-text>{{galang_beasiswa.deskripsi.substring(0,100)}}</b-card-text>
+                <b-card-text>{{galang_beasiswa.deskripsi | subStr}}</b-card-text>
               </b-card>
             </center>
             <center v-else>
@@ -104,6 +104,7 @@
         </b-row>
       </b-container>
     </div>
+    <div class="section-syarat"></div>
     <div class="section-2">
       <b-container>
         <center>
@@ -246,7 +247,7 @@ export default {
   },
   created() {
     axios
-      .get(`http://admin.donasimoveon.com/api/beasiswa`)
+      .get(`http://127.0.0.1:8000/api/beasiswa`)
       .then(response => {
         // JSON responses are automatically parsed.
         this.pengumuman = response.data.pengumuman;
@@ -258,7 +259,13 @@ export default {
       .catch(e => {
         this.errors.push(e);
       });
+  },
+  filters: {
+    subStr: function(string) {
+      return string.substring(0, 100) + "...";
+    }
   }
+
   // methods: {
   //   onSlideStart(slide) {
   //     this.sliding = true;
