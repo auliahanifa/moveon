@@ -74,8 +74,8 @@
                   >{{galang_beasiswa.target_dana | currency}}</span>
                 </p>
                 <b-progress
-                  :value="galang_beasiswa.dana_terkini"
-                  :max="galang_beasiswa.target_dana"
+                  :value="parseInt(galang_beasiswa.dana_terkini)"
+                  :max="parseInt(galang_beasiswa.target_dana)"
                   class="mb-3"
                   variant="warning"
                   style="border-radius:10px;"
@@ -94,12 +94,50 @@
                 </div>
                 <br />
                 <p style="font-size:16px; font-weight:bold">{{galang_beasiswa.judul}}</p>
-                <b-card-text>{{galang_beasiswa.deskripsi.substring(0,100)}}</b-card-text>
+                <b-card-text>{{galang_beasiswa.deskripsi | subStr}}</b-card-text>
               </b-card>
             </center>
             <center v-else>
               <h6>Saat ini Galang Dana Beasiswa Tidak Tersedia</h6>
             </center>
+          </b-col>
+        </b-row>
+      </b-container>
+    </div>
+    <div class="section-syarat">
+      <b-container>
+        <b-row>
+          <b-col md="6" lg="6" sm="12">
+            <b-img src="@/assets/img/Group.png" fluid></b-img>
+          </b-col>
+          <b-col md="6" lg="6" sm="12">
+            <center>
+              <h4
+                style="letter-spacing: 2px; font-weight: bold; "
+              >Syarat Pendaftaran Beasiswa Donasi MoveOn</h4>
+              <div class="garis-orange"></div>
+              <br />
+            </center>
+
+            <b-col>
+              <ul style="list-style-type: none;">
+                <li>
+                  <font-awesome-icon icon="check-square"></font-awesome-icon>Mahasiswa aktif Politknik Negeri Jakarta
+                </li>
+                <li>
+                  <font-awesome-icon icon="check-square"></font-awesome-icon>Minimal semester 2
+                </li>
+                <li>
+                  <font-awesome-icon icon="check-square"></font-awesome-icon>Minimal ipk 3.00
+                </li>
+                <li>
+                  <font-awesome-icon icon="check-square"></font-awesome-icon>Scan KTM, marksheet, kartu keluarga, sertifikat organisasi, dan sertifikat lomba
+                </li>
+                <li>
+                  <font-awesome-icon icon="check-square"></font-awesome-icon>Berkas dijadikan satu dan diupload dalam bentuk file pdf
+                </li>
+              </ul>
+            </b-col>
           </b-col>
         </b-row>
       </b-container>
@@ -258,7 +296,13 @@ export default {
       .catch(e => {
         this.errors.push(e);
       });
+  },
+  filters: {
+    subStr: function(string) {
+      return string.substring(0, 100) + "...";
+    }
   }
+
   // methods: {
   //   onSlideStart(slide) {
   //     this.sliding = true;

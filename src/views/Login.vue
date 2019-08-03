@@ -1,14 +1,11 @@
-<template>
-    
-</template>
+<template></template>
 <script>
 export default {
-name: 'login',
-components: {
+  name: "login",
+  components: {
     formLogin
-}    
-}
+  }
+};
 </script>
 <style scoped>
-
 </style>

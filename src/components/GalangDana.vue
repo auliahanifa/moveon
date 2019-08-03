@@ -38,6 +38,11 @@
         </b-col>
       </b-row>
     </b-container>
+    <div class="footer">
+      <center>
+        <router-link to="/">Copyright © Donasi MoveOn 2019</router-link>
+      </center>
+    </div>
   </div>
 </template>
 
