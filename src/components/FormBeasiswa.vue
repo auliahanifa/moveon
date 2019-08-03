@@ -5,6 +5,15 @@
         <h3 style>Form Beasiswa Donasi MoveOn</h3>
         <div class="garis-orange"></div>
       </center>
+      <b-alert v-if="status == 1" v-model="showDismissibleAlert" variant="success" dismissible>
+        Berhasil! Data tersimpan
+      </b-alert>
+      <b-alert v-else-if="status == 2" v-model="showDismissibleAlert" variant="danger" dismissible>
+        NIM Sudah Terdaftar!
+      </b-alert>
+      <b-alert v-else v-model="showDismissibleAlert" variant="danger" dismissible>
+        Gagal
+      </b-alert>
       <div class="form">
         <b-form @submit="onSubmit" v-if="show" enctype="multipart/form-data">
           <h4 class="kategori-data">Data Diri</h4>
@@ -17,7 +26,7 @@
               </b-form-group>
             </b-col>
             <b-col sm="6" md="4" lg="4">
-              <b-form-group label="Jenis Kelamin">
+              <b-form-group label="Jenis Kelamin" required>
                 <b-form-radio v-model="jenis_kelamin" name="jenis-kelamin" value="Laki-laki">Laki-laki</b-form-radio>
                 <b-form-radio v-model="jenis_kelamin" name="jenis-kelamin" value="Perempuan">Perempuan</b-form-radio>
               </b-form-group>
@@ -86,30 +95,18 @@
           <b-row>
             <b-col sm="12" md="6" lg="6">
               <b-form-group id="input-group-15" label="Status Kepemilikan Tempat Tinggal :" label-for="input-15"
-                class="label">
+                class="label" required>
                 <b-form-radio v-model="status_rumah" name="status_rumah" value="Ngontrak">Ngontrak</b-form-radio>
                 <b-form-radio v-model="status_rumah" name="status_rumah" value="Menumpang">Menumpang</b-form-radio>
                 <b-form-radio v-model="status_rumah" name="status_rumah" value="Rumah Sendiri">Rumah Sendiri
                 </b-form-radio>
-                <!-- <b-form-select
-                  id="input-15"
-                  v-model="status_rumah"
-                  :options="status_rumah"
-                  required
-                ></b-form-select>-->
               </b-form-group>
             </b-col>
             <b-col sm="12" md="6" lg="6">
-              <b-form-group id="input-group-16" label="Transportasi yang Dimiliki :" label-for="input-16" class="label">
+              <b-form-group id="input-group-16" label="Transportasi yang Dimiliki :" label-for="input-16" class="label" required>
                 <b-form-radio v-model="transportasi" name="transportasi" value="Tidak punya">Tidak Punya</b-form-radio>
                 <b-form-radio v-model="transportasi" name="transportasi" value="Sepeda Motor">Motor</b-form-radio>
                 <b-form-radio v-model="transportasi" name="transportasi" value="Mobil">Mobil</b-form-radio>
-                <!-- <b-form-select
-                  id="input-16"
-                  v-model="transportasi"
-                  :options="transportasi"
-                  required
-                ></b-form-select>-->
               </b-form-group>
             </b-col>
           </b-row>
@@ -120,17 +117,11 @@
           <br />
           <b-row>
             <b-col sm="12" md="6" lg="6">
-              <b-form-group id="input-group-9" label="Riwayat Beasiswa :" label-for="input-9" class="label">
+              <b-form-group id="input-group-9" label="Riwayat Beasiswa :" label-for="input-9" class="label" required>
                 <b-form-radio v-model="riwayat_beasiswa" name="riwayat_beasiswa" value="Belum pernah menerima">Belum
                   Pernah Menerima</b-form-radio>
                 <b-form-radio v-model="riwayat_beasiswa" name="riwayat_beasiswa" value="Pernah/sedang menerima">Pernah /
                   Sedang Menerima</b-form-radio>
-                <!-- <b-form-select
-                  id="input-9"
-                  v-model="riwayat_beasiswa"
-                  :options="riwayat_beasiswa"
-                  required
-                ></b-form-select>-->
               </b-form-group>
             </b-col>
             <b-col sm="12" md="6" lg="6">
@@ -156,6 +147,9 @@
               </b-form-group>
             </b-col>
             <b-col sm="12" md="6" lg="4">
+              <b-alert v-if="status == 3" v-model="showDismissibleAlert" variant="danger" dismissible>
+                Format file harus pdf!
+              </b-alert>
               <b-form-group id="input-group-17" class="label" label="Upload Berkas">
                 <b-form-file v-model="file_path" :state="Boolean(file_path)" placeholder="Pilih file..."
                   drop-placeholder="Drop file here..."></b-form-file>
@@ -167,7 +161,6 @@
           </b-row>
           <br />
           <b-button type="submit" class="btn-orange">Kirim</b-button>
-          <!-- <b-button type="reset" variant="danger">Reset</b-button> -->
         </b-form>
       </div>
     </b-container>
@@ -188,6 +181,9 @@
     },
     data() {
       return {
+        showDismissibleAlert: false,
+        status: 0,
+        message: "",
         errors: [],
         email: "",
         nama: "",
@@ -228,7 +224,7 @@
       },
       onSubmit(evt) {
         evt.preventDefault();
-        
+
         let formData = new FormData()
         formData.append('nama', this.nama)
         formData.append('email', this.email)
@@ -258,6 +254,10 @@
           .post(`http://adminmoveon.test/api/pendaftar`, formData, config)
           .then(response => {
             this.data = response.data;
+            this.message = response.data.message;
+            this.status = parseInt(response.data.status);
+            this.showDismissibleAlert = true;
+            window.open("", '_self');
           })
           .catch(e => {
             this.errors.push(e);
