@@ -21,6 +21,7 @@
     "vue": "^2.6.10",
     "vue-axios": "^2.1.4",
     "vue-currency-filter": "^3.4.2",
+    "vue-numeric": "^2.3.0",
     "vue-router": "^3.0.3"
   },
   "devDependencies": {

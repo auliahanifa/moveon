@@ -22,11 +22,13 @@
                   v-model="jenis_kelamin"
                   name="jenis-kelamin"
                   value="Laki-laki"
+                  required
                 >Laki-laki</b-form-radio>
                 <b-form-radio
                   v-model="jenis_kelamin"
                   name="jenis-kelamin"
                   value="Perempuan"
+                  required
                 >Perempuan</b-form-radio>
               </b-form-group>
             </b-col>
@@ -42,6 +44,7 @@
                   placeholder="NIM"
                   :maxlength="maxnim"
                   type="number"
+                  min="0"
                 ></b-form-input>
               </b-form-group>
             </b-col>
@@ -66,6 +69,7 @@
                   required
                   placeholder="Nomor Telepon"
                   type="number"
+                  min="0"
                 ></b-form-input>
               </b-form-group>
             </b-col>
@@ -102,7 +106,7 @@
           <b-row>
             <b-col sm="12" md="12" lg="12">
               <b-form-group id="input-group-18" label="Upload Foto Diri" class="label">
-                <b-button @click="$refs.fileInput.click()" class="btn-blue">Pilih Foto</b-button>
+                <b-button @click="$refs.fileInput.click()" class="btn-blue" required>Pilih Foto</b-button>
                 <input
                   style="display: none"
                   ref="fileInput"
@@ -121,13 +125,19 @@
                 label="Penghasilan Orang Tua (per bulan)"
                 label-for="input-13"
               >
-                <b-form-input
+                <vue-numeric
+                  currency="Rp"
+                  separator=","
+                  v-model="penghasilan_ortu"
+                  placeholder="Ex: 1000000"
+                ></vue-numeric>
+                <!-- <b-form-input
                   id="input-7"
                   v-model="penghasilan_ortu"
-                  type="number"
+                  type="number | currency"
                   required
                   placeholder="Ex: 1000000"
-                ></b-form-input>
+                ></b-form-input>-->
               </b-form-group>
             </b-col>
             <b-col sm="12" md="6" lg="6">
@@ -141,6 +151,7 @@
                   id="input-14"
                   v-model="jmlh_tanggungan"
                   type="number"
+                  min="0"
                   placeholder="Ex: 5"
                   required
                 ></b-form-input>
@@ -155,12 +166,23 @@
                 label-for="input-15"
                 class="label"
               >
-                <b-form-radio v-model="status_rumah" name="status_rumah" value="Ngontrak">Ngontrak</b-form-radio>
-                <b-form-radio v-model="status_rumah" name="status_rumah" value="Menumpang">Menumpang</b-form-radio>
+                <b-form-radio
+                  v-model="status_rumah"
+                  name="status_rumah"
+                  value="Ngontrak"
+                  required
+                >Ngontrak</b-form-radio>
+                <b-form-radio
+                  v-model="status_rumah"
+                  name="status_rumah"
+                  value="Menumpang"
+                  required
+                >Menumpang</b-form-radio>
                 <b-form-radio
                   v-model="status_rumah"
                   name="status_rumah"
                   value="Rumah Sendiri"
+                  required
                 >Rumah Sendiri</b-form-radio>
                 <!-- <b-form-select
                   id="input-15"
@@ -181,9 +203,20 @@
                   v-model="transportasi"
                   name="transportasi"
                   value="Tidak punya"
+                  required
                 >Tidak Punya</b-form-radio>
-                <b-form-radio v-model="transportasi" name="transportasi" value="Sepeda Motor">Motor</b-form-radio>
-                <b-form-radio v-model="transportasi" name="transportasi" value="Mobil">Mobil</b-form-radio>
+                <b-form-radio
+                  v-model="transportasi"
+                  name="transportasi"
+                  value="Sepeda Motor"
+                  required
+                >Motor</b-form-radio>
+                <b-form-radio
+                  v-model="transportasi"
+                  name="transportasi"
+                  value="Mobil"
+                  required
+                >Mobil</b-form-radio>
                 <!-- <b-form-select
                   id="input-16"
                   v-model="transportasi"
@@ -210,6 +243,7 @@
                   v-model="riwayat_beasiswa"
                   name="riwayat_beasiswa"
                   value="Belum pernah menerima"
+                  required
                 >
                   Belum
                   Pernah Menerima
@@ -218,6 +252,7 @@
                   v-model="riwayat_beasiswa"
                   name="riwayat_beasiswa"
                   value="Pernah/sedang menerima"
+                  required
                 >
                   Pernah /
                   Sedang Menerima
@@ -236,6 +271,7 @@
                   id="input-10"
                   v-model="ipk"
                   type="number"
+                  min="0"
                   placeholder="Ex: 3.50"
                   step="0.01"
                   required
@@ -256,6 +292,7 @@
                   id="input-11"
                   v-model="jmlh_organisasi"
                   type="number"
+                  min="0"
                   placeholder="Ex: 5"
                   required
                 ></b-form-input>
@@ -272,6 +309,7 @@
                   id="input-12"
                   v-model="jmlh_sertifikat"
                   type="number"
+                  min="0"
                   placeholder="Ex: 5"
                   required
                 ></b-form-input>
@@ -284,6 +322,7 @@
                   :state="Boolean(file_path)"
                   placeholder="Pilih file..."
                   drop-placeholder="Drop file here..."
+                  required
                 ></b-form-file>
                 <div class="mt-3">
                   <small>*file pdf, max 2 MB</small>
@@ -306,9 +345,13 @@
 </template>
 <script>
 import axios from "axios";
+import VueNumeric from "vue-numeric";
 
 export default {
   name: "form_beasiswa",
+  components: {
+    VueNumeric
+  },
   mounted() {
     console.log("Component mounted.");
   },
