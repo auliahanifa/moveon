@@ -5,17 +5,6 @@
         <h3 style>Form Beasiswa Donasi MoveOn</h3>
         <div class="garis-orange"></div>
       </center>
-<<<<<<< HEAD
-      <b-alert v-if="status == 1" v-model="showDismissibleAlert" variant="success" dismissible>
-        Berhasil! Data tersimpan
-      </b-alert>
-      <b-alert v-else-if="status == 2" v-model="showDismissibleAlert" variant="danger" dismissible>
-        NIM sudah terdaftar sebagai penerima beasiswa Donasi MoveOn!
-      </b-alert>
-      <b-alert v-else v-model="showDismissibleAlert" variant="danger" dismissible>
-        Gagal
-      </b-alert>
-=======
       <b-alert
         v-if="status == 1"
         v-model="showDismissibleAlert"
@@ -27,9 +16,8 @@
         v-model="showDismissibleAlert"
         variant="danger"
         dismissible
-      >NIM Sudah Terdaftar!</b-alert>
+      >NIM sudah terdaftar sebagai penerima beasiswa Donasi MoveOn!</b-alert>
       <b-alert v-else v-model="showDismissibleAlert" variant="danger" dismissible>Gagal</b-alert>
->>>>>>> 807f473e53878b7483877a48c0406d9668471fcd
       <div class="form">
         <b-form @submit="onSubmit" v-if="show" enctype="multipart/form-data">
           <h4 class="kategori-data">Data Diri</h4>
@@ -436,50 +424,6 @@ export default {
       formData.append("file_path", this.file_path);
       formData.append("image", this.image);
 
-<<<<<<< HEAD
-        let formData = new FormData()
-        formData.append('nama', this.nama)
-        formData.append('email', this.email)
-        formData.append('nim', this.nim)
-        formData.append('jurusan', this.jurusan)
-        formData.append('no_hp', this.no_hp)
-        formData.append('alamat', this.alamat)
-        formData.append('jenis_kelamin', this.jenis_kelamin)
-        formData.append('riwayat_beasiswa', this.riwayat_beasiswa)
-        formData.append('ipk', this.ipk)
-        formData.append('jmlh_organisasi', this.jmlh_organisasi)
-        formData.append('jmlh_sertifikat', this.jmlh_sertifikat)
-        formData.append('penghasilan_ortu', this.penghasilan_ortu)
-        formData.append('jmlh_tanggungan', this.jmlh_tanggungan)
-        formData.append('status_rumah', this.status_rumah)
-        formData.append('transportasi', this.transportasi)
-        formData.append('file_path', this.file_path)
-        formData.append('image', this.image)
-        
-        const config = {
-          headers: {
-            "content-type": "multipart/form-data"
-          }
-        };
-
-        axios
-          .post(`http://adminmoveon.test/api/pendaftar`, formData, config)
-          .then(response => {
-            this.data = response.data;
-            this.message = response.data.message;
-            this.status = parseInt(response.data.status);
-            this.showDismissibleAlert = true;
-            if (this.status == 1) {
-              window.open("/#/beasiswa", '_self');
-            } else {
-              window.open("", '_self');
-            }
-          })
-          .catch(e => {
-            this.errors.push(e);
-          });
-      }
-=======
       const config = {
         headers: {
           "content-type": "multipart/form-data"
@@ -497,7 +441,6 @@ export default {
         .catch(e => {
           this.errors.push(e);
         });
->>>>>>> 807f473e53878b7483877a48c0406d9668471fcd
     }
   }
 };
