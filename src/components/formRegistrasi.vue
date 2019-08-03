@@ -15,53 +15,6 @@
 
           <div class="form-section">
             <!-- <h1>ini isinya form Login</h1> -->
-<<<<<<< HEAD
-        <center>
-          <b-form @submit="onSubmit" v-if="show">
-            
-          <b-form-group id="input-group-1" label-for="input-1">
-             <b-form-input id="input-1" v-model="nama" type="name" required placeholder="masukkan nama anda"></b-form-input>
-          </b-form-group>
-
-          <b-form-group id="input-group-2" label-for="input-2">
-             <b-form-input id="input-2" v-model="no_hp" type="tel" required placeholder="nomor telepon"></b-form-input>
-          </b-form-group>
-
-          <b-form-group id="input-group-3" label-for="input-3">
-             <b-form-input id="input-3" v-model="email" type="email" required placeholder="masukkan email anda"></b-form-input>
-          </b-form-group>
-          
-          <!-- //sebelumnya form select -->
-          <b-form-group id="input-group-4" label-for="input-4">
-             <b-form-input id="input-4" v-model="jenis_identitas" type="text" required placeholder="jenis kartu identitas"></b-form-input>
-          </b-form-group>
-
-          <b-form-group id="input-group-5" label-for="input-5">
-             <b-form-input id="input-5" v-model="no_identitas"  required placeholder="isi nomor identitas sesuai kartu yang dipilih"></b-form-input>
-          </b-form-group>
-          
-          <!-- //sebelumnya form select -->
-          <b-form-group id="input-group-6" label-for="input-6">
-             <b-form-input  id="input-4" v-model="jenis_kelamin" required placeholder="jenis kelamin"></b-form-input>
-          </b-form-group>
-
-          <b-form-group id="input-group-7" label-for="input-7">
-             <b-textarea id="input-5" v-model="alamat" type="textarea" required placeholder="Masukkan alamat anda"></b-textarea>
-          </b-form-group>
-            
-          <b-form-group id="input-group-8" label-for="input-8">
-             <b-form-input id="input-6" v-model="password" type="password" required placeholder="kata sandi"></b-form-input>
-          </b-form-group>
-
-          <b-button type="submit" >Buat akun</b-button>
-          <br>
-          <p class="masuk">Sudah punya akun ? <router-link to="/login">Masuk disini.</router-link></p>
-          <!-- <b-button type="reset" variant="danger">Reset</b-button> -->
-          </b-form>
-          </center>  
-        </div>
-      </b-col>
-=======
             <center>
               <b-form @submit="onSubmit" v-if="show">
                 <b-form-group id="input-group-1" label-for="input-1">
@@ -144,7 +97,6 @@
             </center>
           </div>
         </b-col>
->>>>>>> 347424e708a377e92ad7326eca65ff44df3c4bdc
       </b-row>
     </b-container>
     <div class="footer">
@@ -157,50 +109,6 @@
 <script>
 import axios from "axios";
 export default {
-<<<<<<< HEAD
-   mounted(){
-      console.log('component mounted')
-    },
-    name:'formregis',
-    data() {
-      return {
-        nama:'',
-        no_hp:'',
-        no_identitas:'',
-        email: '',
-        password: '',
-        jenis_identitas: '',
-        jenis_kelamin: '',
-        alamat: '',
-        // cards: ['KTP', 'Kartu Pelajar'],
-        // genders: ['Laki-laki', 'Perempuan'],
-        show: true
-      }
-    },
-    methods:{
-    onSubmit(e){
-      e.preventDefault();
-      // let currentObj = this;
-      // alert(JSON.stringify(this.form))
-      axios.post('http://localhost:8000/api/pengguna',{
-        nama: this.nama,
-        no_hp:this.no_hp,
-        no_identitas:this.no_identitas,
-        email: this.email,
-        password: this.password,
-        jenis_identitas: this.jenis_identitas,
-        jenis_kelamin: this.jenis_kelamin,
-        alamat: this.alamat
-      })
-      // .then(function (response) {
-      //   alert(response);
-      // })
-     .then(response => {
-            // alert(JSON.stringify(response))
-            window.open("/#/login", "_top");
-            })
- 
-=======
   mounted() {
     console.log("component mounted");
   },
@@ -276,7 +184,6 @@ export default {
           console.log(response);
         });
 
->>>>>>> 347424e708a377e92ad7326eca65ff44df3c4bdc
       // .catch(function (error) {
       //   alert(error);
       // });

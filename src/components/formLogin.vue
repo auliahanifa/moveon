@@ -8,15 +8,6 @@
       <!-- <h1>ini isinya form Login</h1> -->
       <b-form @submit="onSubmit" v-if="show">
         <center>
-<<<<<<< HEAD
-        <b-form-group id="input-group-1" label-for="input-1">
-        <b-form-input id="input-1" v-model="email" type="email" required placeholder="Masukkan email anda"></b-form-input>
-        </b-form-group>
-
-        <b-form-group id="input-group-2" label-for="input-2">
-            <b-form-input id="input-2" v-model="password" required placeholder="Kata sandi"></b-form-input>
-        </b-form-group>
-=======
           <b-form-group id="input-group-1" label-for="input-1">
             <b-form-input
               id="input-1"
@@ -30,7 +21,6 @@
           <b-form-group id="input-group-2" label-for="input-2">
             <b-form-input id="input-2" v-model="form.password" required placeholder="Kata sandi"></b-form-input>
           </b-form-group>
->>>>>>> 347424e708a377e92ad7326eca65ff44df3c4bdc
 
           <b-button type="submit">Masuk</b-button>
           <br />
@@ -47,40 +37,6 @@
 <script>
 import axios from "axios";
 export default {
-<<<<<<< HEAD
-    mounted(){
-      console.log('component mounted')
-    },
-    name: 'formlogin',
-    data() {
-      return {
-        email:"",
-        password:"",
-        show: true
-      }
-    },
-    methods: {
-      onSubmit(evt) {
-        evt.preventDefault()
-        // alert(JSON.stringify(this.email))
-         axios
-            .post('http://localhost:8000/api/login', {
-              email: this.email,
-              password: this.password
-            })
-            .then(response => {
-            // alert(JSON.stringify(response))
-            window.open("/", "_top");
-              
-            })
-            // .catch(error => {
-            //   alert(error);
-            //   this.errored = true
-            // })
-            // .finally(() => this.loading = false)
-
-      }
-=======
   name: "formlogin",
   data() {
     return {
@@ -111,7 +67,6 @@ export default {
       this.$nextTick(() => {
         this.show = true;
       });
->>>>>>> 347424e708a377e92ad7326eca65ff44df3c4bdc
     }
   }
 };
