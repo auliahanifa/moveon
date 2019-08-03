@@ -49,8 +49,8 @@
                 </b-form-group>
 
                 <b-form-group label="Pilih Jenis identitas anda">
-                  <b-form-radio v-model="jenis_identitas" name="some-radios" value="KTP">KTP</b-form-radio>
-                  <b-form-radio v-model="jenis_identitas" name="some-radios" value="Kartu Pelajar">Kartu Pelajar</b-form-radio>
+                  <b-form-radio v-model="jenis_identitas" value="KTP">KTP</b-form-radio>
+                  <b-form-radio v-model="jenis_identitas" value="Kartu Pelajar">Kartu Pelajar</b-form-radio>
                 </b-form-group>
                 <div class="mt-3">Jenis identitas: <strong>{{ jenis_identitas }}</strong></div>
                 <br>
@@ -64,8 +64,8 @@
                 </b-form-group>
 
                 <b-form-group label="Jenis Kelamin">
-                  <b-form-radio v-model="jenis_kelamin" name="some-radios" value="Laki-laki">Laki-laki</b-form-radio>
-                  <b-form-radio v-model="jenis_kelamin" name="some-radios" value="Perempuan">Perempuan</b-form-radio>
+                  <b-form-radio v-model="jenis_kelamin" value="Laki-laki">Laki-laki</b-form-radio>
+                  <b-form-radio v-model="jenis_kelamin" value="Perempuan">Perempuan</b-form-radio>
                 </b-form-group>
                 
                 <div class="mt-3">Jenis kelamin: <strong>{{ jenis_kelamin }}</strong></div>
@@ -147,9 +147,13 @@ export default {
         jenis_kelamin: this.jenis_kelamin,
         alamat: this.alamat
       })
-      .then(function(response) {
-        console.log(response);
-      });
+      .then(response => {
+          // alert(JSON.stringify(response));
+          window.open("/#login", "_top");
+        })
+      // .then(function(response) {
+      //   console.log(response);
+      // });
     }
   }
 };
@@ -164,6 +168,7 @@ export default {
   height: 100%;
   background-repeat: no-repeat;
   background-size: cover;
+  font-family: Quicksand;
 }
 
 .kiri {
