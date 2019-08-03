@@ -5,6 +5,15 @@
         <h3 style>Form Beasiswa Donasi MoveOn</h3>
         <div class="garis-orange"></div>
       </center>
+      <b-alert v-if="status == 1" v-model="showDismissibleAlert" variant="success" dismissible>
+        Berhasil! Data tersimpan
+      </b-alert>
+      <b-alert v-else-if="status == 2" v-model="showDismissibleAlert" variant="danger" dismissible>
+        NIM Sudah Terdaftar!
+      </b-alert>
+      <b-alert v-else v-model="showDismissibleAlert" variant="danger" dismissible>
+        Gagal
+      </b-alert>
       <div class="form">
         <b-form @submit="onSubmit" v-if="show" enctype="multipart/form-data">
           <h4 class="kategori-data">Data Diri</h4>
@@ -316,6 +325,9 @@
               </b-form-group>
             </b-col>
             <b-col sm="12" md="6" lg="4">
+              <b-alert v-if="status == 3" v-model="showDismissibleAlert" variant="danger" dismissible>
+                Format file harus pdf!
+              </b-alert>
               <b-form-group id="input-group-17" class="label" label="Upload Berkas">
                 <b-form-file
                   v-model="file_path"
@@ -332,7 +344,6 @@
           </b-row>
           <br />
           <b-button type="submit" class="btn-orange">Kirim</b-button>
-          <!-- <b-button type="reset" variant="danger">Reset</b-button> -->
         </b-form>
       </div>
     </b-container>
@@ -395,42 +406,90 @@ export default {
       console.log(e.target.files[0]);
       this.image = e.target.files[0];
     },
-    onSubmit(evt) {
-      evt.preventDefault();
-
-      let formData = new FormData();
-      formData.append("nama", this.nama);
-      formData.append("email", this.email);
-      formData.append("nim", this.nim);
-      formData.append("jurusan", this.jurusan);
-      formData.append("no_hp", this.no_hp);
-      formData.append("alamat", this.alamat);
-      formData.append("jenis_kelamin", this.jenis_kelamin);
-      formData.append("riwayat_beasiswa", this.riwayat_beasiswa);
-      formData.append("ipk", this.ipk);
-      formData.append("jmlh_organisasi", this.jmlh_organisasi);
-      formData.append("jmlh_sertifikat", this.jmlh_sertifikat);
-      formData.append("penghasilan_ortu", this.penghasilan_ortu);
-      formData.append("jmlh_tanggungan", this.jmlh_tanggungan);
-      formData.append("status_rumah", this.status_rumah);
-      formData.append("transportasi", this.transportasi);
-      formData.append("file_path", this.file_path);
-      formData.append("image", this.image);
-
-      const config = {
-        headers: {
-          "content-type": "multipart/form-data"
-        }
+    data() {
+      return {
+        showDismissibleAlert: false,
+        status: 0,
+        message: "",
+        errors: [],
+        email: "",
+        nama: "",
+        jenis_kelamin: "",
+        nim: "",
+        jurusan: "",
+        no_hp: "",
+        alamat: "",
+        riwayat_beasiswa: "",
+        ipk: "",
+        jmlh_organisasi: "",
+        jmlh_sertifikat: "",
+        penghasilan_ortu: "",
+        jmlh_tanggungan: "",
+        status_rumah: "",
+        transportasi: "",
+        file_path: null,
+        image: null,
+        checked: [],
+        maxhp: 13,
+        maxnim: 10,
+        jurusans: [
+          "Administrasi Niaga",
+          "Akuntansi",
+          "Teknik Mesin",
+          "Teknik Grafika dan Penerbitan",
+          "Teknik Sipil",
+          "Teknik Elektro",
+          "Teknik Informatika dan Komputer"
+        ],
+        show: true
       };
+    },
+    methods: {
+      onImageChange(e) {
+        console.log(e.target.files[0]);
+        this.image = e.target.files[0];
+      },
+      onSubmit(evt) {
+        evt.preventDefault();
 
-      axios
-        .post(`http://127.0.0.1:8000/api/pendaftar`, formData, config)
-        .then(response => {
-          this.data = response.data;
-        })
-        .catch(e => {
-          this.errors.push(e);
-        });
+        let formData = new FormData()
+        formData.append('nama', this.nama)
+        formData.append('email', this.email)
+        formData.append('nim', this.nim)
+        formData.append('jurusan', this.jurusan)
+        formData.append('no_hp', this.no_hp)
+        formData.append('alamat', this.alamat)
+        formData.append('jenis_kelamin', this.jenis_kelamin)
+        formData.append('riwayat_beasiswa', this.riwayat_beasiswa)
+        formData.append('ipk', this.ipk)
+        formData.append('jmlh_organisasi', this.jmlh_organisasi)
+        formData.append('jmlh_sertifikat', this.jmlh_sertifikat)
+        formData.append('penghasilan_ortu', this.penghasilan_ortu)
+        formData.append('jmlh_tanggungan', this.jmlh_tanggungan)
+        formData.append('status_rumah', this.status_rumah)
+        formData.append('transportasi', this.transportasi)
+        formData.append('file_path', this.file_path)
+        formData.append('image', this.image)
+        
+        const config = {
+          headers: {
+            "content-type": "multipart/form-data"
+          }
+        };
+
+        axios
+          .post(`http://adminmoveon.test/api/pendaftar`, formData, config)
+          .then(response => {
+            this.data = response.data;
+            this.message = response.data.message;
+            this.status = parseInt(response.data.status);
+            this.showDismissibleAlert = true;
+            window.open("", '_self');
+          })
+          .catch(e => {
+            this.errors.push(e);
+          });
+      }
     }
   }
 };
