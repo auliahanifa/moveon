@@ -288,7 +288,7 @@ export default {
         this.sisa_hari = response.data.sisa_hari;
         this.avatar_admin = response.data.avatar_admin;
         this.nama_admin = response.data.nama_admin;
-        this.onclick = parseInt(response.data.onclick); // kalau pas demo matiin yg ini aja
+        // this.onclick = parseInt(response.data.onclick); // kalau pas demo matiin yg ini aja
       })
       .catch(e => {
         this.errors.push(e);
