@@ -50,7 +50,7 @@
              <b-textarea id="input-5" v-model="alamat" type="textarea" required placeholder="Masukkan alamat anda"></b-textarea>
           </b-form-group>
             
-          <b-form-group id="input-group-8" label-for="input-8" label="password">
+          <b-form-group id="input-group-8" label-for="input-8">
              <b-form-input id="input-6" v-model="password" type="password" required placeholder="kata sandi"></b-form-input>
           </b-form-group>
 
@@ -88,39 +88,6 @@ export default {
         show: true
       }
     },
-    // methods: {
-      // onSubmit(evt) {
-      //   evt.preventDefault()
-      //   alert(JSON.stringify(this.form))
-      //   axios.post('http://localhost:8000/api/pengguna/', {
-      //       nama: this.nama,
-      //       no_hp: this.no_hp,
-      //       email: this.email,
-      //       jenis_identitas: this.jenis_identitas,
-      //       no_identitas: this.no_identitas,
-      //       jenis_kelamin: this.jenis_kelamin,
-      //       alamat: this.alamat,
-      //       password: this.password
-      //   })
-      //   .then(function (response) {
-      //     alert(response);
-      //   })
-      //   .catch(function (error) {
-      //     alert(error);
-      //   });
-
-      // onReset(evt) {
-      //   evt.preventDefault()
-      //   // Reset our form values
-      //   this.email = ''
-      //   this.password = ''
-        
-      //   // Trick to reset/clear native browser form validation state
-      //   this.show = false
-      //   this.$nextTick(() => {
-      //     this.show = true
-      //   })
-      // }
     methods:{
     onSubmit(e){
       e.preventDefault();
@@ -139,9 +106,10 @@ export default {
       // .then(function (response) {
       //   alert(response);
       // })
-     .then(function (response) {
-        console.log(response);
-      });
+     .then(response => {
+            // alert(JSON.stringify(response))
+            window.open("/#/login", "_top");
+            })
  
       // .catch(function (error) {
       //   alert(error);

@@ -20,14 +20,14 @@
             ></b-form-input>
           </b-form-group>
           
-          <b-form-group id="input-group-2" label="Nama Pemiliki" label-for="input-2">
+          <!-- <b-form-group id="input-group-2" label="Nama Pemiliki" label-for="input-2">
             <b-form-input
               id="input-2"
               v-model="id_pengguna"
               required
               placeholder="Masukkan Id Anda"
             ></b-form-input>
-          </b-form-group>
+          </b-form-group> -->
 
           <b-form-group id="input-group-3" label="Deskripsi Barang" label-for="textarea">
             <b-form-textarea
@@ -54,16 +54,16 @@
           </b-form-group>
 
           <b-form-group id="input-group-6" label="Upload Foto Barang" label-for="input-6">
-            <small>{{ nama_photo }}</small>
             <b-form-file
               v-model="path_photo"
               :state="Boolean(file)"
               placeholder="Pilih file..."
               drop-placeholder="Drop file here..."
             ></b-form-file>
-            <div class="mt-3">
+            <div class="mt-3">Selected file: {{ file ? file.name : '' }}</div>
+            <!-- <div class="mt-3">
               <small>*file image</small>
-            </div>
+            </div> -->
           </b-form-group>
 
           <br />
@@ -89,15 +89,45 @@ export default {
     harga_awal: '',
     deskripsi: '',
     file: null,
-    range_waktu: '',
-    status:'',
-    nama_photo: null,
+    // nama_photo: null,
     path_photo:null,
-    statuss:['Tersedia', 'Terjual'],
+    status:'',
+    statuss: [
+          { value: 'Tersedia', text: 'Tersedia' },
+          { value: 'Terjual', text: 'Terjual' }
+        ],
     show: true
       
     }
   },
-  
-};
+  methods:{
+    onSubmit(e){
+      e.preventDefault();
+      // let currentObj = this;
+      // alert(JSON.stringify(this.form))
+      // axios.post('https://admin.donasimoveon.com/api/barang',{
+      axios.post('http://localhost:8000/api/barang',{
+        nama_barang: this.nama_barang,
+        deskripsi: this.deskripsi,
+        harga_awal: this.harga_awal,
+        status: this.status,
+        // nama_photo: this.nama_photo,
+        path_photo: this.path_photo,
+        file:this.file
+      })
+      // .then(function (response) {
+      //   alert(response);
+      // })
+     .then(function (response) {
+        console.log(response);
+      });
+ 
+      // .catch(function (error) {
+      //   alert(error);
+      // });
+      
+
+    }
+  }
+}
 </script>

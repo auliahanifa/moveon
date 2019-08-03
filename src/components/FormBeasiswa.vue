@@ -368,7 +368,7 @@ export default {
       evt.preventDefault();
       axios
         .post(
-          `http://adminmoveon.test/api/pendaftar`,
+          `https://admin.donasimoveon.com/api/pendaftar`,
           {
             nama: this.form.nama,
             email: this.form.email,

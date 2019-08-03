@@ -1,10 +1,9 @@
 <template>
     <div class="Galangdana" style="margin-top:80px;">
         <b-container>
-            <h3>{{ jdl_galangdana }}</h3>
             <b-row>
                 <b-col sm="12" md="8" lg="6" v-for="item in detail" :key="item.id">
-                    
+                    <h3>{{ item.judul }}</h3>
                     <div class="detail-foto" style="width: 100%; height: 23rem; border:2 px solid black; 
                     background-color: lightblue;">
                     <img v-bind:src="item.path_photo" alt="" style="width: 100%; height: 23rem; padding:5px;">
@@ -14,7 +13,7 @@
                 <b-col sm="12" md="12" lg="6">
                  
                  <b-card
-                    v-bind:title="item.judul"
+                    v-bind:title="item.created_at"
                     tag="article"
                     style="max-width: 100%; font-style:bold;"
                     class="mb-2"
@@ -102,7 +101,17 @@ export default {
     data() {
         return{
             jmlh_donatur: 41,
-            detail:[]
+            detail:{
+                judul:'',
+                id_pengguna:'',
+                target_dana:'',
+                dana_terkini:'',
+                created_at:'',
+                update:'',
+                range_waktu:'',
+                deskripsi:''
+
+            }
             
         };
     },

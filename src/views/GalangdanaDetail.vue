@@ -7,7 +7,7 @@
 export default {
     name:'GalangdanaDetail',
     components:{
-        Detailgalangdana
+        Galangdanadet
     }
 }
 </script>
