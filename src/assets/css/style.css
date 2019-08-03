@@ -236,6 +236,13 @@
     margin-bottom: 50px;
 }
 
+.btn-orange-stgh {
+    background: #f79317;
+    border: none;
+    width: 50%;
+    margin-bottom: 50px;
+}
+
 .btn-orange a {
     color: #ffffff;
     font-size: 13px;
@@ -256,6 +263,14 @@
     background: #fb6340;
     border: none;
     width: 100%;
+    margin-bottom: 50px;
+}
+
+.btn-orange-stgh:hover,
+.btn-orange-stgh:focus {
+    background: #fb6340;
+    border: none;
+    width: 50%;
     margin-bottom: 50px;
 }
 
