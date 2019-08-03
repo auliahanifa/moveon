@@ -234,8 +234,8 @@ hr {
 }
 
 .btn_app {
-  width: 287px;
-  height: 49px;
+  width: 227px;
+  height: auto;
   background: rgba(251, 87, 76, 0.48);
   border: 3px solid #f64a00;
   box-sizing: border-box;

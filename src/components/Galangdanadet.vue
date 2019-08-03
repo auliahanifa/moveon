@@ -1,32 +1,30 @@
 <template>
     <b-container>
-        	<div class="detail" v-if="galang_dana != null">
-        		<b-row>
+        <div class="detail" style="margin-top:100px;">
+        	<b-row>
                 <b-col sm="12" md="8" lg="6">
                     <h3>{{ galang_dana.judul }}</h3>
                     <div class="detail-foto" style="width: 100%; height: 23rem; border:2 px solid black; 
                     background-color: lightblue;">
-                    <img v-bind:src="'https://admin.donasimoveon.com' + galang_dana.path_photo" alt="" style="width: 100%; height: 23rem; padding:5px;">
+                    <img v-bind:src="galang_dana.path_photo" alt="" style="width: 100%; height: 23rem; padding:5px;">
                     </div>
                 </b-col>
                     
                 <b-col sm="12" md="12" lg="6">
-                <h4>Terkumpul dana sebesar Rp.</h4> 
-                 <b-card>
-                    <p style="font-size:16px;">
+                 <b-card style="margin-top:20px;">
+                    <b-card-text style="font-size:16px;">
                     Terkumpul dana sebesar Rp
                     <span
                      style="font-weight:bold;"
-                    >{{galang_dana.dana_terkini | currency}}</span>
-                    </p>
-                    
-                    <p>
-                        dari total dana sebesar Rp {{ galang_dana.target_dana }}
-                    </p>
+                    >{{ galang_dana.dana_terkini }}</span>
+                    </b-card-text>
+                    <b-card-text>
+                    dari total dana sebesar Rp. {{ galang_dana.target_dana }}
+                    </b-card-text>
                     
                     <b-progress
-                    :value="galang_dana.dana_terkini"
-                    :max="galang_dana.target_dana"
+                    :value="parseInt(galang_dana.dana_terkini)"
+                    :max="parseInt(galang_dana.target_dana)"
                     class="mb-3"
                     variant="warning"
                     style="border-radius:10px;"
@@ -35,7 +33,8 @@
                     <p>Waktu penggalangan dana tinggal {{ sisa_hari }} hari</p>
                     <router-link to="/lelang"><b-button>
                         Donasi Sekarang
-                    </b-button></router-link><br>
+                    </b-button></router-link>
+                    <br> <br>
                     
                     <a href="whatsapp://send?text=The text to share!" data-action="share/whatsapp/share"><b-button>
                         Bagikan
@@ -44,7 +43,7 @@
                     <p>Penggalangan dana dimulai sejak {{ galang_dana.created_at }} </p>
                     
                     <b-img
-                    :src="'https://admin.donasimoveon.com' + path_photo_pengguna"
+                    v-bind:src="photo_pengguna"
                     rounded="circle"
                     width="30"
                     ></b-img>
@@ -52,35 +51,36 @@
                     <span style="font-size:10px; padding-left:10px; font-weight:bold">
                     {{ nama_pengguna }}
                 	</span>
-                    <br />
-                    <div class="garis-orange"></div>
-                    
                     <br/>
-                    <h4>Update</h4>
-                    
-                    <div class="garis-orange">
-                    </div>
+                 </b-card>
+                </b-col>
+            </b-row>
+            <br><br>
+            <b-row>
+            <div class="garis-orange" style="width:100%"></div>
+            </b-row>
+            
+            <b-row>
+                <div class="update-gd">
+                <h4>Update</h4>
+                <div class="garis-orange"></div>
+                <p>Belum ada Update.</p> 
+            </div>
+            </b-row>
 
-                    <div class="update" v-if="galang_dana.update != null">
-                        <p>{{ galang_dana.update }}</p>
-                    </div>
-                    <div v-else>
-                        Belum ada Update.
-                    </div>
-                    <br/>
-                    <h4>Deskripsi</h4>
-                    <div class="garis-orange"></div>
-                    <b-card-text>{{galang_dana.deskripsi.substring(0,100)}}</b-card-text>
-                    <br/>
-                    <b-button v-on:click="alertLelang">Donasi Sekarang</b-button>                
-                    </b-card>
-                	</b-col>
-            	</b-row>
-        	</div>
-        	<div v-else>
-        		<h6>data galang dana tidak tersedia</h6>
-        	</div>
-        </b-container>
+            <b-row>
+            <div class="deskripsi-gd"> 
+                <h4>Deskripsi</h4>
+                <div class="garis-orange"></div>
+                <p>{{ galang_dana.deskripsi }}</p>
+            </div>
+            </b-row>
+
+            <b-row>
+            <b-button>Donasi Sekarang</b-button>                
+            </b-row>        
+        </div>
+    </b-container>
 </template>
 <script>
 import axios from "axios";
@@ -93,7 +93,7 @@ export default {
         return {
         galang_dana: {},
         sisa_hari:'',
-        path_photo_pengguna:'',
+        photo_pengguna:'',
         nama_pengguna:''
         };
     },
@@ -114,3 +114,21 @@ export default {
 
 }
 </script>
+
+<style scoped>
+.btn {
+    width: 70%;
+    display: inline-block;
+    /* font-weight: 400; */
+    color: #ffffff;
+    text-align: center;
+    font-family: Quicksand;
+    vertical-align: middle;
+    background-color: orange;
+    border: 1px solid transparent;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    line-height: 1.7;
+    border-radius: 0.7rem;
+}
+</style>
