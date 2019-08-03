@@ -39,27 +39,29 @@
             </p>
             <br />
             <br />
-            <h3>Syarat Pendaftaran Beasiswa
-              <br>
+            <h3>
+              Syarat Pendaftaran Beasiswa
+              <br />
               <span style="font-weight:bold;">DONASI</span>
-              <span style="color:#fb6340; font-weight:bold;"> MoveOn</span></h3>
+              <span style="color:#fb6340; font-weight:bold;">MoveOn</span>
+            </h3>
             <ul style="list-style-type: none;">
-                <li>
-                  <font-awesome-icon icon="check-square"></font-awesome-icon>   Mahasiswa aktif Politknik Negeri Jakarta
-                </li>
-                <li>
-                  <font-awesome-icon icon="check-square"></font-awesome-icon>   Minimal semester 2
-                </li>
-                <li>
-                  <font-awesome-icon icon="check-square"></font-awesome-icon>   Minimal ipk 3.00
-                </li>
-                <li>
-                  <font-awesome-icon icon="check-square"></font-awesome-icon>   Scan KTM, marksheet, kartu keluarga, sertifikat organisasi, dan sertifikat lomba
-                </li>
-                <li>
-                  <font-awesome-icon icon="check-square"></font-awesome-icon>   Berkas dijadikan satu dan diupload dalam bentuk file pdf
-                </li>
-              </ul>
+              <li>
+                <font-awesome-icon icon="check-square"></font-awesome-icon>Mahasiswa aktif Politknik Negeri Jakarta
+              </li>
+              <li>
+                <font-awesome-icon icon="check-square"></font-awesome-icon>Minimal semester 2
+              </li>
+              <li>
+                <font-awesome-icon icon="check-square"></font-awesome-icon>Minimal ipk 3.00
+              </li>
+              <li>
+                <font-awesome-icon icon="check-square"></font-awesome-icon>Scan KTM, marksheet, kartu keluarga, sertifikat organisasi, dan sertifikat lomba
+              </li>
+              <li>
+                <font-awesome-icon icon="check-square"></font-awesome-icon>Berkas dijadikan satu dan diupload dalam bentuk file pdf
+              </li>
+            </ul>
           </b-col>
           <b-col lg="4" md="5" sm="12">
             <center v-if="galang_beasiswa != null">
@@ -86,7 +88,7 @@
                   </b-col>
                   <b-col lg="6" md="12" sm="12">
                     <b-button href="#" class="btn-orange btn-sm">
-                      <router-link to="/Lelang/">Donasi</router-link>
+                      <router-link to="/Lelang">Donasi</router-link>
                     </b-button>
                   </b-col>
                 </b-row>
@@ -233,12 +235,18 @@
           </b-col>
           <b-col lg="2" md="4" sm="12">
             <router-link to="/daftar_beasiswa" v-if="onclick == 0">
-              <b-button class="btn-white"><span style="color:#f79317;">DAFTAR</span></b-button>
+              <b-button class="btn-white">
+                <span style="color:#f79317;">DAFTAR</span>
+              </b-button>
             </router-link>
-            <b-button v-b-modal.modal-1 class="btn-white" v-else><span style="color:#f79317;">DAFTAR</span></b-button>
-              <b-modal id="modal-1" title="Pendaftaran Tidak Dapat Dilakukan!">
-                <p class="my-4">Pendaftaran Tidak Dapat Dilakukan! Pendaftaran hanya dapat dilakukan pada bulan Februari atau September</p>
-              </b-modal>
+            <b-button v-b-modal.modal-1 class="btn-white" v-else>
+              <span style="color:#f79317;">DAFTAR</span>
+            </b-button>
+            <b-modal id="modal-1" title="Pendaftaran Tidak Dapat Dilakukan!">
+              <p
+                class="my-4"
+              >Mohon maaf pendaftaran tidak dapat dilakukan! Pendaftaran beasiswa Donasi MoveOn belum dibuka</p>
+            </b-modal>
           </b-col>
         </b-row>
       </b-container>
