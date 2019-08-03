@@ -19,9 +19,15 @@
                 <router-link to="/Beasiswa">Beasiswa</router-link>
               </b-nav-item>
               <b-nav-item class="nav-text">
-                <router-link to="/dashboarduser">Dashboard</router-link>
+                <router-link to="/Daftarlah">Daftar Akun</router-link>
               </b-nav-item>
-              <b-nav-item-dropdown class="drop-link">
+              <b-nav-item class="nav-text">
+                <router-link to="/Login">Masuk</router-link>
+              </b-nav-item>
+              <!-- <b-nav-item class="nav-text">
+                <router-link to="/dashboarduser">Dashboard</router-link>
+              </b-nav-item>-->
+              <!-- <b-nav-item-dropdown class="drop-link">
                 <template slot="button-content">
                   <font-awesome-icon icon="bars" class="bar"></font-awesome-icon>
                 </template>
@@ -31,7 +37,7 @@
                 <b-dropdown-item>
                   <router-link to="/Login" class="drop-link">Masuk</router-link>
                 </b-dropdown-item>
-              </b-nav-item-dropdown>
+              </b-nav-item-dropdown>-->
             </b-navbar-nav>
           </b-collapse>
         </div>
