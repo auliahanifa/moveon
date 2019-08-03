@@ -5,15 +5,19 @@
         <h3 style>Form Beasiswa Donasi MoveOn</h3>
         <div class="garis-orange"></div>
       </center>
-      <b-alert v-if="status == 1" v-model="showDismissibleAlert" variant="success" dismissible>
-        Berhasil! Data tersimpan
-      </b-alert>
-      <b-alert v-else-if="status == 2" v-model="showDismissibleAlert" variant="danger" dismissible>
-        NIM Sudah Terdaftar!
-      </b-alert>
-      <b-alert v-else v-model="showDismissibleAlert" variant="danger" dismissible>
-        Gagal
-      </b-alert>
+      <b-alert
+        v-if="status == 1"
+        v-model="showDismissibleAlert"
+        variant="success"
+        dismissible
+      >Berhasil! Data tersimpan</b-alert>
+      <b-alert
+        v-else-if="status == 2"
+        v-model="showDismissibleAlert"
+        variant="danger"
+        dismissible
+      >NIM Sudah Terdaftar!</b-alert>
+      <b-alert v-else v-model="showDismissibleAlert" variant="danger" dismissible>Gagal</b-alert>
       <div class="form">
         <b-form @submit="onSubmit" v-if="show" enctype="multipart/form-data">
           <h4 class="kategori-data">Data Diri</h4>
@@ -114,16 +118,17 @@
           </b-row>
           <b-row>
             <b-col sm="12" md="12" lg="12">
-              <b-form-group id="input-group-18" label="Upload Foto Diri" class="label">
-                <b-button @click="$refs.fileInput.click()" class="btn-blue" required>Pilih Foto</b-button>
-                <input
-                  style="display: none"
-                  ref="fileInput"
-                  type="file"
-                  @change="image"
-                  v-on:change="onImageChange"
-                  enctype="multipart/form-data"
-                />
+              <b-form-group id="input-group-18" class="label" label="Upload Foto Diri">
+                <b-form-file
+                  v-model="image"
+                  :state="Boolean(image)"
+                  placeholder="Pilih foto..."
+                  drop-placeholder="Drop file here..."
+                  required
+                ></b-form-file>
+                <div class="mt-3">
+                  <small>*foto formal</small>
+                </div>
               </b-form-group>
             </b-col>
           </b-row>
@@ -138,14 +143,16 @@
                   currency="Rp"
                   separator=","
                   v-model="penghasilan_ortu"
+                  required
                   placeholder="Ex: 1000000"
                 ></vue-numeric>
                 <!-- <b-form-input
                   id="input-7"
                   v-model="penghasilan_ortu"
-                  type="number | currency"
+                  type="number"
                   required
                   placeholder="Ex: 1000000"
+                  min="0"
                 ></b-form-input>-->
               </b-form-group>
             </b-col>
@@ -160,9 +167,9 @@
                   id="input-14"
                   v-model="jmlh_tanggungan"
                   type="number"
-                  min="0"
                   placeholder="Ex: 5"
                   required
+                  min="0"
                 ></b-form-input>
               </b-form-group>
             </b-col>
@@ -174,6 +181,7 @@
                 label="Status Kepemilikan Tempat Tinggal :"
                 label-for="input-15"
                 class="label"
+                required
               >
                 <b-form-radio
                   v-model="status_rumah"
@@ -193,12 +201,6 @@
                   value="Rumah Sendiri"
                   required
                 >Rumah Sendiri</b-form-radio>
-                <!-- <b-form-select
-                  id="input-15"
-                  v-model="status_rumah"
-                  :options="status_rumah"
-                  required
-                ></b-form-select>-->
               </b-form-group>
             </b-col>
             <b-col sm="12" md="6" lg="6">
@@ -207,6 +209,7 @@
                 label="Transportasi yang Dimiliki :"
                 label-for="input-16"
                 class="label"
+                required
               >
                 <b-form-radio
                   v-model="transportasi"
@@ -226,12 +229,6 @@
                   value="Mobil"
                   required
                 >Mobil</b-form-radio>
-                <!-- <b-form-select
-                  id="input-16"
-                  v-model="transportasi"
-                  :options="transportasi"
-                  required
-                ></b-form-select>-->
               </b-form-group>
             </b-col>
           </b-row>
@@ -247,6 +244,7 @@
                 label="Riwayat Beasiswa :"
                 label-for="input-9"
                 class="label"
+                required
               >
                 <b-form-radio
                   v-model="riwayat_beasiswa"
@@ -266,12 +264,6 @@
                   Pernah /
                   Sedang Menerima
                 </b-form-radio>
-                <!-- <b-form-select
-                  id="input-9"
-                  v-model="riwayat_beasiswa"
-                  :options="riwayat_beasiswa"
-                  required
-                ></b-form-select>-->
               </b-form-group>
             </b-col>
             <b-col sm="12" md="6" lg="6">
@@ -280,9 +272,9 @@
                   id="input-10"
                   v-model="ipk"
                   type="number"
-                  min="0"
                   placeholder="Ex: 3.50"
                   step="0.01"
+                  min="0"
                   required
                 ></b-form-input>
               </b-form-group>
@@ -325,9 +317,12 @@
               </b-form-group>
             </b-col>
             <b-col sm="12" md="6" lg="4">
-              <b-alert v-if="status == 3" v-model="showDismissibleAlert" variant="danger" dismissible>
-                Format file harus pdf!
-              </b-alert>
+              <b-alert
+                v-if="status == 3"
+                v-model="showDismissibleAlert"
+                variant="danger"
+                dismissible
+              >Format file harus pdf!</b-alert>
               <b-form-group id="input-group-17" class="label" label="Upload Berkas">
                 <b-form-file
                   v-model="file_path"
@@ -357,17 +352,19 @@
 <script>
 import axios from "axios";
 import VueNumeric from "vue-numeric";
-
 export default {
   name: "form_beasiswa",
-  components: {
-    VueNumeric
-  },
   mounted() {
     console.log("Component mounted.");
   },
+  components: {
+    VueNumeric
+  },
   data() {
     return {
+      showDismissibleAlert: false,
+      status: 0,
+      message: "",
       errors: [],
       email: "",
       nama: "",
@@ -406,90 +403,44 @@ export default {
       console.log(e.target.files[0]);
       this.image = e.target.files[0];
     },
-    data() {
-      return {
-        showDismissibleAlert: false,
-        status: 0,
-        message: "",
-        errors: [],
-        email: "",
-        nama: "",
-        jenis_kelamin: "",
-        nim: "",
-        jurusan: "",
-        no_hp: "",
-        alamat: "",
-        riwayat_beasiswa: "",
-        ipk: "",
-        jmlh_organisasi: "",
-        jmlh_sertifikat: "",
-        penghasilan_ortu: "",
-        jmlh_tanggungan: "",
-        status_rumah: "",
-        transportasi: "",
-        file_path: null,
-        image: null,
-        checked: [],
-        maxhp: 13,
-        maxnim: 10,
-        jurusans: [
-          "Administrasi Niaga",
-          "Akuntansi",
-          "Teknik Mesin",
-          "Teknik Grafika dan Penerbitan",
-          "Teknik Sipil",
-          "Teknik Elektro",
-          "Teknik Informatika dan Komputer"
-        ],
-        show: true
+    onSubmit(evt) {
+      evt.preventDefault();
+      let formData = new FormData();
+      formData.append("nama", this.nama);
+      formData.append("email", this.email);
+      formData.append("nim", this.nim);
+      formData.append("jurusan", this.jurusan);
+      formData.append("no_hp", this.no_hp);
+      formData.append("alamat", this.alamat);
+      formData.append("jenis_kelamin", this.jenis_kelamin);
+      formData.append("riwayat_beasiswa", this.riwayat_beasiswa);
+      formData.append("ipk", this.ipk);
+      formData.append("jmlh_organisasi", this.jmlh_organisasi);
+      formData.append("jmlh_sertifikat", this.jmlh_sertifikat);
+      formData.append("penghasilan_ortu", this.penghasilan_ortu);
+      formData.append("jmlh_tanggungan", this.jmlh_tanggungan);
+      formData.append("status_rumah", this.status_rumah);
+      formData.append("transportasi", this.transportasi);
+      formData.append("file_path", this.file_path);
+      formData.append("image", this.image);
+
+      const config = {
+        headers: {
+          "content-type": "multipart/form-data"
+        }
       };
-    },
-    methods: {
-      onImageChange(e) {
-        console.log(e.target.files[0]);
-        this.image = e.target.files[0];
-      },
-      onSubmit(evt) {
-        evt.preventDefault();
-
-        let formData = new FormData()
-        formData.append('nama', this.nama)
-        formData.append('email', this.email)
-        formData.append('nim', this.nim)
-        formData.append('jurusan', this.jurusan)
-        formData.append('no_hp', this.no_hp)
-        formData.append('alamat', this.alamat)
-        formData.append('jenis_kelamin', this.jenis_kelamin)
-        formData.append('riwayat_beasiswa', this.riwayat_beasiswa)
-        formData.append('ipk', this.ipk)
-        formData.append('jmlh_organisasi', this.jmlh_organisasi)
-        formData.append('jmlh_sertifikat', this.jmlh_sertifikat)
-        formData.append('penghasilan_ortu', this.penghasilan_ortu)
-        formData.append('jmlh_tanggungan', this.jmlh_tanggungan)
-        formData.append('status_rumah', this.status_rumah)
-        formData.append('transportasi', this.transportasi)
-        formData.append('file_path', this.file_path)
-        formData.append('image', this.image)
-        
-        const config = {
-          headers: {
-            "content-type": "multipart/form-data"
-          }
-        };
-
-        axios
-          .post(`http://adminmoveon.test/api/pendaftar`, formData, config)
-          .then(response => {
-            this.data = response.data;
-            this.message = response.data.message;
-            this.status = parseInt(response.data.status);
-            this.showDismissibleAlert = true;
-            window.open("", '_self');
-          })
-          .catch(e => {
-            this.errors.push(e);
-          });
-      }
+      axios
+        .post(`http://127.0.0.1:8000/api/pendaftar`, formData, config)
+        .then(response => {
+          this.data = response.data;
+          this.message = response.data.message;
+          this.status = parseInt(response.data.status);
+          this.showDismissibleAlert = true;
+          window.open("", "_self");
+        })
+        .catch(e => {
+          this.errors.push(e);
+        });
     }
   }
 };

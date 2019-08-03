@@ -235,12 +235,18 @@
           </b-col>
           <b-col lg="2" md="4" sm="12">
             <router-link to="/daftar_beasiswa" v-if="onclick == 0">
-              <b-button class="btn-white"><span style="color:#f79317;">DAFTAR</span></b-button>
+              <b-button class="btn-white">
+                <span style="color:#f79317;">DAFTAR</span>
+              </b-button>
             </router-link>
-            <b-button v-b-modal.modal-1 class="btn-white" v-else><span style="color:#f79317;">DAFTAR</span></b-button>
-              <b-modal id="modal-1" title="Pendaftaran Tidak Dapat Dilakukan!">
-                <p class="my-4">Pendaftaran Tidak Dapat Dilakukan! Pendaftaran hanya dapat dilakukan pada bulan Februari atau September</p>
-              </b-modal>
+            <b-button v-b-modal.modal-1 class="btn-white" v-else>
+              <span style="color:#f79317;">DAFTAR</span>
+            </b-button>
+            <b-modal id="modal-1" title="Pendaftaran Tidak Dapat Dilakukan!">
+              <p
+                class="my-4"
+              >Mohon maaf pendaftaran tidak dapat dilakukan! Pendaftaran beasiswa Donasi MoveOn belum dibuka</p>
+            </b-modal>
           </b-col>
         </b-row>
       </b-container>
@@ -274,7 +280,7 @@ export default {
   },
   created() {
     axios
-      .get(`http://adminmoveon.test/api/beasiswa`)
+      .get(`https://admin.donasimoveon.com/api/beasiswa`)
       .then(response => {
         // JSON responses are automatically parsed.
         this.pengumuman = response.data.pengumuman;
