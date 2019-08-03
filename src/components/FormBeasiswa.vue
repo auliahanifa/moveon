@@ -70,11 +70,12 @@
           </b-row>
           <b-row>
             <b-col sm="12" md="12" lg="12">
-              <b-form-group id="input-group-18" label="Upload Foto Diri" class="label">
-                <small>Foto formal</small>
-                <b-button @click="$refs.fileInput.click()" class="btn-blue">Pilih Foto</b-button>
-                <input style="display: none" ref="fileInput" type="file" @change="image" v-on:change="onImageChange"
-                  enctype="multipart/form-data" />
+              <b-form-group id="input-group-18" class="label" label="Upload Foto Diri">
+                <b-form-file v-model="image" :state="Boolean(image)" placeholder="Pilih foto..."
+                  drop-placeholder="Drop file here..."></b-form-file>
+                <div class="mt-3">
+                  <small>*foto formal</small>
+                </div>
               </b-form-group>
             </b-col>
           </b-row>
