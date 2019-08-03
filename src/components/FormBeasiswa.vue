@@ -356,35 +356,6 @@ export default {
       let formData = new FormData();
       formData.append("image", this.image);
       axios
-<<<<<<< HEAD
-        .post(
-          `https://admin.donasimoveon.com/api/pendaftar`,
-          {
-            nama: this.form.nama,
-            email: this.form.email,
-            nim: this.form.nim,
-            jurusan: this.form.jurusan,
-            no_hp: this.form.no_hp,
-            alamat: this.form.alamat,
-            jenis_kelamin: this.form.jenis_kelamin,
-            riwayat_beasiswa: this.form.riwayat_beasiswa,
-            ipk: this.form.ipk,
-            jmlh_organisasi: this.form.jmlh_organisasi,
-            jmlh_sertifikat: this.form.jmlh_sertifikat,
-            penghasilan_ortu: this.form.penghasilan_ortu,
-            jmlh_tanggungan: this.form.jmlh_tanggungan,
-            status_rumah: this.form.status_rumah,
-            transportasi: this.form.transportasi,
-            file_path: this.form.file_path,
-            image: this.form.image
-          },
-          {
-            headers: {
-              "Content-Type": "multipart/form-data"
-            }
-          }
-        )
-=======
         .post(`http://127.0.0.1:8000/api/pendaftar`, {
           nama: this.nama,
           email: this.email,
@@ -404,7 +375,6 @@ export default {
           file_path: this.file_path,
           image: this.image
         })
->>>>>>> 347424e708a377e92ad7326eca65ff44df3c4bdc
         .then(response => {
           this.data = response.data;
         })
