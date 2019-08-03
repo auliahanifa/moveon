@@ -31,7 +31,7 @@
               <b>{{ item.target_dana | currency}}</b>
             </p>
             <p>Diterbitkan oleh {{ item.id_pengguna }}</p>
-            <router-link to="/detailgalangdana">
+            <router-link to="/detgalangdana">
               <b-button class="btn-orange btn-sm">Selengkapnya</b-button>
             </router-link>
           </b-card>
@@ -61,7 +61,7 @@ export default {
   },
   created() {
     axios
-      .get(`http://127.0.0.1:8000/api/galangdana`)
+      .get(`https://admin.donasimoveon.com/api/galangdana`)
       .then(response => {
         // JSON responses are automatically parsed.
         this.galangdana = response.data.galangdana;

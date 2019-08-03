@@ -40,33 +40,30 @@ export default {
   name: "formlogin",
   data() {
     return {
-      form: {},
+      form: {
+        email:'',
+        password:''
+      },
       show: true
     };
   },
   methods: {
     onSubmit(evt) {
       evt.preventDefault();
-      alert(JSON.stringify(this.form));
-      axios
-        .get("http://localhost:8000/api/login/")
+      // alert(JSON.stringify(this.form));
+      axios.post('http://localhost:8000/api/login/', {
+        email:this.form.email,
+        password:this.form.password
+      })
         .then(response => {
-          alert(JSON.stringify(response));
+          // alert(JSON.stringify(response));
+          window.open("/", "_top");
         })
         .catch(error => {
           alert(error);
           this.errored = true;
         })
         .finally(() => (this.loading = false));
-    },
-    onReset(evt) {
-      evt.preventDefault();
-      this.form.email = "";
-      this.form.password = "";
-      this.show = false;
-      this.$nextTick(() => {
-        this.show = true;
-      });
     }
   }
 };

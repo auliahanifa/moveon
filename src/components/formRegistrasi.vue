@@ -15,7 +15,7 @@
 
           <div class="form-section">
             <!-- <h1>ini isinya form Login</h1> -->
-            <center>
+          
               <b-form @submit="onSubmit" v-if="show">
                 <b-form-group id="input-group-1" label-for="input-1">
                   <b-form-input
@@ -24,6 +24,7 @@
                     type="name"
                     required
                     placeholder="masukkan nama anda"
+                    
                   ></b-form-input>
                 </b-form-group>
 
@@ -47,11 +48,12 @@
                   ></b-form-input>
                 </b-form-group>
 
-                <!-- //sebelumnya form select -->
-                <b-form-group id="input-group-4" label-for="input-4">
-                  <b-form-select id="input-4" v-model="jenis_identitas" :options="cards" required></b-form-select>
+                <b-form-group label="Pilih Jenis identitas anda">
+                  <b-form-radio v-model="jenis_identitas" value="KTP">KTP</b-form-radio>
+                  <b-form-radio v-model="jenis_identitas" value="Kartu Pelajar">Kartu Pelajar</b-form-radio>
                 </b-form-group>
-
+                <div class="mt-3">Jenis identitas: <strong>{{ jenis_identitas }}</strong></div>
+                <br>
                 <b-form-group id="input-group-5" label-for="input-5">
                   <b-form-input
                     id="input-5"
@@ -61,11 +63,13 @@
                   ></b-form-input>
                 </b-form-group>
 
-                <!-- //sebelumnya form select -->
-                <b-form-group id="input-group-6" label-for="input-6">
-                  <b-form-select id="input-4" v-model="jenis_kelamin" :options="genders" required></b-form-select>
+                <b-form-group label="Jenis Kelamin">
+                  <b-form-radio v-model="jenis_kelamin" value="Laki-laki">Laki-laki</b-form-radio>
+                  <b-form-radio v-model="jenis_kelamin" value="Perempuan">Perempuan</b-form-radio>
                 </b-form-group>
-
+                
+                <div class="mt-3">Jenis kelamin: <strong>{{ jenis_kelamin }}</strong></div>
+                <br>
                 <b-form-group id="input-group-7" label-for="input-7">
                   <b-textarea
                     id="input-5"
@@ -73,10 +77,11 @@
                     type="textarea"
                     required
                     placeholder="Masukkan alamat anda"
+                    height="14px;"
                   ></b-textarea>
                 </b-form-group>
 
-                <b-form-group id="input-group-8" label-for="input-8" label="password">
+                <b-form-group id="input-group-8" label-for="input-8">
                   <b-form-input
                     id="input-6"
                     v-model="password"
@@ -94,7 +99,7 @@
                 </p>
                 <!-- <b-button type="reset" variant="danger">Reset</b-button> -->
               </b-form>
-            </center>
+            
           </div>
         </b-col>
       </b-row>
@@ -107,7 +112,8 @@
   </div>
 </template>
 <script>
-import axios from "axios";
+import axios from 'axios';
+
 export default {
   mounted() {
     console.log("component mounted");
@@ -115,77 +121,38 @@ export default {
   name: "formregis",
   data() {
     return {
-      nama: "",
-      no_hp: "",
-      no_identitas: "",
-      email: "",
-      password: "",
-      jenis_identitas: "",
-      jenis_kelamin: "",
-      alamat: "",
-      cards: ["KTP", "Kartu Pelajar"],
-      genders: ["Laki-laki", "Perempuan"],
+      nama: '',
+      no_hp: '',
+      no_identitas: '',
+      email: '',
+      password: '',
+      jenis_identitas: '',
+      jenis_kelamin: '',
+      alamat: '',
       show: true
     };
   },
-  // methods: {
-  // onSubmit(evt) {
-  //   evt.preventDefault()
-  //   alert(JSON.stringify(this.form))
-  //   axios.post('http://localhost:8000/api/pengguna/', {
-  //       nama: this.nama,
-  //       no_hp: this.no_hp,
-  //       email: this.email,
-  //       jenis_identitas: this.jenis_identitas,
-  //       no_identitas: this.no_identitas,
-  //       jenis_kelamin: this.jenis_kelamin,
-  //       alamat: this.alamat,
-  //       password: this.password
-  //   })
-  //   .then(function (response) {
-  //     alert(response);
-  //   })
-  //   .catch(function (error) {
-  //     alert(error);
-  //   });
-
-  // onReset(evt) {
-  //   evt.preventDefault()
-  //   // Reset our form values
-  //   this.email = ''
-  //   this.password = ''
-
-  //   // Trick to reset/clear native browser form validation state
-  //   this.show = false
-  //   this.$nextTick(() => {
-  //     this.show = true
-  //   })
-  // }
   methods: {
     onSubmit(e) {
       e.preventDefault();
       // let currentObj = this;
       // alert(JSON.stringify(this.form))
-      axios
-        .post("http://localhost:8000/api/pengguna", {
-          nama: this.nama,
-          no_hp: this.no_hp,
-          no_identitas: this.no_identitas,
-          email: this.email,
-          password: this.password,
-          jenis_identitas: this.jenis_identitas,
-          jenis_kelamin: this.jenis_kelamin,
-          alamat: this.alamat
+      axios.post('http://localhost:8000/api/pengguna', {
+        nama: this.nama,
+        no_hp: this.no_hp,
+        no_identitas: this.no_identitas,
+        email: this.email,
+        password: this.password,
+        jenis_identitas: this.jenis_identitas,
+        jenis_kelamin: this.jenis_kelamin,
+        alamat: this.alamat
+      })
+      .then(response => {
+          // alert(JSON.stringify(response));
+          window.open("/#login", "_top");
         })
-        // .then(function (response) {
-        //   alert(response);
-        // })
-        .then(function(response) {
-          console.log(response);
-        });
-
-      // .catch(function (error) {
-      //   alert(error);
+      // .then(function(response) {
+      //   console.log(response);
       // });
     }
   }
@@ -193,14 +160,15 @@ export default {
 </script>
 
 <style scoped>
+
 .registrasiAkun {
   background-image: url("../assets/img/kids.jpg");
-
   position: center;
   min-width: 100%;
   height: 100%;
   background-repeat: no-repeat;
   background-size: cover;
+  font-family: Quicksand;
 }
 
 .kiri {
@@ -230,7 +198,7 @@ export default {
 }
 
 .form-section p {
-  text-align: center;
+  /* text-align: center; */
   font-family: Quicksand;
   color: black;
 
@@ -253,6 +221,7 @@ export default {
   size: 8px;
   text-align: left;
 }
+
 
 button {
   width: 80%;
@@ -280,21 +249,25 @@ button {
   padding: 20px;
 }
 
-.custom-select {
-  width: 100%;
-  height: 45px;
-  border: 2px solid #fb574c;
-  box-sizing: border-box;
-  border-radius: 13px;
-  /* margin: auto; */
-}
-
 .form-control {
   width: 100%;
-  height: 45px;
+  height: auto;
   border: 2px solid #fb574c;
   box-sizing: border-box;
   border-radius: 13px;
   margin: auto;
 }
+
+.form-label {
+  font-family: Quicksand;
+}
+.custom-control {
+    position: relative;
+    display: block;
+    min-height: 1.5rem;
+    padding-left: 1.75rem;
+    font-family: quicksand;
+}
+
+
 </style>

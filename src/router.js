@@ -82,11 +82,11 @@ export default new Router({
         import(/* webpackChunkName: "about" */ "@/components/Dashboarduser.vue")
     },
     {
-      path: "/detailgalangdana",
+      path: "/detgalangdana",
       name: "GalangdanaDetail",
       component: () =>
         import(
-          /* webpackChunkName: "about" */ "@/components/Detailgalangdana.vue"
+          "@/components/Galangdanadet.vue"
         )
     },
     {

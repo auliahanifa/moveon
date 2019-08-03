@@ -63,7 +63,7 @@ export default {
   },
   created() {
     axios
-      .get(`http://127.0.0.1:8000/api/barang`)
+      .get(`https://admin.donasimoveon.com/api/barang`)
       .then(response => {
         // JSON responses are automatically parsed.
         this.barang = response.data.barang;
