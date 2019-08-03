@@ -9,7 +9,7 @@
         Berhasil! Data tersimpan
       </b-alert>
       <b-alert v-else-if="status == 2" v-model="showDismissibleAlert" variant="danger" dismissible>
-        NIM Sudah Terdaftar!
+        NIM sudah terdaftar sebagai penerima beasiswa Donasi MoveOn!
       </b-alert>
       <b-alert v-else v-model="showDismissibleAlert" variant="danger" dismissible>
         Gagal
@@ -258,7 +258,11 @@
             this.message = response.data.message;
             this.status = parseInt(response.data.status);
             this.showDismissibleAlert = true;
-            window.open("", '_self');
+            if (this.status == 1) {
+              window.open("/#/beasiswa", '_self');
+            } else {
+              window.open("", '_self');
+            }
           })
           .catch(e => {
             this.errors.push(e);
