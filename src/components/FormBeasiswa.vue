@@ -436,7 +436,11 @@ export default {
           this.message = response.data.message;
           this.status = parseInt(response.data.status);
           this.showDismissibleAlert = true;
-          window.open("", "_self");
+          if (this.status == 1) {
+            window.open("/#/beasiswa", "_self");
+          } else {
+            window.open("", "_self");
+          }
         })
         .catch(e => {
           this.errors.push(e);
