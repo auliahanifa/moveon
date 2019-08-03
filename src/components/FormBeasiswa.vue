@@ -430,7 +430,7 @@ export default {
         }
       };
       axios
-        .post(`http://127.0.0.1:8000/api/pendaftar`, formData, config)
+        .post(`https://admin.donasimoveon.com/api/pendaftar`, formData, config)
         .then(response => {
           this.data = response.data;
           this.message = response.data.message;
