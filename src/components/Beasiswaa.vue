@@ -56,7 +56,7 @@
                 <font-awesome-icon icon="check-square"></font-awesome-icon>Minimal ipk 3.00
               </li>
               <li>
-                <font-awesome-icon icon="check-square"></font-awesome-icon>Scan KTM, marksheet, kartu keluarga, sertifikat organisasi, dan sertifikat lomba
+                <font-awesome-icon icon="check-square"></font-awesome-icon>Scan KTM, marksheet, kartu keluarga, sertifikat organisasi, sertifikat lomba, dan slip gaji orang tua
               </li>
               <li>
                 <font-awesome-icon icon="check-square"></font-awesome-icon>Berkas dijadikan satu dan diupload dalam bentuk file pdf

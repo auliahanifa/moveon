@@ -355,7 +355,7 @@ import VueNumeric from "vue-numeric";
 export default {
   name: "form_beasiswa",
   mounted() {
-    console.log("Component mounted.");
+    // console.log("Component mounted.");
   },
   components: {
     VueNumeric
@@ -400,7 +400,7 @@ export default {
   },
   methods: {
     onImageChange(e) {
-      console.log(e.target.files[0]);
+      // console.log(e.target.files[0]);
       this.image = e.target.files[0];
     },
     onSubmit(evt) {
