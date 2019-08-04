@@ -10,7 +10,7 @@
                 </b-col>
                     
                 <b-col sm="12" md="12" lg="4">
-                 <b-card style="margin-top:10px; font-family:Montserrat, serif;">
+                 <b-card style="margin-top:10px; font-family:Quicksand, serif;">
                     <b-card-text style="font-size:22px; style:bold; ">
                     Rp
                     <span
@@ -59,7 +59,7 @@
             <div class="garis-orange" style="width:100%"></div>
             </b-row>
             
-            <b-row>
+            <b-row style="margin-top:20px;">
                 <div class="update-gd">
                 <h4>Update</h4>
                 <div class="garis-orange" style="width:100%"></div>
@@ -134,18 +134,9 @@ export default {
     margin-top: 8px;
     border-radius: 1.3rem;
 
-    
 }
 
-.btn-donasi-red{
-    background-color: #FE5C21;
-    height: 3.8rem;
-}
 
-.btn-share-blue{
-    background-color: #4675C6;
-    height: 2.8rem;
-}
 
 
 </style>

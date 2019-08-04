@@ -1,14 +1,13 @@
 <template>
-  <div>
-    <div class="bg-img"></div>
-    <b-container class="registrasiAkun">
+  <div class="registrasiAkun">
+    <b-container >
       <b-row>
-        <b-col sm="12" md="6" lg="4" class="kiri">
+        <b-col sm="12" md="12" lg="4" class="kiri">
           <h2>Halo Agen Kebaikan!</h2>
           <p>Selamat bergabung dengan Moveon, dan mulailah menjadi kontributor sekarang</p>
         </b-col>
 
-        <b-col sm="12" md="6" lg="8">
+        <b-col sm="10" md="10" lg="6">
           <div class="header-section">
             <h3>Daftar akun baru</h3>
           </div>
@@ -91,12 +90,14 @@
                   ></b-form-input>
                 </b-form-group>
 
-                <b-button type="submit">Buat akun</b-button>
+                <center>
+                <b-button type="submit" class="btn-user-auth">Buat akun</b-button>
                 <br />
-                <p class="masuk">
+                <small class="masuk">
                   Sudah punya akun ?
                   <router-link to="/login">Masuk disini.</router-link>
-                </p>
+                </small>
+                </center>
                 <!-- <b-button type="reset" variant="danger">Reset</b-button> -->
               </b-form>
             
@@ -177,31 +178,26 @@ export default {
   width: 100%;
   height: auto;
   position: center;
-  padding: 30px;
+  padding: 10px;
   text-align: center;
   margin-top: 200px;
   padding: 20px;
 }
 
 .kiri h2 {
-  font-family: Quicksand;
   color: whitesmoke;
   font-weight: bold;
 }
 
 .kiri p {
   text-align: center;
-  font-family: Quicksand;
   color: #f8f4f4;
-
   font-size: 23px;
 }
 
 .form-section p {
   /* text-align: center; */
-  font-family: Quicksand;
   color: black;
-
   font-size: 23px;
 }
 
@@ -210,29 +206,17 @@ export default {
   height: auto;
   background: linear-gradient(270deg, #f64a00 0%, rgba(247, 147, 23, 0) 100%),
     #f79317;
-  margin-top: 150px;
+  margin-top: 100px;
   margin-left: auto;
   margin-right: auto;
 }
 
 .header-section h3 {
-  padding: 12px;
+  padding: 15px;
   color: white;
   size: 8px;
   text-align: left;
 }
-
-
-button {
-  width: 80%;
-  height: 43px;
-  margin: auto;
-  background: #fb574c;
-  border: 2px solid #fb574c;
-  box-sizing: border-box;
-  border-radius: 22px;
-}
-
 .masuk {
   padding: 10px;
   font-weight: bold;
@@ -258,9 +242,6 @@ button {
   margin: auto;
 }
 
-.form-label {
-  font-family: Quicksand;
-}
 .custom-control {
     position: relative;
     display: block;

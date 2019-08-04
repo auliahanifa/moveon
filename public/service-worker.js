@@ -19,6 +19,17 @@ self.addEventListener("install", cache => {
   console.log("service worker activated", cached);
 });
 
+self.addEventListener('activate', async () => {
+  // This will be called only once when the service worker is activated.
+  try {
+    const options = {}
+    const subscription = await self.registration.pushManager.subscribe(options)
+    console.log(JSON.stringify(subscription))
+  } catch (err) {
+    console.log('Error', err)
+  }
+})
+
 // if ("serviceWorker" in navigator) {
 //   window.addEventListener("load", function() {
 //     navigator.serviceWorker.register("/service-worker.js");

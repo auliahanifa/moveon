@@ -4,9 +4,16 @@
       <h3>{{ header_text1 }}</h3>
       <h4>{{ header_text1_a }}</h4>
       <h5>{{ header_text2 }}</h5>
-      <router-link to="/donasi_barang">
-        <b-button variant="outline" class="btn_app">{{ btn_donasibarang }}</b-button>
-      </router-link>
+      <!-- <div v-if="session != null"> -->
+          <router-link to="/donasi_barang">
+            <b-button variant="outline" class="btn_app">{{ btn_donasibarang }}</b-button>
+          </router-link>
+      <!-- </div> -->
+      <!-- <div v-else> -->
+          <!-- <router-link to="/login">
+            <b-button variant="outline" class="btn_app">{{ btn_donasibarang }}</b-button>
+          </router-link> -->
+      <!-- </div> -->
       <div class="batasan"></div>
     </div>
     <b-container>
@@ -24,7 +31,7 @@
           <b-col lg="4" md="5" sm="12">
             <center v-if="galang_beasiswa != null">
               <b-card
-                :img-src="'http://admin.donasimoveon.com' + galang_beasiswa.path_photo"
+                :img-src="'https://admin.donasimoveon.com' + galang_beasiswa.path_photo"
                 img-alt="Image"
                 img-top
                 tag="article"
@@ -191,9 +198,6 @@ export default {
       judul_section: "moveon punya cerita",
       deskripsi_section:
         "kumpulan kisah inspiratif yang membuat kami percaya, bahwa hal baik dapat dimulai kapan dan dimana saja. setiap manusia diberikan kesempatan untuk ikut berkontribusi dan menginspirasi",
-      deskripsi_brg: "ahkahsashk kshdksdskdhsd",
-      harga_brg: "Rp. 298,000",
-      nama_pemilik: "Anastasya Widyarini",
       dana_target: "",
       nama_fundraiser: "",
       galang_beasiswa: {},
@@ -211,6 +215,17 @@ export default {
         this.sisa_hari = response.data.sisa_hari;
         this.avatar_admin = response.data.avatar_admin;
         this.nama_admin = response.data.nama_admin;
+      })
+      .catch(e => {
+        this.errors.push(e);
+      });
+  },
+  created(){
+    axios.get(`http://localhost:8001/api/getSession`)
+      .then(response => {
+        // JSON responses are automatically parsed.
+        this.session = response.session;
+        // alert(JSON.stringify(response));
       })
       .catch(e => {
         this.errors.push(e);

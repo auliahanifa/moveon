@@ -429,7 +429,7 @@ export default {
           "content-type": "multipart/form-data"
         }
       };
-      axios
+      axios 
         .post(`https://admin.donasimoveon.com/api/pendaftar`, formData, config)
         .then(response => {
           this.data = response.data;
