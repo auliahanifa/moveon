@@ -11,10 +11,11 @@ import "./registerServiceWorker";
 import axios from "axios";
 import VueAxios from "vue-axios";
 import VueCurrencyFilter from "vue-currency-filter";
+import VueNumeric from "vue-numeric";
 
 Vue.config.productionTip = false;
 
-Vue.use(BootstrapVue, VueAxios, axios);
+Vue.use(BootstrapVue, VueAxios, axios, VueNumeric);
 Vue.use(VueCurrencyFilter, {
   symbol: "Rp ",
   thousandsSeparator: ".",
