@@ -4,8 +4,7 @@ import Router from "vue-router";
 Vue.use(Router);
 
 export default new Router({
-  routes: [
-    {
+  routes: [{
       path: "/",
       name: "home",
       component: () => import("@/components/Beranda.vue")
@@ -28,74 +27,57 @@ export default new Router({
     {
       path: "/lelang",
       name: "Lelang",
-      component: () =>
-        import(/* webpackChunkName: "about" */ "@/components/BarangLelang.vue")
+      component: () => import("@/components/BarangLelang.vue")
     },
     {
       path: "/donasi",
       name: "Donasi",
-      component: () =>
-        import(/* webpackChunkName: "about" */ "@/components/GalangDana.vue")
+      component: () => import("@/components/GalangDana.vue")
     },
     {
       path: "/login",
       name: "Login",
-      component: () =>
-        import(/* webpackChunkName: "about" */ "@/components/formLogin.vue")
+      component: () => import("@/components/formLogin.vue")
     },
     {
       path: "/daftarlah",
       name: "Daftar",
-      component: () =>
-        import(
-          /* webpackChunkName: "about" */ "@/components/formRegistrasi.vue"
-        )
+      component: () => import("@/components/formRegistrasi.vue")
     },
     {
       path: "/formgalangdanaa",
       name: "Mulai_Galangdana",
-      component: () =>
-        import(
-          /* webpackChunkName: "about" */ "@/components/formMulaigalangdana.vue"
-        )
+      component: () => import("@/components/formMulaigalangdana.vue")
     },
     {
       path: "/donasi_barang",
       name: "Donasi_barang",
       component: () =>
-        import(
-          /* webpackChunkName: "about" */ "@/components/FormDonasibarang.vue"
-        )
+        import("@/components/FormDonasibarang.vue")
     },
     {
       path: "/detailbarang",
       name: "DetailLelang",
       component: () =>
-        import(
-          /* webpackChunkName: "about" */ "@/components/DetailBaranglelang.vue"
-        )
+        import("@/components/DetailBaranglelang.vue")
     },
     {
       path: "/dashboarduser",
       name: "Dashboard",
       component: () =>
-        import(/* webpackChunkName: "about" */ "@/components/Dashboarduser.vue")
+        import("@/components/Dashboarduser.vue")
     },
     {
       path: "/detgalangdana",
       name: "GalangdanaDetail",
       component: () =>
-        import(
-          "@/components/Galangdanadet.vue"
-        )
+        import("@/components/Galangdanadet.vue")
     },
     {
       path: "/Uploadbuktibayar",
       name: "UploadBuktibayar",
       component: () =>
-        import(
-          /* webpackChunkName: "about" */ "@/components/SelesaikanBayar.vue"
-        )
+        import("@/components/SelesaikanBayar.vue")
     }
   ]
 });
