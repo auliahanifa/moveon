@@ -2,24 +2,23 @@
     <b-container>
         <div class="detail" style="margin-top:100px;">
         	<b-row>
-                <b-col sm="12" md="8" lg="6">
+                <b-col sm="12" md="8" lg="8">
                     <h3>{{ galang_dana.judul }}</h3>
-                    <div class="detail-foto" style="width: 100%; height: 23rem; border:2 px solid black; 
-                    background-color: lightblue;">
+                    <div class="detail-foto" style="width: 100%; height: auto; border:2 px solid black;">
                     <img v-bind:src="galang_dana.path_photo" alt="" style="width: 100%; height: 23rem; padding:5px;">
                     </div>
                 </b-col>
                     
-                <b-col sm="12" md="12" lg="6">
-                 <b-card style="margin-top:20px;">
-                    <b-card-text style="font-size:16px;">
-                    Terkumpul dana sebesar Rp
+                <b-col sm="12" md="12" lg="4">
+                 <b-card style="margin-top:10px; font-family:Montserrat, serif;">
+                    <b-card-text style="font-size:22px; style:bold; ">
+                    Rp
                     <span
                      style="font-weight:bold;"
                     >{{ galang_dana.dana_terkini }}</span>
                     </b-card-text>
                     <b-card-text>
-                    dari total dana sebesar Rp. {{ galang_dana.target_dana }}
+                    terkumpul dari total dana sebesar Rp. {{ galang_dana.target_dana }}
                     </b-card-text>
                     
                     <b-progress
@@ -31,12 +30,12 @@
                     ></b-progress>
                     
                     <p>Waktu penggalangan dana tinggal {{ sisa_hari }} hari</p>
-                    <router-link to="/lelang"><b-button>
+                    <router-link to="/lelang"><b-button class="btn-donasi-red">
                         Donasi Sekarang
                     </b-button></router-link>
-                    <br> <br>
                     
-                    <a href="whatsapp://send?text=The text to share!" data-action="share/whatsapp/share"><b-button>
+                    
+                    <a href="whatsapp://send?text=The text to share!" data-action="share/whatsapp/share"><b-button class="btn-share-blue">
                         Bagikan
                     </b-button></a>
                     
@@ -45,11 +44,11 @@
                     <b-img
                     v-bind:src="photo_pengguna"
                     rounded="circle"
-                    width="30"
+                    style="border:2px solid black;"
                     ></b-img>
                     
-                    <span style="font-size:10px; padding-left:10px; font-weight:bold">
-                    {{ nama_pengguna }}
+                    <span style="font-size:14px; padding-left:10px;">
+                    Fundraiser: {{ nama_pengguna }}
                 	</span>
                     <br/>
                  </b-card>
@@ -63,7 +62,7 @@
             <b-row>
                 <div class="update-gd">
                 <h4>Update</h4>
-                <div class="garis-orange"></div>
+                <div class="garis-orange" style="width:100%"></div>
                 <p>Belum ada Update.</p> 
             </div>
             </b-row>
@@ -71,14 +70,17 @@
             <b-row>
             <div class="deskripsi-gd"> 
                 <h4>Deskripsi</h4>
-                <div class="garis-orange"></div>
+                <div class="garis-orange" style="width: 100%;"></div>
                 <p>{{ galang_dana.deskripsi }}</p>
             </div>
             </b-row>
 
             <b-row>
-            <b-button>Donasi Sekarang</b-button>                
-            </b-row>        
+            <b-button class="btn-donasi-red">Donasi Sekarang</b-button>                
+            </b-row>
+
+            <footer>
+            </footer>        
         </div>
     </b-container>
 </template>
@@ -116,19 +118,34 @@ export default {
 </script>
 
 <style scoped>
+
+
 .btn {
-    width: 70%;
     display: inline-block;
-    /* font-weight: 400; */
     color: #ffffff;
     text-align: center;
     font-family: Quicksand;
     vertical-align: middle;
-    background-color: orange;
     border: 1px solid transparent;
     padding: 0.375rem 0.75rem;
     font-size: 1rem;
     line-height: 1.7;
-    border-radius: 0.7rem;
+    width: 94%;
+    margin-top: 8px;
+    border-radius: 1.3rem;
+
+    
 }
+
+.btn-donasi-red{
+    background-color: #FE5C21;
+    height: 3.8rem;
+}
+
+.btn-share-blue{
+    background-color: #4675C6;
+    height: 2.8rem;
+}
+
+
 </style>
