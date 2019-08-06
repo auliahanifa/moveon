@@ -280,8 +280,7 @@ export default {
   },
   created() {
     axios
-      // .get(`https://admin.donasimoveon.com/api/beasiswa`)
-      .get(`http://adminmoveon.test/api/beasiswa`)
+      .get(`https://admin.donasimoveon.com/api/beasiswa`)
       .then(response => {
         // JSON responses are automatically parsed.
         this.pengumuman = response.data.pengumuman;
