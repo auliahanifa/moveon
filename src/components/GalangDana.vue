@@ -4,29 +4,24 @@
       <h3>Selamat datang di Menu Donasi</h3>
       <h4>Galang dana yang dapat dibantu dengan Donasi Anda</h4>
     </center>
-    
-    <b-container class="rowing-set">
-      <b-row>
+    <br>
+
+    <b-container >
+      <b-row v-if="galang_beasiswa != null">
         
-          <div v-if="galang_beasiswa != null">
+          <!-- <div > -->
             <!-- <h3>{{ galang_dana.judul }}</h3> -->
-            <b-col sm="12" md="8" lg="8">
+            <b-col sm="12" md="8" lg="6">
             <h3>{{galang_beasiswa.judul}}</h3>
             <div class="detail-foto" style="width: 100%; height: auto; border:2 px solid black;">
             <img v-bind:src="'https://admin.donasimoveon.com' + galang_beasiswa.path_photo" alt="" style="width: 100%; height: 23rem; padding:5px;">
             </div>
             </b-col>
 
-            <b-col sm="12" md="12" lg="4">
+            <b-col sm="12" md="12" lg="6">
             <b-card style="margin-top:10px; font-family:Quicksand, serif;">
             <h6>Siap Memberi Bantuan?</h6>
             <p>Ayo berdonasi menggunakan #DonasiMoveOn</p>
-            <b-card-text style="font-size:22px; style:bold; ">
-            Rp
-            <span
-              style="font-weight:bold;"
-            >{{ galang_beasiswa.dana_terkini | currency }}</span>
-            </b-card-text>
             <p style="font-size:16px;">
               Target Dana
               <span
@@ -43,13 +38,6 @@
             ></b-progress>
             
             <p>Waktu penggalangan dana tinggal {{ sisa_hari }} hari</p>
-            <router-link to="/lelang"><b-button class="btn-donasi-red">
-                Donasi Sekarang
-            </b-button></router-link>
-            
-            <a href="whatsapp://send?text=The text to share!" data-action="share/whatsapp/share"><b-button class="btn-share-blue">
-                Bagikan
-            </b-button></a>
             <div class="row">
               <div class="col-md-8">
                 <p style="font-size:14px;">
@@ -62,22 +50,37 @@
                 </p>
               </div>
             </div>
-            <br />
-            <p style="font-size:16px; font-weight:bold">{{galang_beasiswa.judul}}</p>
-            <b-card-text>{{galang_beasiswa.deskripsi | subStr}}</b-card-text>
+            <router-link to="/lelang"><b-button class="btn-donasi-red">
+                Donasi Sekarang
+            </b-button></router-link>
+            <br>
+            <a href="whatsapp://send?text=The text to share!" data-action="share/whatsapp/share"><b-button class="btn-share-blue" style="margin-top:8px;">
+                Bagikan
+            </b-button></a>
+            
+            <!-- <p style="font-size:16px; font-weight:bold">{{galang_beasiswa.judul}}</p> -->
+            <b-card-text style="margin-top:5px;">{{galang_beasiswa.deskripsi | subStr}}</b-card-text>
           </b-card>
         </b-col>
-      </div>
-      <div v-else>
-        <h6>Saat ini Galang Dana Beasiswa Tidak Tersedia</h6>
-      </div>
+      <!-- </div> -->
       </b-row>
-
+      <b-row v-else>
+        <h6>Saat ini Galang Dana Beasiswa Tidak Tersedia</h6>
+      </b-row>
+      
+      <br><br>
+      <div class="garis-orange" style="width:100%;"></div>
+      <br>
+      <center>
+      <h3>Saatnya Wujudkan Mimpi dengan Berkontribusi!</h3>
+      </center>
+        <br>
+      <div class="container">
       <b-row>
-        <b-col sm="12" md="6" lg="4" v-for="item in galangdana" :key="item.id">
+        <b-col sm="12" md="12" lg="4" v-for="item in galangdana" :key="item.id">
           <b-card
             :title="item.judul.substring(0,20)+'...'"
-            :img-src="'http://admin.donasimoveon.com' + item.path_photo"
+            :img-src="'https://admin.donasimoveon.com' + item.path_photo"
             img-alt="Image"
             img-top
             tag="article"
@@ -97,12 +100,13 @@
               <b>{{ item.target_dana | currency}}</b>
             </p>
             <p>Diterbitkan oleh {{ item.id_pengguna }}</p>
-            <router-link to="/detgalangdana">
+            <router-link :to="{name: 'GalangdanaDetail', params: { id: item.id_galangdana } }">
               <b-button class="btn-orange btn-sm">Selengkapnya</b-button>
             </router-link>
           </b-card>
         </b-col>
       </b-row>
+      </div>
     </b-container>
     <div class="footer">
       <center>
@@ -126,63 +130,53 @@ export default {
     msg: String
   },
   created() {
-    axios
-      .get(`https://admin.donasimoveon.com/api/galangdana`)
-      .then(response => {
-        // JSON responses are automatically parsed.
-        this.galangdana = response.data.galangdana;
-      })
-      .catch(e => {
-        this.errors.push(e);
-      });
-  },
-  created() {
-    axios
-      .get(`https://admin.donasimoveon.com/api/beasiswa`)
-      .then(response => {
-        // JSON responses are automatically parsed.
-        this.galang_beasiswa = response.data.galang_beasiswa;
-        this.sisa_hari = response.data.sisa_hari;
-        // this.onclick = parseInt(response.data.onclick); // kalau pas demo matiin yg ini aja
-      })
-      .catch(e => {
-        this.errors.push(e);
-      });
+    axios.all([
+    axios.get(`https://admin.donasimoveon.com/api/beasiswa`),
+    axios.get(`https://admin.donasimoveon.com/api/galangdana`)
+    ])
+    .then(axios.spread((beasiswaRes, galangdanaRes) => {
+      // do something with both responses
+      this.galang_beasiswa = beasiswaRes.data.galang_beasiswa;
+      this.sisa_hari = beasiswaRes.data.sisa_hari;
+      this.galangdana = galangdanaRes.data.galangdana;
+      // alert(this.galang_beasiswa);
+    }))
+    .catch(e => {
+      // alert(e);
+
+    this.errors.push(e);
+    });
   }
+  // created() {
+  //   axios.get(`https://admin.donasimoveon.com/api/beasiswa`)
+  //     .then(response => {
+  //       // JSON responses are automatically parsed.
+  //       this.galang_beasiswa = response.data.galang_beasiswa;
+  //       this.sisa_hari = response.data.sisa_hari;
+  //       // this.onclick = parseInt(response.data.onclick); // kalau pas demo matiin yg ini aja
+  //     })
+  // },
+
 };
+    // axios.get(`https://admin.donasimoveon.com/api/beasiswa`)
+      // .then(response => {
+      //   // JSON responses are automatically parsed.
+      //   this.galang_beasiswa = response.data.galang_beasiswa;
+      //   this.sisa_hari = response.data.sisa_hari;
+      //   // this.onclick = parseInt(response.data.onclick); // kalau pas demo matiin yg ini aja
+      // })
+      // .get(`https://admin.donasimoveon.com/api/galangdana`)
+      // .then(response => {
+      //   // JSON responses are automatically parsed.
+      //   this.galangdana = response.data.galangdana;
+      // })
+      // .catch(e => {
+      //   this.errors.push(e);
+      // });
 </script>
 
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-table {
-  text-align: center;
-  font-family: Quicksand;
-  width: 100%;
-  /* border-collapse: collapse; */
-  border: 2px solid grey;
-  margin: 10px 10px 0 10px;
-}
 
-table th {
-  border: 2px solid grey;
-  text-transform: uppercase;
-  text-align: left;
-  /* background: lightblue; */
-  color: black;
-  padding: 5px;
-  min-width: 30px;
-}
-
-table td {
-  text-align: left;
-  padding: 5px;
-  border-right: 2px solid #7d82a8;
-}
-table td:last-child {
-  border-right: none;
-}
-table tbody tr:nth-child(2n) td {
-  background: #d4d8f9;
-}
 </style>

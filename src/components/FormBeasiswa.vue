@@ -230,19 +230,6 @@
         ],
         show: true
       };
-<<<<<<< HEAD
-      axios 
-        .post(`https://admin.donasimoveon.com/api/pendaftar`, formData, config)
-        .then(response => {
-          this.data = response.data;
-          this.message = response.data.message;
-          this.status = parseInt(response.data.status);
-          this.showDismissibleAlert = true;
-          if (this.status == 1) {
-            window.open("/#/beasiswa", "_self");
-          } else {
-            window.open("", "_self");
-=======
     },
     methods: {
       onImageChange(e) {
@@ -273,7 +260,6 @@
         const config = {
           headers: {
             "content-type": "multipart/form-data"
->>>>>>> 445c930bd068d071399ee032d6337ee2132d6ebe
           }
         };
         axios

@@ -1,6 +1,6 @@
 <template>
   <div class="registrasiAkun">
-    <b-container >
+    <b-container>
       <b-row>
         <b-col sm="12" md="12" lg="4" class="kiri">
           <h2>Halo Agen Kebaikan!</h2>
@@ -138,7 +138,7 @@ export default {
       e.preventDefault();
       // let currentObj = this;
       // alert(JSON.stringify(this.form))
-      axios.post('http://localhost:8000/api/pengguna', {
+      axios.post('https://admin.donasimoveon.com/api/pengguna', {
         nama: this.nama,
         no_hp: this.no_hp,
         no_identitas: this.no_identitas,
@@ -174,14 +174,13 @@ export default {
 
 .kiri {
   background-color: rgb(0, 0, 0, 0.3);
-
   width: 100%;
   height: auto;
   position: center;
   padding: 10px;
   text-align: center;
-  margin-top: 200px;
-  padding: 20px;
+  margin-top: 100px;
+  /* padding: 20px; */
 }
 
 .kiri h2 {
@@ -206,7 +205,7 @@ export default {
   height: auto;
   background: linear-gradient(270deg, #f64a00 0%, rgba(247, 147, 23, 0) 100%),
     #f79317;
-  margin-top: 100px;
+  margin-top: 80px;
   margin-left: auto;
   margin-right: auto;
 }

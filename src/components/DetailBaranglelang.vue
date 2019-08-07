@@ -5,7 +5,7 @@
                 <b-col sm="12" md="12" lg="6">
                     <!-- <h3>{{ galang_dana.judul }}</h3> -->
                     <div class="detail-foto" style="width: 100%; height: auto; border:2 px solid black;">
-                    <img v-bind:src="barang.path_photo" alt="" style="width: 100%; height: 23rem; padding:5px;">
+                    <img v-bind:src="barang.path_photo" alt="" style="width: 100%; height: 100%; padding:5px;">
                     </div>
                 </b-col>
 
@@ -45,6 +45,7 @@
     </div>
 </template>
 <script>
+import axios from "axios";
 export default {
   mounted(){
     console.log('component mounted')
@@ -62,10 +63,10 @@ export default {
   },
   created() {
     axios
-      .get(`https://admin.donasimoveon.com/api/barang/{id}`)
+      .get(`https://admin.donasimoveon.com/api/barang/`+this.$route.params.id)
       .then(response => {
         // JSON responses are automatically parsed.
-        this.barang = response.data.barang;
+        this.barang = response.data.barang_donasi;
         this.nama_pemilik = response.data.nama_pemilik;
       })
       .catch(e => {

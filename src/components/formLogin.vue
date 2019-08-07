@@ -1,12 +1,12 @@
 <template>
-  <div class="formlogin">
+  <!-- <div class="formlogin"> -->
     <b-container >
       <b-row>
-        <b-col sm="12" md="8" lg="6" >
+        <b-col sm="12" md="12" lg="6" >
         <div class="login-header-section">
           <h3>Masuk ke akun anda</h3>
         </div>
-
+        
         <div class="form-section">
           <b-form @submit="onSubmit" v-if="show">
             <center>
@@ -36,7 +36,7 @@
         </b-col>
     </b-row>
   </b-container>  
-  </div>
+  <!-- </div> -->
 </template>
 <script>
 import axios from "axios";
@@ -55,7 +55,7 @@ export default {
     onSubmit(evt) {
       evt.preventDefault();
       // ertert(JSON.stringify(this.form));
-      axios.post('http://localhost:8001/api/login/', {
+      axios.post('https://admin.donasimoveon.com/api/login/', {
         email:this.form.email,
         password:this.form.password
       })
@@ -91,5 +91,25 @@ p {
   border: 2px solid #fb574c;
   box-sizing: border-box;
   border-radius: 11px;
+}
+
+.login-header-section {
+    width: 100%;
+    height: auto;
+    background: linear-gradient(270deg, #F64A00 0%, rgba(247, 147, 23, 0) 100%), #F79317;
+    margin: auto;
+    -webkit-mask-attachment: fixed;
+    position: right center;
+}
+
+.login-header-section h3 {
+    padding: 15px;
+    color: white;
+    size: 6px;
+    text-align: left;
+    margin-top: 150px;
+    margin-left: auto;
+    margin-right: auto;
+
 }
 </style>

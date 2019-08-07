@@ -1,11 +1,11 @@
 <template>
     <b-container>
         <div class="detail" style="margin-top:100px;">
-        	<b-row>
+        	<b-row v-if="galang_dana !=null">
                 <b-col sm="12" md="8" lg="8">
                     <h3>{{ galang_dana.judul }}</h3>
                     <div class="detail-foto" style="width: 100%; height: auto; border:2 px solid black;">
-                    <img v-bind:src="galang_dana.path_photo" alt="" style="width: 100%; height: 23rem; padding:5px;">
+                    <img v-bind:src="'https://admin.donasimoveon.com' +galang_dana.path_photo" alt="" style="width: 100%; height: 23rem; padding:5px;">
                     </div>
                 </b-col>
                     
@@ -46,11 +46,8 @@
                     rounded="circle"
                     style="border:2px solid black;"
                     ></b-img>
-                    
                     <span style="font-size:14px; padding-left:10px;">
-                    Fundraiser: {{ nama_pengguna }}
-                	</span>
-                    <br/>
+                    Fundraiser: {{ nama_pengguna }}</span>
                  </b-card>
                 </b-col>
             </b-row>
@@ -101,15 +98,16 @@ export default {
     },
     created() {
     axios
-      .get(`https://admin.donasimoveon.com/api/galangdana/{id}`)
+      .get(`https://admin.donasimoveon.com/api/galangdana/`+this.$route.params.id)
       .then(response => {
         // JSON responses are automatically parsed.
         this.galang_dana = response.data.galang_dana;
         this.sisa_hari = response.data.sisa_hari;
-        this.path_photo_pengguna = response.data.path_photo_pengguna;
+        this.photo_pengguna = response.data.photo_pengguna;
         this.nama_pengguna = response.data.nama_pengguna;
       })
       .catch(e => {
+          alert(e);
         this.errors.push(e);
       });
     }

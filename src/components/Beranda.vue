@@ -1,9 +1,9 @@
 <template>
   <div class="Beranda">
     <div class="header-section">
-      <h3>{{ header_text1 }}</h3>
-      <h4>{{ header_text1_a }}</h4>
-      <h5>{{ header_text2 }}</h5>
+      <h3>{{ header_text1 }} <br> {{ header_text1_a }} </h3>
+
+      <!-- <h5>{{ header_text2 }}</h5> -->
       <!-- <div v-if="session != null"> -->
           <router-link to="/donasi_barang">
             <b-button variant="outline" class="btn_app">{{ btn_donasibarang }}</b-button>
@@ -19,7 +19,7 @@
     <b-container>
       <div class="body-cerita">
         <b-row>
-          <b-col sm="12" md="7" lg="8">
+          <b-col sm="12" md="7" lg="5">
             <h3>{{ judul_section }}</h3>
             <h5>{{ deskripsi_section }}</h5>
             <center>
@@ -28,7 +28,7 @@
               </router-link>
             </center>
           </b-col>
-          <b-col lg="4" md="5" sm="12">
+          <b-col lg="6" md="5" sm="12">
             <center v-if="galang_beasiswa != null">
               <b-card
                 :img-src="'https://admin.donasimoveon.com' + galang_beasiswa.path_photo"
@@ -82,16 +82,37 @@
         <br />
         <br />
 
+        <h3>Ikuti lelang di moveon lalu salurkan uang anda untuk galang dana yang menjadi destinasi bantuan anda</h3>
         <b-row>
-          <h3>Ikuti lelang di moveon lalu salurkan uang anda untuk galang dana yang menjadi destinasi bantuan anda</h3>
+          <b-col >
+          <!-- <b-carousel 
+            id="carousel-1"
+            v-model="barang"
+            :interval="4000"
+            controls
+            indicators
+            background="#ababab"
+            img-width="1024"
+            img-height="480"
+            style="text-shadow: 1px 1px 2px #333;"
+            @sliding-start="onSlideStart"
+            @sliding-end="onSlideEnd"
+          > -->
+            <!-- Text slides with image -->
+            <!-- <b-carousel-slide v-for="item in barang" :key="item.id" 
+              :caption="item.harga_awal"
+              :text="item.deskripsi"
+              :img-src="'https://admin.donasimoveon.com/api/barang' +barang.path_photo"
+            ></b-carousel-slide>
+          </b-carousel> -->
+          </b-col>
         </b-row>
         <br />
-
         <br />
 
         <center>
           <router-link to="/lelang">
-            <b-button>Lihat semua</b-button>
+            <b-button class="btn-donasi-orange">Lihat semua</b-button>
           </router-link>
         </center>
 
@@ -203,34 +224,57 @@ export default {
       galang_beasiswa: {},
       sisa_hari: "",
       avatar_admin: "",
-      nama_admin: ""
+      nama_admin: "",
+      barang:[],
+     
     };
   },
   created() {
-    axios
-      .get(`https://admin.donasimoveon.com/api/beasiswa`)
-      .then(response => {
-        // JSON responses are automatically parsed.
-        this.galang_beasiswa = response.data.galang_beasiswa;
-        this.sisa_hari = response.data.sisa_hari;
-        this.avatar_admin = response.data.avatar_admin;
-        this.nama_admin = response.data.nama_admin;
-      })
-      .catch(e => {
-        this.errors.push(e);
-      });
-  },
-  created(){
-    axios.get(`http://localhost:8001/api/getSession`)
-      .then(response => {
-        // JSON responses are automatically parsed.
-        this.session = response.session;
-        // alert(JSON.stringify(response));
-      })
-      .catch(e => {
-        this.errors.push(e);
-      });
-  },
+    axios.all([
+    axios.get(`https://admin.donasimoveon.com/api/beasiswa`),
+    axios.get(`https://admin.donasimoveon.com/api/barang`),
+    axios.get(`https://admin.donasimoveon.com/api/getSession`),
+    ])
+    .then(axios.spread((beasiswaRes, barangRes, getSessionRes) => {
+      // do something with both responses
+      this.galang_beasiswa = beasiswaRes.data.galang_beasiswa;
+      this.sisa_hari = beasiswaRes.data.sisa_hari;
+      this.avatar_admin = beasiswaRes.data.avatar_admin;
+      this.nama_admin = beasiswaRes.data.nama_admin;
+      this.barang = barangRes.data.barang;
+      this.session = getSessionRes.data.session;
+    }))
+    .catch(e => {
+    this.errors.push(e);
+    });
+  }
+  
+  // created() {
+  //   axios
+  //     .get(`https://admin.donasimoveon.com/api/beasiswa`)
+  //     .then(response => {
+  //       // JSON responses are automatically parsed.
+  //       this.galang_beasiswa = response.data.galang_beasiswa;
+  //       this.sisa_hari = response.data.sisa_hari;
+  //       this.avatar_admin = response.data.avatar_admin;
+  //       this.nama_admin = response.data.nama_admin;
+  //     })
+  //     .catch(e => {
+  //       this.errors.push(e);
+  //     });
+  // },
+  // created(){
+  //   axios.get(`https://admin.donasimoveon.com/api/getSession`)
+  //     .then(response => {
+  //       // JSON responses are automatically parsed.
+  //       this.session = response.session;
+  //       // alert(JSON.stringify(response));
+  //     })
+  //     .catch(e => {
+  //       this.errors.push(e);
+  //     });
+  // }
+  ,
   filters: {
     subStr: function(string) {
       return string.substring(0, 100) + "...";
@@ -245,55 +289,30 @@ hr {
 }
 
 .header-section {
-  /* margin: auto; */
   background-image: url("../assets/img/kids.jpg");
-  /* background-size: auto; */
-  /* position: center; */
-  /* background-size: cover; */
-  /* min-width: 100%;
-  min-height: 100%; */
   background-repeat: no-repeat;
   padding-bottom: 10px;
   margin-bottom: 50px;
 }
 
 .header-section h3 {
-  font-family: Quattrocento Sans;
-  font-style: italic;
-  font-weight: normal;
+  font-family: Quicksand;
+  font-style: bold;
   font-size: 36px;
   line-height: 37px;
   text-align: center;
-  padding-top: 170px;
+  padding-top: 140px;
+  padding-left: 100px;
+  padding-right: 100px;
+  padding-bottom: 40px;
   color: white;
   margin: auto;
-}
-
-.header-section h4 {
-  font-family: Quattrocento Sans;
-  font-style: italic;
-  font-weight: bold;
-  font-size: 36px;
-  line-height: 47px;
-  text-align: center;
-
-  color: #f79317;
-}
-
-.header-section h5 {
-  font-family: Quicksand;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 28px;
-  line-height: 30px;
-  text-align: center;
-  color: #d3c4c4;
 }
 
 .btn_app {
   width: 227px;
   height: auto;
-  background: rgba(251, 87, 76, 0.48);
+  background: rgba(251, 87, 76, 0.78);
   border: 3px solid #f64a00;
   box-sizing: border-box;
   border-radius: 32px;
@@ -307,7 +326,8 @@ hr {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 30px;
+
+  margin-bottom: 50px;
 }
 
 button a {
@@ -364,7 +384,7 @@ h6,
 
 .body-baranglelang h3 {
   padding: 20px;
-  width: 521px;
+  width: 440px;
   height: 58px;
   font-family: Quattrocento Sans;
   font-style: normal;

@@ -56,7 +56,7 @@ export default new Router({
         import("@/components/FormDonasibarang.vue")
     },
     {
-      path: "/detailbarang",
+      path: "/detailbarang/:id",
       name: "DetailLelang",
       component: () =>
         import("@/components/DetailBaranglelang.vue")
@@ -68,7 +68,7 @@ export default new Router({
         import("@/components/Dashboarduser.vue")
     },
     {
-      path: "/detgalangdana",
+      path: "/detgalangdana/:id",
       name: "GalangdanaDetail",
       component: () =>
         import("@/components/Galangdanadet.vue")

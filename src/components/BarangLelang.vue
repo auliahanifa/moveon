@@ -1,11 +1,10 @@
 <template>
   <div id="baranglelang" style="margin-top:100px;">
     <center>
-      <h3>Selamat datang di Menu Lelang</h3>
-      <h4>Dengan Lelang, Anda dapat menolong orang</h4>
-      <!-- <button v-on:click="counter += 5000">Tawar</button>
-    <p>Harga Baranggg Rp.{{ counter }},00</p>
-      <br>-->
+      <div class="head-donasi" style="width:90%;">
+        <h3>Selamat datang di Menu Lelang</h3>
+        <h4>Dengan Lelang, Anda dapat menolong orang</h4>
+      </div>
     </center>
     <br />
     <br />
@@ -14,7 +13,7 @@
         <b-col lg="3" md="4" sm="6" v-for="item in barang" v-bind:key="item.id">
           <b-card
             :title="item.nama_barang"
-            :img-src="'http://admin.donasimoveon.com' + item.path_photo"
+            :img-src="'https://admin.donasimoveon.com' + item.path_photo"
             img-alt="Image"
             img-top
             tag="article"
@@ -33,7 +32,7 @@
               <span style="font-weight:bold">{{ item.harga_awal | currency }}</span>
             </b-card-text>
             <b-card-text>{{ item.deskripsi.substring(0,20) }}...</b-card-text>
-            <router-link to="/detailbarang">
+            <router-link :to="{name: 'DetailLelang', params: { id: item.id_barang } }">
               <b-button class="btn-orange btn-sm">Ikut Lelang</b-button>
             </router-link>
           </b-card>
