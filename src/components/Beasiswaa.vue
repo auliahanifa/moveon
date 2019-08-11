@@ -198,7 +198,7 @@
           >Selamat Kepada Penerima Beasiswa Donasi MoveOn</h3>
           <h5 style="margin-bottom:50px">{{pengumuman[0].periode}}</h5>
         </center>
-        <b-row>
+        <b-row class="justify-content-md-center">
           <b-col sm="12" md="4" lg="4" v-for="item in pengumuman" v-bind:key="item.id">
             <center>
               <b-img
