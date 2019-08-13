@@ -47,19 +47,19 @@
             </h3>
             <ul style="list-style-type: none;">
               <li>
-                <font-awesome-icon icon="check-square"></font-awesome-icon> Mahasiswa aktif Politknik Negeri Jakarta
+                <font-awesome-icon icon="check-square"></font-awesome-icon>Mahasiswa aktif Politknik Negeri Jakarta
               </li>
               <li>
-                <font-awesome-icon icon="check-square"></font-awesome-icon> Minimal semester 2
+                <font-awesome-icon icon="check-square"></font-awesome-icon>Minimal semester 2
               </li>
               <li>
-                <font-awesome-icon icon="check-square"></font-awesome-icon> Minimal ipk 3.00
+                <font-awesome-icon icon="check-square"></font-awesome-icon>Minimal ipk 3.00
               </li>
               <li>
-                <font-awesome-icon icon="check-square"></font-awesome-icon> Scan KTM, marksheet, kartu keluarga, sertifikat organisasi, sertifikat lomba, dan slip gaji orang tua
+                <font-awesome-icon icon="check-square"></font-awesome-icon>Scan KTM, marksheet, kartu keluarga, sertifikat organisasi, sertifikat lomba, dan slip gaji orang tua
               </li>
               <li>
-                <font-awesome-icon icon="check-square"></font-awesome-icon> Berkas dijadikan satu dan diupload dalam bentuk file pdf
+                <font-awesome-icon icon="check-square"></font-awesome-icon>Berkas dijadikan satu dan diupload dalam bentuk file pdf
               </li>
             </ul>
           </b-col>
