@@ -1,13 +1,13 @@
 <template>
+    <b-container>
     <div class="selesaikan-bayar" style="margin-top:100px; padding:30px;">
-
+        <center>
         <h3>Upload Bukti Transfer Pembelian Lelang Anda</h3>
+        </center>
         <div class="garis-orange" style="width:100%;"></div>
         <br>
 
-        
-
-        <b-container >
+        <div class="container">
         <center>
           <h3>{{ no_rekening }}</h3>
           <b-form-group id="input-group-1" label-for="File" sm="12" md="8" lg="12">
@@ -21,8 +21,9 @@
           </div>
           <b-button @click="uploadFile()">Upload</b-button>
         </center>
-        </b-container>
+        </div>
     </div>
+    </b-container>
 </template>
 <script>
 export default {

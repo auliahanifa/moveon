@@ -14,8 +14,8 @@
             <b-button variant="outline" class="btn_app">{{ btn_donasibarang }}</b-button>
           </router-link> -->
       <!-- </div> -->
-      <div class="batasan"></div>
     </div>
+    <br><br>
     <b-container>
       <div class="body-cerita">
         <b-row>
@@ -75,9 +75,9 @@
           </b-col>
         </b-row>
       </div>
+      <br><br>
 
-      <hr />
-
+      <div class="garis-orange" style="width: 100%;"></div>
       <div class="body-baranglelang">
         <br />
         <br />
@@ -85,26 +85,6 @@
         <h3>Ikuti lelang di moveon lalu salurkan uang anda untuk galang dana yang menjadi destinasi bantuan anda</h3>
         <b-row>
           <b-col >
-          <!-- <b-carousel 
-            id="carousel-1"
-            v-model="barang"
-            :interval="4000"
-            controls
-            indicators
-            background="#ababab"
-            img-width="1024"
-            img-height="480"
-            style="text-shadow: 1px 1px 2px #333;"
-            @sliding-start="onSlideStart"
-            @sliding-end="onSlideEnd"
-          > -->
-            <!-- Text slides with image -->
-            <!-- <b-carousel-slide v-for="item in barang" :key="item.id" 
-              :caption="item.harga_awal"
-              :text="item.deskripsi"
-              :img-src="'https://admin.donasimoveon.com/api/barang' +barang.path_photo"
-            ></b-carousel-slide>
-          </b-carousel> -->
           </b-col>
         </b-row>
         <br />
@@ -115,8 +95,9 @@
             <b-button class="btn-donasi-orange">Lihat semua</b-button>
           </router-link>
         </center>
-
-        <hr />
+        <br><br>
+        <div class="garis-orange" style="width: 100%;"></div>
+        <br><br>        
         <div class="body-team">
           <center>
             <h3 style="border-bottom: 5px solid red; width:230px; ">Meet Our Team</h3>
@@ -167,7 +148,10 @@
           </center>
         </div>
 
-        <hr />
+        <br><br>
+        <div class="garis-orange" style="width: 100%;"></div>
+        <br><br>        
+        
 
         <div class="sosmed">
           <center>
@@ -437,21 +421,6 @@ h6,
   margin: auto;
 }
 
-.sosmed {
-  margin: 8px;
-  padding: 2px;
-}
-
-.sosmed p {
-  font-family: Quicksand;
-  font-size: 22px;
-  padding: 3px;
-}
-.sosmed-logo img {
-  width: 44px;
-  margin: 1px;
-  padding: 2px;
-}
 div.card {
   width: 80%;
   position: center;

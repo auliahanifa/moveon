@@ -24,9 +24,9 @@
               <b-nav-item class="nav-text">
                 <router-link to="/Login">Masuk</router-link>
               </b-nav-item>
-              <!-- <b-nav-item class="nav-text">
+              <b-nav-item class="nav-text">
                 <router-link to="/dashboarduser">Dashboard</router-link>
-              </b-nav-item>-->
+              </b-nav-item>
               <!-- <b-nav-item-dropdown class="drop-link">
                 <template slot="button-content">
                   <font-awesome-icon icon="bars" class="bar"></font-awesome-icon>

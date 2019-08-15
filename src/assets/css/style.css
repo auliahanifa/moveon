@@ -205,8 +205,7 @@
 }
 
 .garis-orange {
-    background-color: #f99300;
-    height: 4px;
+    background: linear-gradient(90deg, #F79317 0%, rgba(255, 255, 255, 0) 100%), #F64A00;height: 4px;
     width: 20%;
 }
 
@@ -250,6 +249,18 @@
     font-weight: bold;
     text-decoration: none;
     background-color: transparent;
+}
+
+.card-header-tabs {
+    margin-right: -0.625rem;
+    margin-bottom: -0.75rem;
+    margin-left: -0rem;
+    border-bottom: 0;
+    
+}
+
+.tabs-header{
+    background-color: #F79317;
 }
 
 /* Form Beasiswa */
@@ -336,6 +347,26 @@
     margin-bottom: 50px;
 }
 
+.btn-donasi-grd {
+    width: 40%;
+    height: auto;
+
+    font-family: Quicksand;
+    font-style: normal;
+    font-size: 18px;
+    line-height: 38px;
+    /* display: flex; */
+    align-items: center;
+    text-align: center;
+
+    color: #FFFFFF;
+    background: linear-gradient(90deg, #F64A00 0%, rgba(255, 255, 255, 0) 100%), #F79317;
+    border: 1px solid #F79317;
+    box-sizing: border-box;
+    border-radius: 32px;
+    border: 1px solid #F79317;
+}
+
 /* footer */
 .footer {
     background: #414040;
@@ -368,9 +399,6 @@
     width: auto;
 }
 
-
-
-
 .formlogin button {
     width: 80%;
     height: 38px;
@@ -384,3 +412,21 @@
 .img-header {
     object-fit: cover
 }
+
+.sosmed {
+    margin: 8px;
+    padding: 2px;
+}
+
+.sosmed p {
+font-family: Quicksand;
+font-size: 22px;
+padding: 3px;
+}
+
+.sosmed-logo img {
+width: 44px;
+margin: 1px;
+padding: 2px;
+}
+  

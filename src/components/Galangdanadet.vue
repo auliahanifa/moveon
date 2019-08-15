@@ -57,25 +57,27 @@
             </b-row>
             
             <b-row style="margin-top:20px;">
-                <div class="update-gd">
+                <b-col sm="11" md="10" lg="10">
                 <h4>Update</h4>
-                <div class="garis-orange" style="width:100%"></div>
+                <div class="garis-orange" style="width: 40%;"></div>
+                <br>
                 <p>Belum ada Update.</p> 
-            </div>
+                </b-col>
             </b-row>
 
             <b-row>
-            <div class="deskripsi-gd"> 
+            <b-col sm="11" md="10" lg="10"> 
                 <h4>Deskripsi</h4>
-                <div class="garis-orange" style="width: 100%;"></div>
+                <div class="garis-orange" style="width: 40%;"></div>
+                <br>
                 <p>{{ galang_dana.deskripsi }}</p>
-            </div>
+            </b-col>
             </b-row>
-
-            <b-row>
+            <br><br>
+            <center>
             <b-button class="btn-donasi-red">Donasi Sekarang</b-button>                
-            </b-row>
-
+            </center>
+         
             <footer>
             </footer>        
         </div>

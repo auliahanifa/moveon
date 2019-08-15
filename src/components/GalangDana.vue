@@ -79,18 +79,24 @@
       <b-row>
         <b-col sm="12" md="12" lg="4" v-for="item in galangdana" :key="item.id">
           <b-card
-            :title="item.judul.substring(0,20)+'...'"
+            :title="item.judul.substring(0,100)"
             :img-src="'https://admin.donasimoveon.com' + item.path_photo"
             img-alt="Image"
             img-top
             tag="article"
             style="max-width: 20rem; font-size:12px;"
             img-height="150px"
-            class="mb-2"
+            class="mb-1"
           >
             <br />
-            <b-card-text style="font-size:10px;">{{ item.created_at }}</b-card-text>
-            <b-card-text style="font-size:13px;">{{ item.deskripsi.substring(0,100) }}...</b-card-text>
+            <b-progress
+              :value="parseInt(item.dana_terkini)"
+              :max="parseInt(item.target_dana)"
+              class="mb-2"
+              variant="warning"
+              style="border-radius:10px;"
+            ></b-progress>
+            
             <p>
               Dana terkumpul sebesar
               <span
@@ -99,7 +105,16 @@
               <br />dari
               <b>{{ item.target_dana | currency}}</b>
             </p>
+            <b-card-text style="font-size:10px;">{{ item.created_at }} <span>Waktu penggalangan dana tinggal {{ sisa_hari }} hari</span> </b-card-text>
             <p>Diterbitkan oleh {{ item.id_pengguna }}</p>
+            <b-img
+              :src="'https://admin.donasimoveon.com' + pengguna_pathphoto"
+              rounded="circle"
+              width="30"
+            ></b-img>
+            <span
+              style="font-size:10px; padding-left:10px; font-weight:bold"
+            >{{ nama_pemilik }}</span>
             <router-link :to="{name: 'GalangdanaDetail', params: { id: item.id_galangdana } }">
               <b-button class="btn-orange btn-sm">Selengkapnya</b-button>
             </router-link>
@@ -123,7 +138,9 @@ export default {
   name: "Galangdana",
   data() {
     return {
-      galangdana: []
+      galangdana: [],
+      nama_pemilik:'',
+      pengguna_pathphoto:'',
     };
   },
   props: {

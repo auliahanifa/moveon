@@ -11,7 +11,7 @@
           <input type="file" @change="onFileChange">
          </div>
          <div v-else>
-         <b-img :src="image" ></b-img>
+         <b-img :src="'https://admin.donasimoveon.com' +item.path_photo" ></b-img>
          <br/>
          <!-- <button @click="removeImage">Remove image</button> -->
          </div>
@@ -60,91 +60,112 @@
          </b-form-group>
          </b-form>        
         </div>
-        <div class="garis-orange" style="width:100%;"></div>
         <br/>
 
+        <b-tabs>
+        <div class="garis-orange" style="width:100%;"></div>
         <div class="data-dashboard">
-         <div class="lelang-user">
-            <h5>Lelang yang saya ikuti</h5>
-            <div class="tabel-lelang-user">
-             <table class="table">
-                <thead>
-                    <tr>
-                    <th scope="col">Id</th>
-                    <th scope="col">Gambar</th>
-                    <th scope="col">Nama Barang</th>
-                    <th scope="col">Harga Barang</th>
-                    <th scope="col">Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                    <th scope="row">{{ id_barang }}</th>
-                    <td><img v-bind:src="gambar_barang" ></td>
-                    <td>{{ nama_barang }}</td>
-                    <td>{{ harga_barang }}</td>
-                    <td><b-button class="primary"><router-link to="/Uploadbuktibayar"> Selesaikan Pembayaran</router-link></b-button></td>
-                    </tr>
-                </tbody>
-             </table>
+          <b-tabs card>
+            <b-tab title="Lelang" active>
+             <div class="lelang-user">
+              <h5>Lelang yang saya ikuti</h5>
+              <div class="tabel-lelang-user">
+               <b-row>
+                 <b-col sm="12" md="12" lg="4" v-for="item in lelang" :key="item.id">
+                 <b-card
+                    :title="item.nama_barang"
+                    :img-src="'https://admin.donasimoveon.com' + item.path_photo"
+                    img-alt="Image"
+                    img-top
+                    tag="article"
+                    style="max-width: 20rem; font-size:12px;"
+                    img-height="150px"
+                    class="mb-1"
+                 >
+                    <br />
+                    <p>
+                    {{ harga_awal }}
+                    </p>
+                    <router-link to="/Uploadbuktibayar"> <b-button class="primary">Selesaikan Pembayaran</b-button></router-link>
+                 </b-card>                      
+                 </b-col>
+                </b-row>
+             </div>
             </div>
-         </div>
-         <br />
 
-         <div class="galangdana-user">
-            <h5>Galang dana saya</h5>
-            <table class="table">
-                <thead>
-                    <tr>
-                    <th scope="col">Judul</th>
-                    <th scope="col">Sisa Waktu</th>
-                    <th scope="col">Dana Terkumpul</th>
-                    <th scope="col">Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                    <th scope="row">{{ judul_galangdana }}</th>
-                    <td>{{ sisa_waktu }}</td>
-                    <td>{{ dana_terkini }}</td>
-                    <td><b-button class="primary">Update</b-button></td>
-                    </tr>
-                </tbody>
-             </table>
-         </div>
-         <br />
-
-         <div class="donasi-user">
+            <br />
+            </b-tab>
+            <b-tab title="Barang">
+            <div class="donasi-user">
             <h5>Donasi barang saya</h5>
-            <table class="table">
-                <thead>
-                    <tr>
-                    <th scope="col" > Nama Barang </th>
-                    <th scope="col"> Published on </th>
-                    <th scope="col"> Harga </th>
-                    <th scope="col"> Penawar </th>
-                    <th scope="col"> Action </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                    <th scope="row">{{ nama_barang }}</th>
-                    <td>{{ tgl_upload }}</td>
-                    <td>{{ harga }}</td>
-                    <td>{{ id_penawar }}</td>
-                    <td><b-button class="primary">Hapus</b-button><span v-text="nbsp"> </span><b-button class="primary">Update</b-button></td>
-                    </tr>
-                </tbody>
-             </table>
-         </div>
-         <br />
+              <div class="tabel-barang-user">
+               <b-row>
+                 <b-col sm="12" md="12" lg="4" v-for="item in barang" :key="item.id">
+                 <b-card
+                    :title="item.nama_barang"
+                    :img-src="'https://admin.donasimoveon.com' + item.path_photo"
+                    img-alt="Image"
+                    img-top
+                    tag="article"
+                    style="max-width: 20rem; font-size:12px;"
+                    img-height="150px"
+                    class="mb-1"
+                 >
+                    <br />
+                    <p>
+                    {{ harga_awal }}
+                    </p>
+                    <router-link to="/Uploadbuktibayar"> <b-button class="primary">Selesaikan Pembayaran</b-button></router-link>
+                 </b-card>                      
+                 </b-col>
+                </b-row>
+             </div>            
+            </div>
+            </b-tab>
+            <b-tab title="Galang Dana">
+             <div class="galangdana-user">
+             <h5>Galang dana saya</h5>
+              <div class="tabel-galangdana-user">
+               <b-row>
+                 <b-col sm="12" md="12" lg="4" v-for="item in galangdana" :key="item.id">
+                 <b-card
+                    :title="item.judul"
+                    :img-src="'https://admin.donasimoveon.com' + item.path_photo"
+                    img-alt="Image"
+                    img-top
+                    tag="article"
+                    style="max-width: 20rem; font-size:12px;"
+                    img-height="150px"
+                    class="mb-1"
+                 >
+                    <br />
+                    <p>
+                    Dana terkumpul sebesar
+                    <span
+                        style="font-weight:bold"
+                    >{{ item.dana_terkini | currency }}</span>
+                    <br />dari
+                    <b>{{ item.target_dana | currency}}</b>
+                    </p>
+                    <b-card-text style="font-size:10px;">{{ item.created_at }} <span>Waktu penggalangan dana tinggal {{ sisa_hari }} hari</span> </b-card-text>
+                    </b-card>                      
+                 </b-col>
+                </b-row>
+             </div>
+             </div>
+            </b-tab>
+          </b-tabs>
+          <br />
         </div>
 
+        </b-tabs>
+        
       </b-container>
 
     </div>
 </template>
 <script>
+import { stringify } from 'querystring';
 export default {
     name:'dashboarduser',
     data(){
@@ -157,38 +178,33 @@ export default {
             password: "",
             file_path: null,            
       },
-      image:'',
-      gambar_barang:'',
-      id_barang:'',
-      nama_barang:'',
-      harga_barang:'',
-      foto_barang:null,
-      tgl_upload:'',
-      harga: '',
-      id_penawar:'',
-      nbsp:'  ',
+      lelang:{},
+      barang:{},
+      galangdana:{},
+      sisa_hari:null,
       show: true
      }
-    }
-    //  methods: {
-    //       onFileChange(e) {
-    //           var files = e.target.files || e.dataTransfer.files;
-    //           if (!files.length)
-    //           return;
-    //           this.createImage(files[0]);
-    //       },
-    //       createImage(file) {
-    //           var image = new Image();
-    //           var reader = new FileReader();
-    //           var vm = this;
+    
+    },
+    created() {
+    axios.all([
+    axios.get(`https://admin.donasimoveon.com/api/lelang`),
+    axios.get(`https://admin.donasimoveon.com/api/barang`),
+    axios.get(`https://admin.donasimoveon.com/api/galangdana`)
+    ])
+    .then(axios.spread((lelangRes, barangRes, galangdanaRes) => {
+      // do something with both responses
+      this.lelang = lelangRes.data.lelang;       
+      this.barang = barangRes.data.barang;
+      this.galangdana = galangdanaRes.data.galangdana;
+    }))
+    .catch(e => {
 
-    //           reader.onload = (e) => {
-    //             vm.image = e.target.result;
-    //           };
-    //           reader.readAsDataURL(file);
-    //       },
+    this.errors.push(e);
+    });
+  }
           
-    }    
+}    
       
 ;
         
