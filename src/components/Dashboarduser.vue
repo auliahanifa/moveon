@@ -5,25 +5,16 @@
          <h3 style="margin-top:100px;">Dashboard Anda</h3>
          <div class="garis-orange" style="width:260px;"></div>
          <br />
-         
-         <div v-if="!image">
-         <h4>uplaod foto profil</h4>
-          <input type="file" @change="onFileChange">
-         </div>
-         <div v-else>
-         <b-img :src="'https://admin.donasimoveon.com' +item.path_photo" ></b-img>
+         <!-- <b-img :src="'https://admin.donasimoveon.com' +item.path_photo" ></b-img> -->
          <br/>
-         <!-- <button @click="removeImage">Remove image</button> -->
-         </div>
-        <br>
-        <b-button>ganti foto</b-button>
         </center>
         <br />
         
+        <div class="container">
         <div class="form-profil" sm="12" md="8" lg="8">
          <b-form @submit="onSubmit" @reset="onReset" v-if="show">
           <h4 class="kategori-data">Profil Anda</h4>
-          <div class="garis-orange"></div>
+          <div class="garis-orange" cols="6"></div>
           <br />
 
          <b-form-group id="input-group-1" label="Nama" label-for="input-1" class="label">
@@ -46,19 +37,31 @@
             <b-form-input id="input-4" v-model="pengguna.password"></b-form-input>
          </b-form-group>
         
-         <b-form-group id="input-group-7" label="Upload Foto Profil" class="label">
+         <b-form-group id="input-group-7" label="Upload Foto Profil" label-for="input-6" class="label">
+          <b-form-file v-model="image" :state="Boolean(image)" placeholder="Pilih foto..."
+            drop-placeholder="Tarik file kesini..." required></b-form-file>
+          <small>*foto formal</small>
+         </b-form-group>
+
+         <!-- <b-form-group id="input-group-7" label="Upload Foto Profil" class="label">
+          
           <small>Foto Profil</small>
           <br />
           <b-button @click="$refs.fileInput.click()" class="btn-orange">Pilih Foto</b-button>
-         <input
-            style="display: none"
-            ref="fileInput"
-            type="file"
-            @change="fileSelected"
-            enctype="multipart/form-data"
-            />
-         </b-form-group>
-         </b-form>        
+          <input
+             style="display: none"
+             ref="fileInput"
+             type="file"
+             @change="fileSelected"
+             enctype="multipart/form-data"
+          />
+         </b-form-group> -->
+        </b-form>
+
+        </div>
+        <center>
+            <b-button class="btn-orange" @click="savePengguna" style="width:60%;">Simpan</b-button>
+        </center>
         </div>
         <br/>
 
@@ -160,6 +163,11 @@
 
         </b-tabs>
         
+        <div class="footer">
+        <center>
+            <router-link to="/">Copyright © Donasi MoveOn 2019</router-link>
+        </center>
+        </div>
       </b-container>
 
     </div>
@@ -204,11 +212,8 @@ export default {
     });
   }
           
-}    
-      
-;
-        
-
+};
+ 
 </script>
 <style scoped>
 
@@ -225,7 +230,7 @@ img {
 
 .form-profil button{
     width: 280px;
-    float: left;
+    float: center;
     border-radius: 13px;
 }
 
@@ -237,9 +242,9 @@ img {
 
 /* tabel lelang yang diikuti */
 .data-dashboard h5{
-    size: 13px;
+    size: 9px;
     border-radius: 13px;
-    width: 60%;
+    width:60%;
     padding: 10px;
     color:whitesmoke;
     background: -webkit-linear-gradient(to right, #fb6340, #fbb140);
@@ -248,23 +253,26 @@ img {
     box-shadow: 0 2px 4px -2px rgba(0, 0, 0, 0.2);
 }
 
+.custom-file-input {
+    /* position: relative; */
+    width: 100%;
+    height: calc(1.5em + 0.75rem + 2px);
+    margin: 0;
+    opacity: 0;
+    border: 2px solid #F79317;
+    box-sizing: border-box;
+    border-radius: 13px;
+}
+
 .lelang-user .galangdana-user .donasi-user {
     width:100%;
     min-height: 100%;
     border: 2px solid #F64A00;
 }
 
-table td, th{
-    border: 1px solid #F79317;
+.tab-nav{
+    line-height: 1.5;
 }
-
-table button{
-    background: green;
-    color: white;
-    font-style: bold;
-    font-family: Quicksand;
-}
-
 /* tabel galang dana yang dibuat user */
 
 /* tabel barang yang didonasikan user */

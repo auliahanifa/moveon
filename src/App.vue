@@ -25,7 +25,7 @@
                 <router-link to="/Login">Masuk</router-link>
               </b-nav-item>
               <b-nav-item class="nav-text">
-                <router-link to="/dashboarduser">Dashboard</router-link>
+                <span><font-awesome-icon icon="user" class="bar"></font-awesome-icon><router-link to="/dashboarduser">  Dashboard</router-link></span>
               </b-nav-item>
               <!-- <b-nav-item-dropdown class="drop-link">
                 <template slot="button-content">
@@ -47,6 +47,7 @@
   </div>
 </template>
 <script>
+
 export default {
   name: "app"
 };

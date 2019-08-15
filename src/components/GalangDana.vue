@@ -84,9 +84,9 @@
             img-alt="Image"
             img-top
             tag="article"
-            style="max-width: 20rem; font-size:12px;"
-            img-height="150px"
-            class="mb-1"
+            style="max-width: 20rem; text-size:12px;"
+            img-height="160px"
+            class="mb-2"
           >
             <br />
             <b-progress
@@ -105,7 +105,12 @@
               <br />dari
               <b>{{ item.target_dana | currency}}</b>
             </p>
-            <b-card-text style="font-size:10px;">{{ item.created_at }} <span>Waktu penggalangan dana tinggal {{ sisa_hari }} hari</span> </b-card-text>
+            <b-card-text style="font-size:10px;">
+              <b-row>
+                <b-col sm="6" md="6" lg="6">{{ item.created_at }}</b-col>
+                <b-col sm="6" md="6" lg="6" float="right">{{ sisa_hari }} hari</b-col>
+              </b-row>
+            </b-card-text>
             <p>Diterbitkan oleh {{ item.id_pengguna }}</p>
             <b-img
               :src="'https://admin.donasimoveon.com' + pengguna_pathphoto"
@@ -164,36 +169,19 @@ export default {
     this.errors.push(e);
     });
   }
-  // created() {
-  //   axios.get(`https://admin.donasimoveon.com/api/beasiswa`)
-  //     .then(response => {
-  //       // JSON responses are automatically parsed.
-  //       this.galang_beasiswa = response.data.galang_beasiswa;
-  //       this.sisa_hari = response.data.sisa_hari;
-  //       // this.onclick = parseInt(response.data.onclick); // kalau pas demo matiin yg ini aja
-  //     })
-  // },
-
 };
-    // axios.get(`https://admin.donasimoveon.com/api/beasiswa`)
-      // .then(response => {
-      //   // JSON responses are automatically parsed.
-      //   this.galang_beasiswa = response.data.galang_beasiswa;
-      //   this.sisa_hari = response.data.sisa_hari;
-      //   // this.onclick = parseInt(response.data.onclick); // kalau pas demo matiin yg ini aja
-      // })
-      // .get(`https://admin.donasimoveon.com/api/galangdana`)
-      // .then(response => {
-      //   // JSON responses are automatically parsed.
-      //   this.galangdana = response.data.galangdana;
-      // })
-      // .catch(e => {
-      //   this.errors.push(e);
-      // });
 </script>
 
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 
+.card-title{
+  height:25px;
+  font-size: 21px;
+}
+
+.card mb-2{
+  height:520px;
+}
 </style>

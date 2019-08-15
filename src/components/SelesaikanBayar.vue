@@ -23,6 +23,12 @@
         </center>
         </div>
     </div>
+
+    <div class="footer">
+      <center>
+        <router-link to="/">Copyright © Donasi MoveOn 2019</router-link>
+      </center>
+    </div>
     </b-container>
 </template>
 <script>
