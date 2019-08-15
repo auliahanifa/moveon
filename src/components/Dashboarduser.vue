@@ -193,7 +193,6 @@ export default {
       sisa_hari:null,
       show: true
      }
-<<<<<<< HEAD
     
     },
     created() {
@@ -209,7 +208,6 @@ export default {
       this.galangdana = galangdanaRes.data.galangdana;
     }))
     .catch(e => {
-=======
     },
     created() {
         axios
@@ -240,7 +238,6 @@ export default {
     //           var image = new Image();
     //           var reader = new FileReader();
     //           var vm = this;
->>>>>>> 28af80009488be2c3569642ebfa2e7dffca5656f
 
     this.errors.push(e);
     });
