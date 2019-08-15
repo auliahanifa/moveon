@@ -145,6 +145,7 @@
     </div>
 </template>
 <script>
+import axios from "axios";
 export default {
     name:'dashboarduser',
     data(){
@@ -169,7 +170,25 @@ export default {
       nbsp:'  ',
       show: true
      }
-    }
+    },
+    created() {
+        axios
+            .get(`http://localhost:8000/api/users`,{
+                headers: {
+                    Authorization: 'Bearer ' + localStorage.getItem('access_token') //the token is a variable which holds the token
+                }
+            })
+            .then(response => {
+                if(response.data.status){
+                    alert('data user captured');
+                }else{
+                    alert(response.data.message);
+                }
+            })
+            .catch(e => {
+                this.errors.push(e);
+            });
+    },
     //  methods: {
     //       onFileChange(e) {
     //           var files = e.target.files || e.dataTransfer.files;

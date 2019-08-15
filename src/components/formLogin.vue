@@ -55,9 +55,16 @@ export default {
         email:this.form.email,
         password:this.form.password
       })
-        .then(response => {
+      .then(response => {
+          if(response.data.status){
+            localStorage.setItem('access_token',response.data.data.token);
+            localStorage.setItem('user',response.data.data.user);
+            this.$router.push('dashboarduser');
+          }else{
+            alert(response.data.message);
+          }
           // alert(JSON.stringify(response));
-          window.open("/", "_top");
+          //window.open("/", "_top");
         })
         .catch(error => {
           alert(error);
