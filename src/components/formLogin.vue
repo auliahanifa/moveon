@@ -59,9 +59,22 @@ export default {
         email:this.form.email,
         password:this.form.password
       })
+<<<<<<< HEAD
         .then(response => {
           alert(JSON.stringify(response));
           // window.open("/", "_top");
+=======
+      .then(response => {
+          if(response.data.status){
+            localStorage.setItem('access_token',response.data.data.token);
+            localStorage.setItem('user',response.data.data.user);
+            this.$router.push('dashboarduser');
+          }else{
+            alert(response.data.message);
+          }
+          // alert(JSON.stringify(response));
+          //window.open("/", "_top");
+>>>>>>> 28af80009488be2c3569642ebfa2e7dffca5656f
         })
         .catch(error => {
           alert(error);

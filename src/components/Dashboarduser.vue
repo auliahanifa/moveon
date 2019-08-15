@@ -174,6 +174,7 @@
 </template>
 <script>
 import { stringify } from 'querystring';
+import axios from "axios";
 export default {
     name:'dashboarduser',
     data(){
@@ -192,6 +193,7 @@ export default {
       sisa_hari:null,
       show: true
      }
+<<<<<<< HEAD
     
     },
     created() {
@@ -207,6 +209,38 @@ export default {
       this.galangdana = galangdanaRes.data.galangdana;
     }))
     .catch(e => {
+=======
+    },
+    created() {
+        axios
+            .get(`http://localhost:8000/api/users`,{
+                headers: {
+                    Authorization: 'Bearer ' + localStorage.getItem('access_token') //the token is a variable which holds the token
+                }
+            })
+            .then(response => {
+                if(response.data.status){
+                    alert('data user captured');
+                }else{
+                    alert(response.data.message);
+                }
+            })
+            .catch(e => {
+                this.errors.push(e);
+            });
+    },
+    //  methods: {
+    //       onFileChange(e) {
+    //           var files = e.target.files || e.dataTransfer.files;
+    //           if (!files.length)
+    //           return;
+    //           this.createImage(files[0]);
+    //       },
+    //       createImage(file) {
+    //           var image = new Image();
+    //           var reader = new FileReader();
+    //           var vm = this;
+>>>>>>> 28af80009488be2c3569642ebfa2e7dffca5656f
 
     this.errors.push(e);
     });
