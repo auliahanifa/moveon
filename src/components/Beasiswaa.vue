@@ -47,19 +47,19 @@
             </h3>
             <ul style="list-style-type: none;">
               <li>
-                <font-awesome-icon icon="check-square"></font-awesome-icon>Mahasiswa aktif Politknik Negeri Jakarta
+                <font-awesome-icon icon="check-square"></font-awesome-icon> Mahasiswa aktif Politknik Negeri Jakarta
               </li>
               <li>
-                <font-awesome-icon icon="check-square"></font-awesome-icon>Minimal semester 2
+                <font-awesome-icon icon="check-square"></font-awesome-icon> Minimal semester 2
               </li>
               <li>
-                <font-awesome-icon icon="check-square"></font-awesome-icon>Minimal ipk 3.00
+                <font-awesome-icon icon="check-square"></font-awesome-icon> Minimal ipk 3.00
               </li>
               <li>
-                <font-awesome-icon icon="check-square"></font-awesome-icon>Scan KTM, marksheet, kartu keluarga, sertifikat organisasi, sertifikat lomba, dan slip gaji orang tua
+                <font-awesome-icon icon="check-square"></font-awesome-icon> Scan KTM, marksheet, kartu keluarga, sertifikat organisasi, sertifikat lomba, dan slip gaji orang tua
               </li>
               <li>
-                <font-awesome-icon icon="check-square"></font-awesome-icon>Berkas dijadikan satu dan diupload dalam bentuk file pdf
+                <font-awesome-icon icon="check-square"></font-awesome-icon> Berkas dijadikan satu dan diupload dalam bentuk file pdf
               </li>
             </ul>
           </b-col>
@@ -68,7 +68,7 @@
               <h6>Siap Memberi Bantuan?</h6>
               <p>Ayo berdonasi menggunakan #DonasiMoveOn</p>
               <b-card
-                :img-src="urlWs+ galang_beasiswa.path_photo"
+                :img-src="'http://admin.donasimoveon.com' + galang_beasiswa.path_photo"
                 img-alt="Image"
                 img-top
                 tag="article"
@@ -78,7 +78,7 @@
                 <b-row>
                   <b-col lg="6" md="5" sm="12">
                     <b-img
-                      :src="urlWs+ avatar_admin"
+                      :src="'http://admin.donasimoveon.com' + avatar_admin"
                       rounded="circle"
                       width="30"
                     ></b-img>
@@ -209,7 +209,7 @@
               ></b-img>
               <b-img
                 v-else
-                :src="urlWs+ item.path_photo"
+                :src="'http://admin.donasimoveon.com' + item.path_photo"
                 rounded="circle"
                 width="130"
               ></b-img>
@@ -275,13 +275,12 @@ export default {
       sisa_hari: "",
       avatar_admin: "",
       nama_admin: "",
-      onclick: 0,
-      urlWs:localStorage.getItem('urlWs')
+      onclick: 0
     };
   },
   created() {
     axios
-      .get(`${localStorage.getItem('urlWs')}/api/beasiswa`)
+      .get(`https://admin.donasimoveon.com/api/beasiswa`)
       .then(response => {
         // JSON responses are automatically parsed.
         this.pengumuman = response.data.pengumuman;
