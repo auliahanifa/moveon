@@ -1,11 +1,12 @@
 <template>
-    <b-container>
         <div class="detail" style="margin-top:100px;">
+            <b-container>
+
         	<b-row v-if="galang_dana !=null">
                 <b-col sm="12" md="8" lg="8">
                     <h3>{{ galang_dana.judul }}</h3>
                     <div class="detail-foto" style="width: 100%; height: auto; border:2 px solid black;">
-                    <img v-bind:src="'https://admin.donasimoveon.com' +galang_dana.path_photo" alt="" style="width: 100%; height: 23rem; padding:5px;">
+                    <img v-bind:src="urlWs+galang_dana.path_photo" alt="" style="width: 100%; height: 23rem; padding:5px;">
                     </div>
                 </b-col>
                     
@@ -41,13 +42,13 @@
                     
                     <p>Penggalangan dana dimulai sejak {{ galang_dana.created_at }} </p>
                     
-                    <b-img
-                    v-bind:src="photo_pengguna"
+                    <!-- <b-img
+                    v-bind:src="path_photo"
                     rounded="circle"
                     style="border:2px solid black;"
-                    ></b-img>
+                    ></b-img> -->
                     <span style="font-size:14px; padding-left:10px;">
-                    Fundraiser: {{ nama_pengguna }}</span>
+                    Fundraiser: {{ nama }}</span>
                  </b-card>
                 </b-col>
             </b-row>
@@ -75,13 +76,18 @@
             </b-row>
             <br><br>
             <center>
-            <b-button class="btn-donasi-red">Donasi Sekarang</b-button>                
+            <b-button class="btn-donasi-red" >Donasi Sekarang</b-button>                
             </center>
-         
-            <footer>
-            </footer>        
+         </b-container>
+     
+         <div class="footer">
+            <center>
+                <p>Copyright © Donasi MoveOn 2019</p>
+            </center>
+         </div>                
         </div>
-    </b-container>
+    
+    
 </template>
 <script>
 import axios from "axios";
@@ -94,19 +100,20 @@ export default {
         return {
         galang_dana: {},
         sisa_hari:'',
-        photo_pengguna:'',
-        nama_pengguna:''
+        // path_photo:'',
+        nama:'',
+        urlWs: localStorage.getItem('urlWs')
         };
     },
     created() {
     axios
-      .get(`https://admin.donasimoveon.com/api/galangdana/`+this.$route.params.id)
+      .get(`${localStorage.getItem('urlWs')}/api/galangdana/`+this.$route.params.id)
       .then(response => {
         // JSON responses are automatically parsed.
         this.galang_dana = response.data.galang_dana;
         this.sisa_hari = response.data.sisa_hari;
-        this.photo_pengguna = response.data.photo_pengguna;
-        this.nama_pengguna = response.data.nama_pengguna;
+        // this.path_photo = response.data.path_photo;
+        this.nama = response.data.nama;
       })
       .catch(e => {
           alert(e);

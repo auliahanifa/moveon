@@ -5,7 +5,7 @@
             <b-row >
                 <b-col sm="12" md="8" lg="6">
                 <h3>{{ galang_dana.judul }}</h3>
-                <b-img v-bind:src="'https://admin.donasimoveon.com' + galang_dana.path_photo"
+                <b-img v-bind:src="urlWs+ galang_dana.path_photo"
                 width="100%"
                 height="auto">
                 </b-img>
@@ -41,7 +41,7 @@
                     <b-row>
                     <b-col>
                         <b-img
-                        :src="'https://admin.donasimoveon.com' + path_photo_pengguna"
+                        :src="urlWs+ path_photo_pengguna"
                         rounded="circle"
                         width="30"
                         ></b-img>
@@ -111,7 +111,8 @@ export default {
           sisa_hari: "",
           path_photo_pengguna: "",
           nama_pengguna: "",
-          sisa_hari:""
+          sisa_hari:"",
+          urlWs:localStorage.getItem('urlWs')
         };
     },
     methods:{
@@ -121,7 +122,7 @@ export default {
     },
     created() {
     axios
-      .get(`https://admin.donasimoveon.com/api/galangdanadetail`)
+      .get(`${localStorage.getItem('urlWs')}/api/galangdanadetail`)
       .then(response => {
         // JSON responses are automatically parsed.
         this.galang_dana = response.data.galang_dana;

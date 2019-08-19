@@ -10,20 +10,20 @@
     <br />
     <b-container>
       <b-row>
-        <b-col lg="3" md="4" sm="6" v-for="item in barang" v-bind:key="item.id">
+        <b-col lg="4" md="4" sm="6" v-for="item in barang" v-bind:key="item.id">
           <b-card
             :title="item.nama_barang"
-            :img-src="'https://admin.donasimoveon.com' + item.path_photo"
+            :img-src="urlWs+item.path_photo"
             img-alt="Image"
             img-top
             tag="article"
-            style="max-width: 20rem; font-size:15px"
-            img-height="150px"
-            class="mb-2"
+            style="max-width: 25rem; font-size:15px;"
+            class="mb-3"
           >
             <b-card-text class="text">
               Pemilik barang:
               {{ item.id_pengguna }}
+              {{ nama }}
               <br />
               <b-card-text style="font-size:10px;">{{ item.created_at }}</b-card-text>
             </b-card-text>
@@ -53,8 +53,13 @@ export default {
   name: "baranglelang",
   data() {
     return {
+      item: {},
+      nama:"",
+      urlWs: localStorage.getItem('urlWs'),
       counter: 217300,
-      barang: []
+      barang: [
+        
+      ]
     };
   },
   props: {
@@ -62,7 +67,7 @@ export default {
   },
   created() {
     axios
-      .get(`https://admin.donasimoveon.com/api/barang`)
+      .get(`${localStorage.getItem('urlWs')}/api/barang`)
       .then(response => {
         // JSON responses are automatically parsed.
         this.barang = response.data.barang;
@@ -80,14 +85,29 @@ ul {
   list-style-type: none;
   padding: 0;
 }
+
 li {
   display: inline-block;
   margin: 0 10px;
 }
+
 a {
   color: #42b983;
 }
+
 text {
   font-size: 12px;
+}
+
+.card-body{
+  height:260px;
+}
+
+.card-img-top {
+  height:235px;
+  border: 1px solid goldenrod;
+}
+.card-title {
+  height:30px;
 }
 </style>

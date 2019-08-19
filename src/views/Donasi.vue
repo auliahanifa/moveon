@@ -6,7 +6,7 @@
 </template>
 <script>
 export default {
-    name: 'donasiia',
+    name: 'donasii',
     components: {
         GalangDana
     }

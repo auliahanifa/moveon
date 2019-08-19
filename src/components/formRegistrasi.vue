@@ -7,23 +7,21 @@
           <p>Selamat bergabung dengan Moveon, dan mulailah menjadi kontributor sekarang</p>
         </b-col>
 
-        <b-col sm="10" md="10" lg="6">
+        <b-col sm="12" md="12" lg="7">
           <div class="header-section">
             <h3>Daftar akun baru</h3>
           </div>
 
           <div class="form-section">
             <!-- <h1>ini isinya form Login</h1> -->
-          
               <b-form @submit="onSubmit" v-if="show">
                 <b-form-group id="input-group-1" label-for="input-1">
                   <b-form-input
                     id="input-1"
                     v-model="nama"
-                    type="name"
+                    :type="'name'"
                     required
                     placeholder="masukkan nama anda"
-                    
                   ></b-form-input>
                 </b-form-group>
 
@@ -31,7 +29,7 @@
                   <b-form-input
                     id="input-2"
                     v-model="no_hp"
-                    type="tel"
+                    :type="'tel'"
                     required
                     placeholder="nomor telepon"
                   ></b-form-input>
@@ -41,7 +39,7 @@
                   <b-form-input
                     id="input-3"
                     v-model="email"
-                    type="email"
+                    :type="'email'"
                     required
                     placeholder="masukkan email anda"
                   ></b-form-input>
@@ -73,7 +71,6 @@
                   <b-textarea
                     id="input-5"
                     v-model="alamat"
-                    type="textarea"
                     required
                     placeholder="Masukkan alamat anda"
                     height="14px;"
@@ -84,7 +81,7 @@
                   <b-form-input
                     id="input-6"
                     v-model="password"
-                    type="password"
+                    :type="'password'"
                     required
                     placeholder="kata sandi"
                   ></b-form-input>
@@ -98,13 +95,13 @@
                   <router-link to="/login">Masuk disini.</router-link>
                 </small>
                 </center>
-                <!-- <b-button type="reset" variant="danger">Reset</b-button> -->
               </b-form>
             
           </div>
         </b-col>
       </b-row>
     </b-container>
+    <br><br>
     <div class="footer">
       <center>
         <router-link to="/">Copyright © Donasi MoveOn 2019</router-link>
@@ -131,14 +128,12 @@ export default {
       jenis_kelamin: '',
       alamat: '',
       show: true
-    };
+    }
   },
   methods: {
     onSubmit(e) {
       e.preventDefault();
-      // let currentObj = this;
-      // alert(JSON.stringify(this.form))
-      axios.post('https://admin.donasimoveon.com/api/pengguna', {
+      axios.post(`${window.appUrl}/api/pengguna`, {
         nama: this.nama,
         no_hp: this.no_hp,
         no_identitas: this.no_identitas,
@@ -149,12 +144,10 @@ export default {
         alamat: this.alamat
       })
       .then(response => {
-          // alert(JSON.stringify(response));
-          window.open("/#login", "_top");
-        })
-      // .then(function(response) {
-      //   console.log(response);
-      // });
+        // alert(JSON.stringify(response));
+        window.open('#/Login', '_top');
+      });
+      console.log(window.appUrl);
     }
   }
 };
@@ -165,21 +158,23 @@ export default {
 .registrasiAkun {
   background-image: url("../assets/img/kids.jpg");
   position: center;
-  min-width: 100%;
-  height: 100%;
+  /* min-width: 100%; */
+  /* height: 100%; */
   background-repeat: no-repeat;
   background-size: cover;
   font-family: Quicksand;
 }
 
 .kiri {
-  background-color: rgb(0, 0, 0, 0.3);
+  margin-top: 80px;
+  /* background-color: rgb(0, 0, 0, 0.3); */
   width: 100%;
-  height: auto;
+  /* height: auto; */
   position: center;
-  padding: 10px;
+  padding: 80px, 80px, 10px, 80px;
   text-align: center;
-  margin-top: 100px;
+  margin-right: 20px;
+  
   /* padding: 20px; */
 }
 

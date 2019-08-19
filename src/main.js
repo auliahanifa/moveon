@@ -25,6 +25,9 @@ Vue.use(VueCurrencyFilter, {
   symbolSpacing: true
 });
 
+// window.appUrl = localStorage.getItem('urlWs');
+window.appUrl = 'http://127.0.0.1:8011';
+
 new Vue({
   router,
   axios,

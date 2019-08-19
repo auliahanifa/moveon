@@ -68,7 +68,7 @@
               <h6>Siap Memberi Bantuan?</h6>
               <p>Ayo berdonasi menggunakan #DonasiMoveOn</p>
               <b-card
-                :img-src="'http://admin.donasimoveon.com' + galang_beasiswa.path_photo"
+                :img-src="urlWs+ galang_beasiswa.path_photo"
                 img-alt="Image"
                 img-top
                 tag="article"
@@ -78,7 +78,7 @@
                 <b-row>
                   <b-col lg="6" md="5" sm="12">
                     <b-img
-                      :src="'http://admin.donasimoveon.com' + avatar_admin"
+                      :src="urlWs+ avatar_admin"
                       rounded="circle"
                       width="30"
                     ></b-img>
@@ -209,7 +209,7 @@
               ></b-img>
               <b-img
                 v-else
-                :src="'http://admin.donasimoveon.com' + item.path_photo"
+                :src="urlWs+ item.path_photo"
                 rounded="circle"
                 width="130"
               ></b-img>
@@ -275,12 +275,13 @@ export default {
       sisa_hari: "",
       avatar_admin: "",
       nama_admin: "",
-      onclick: 0
+      onclick: 0,
+      urlWs:localStorage.getItem('urlWs')
     };
   },
   created() {
     axios
-      .get(`https://admin.donasimoveon.com/api/beasiswa`)
+      .get(`${localStorage.getItem('urlWs')}/api/beasiswa`)
       .then(response => {
         // JSON responses are automatically parsed.
         this.pengumuman = response.data.pengumuman;

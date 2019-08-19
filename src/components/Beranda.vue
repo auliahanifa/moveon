@@ -5,21 +5,18 @@
 
       <!-- <h5>{{ header_text2 }}</h5> -->
       <!-- <div v-if="session != null"> -->
-          <router-link to="/donasi_barang">
-            <b-button variant="outline" class="btn_app">{{ btn_donasibarang }}</b-button>
-          </router-link>
-      <!-- </div> -->
-      <!-- <div v-else> -->
-          <!-- <router-link to="/login">
-            <b-button variant="outline" class="btn_app">{{ btn_donasibarang }}</b-button>
-          </router-link> -->
-      <!-- </div> -->
+        <center>
+        <p style="font-size:16px; color:white; font-style:bold;">Mulai donasikan barang anda disini</p></center>
+        <router-link to="/donasi_barang">
+          <b-button variant="outline" class="btn_app">{{ btn_donasibarang }}</b-button>
+        </router-link>
     </div>
     <br><br>
+
     <b-container>
       <div class="body-cerita">
         <b-row>
-          <b-col sm="12" md="7" lg="5">
+          <b-col sm="12" md="7" lg="5" style="mb-3">
             <h3>{{ judul_section }}</h3>
             <h5>{{ deskripsi_section }}</h5>
             <center>
@@ -31,11 +28,11 @@
           <b-col lg="6" md="5" sm="12">
             <center v-if="galang_beasiswa != null">
               <b-card
-                :img-src="'https://admin.donasimoveon.com' + galang_beasiswa.path_photo"
+                :img-src="urlWs+galang_beasiswa.path_photo"
                 img-alt="Image"
                 img-top
                 tag="article"
-                style="text-align:left; "
+                style="text-align:left; height:500px;"
                 class="mb-2 img-card"
               >
                 <p style="font-size:16px; font-weight:bold">{{galang_beasiswa.judul}}</p>
@@ -48,7 +45,7 @@
                 <b-progress
                   :value="parseInt(galang_beasiswa.dana_terkini)"
                   :max="parseInt(galang_beasiswa.target_dana)"
-                  class="mb-3"
+                  class="mb-1"
                   variant="warning"
                   style="border-radius:10px;"
                 ></b-progress>
@@ -210,14 +207,15 @@ export default {
       avatar_admin: "",
       nama_admin: "",
       barang:[],
+      urlWs: localStorage.getItem('urlWs')
      
     };
   },
   created() {
     axios.all([
-    axios.get(`https://admin.donasimoveon.com/api/beasiswa`),
-    axios.get(`https://admin.donasimoveon.com/api/barang`),
-    axios.get(`https://admin.donasimoveon.com/api/getSession`),
+    axios.get(`${localStorage.getItem('urlWs')}/api/beasiswa`),  
+    axios.get(`${localStorage.getItem('urlWs')}/api/barang`),
+    // axios.get(`${localStorage.getItem('urlWs')}/api/getSession`),
     ])
     .then(axios.spread((beasiswaRes, barangRes, getSessionRes) => {
       // do something with both responses
@@ -226,7 +224,7 @@ export default {
       this.avatar_admin = beasiswaRes.data.avatar_admin;
       this.nama_admin = beasiswaRes.data.nama_admin;
       this.barang = barangRes.data.barang;
-      this.session = getSessionRes.data.session;
+      // this.session = getSessionRes.data.session;
     }))
     .catch(e => {
     this.errors.push(e);
@@ -294,15 +292,15 @@ hr {
 }
 
 .btn_app {
-  width: 227px;
-  height: auto;
-  background: rgba(251, 87, 76, 0.78);
-  border: 3px solid #f64a00;
+  width: 247px;
+  height: 48px;
+  background: rgba(251, 87, 76);
+  border: 2px solid #f64a00;
   box-sizing: border-box;
-  border-radius: 32px;
+  border-radius: 30px;
   font-family: Quicksand;
   font-style: normal;
-  font-weight: 640;
+  /* font-weight: 640; */
   font-size: 20px;
   line-height: 22px;
   text-align: center;
@@ -347,19 +345,6 @@ h6,
 
 /* -- Setting card img --  */
 
-/* .body-cerita p {
-  margin: 26px;
-  font-family: Quicksand;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 26px;
-  line-height: 35px;
-  color: #ffffff;
-  text-align: left;
-} */
-
-/* -- Setting button --  */
-
 .btn-primary:hover {
   color: #fff;
   background: #f46158;
@@ -367,16 +352,14 @@ h6,
 }
 
 .body-baranglelang h3 {
-  padding: 20px;
-  width: 440px;
-  height: 58px;
-  font-family: Quattrocento Sans;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 26px;
-  line-height: 25px;
-  display: flex;
-  align-items: center;
+  width: 70%;
+  height: auto;
+  font-family: Quicksand;
+  /* font-style: normal; */
+  font-size: 24px;
+  line-height: 35px;
+  /* display: flex; */
+  /* text-align: center; */
   color: #2f7196;
 }
 

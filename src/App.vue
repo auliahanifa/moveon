@@ -18,26 +18,21 @@
               <b-nav-item class="nav-text">
                 <router-link to="/Beasiswa">Beasiswa</router-link>
               </b-nav-item>
-              <b-nav-item class="nav-text">
+              <b-nav-item class="nav-text" v-if="masukEnable">
                 <router-link to="/Daftarlah">Daftar Akun</router-link>
               </b-nav-item>
-              <b-nav-item class="nav-text">
+              
+              <b-nav-item class="nav-text" v-if="masukEnable">
                 <router-link to="/Login">Masuk</router-link>
               </b-nav-item>
+
+              <b-nav-item class="nav-text" v-on:click="logOut">
+                <router-link to="/">Keluar</router-link>
+              </b-nav-item>
+
               <b-nav-item class="nav-text">
                 <span><font-awesome-icon icon="user" class="bar"></font-awesome-icon><router-link to="/dashboarduser">  Dashboard</router-link></span>
               </b-nav-item>
-              <!-- <b-nav-item-dropdown class="drop-link">
-                <template slot="button-content">
-                  <font-awesome-icon icon="bars" class="bar"></font-awesome-icon>
-                </template>
-                <b-dropdown-item>
-                  <router-link to="/Daftarlah">Daftar</router-link>
-                </b-dropdown-item>
-                <b-dropdown-item>
-                  <router-link to="/Login" class="drop-link">Masuk</router-link>
-                </b-dropdown-item>
-              </b-nav-item-dropdown>-->
             </b-navbar-nav>
           </b-collapse>
         </div>
@@ -49,8 +44,39 @@
 <script>
 
 export default {
-  name: "app"
-};
+  name: "app",
+  data: {
+    masukEnable : true,
+    keluar: true
+  },
+   beforeMount() {
+      if (localStorage.getItem('user')!=null) {
+        this.masukEnable = false;
+        // this.keluar = true;    
+    }else{
+        this.masukEnable = true;
+    }
+  }, logOut() {
+    this.masukEnable = true;
+    localStorage.clear();
+    console.log("harusnya keluar");
+
+  },
+  onSubmit(evt) {
+      evt.preventDefault();
+      // ertert(JSON.stringify(this.form));
+      console.log("on submit login");
+    
+  // mounted(){
+  //   if( keluar == false) {
+  //     localStorage.clear();
+  //   }
+  // }
+
+  }
+
+}
+
 </script>
 
 

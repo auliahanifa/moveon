@@ -5,7 +5,7 @@
          <h3 style="margin-top:100px;">Dashboard Anda</h3>
          <div class="garis-orange" style="width:260px;"></div>
          <br />
-         <!-- <b-img :src="'https://admin.donasimoveon.com' +item.path_photo" ></b-img> -->
+         <!-- <b-img :src="window.appUrl +item.path_photo" ></b-img> -->
          <br/>
         </center>
         <br />
@@ -30,12 +30,12 @@
          </b-form-group>
         
          <b-form-group id="input-group-5" label="Alamat" label-for="textarea" class="label">
-            <b-form-input type="textarea" id="input-5" v-model="pengguna.alamat"></b-form-input>
+           <b-form-textarea id="input-5" v-model="pengguna.alamat"></b-form-textarea>
          </b-form-group>
         
-         <b-form-group id="input-group-6" label="Password" label-for="input-6" class="label">
+         <!-- <b-form-group id="input-group-6" label="Password" label-for="input-6" class="label">
             <b-form-input id="input-4" v-model="pengguna.password"></b-form-input>
-         </b-form-group>
+         </b-form-group> -->
         
          <b-form-group id="input-group-7" label="Upload Foto Profil" label-for="input-6" class="label">
           <b-form-file v-model="image" :state="Boolean(image)" placeholder="Pilih foto..."
@@ -77,7 +77,7 @@
                  <b-col sm="12" md="12" lg="4" v-for="item in lelang" :key="item.id">
                  <b-card
                     :title="item.nama_barang"
-                    :img-src="'https://admin.donasimoveon.com' + item.path_photo"
+                    :img-src="window.appUrl + item.path_photo"
                     img-alt="Image"
                     img-top
                     tag="article"
@@ -106,7 +106,7 @@
                  <b-col sm="12" md="12" lg="4" v-for="item in barang" :key="item.id">
                  <b-card
                     :title="item.nama_barang"
-                    :img-src="'https://admin.donasimoveon.com' + item.path_photo"
+                    :img-src="window.appUrl + item.path_photo"
                     img-alt="Image"
                     img-top
                     tag="article"
@@ -133,7 +133,7 @@
                  <b-col sm="12" md="12" lg="4" v-for="item in galangdana" :key="item.id">
                  <b-card
                     :title="item.judul"
-                    :img-src="'https://admin.donasimoveon.com' + item.path_photo"
+                    :img-src="window.appUrl + item.path_photo"
                     img-alt="Image"
                     img-top
                     tag="article"
@@ -145,7 +145,7 @@
                     <p>
                     Dana terkumpul sebesar
                     <span
-                        style="font-weight:bold"
+                      style="font-weight:bold"
                     >{{ item.dana_terkini | currency }}</span>
                     <br />dari
                     <b>{{ item.target_dana | currency}}</b>
@@ -163,13 +163,12 @@
 
         </b-tabs>
         
-        <div class="footer">
-        <center>
-            <router-link to="/">Copyright © Donasi MoveOn 2019</router-link>
-        </center>
-        </div>
       </b-container>
-
+      <div class="footer">
+        <center>
+          <router-link to="/">Copyright © Donasi MoveOn 2019</router-link>
+        </center>
+      </div>
     </div>
 </template>
 <script>
@@ -180,71 +179,72 @@ export default {
     data(){
      return{
       pengguna: {
-            nama: "",
-            email: "",
-            no_hp: "",
-            alamat: "",
-            password: "",
-            file_path: null,            
+        nama: "",
+        email: "",
+        no_hp: "",
+        alamat: "",
+        password: "",
+        file_path: null,            
       },
+      image: '',
       lelang:{},
       barang:{},
       galangdana:{},
       sisa_hari:null,
       show: true
      }
-    
     },
     created() {
-    axios.all([
-    axios.get(`https://admin.donasimoveon.com/api/lelang`),
-    axios.get(`https://admin.donasimoveon.com/api/barang`),
-    axios.get(`https://admin.donasimoveon.com/api/galangdana`)
-    ])
-    .then(axios.spread((lelangRes, barangRes, galangdanaRes) => {
-      // do something with both responses
-      this.lelang = lelangRes.data.lelang;       
-      this.barang = barangRes.data.barang;
-      this.galangdana = galangdanaRes.data.galangdana;
-    }))
-    .catch(e => {
-    },
-    created() {
-        axios
-            .get(`http://localhost:8000/api/users`,{
-                headers: {
-                    Authorization: 'Bearer ' + localStorage.getItem('access_token') //the token is a variable which holds the token
-                }
-            })
-            .then(response => {
-                if(response.data.status){
-                    alert('data user captured');
-                }else{
-                    alert(response.data.message);
-                }
-            })
-            .catch(e => {
-                this.errors.push(e);
-            });
-    },
-    //  methods: {
-    //       onFileChange(e) {
-    //           var files = e.target.files || e.dataTransfer.files;
-    //           if (!files.length)
-    //           return;
-    //           this.createImage(files[0]);
-    //       },
-    //       createImage(file) {
-    //           var image = new Image();
-    //           var reader = new FileReader();
-    //           var vm = this;
+      axios.all([
+      axios.get(`${window.appUrl}/api/lelang`),
+      axios.get(`${window.appUrl}/api/barang`),
+      axios.get(`${window.appUrl}/api/galangdana`)
+      ])
+      .then(axios.spread((lelangRes, barangRes, galangdanaRes) => {
+        // do something with both responses
+        this.lelang = lelangRes.data.lelang;       
+        this.barang = barangRes.data.barang;
+        this.galangdana = galangdanaRes.data.galangdana;
+      }))
+      .catch(e => {
+      });
 
-    this.errors.push(e);
-    });
-  }
-          
-};
- 
+      const userData = JSON.parse(localStorage.getItem('user'))
+
+      if (userData) {
+        this.pengguna = userData;
+      } else {
+        axios.get(`${window.appUrl}/api/users`,{
+          headers: {
+            Authorization: 'Bearer ' + localStorage.getItem('access_token') //the token is a variable which holds the token
+          }
+        })
+        .then(response => {
+          console.log(response.data);
+          if(response.data.status){
+            // alert('data user captured');
+            this.pengguna = response.data.data
+          }else{
+            alert(response.data.message);
+          }
+        })
+        .catch(e => {
+          this.errors.push(e);
+        });   
+      }
+    },
+    methods: {
+      onSubmit() {
+        console.log('on submit dashboard user')
+      },
+      onReset() {
+        console.log('on reset dashboard user')
+      },
+      savePengguna() {
+        console.log('save pengguna')
+      }
+    }
+  } 
 </script>
 <style scoped>
 

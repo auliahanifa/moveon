@@ -1,12 +1,12 @@
 <template>
   <!-- <div class="formlogin"> -->
-    <b-container >
-      <b-row>
-        <b-col sm="12" md="12" lg="6" >
+  <b-container>
+    <b-row>
+      <b-col sm="12" md="12" lg="6">
         <div class="login-header-section">
           <h3>Masuk ke akun anda</h3>
         </div>
-        
+
         <div class="form-section">
           <b-form @submit="onSubmit" v-if="show">
             <center>
@@ -21,7 +21,13 @@
               </b-form-group>
 
               <b-form-group id="input-group-2" label-for="input-2">
-                <b-form-input id="input-2" v-model="form.password" type="password" required placeholder="Kata sandi"></b-form-input>
+                <b-form-input
+                  id="input-2"
+                  v-model="form.password"
+                  type="password"
+                  required
+                  placeholder="Kata sandi"
+                ></b-form-input>
               </b-form-group>
 
               <b-button type="submit" class="btn-user-auth">Masuk</b-button>
@@ -33,9 +39,9 @@
             </center>
           </b-form>
         </div>
-        </b-col>
+      </b-col>
     </b-row>
-  </b-container>  
+  </b-container>
   <!-- </div> -->
 </template>
 <script>
@@ -45,8 +51,8 @@ export default {
   data() {
     return {
       form: {
-        email:'',
-        password:''
+        email: "",
+        password: ""
       },
       show: true
     };
@@ -55,20 +61,27 @@ export default {
     onSubmit(evt) {
       evt.preventDefault();
       // ertert(JSON.stringify(this.form));
-      axios.post('https://admin.donasimoveon.com/api/login/', {
-        email:this.form.email,
-        password:this.form.password
-      })
+      console.log("on submit login");
+      axios 
+        .post(`${window.appUrl}/api/login/`, {
+          email: this.form.email,
+          password: this.form.password
+        })
+        // .then(response => {
+        //   alert(JSON.stringify(response));
+        //   window.open("/", "_top");
         .then(response => {
-          alert(JSON.stringify(response));
-          // window.open("/", "_top");
-      .then(response => {
-          if(response.data.status){
-            localStorage.setItem('access_token',response.data.data.token);
-            localStorage.setItem('user',response.data.data.user);
-            this.$router.push('dashboarduser');
-          }else{
-            alert(response.data.message);
+          if (response.data) {
+            localStorage.setItem("access_token", response.data.token);
+            localStorage.setItem(
+              "user",
+              JSON.stringify(response.data.user)
+            );
+            localStorage.setItem("urlWs",window.appUrl);
+            this.$router.push("dashboarduser");
+          } else {
+            alert(response.data.token);
+            console.log(response);
           }
           // alert(JSON.stringify(response));
           //window.open("/", "_top");
@@ -82,12 +95,12 @@ export default {
   }
 };
 </script>
+
 <style scoped>
 p {
   padding: 20px;
   font-weight: bold;
 }
-
 
 .form-section {
   width: 100%;
@@ -104,22 +117,22 @@ p {
 }
 
 .login-header-section {
-    width: 100%;
-    height: auto;
-    background: linear-gradient(270deg, #F64A00 0%, rgba(247, 147, 23, 0) 100%), #F79317;
-    margin: auto;
-    -webkit-mask-attachment: fixed;
-    position: right center;
+  width: 100%;
+  height: auto;
+  background: linear-gradient(270deg, #f64a00 0%, rgba(247, 147, 23, 0) 100%),
+    #f79317;
+  margin: auto;
+  -webkit-mask-attachment: fixed;
+  position: right center;
 }
 
 .login-header-section h3 {
-    padding: 15px;
-    color: white;
-    size: 6px;
-    text-align: left;
-    margin-top: 150px;
-    margin-left: auto;
-    margin-right: auto;
-
+  padding: 15px;
+  color: white;
+  size: 6px;
+  text-align: left;
+  margin-top: 150px;
+  margin-left: auto;
+  margin-right: auto;
 }
 </style>

@@ -263,7 +263,7 @@
           }
         };
         axios
-          .post(`https://admin.donasimoveon.com/api/pendaftar`, formData, config)
+          .post(`${localStorage.getItem('urlWs')}/api/pendaftar`, formData, config)
           .then(response => {
             this.data = response.data;
             this.message = response.data.message;

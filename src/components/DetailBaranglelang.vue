@@ -4,9 +4,11 @@
             <b-row>
                 <b-col sm="12" md="12" lg="5">
                     <!-- <h3>{{ galang_dana.judul }}</h3> -->
+                    <center>
                     <div class="detail-foto" style="width: 96%; height: auto; border:3 px solid grey;">
-                    <img v-bind:src="'https://admin.donasimoveon.com' +barang.path_photo" alt="" style="width: 100%; height: 100%; padding:5px;">
+                    <img v-bind:src="urlWs+barang.path_photo" alt="" style="width: 100%; height: 100%; padding:5px;">
                     </div>
+                    </center>
                 </b-col>
 
                 <b-col sm="12" md="12" lg="7">
@@ -17,12 +19,15 @@
                      style="font-size:12px;"
                     >Nama pemilik: {{ nama_pemilik }}</p>
                     <!-- <small>Harga barang:</small> -->
-                    <h3> Rp. {{ barang.harga_awal }}</h3>
+                    {{ barang.id_barang}}
+                    <h3 v-if="statusLelang === 'Gagal'"> Rp. {{ barang.harga_awal }}</h3>
+                    <h3 v-if="statusLelang === 'Sukses'"> Rp. {{ lelang.harga_akhir }}</h3>
+
                     </b-card-text>
                     
                     <p>Dipublikasikan sejak : {{ barang.created_at }} </p>
                     <center>
-                    <b-button class="btn-donasi-red" @click="TambahHarga">
+                    <b-button class="btn-donasi-red" v-on:click="barang.harga_awal += 5000">
                       <font-awesome-icon icon="gift" class="bar"></font-awesome-icon> Tawar 
                     </b-button>
                     <br>
@@ -85,7 +90,13 @@ export default {
   name:'detail-lelang',
   data() {
     return{
+      pengguna: {
+       id_pengguna:''  
+      },
       barang: {},
+      lelang:{},
+      statusLelang: '',
+      urlWs: localStorage.getItem('urlWs'),
       nama_pemilik:'',
     };
     
@@ -93,18 +104,52 @@ export default {
   props: {
     msg: String
   },
+  // nambahGoceng() {
+
+  // },
   created() {
-    axios
-      .get(`https://admin.donasimoveon.com/api/barang/`+this.$route.params.id)
-      .then(response => {
-        // JSON responses are automatically parsed.
-        this.barang = response.data.barang_donasi;
-        this.nama_pemilik = response.data.nama_pemilik;
-      })
+    const userData = JSON.parse(localStorage.getItem('user'))
+
+    if (userData) {
+        this.pengguna = userData;
+      } else {
+        axios.get(`${window.appUrl}/api/users`,{
+          headers: {
+            Authorization: 'Bearer ' + localStorage.getItem('access_token') //the token is a variable which holds the token
+          }
+        })
+        .then(response => {
+          console.log(response.data);
+          if(response.data.status){
+            // alert('data user captured');
+            this.pengguna = response.data.data
+          }else{
+            alert(response.data.message);
+          }
+        })
+        .catch(e => {
+          this.errors.push(e);
+        });   
+      }
+     axios.all([
+    axios.get(`${localStorage.getItem('urlWs')}/api/barang/` +this.$route.params.id),
+    axios.get(`${localStorage.getItem('urlWs')}/api/lelang/check/`+this.pengguna.id_pengguna+`/`+this.$route.params.id),
+    ])
+    .then(axios.spread((barangres, lelangRes) => {
+      // do something with both responses
+      this.barang = barangres.data.barang_donasi;
+      this.statusLelang = lelangRes.data.status;
+      this.lelang = lelangRes.data.data;
+      this.nama_pemilik = barangres.data.nama_pemilik;
+
+      console.log(this.statusLelang);
+    }))
+
       .catch(e => {
         this.errors.push(e);
       });
-    }
+
+    },
   
 }
 </script>
